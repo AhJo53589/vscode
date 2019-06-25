@@ -16,7 +16,7 @@ ABCDEF 对应的分数分别为150, 30, 20, 40, 100, 10。
 则最优解为AEF  
 
 > Description.jpg  
-![](https://raw.githubusercontent.com/AhJo53589/Test_Interview/master/MaxSum_NoBothParentAndChild/Description.jpg)
+![](https://raw.githubusercontent.com/AhJo53589/vscode/master/Test_Interview/MaxSum_NoBothParentAndChild/Description.jpg)
 
 
 前几天学了动态规划，想起这道题应该也是。  

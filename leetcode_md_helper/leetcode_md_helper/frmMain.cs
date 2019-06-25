@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace leetcode_md_helper
 {
@@ -21,7 +22,7 @@ namespace leetcode_md_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            //txtFolder.Text = @"C:\Ikaruga Files\Work\AhJo53589\leetcode-cn\";
+            //txtPath.Text = @"C:\Ikaruga Files\Work\AhJo53589\leetcode-cn\";
             txtPath.Text = System.Windows.Forms.Application.StartupPath;
             txtOut_Directory.Text = txtPath.Text + @"/README.md";
             txtOut_Log.Text = txtPath.Text + @"/problems/README.md";
@@ -41,23 +42,21 @@ namespace leetcode_md_helper
 
         private string GenerateDirectoryString(string strId, string strTitleE, string strTitleC)
         {
-            string strIdTitleE = strId + "." + strTitleE;
-
             // example: 
             // * `（简单）`  [1.TwoSum 两数之和](./problems/1.TwoSum/README.md)
             // 题解[C++](./ problems / 1.TwoSum / 1.TwoSum.cpp)
             string strOutput = "* `（";
             strOutput += cmbIn_Difficult.Text;
             strOutput += "）`  [";
-            strOutput += strIdTitleE;
+            strOutput += txtIn_IdTitleE.Text;
             strOutput += " ";
             strOutput += strTitleC;
             strOutput += "](./problems/";
-            strOutput += strIdTitleE;
+            strOutput += txtIn_IdTitleE.Text;
             strOutput += "/README.md) 题解 [C++](./problems/";
-            strOutput += strIdTitleE;
+            strOutput += txtIn_IdTitleE.Text;
             strOutput += "/";
-            strOutput += strIdTitleE;
+            strOutput += txtIn_IdTitleE.Text;
             strOutput += ".cpp)";
 
             return strOutput;
@@ -65,15 +64,13 @@ namespace leetcode_md_helper
 
         private void CreateDescriptionMDFile(string strId, string strTitleE, string strTitleC)
         {
-            string strIdTitleE = strId + "." + strTitleE;
-
             // example: 
             //# `（简单）`  [48.Rotate 旋转图像](https://leetcode-cn.com/problems/rotate-image/)
             string strText;
             strText = "# `（";
             strText += cmbIn_Difficult.Text;
             strText += "）`  [";
-            strText += strIdTitleE;
+            strText += txtIn_IdTitleE.Text;
             strText += " ";
             strText += strTitleC;
             strText += "](";
@@ -101,11 +98,19 @@ namespace leetcode_md_helper
             strText += "```\n";
             strText += "\n";
 
+            // ### 其它
+            strText += "### 其它\n";
+            strText += "``` C++\n";
+            strText += "```\n";
+            strText += "\n";
+
 
             string strFile = txtOut_Answer.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
             lblOut_Answer.Visible = true;
+
+            Process.Start(strFile);
         }
 
         private void UpdateDirectoryMDFile(string strId, string strTitleE, string strTitleC)
@@ -166,6 +171,8 @@ namespace leetcode_md_helper
                 File.WriteAllText(strFile, strText, utf8);
             }
             lblOut_Directory.Visible = true;
+
+            Process.Start(strFile);
         }
 
         private void UpdateLogMDFile(string strId, string strTitleE, string strTitleC)
@@ -224,18 +231,19 @@ namespace leetcode_md_helper
 
                 lblOut_Log.Visible = true;
             }
+
+            Process.Start(strFile);
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            string[] s = txtIn_Title.Text.Split('.');
+            string[] s = txtIn_IdTitleC.Text.Split('.');
             string strId = s[0];
+            s = txtIn_IdTitleC.Text.Split(' ');
             string strTitleC = s[1];
 
             s = txtIn_Link.Text.Split('/');
             string strTitleE = s[4];
-
-            string strIdTitleE = strId + "." + strTitleE;
 
             UpdateDirectoryMDFile(strId, strTitleE, strTitleC);
             UpdateLogMDFile(strId, strTitleE, strTitleC);
@@ -244,7 +252,7 @@ namespace leetcode_md_helper
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtIn_Title.Text = "";
+            txtIn_IdTitleC.Text = "";
             txtIn_Link.Text = "";
             txtIn_Description.Text = "";
             txtOut_Answer.Text = "";
@@ -256,9 +264,9 @@ namespace leetcode_md_helper
 
         private void txtTitle_TextChanged(object sender, EventArgs e)
         {
-            if (txtIn_Title.Text != "" && txtIn_Link.Text != "")
+            if (txtIn_IdTitleC.Text != "" && txtIn_Link.Text != "")
             {
-                string[] s = txtIn_Title.Text.Split('.');
+                string[] s = txtIn_IdTitleC.Text.Split('.');
                 string strId = s[0];
                 string strTitleC = s[1];
 
@@ -270,6 +278,8 @@ namespace leetcode_md_helper
                 string str = txtPath.Text;
                 str += @"/problems/" + strIdTitleE + @"/README.md";
 
+                txtIn_IdTitleE.Text = strIdTitleE;
+                Clipboard.SetText(strIdTitleE);
                 txtOut_Answer.Text = str;
 
                 btnGenerate.Enabled = true;

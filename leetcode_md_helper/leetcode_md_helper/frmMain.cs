@@ -23,9 +23,9 @@ namespace leetcode_md_helper
         {
             // Test path
             //txtPath.Text = @"C:\Ikaruga Files\Work\AhJo53589\leetcode-cn\";
-            txtPath.Text = System.Windows.Forms.Application.StartupPath;
-            txtOut_Directory.Text = txtPath.Text + @"/README.md";
-            txtOut_Log.Text = txtPath.Text + @"/problems/README.md";
+            txt_FilePath.Text = System.Windows.Forms.Application.StartupPath;
+            txtOut_DirectoryFilePath.Text = txt_FilePath.Text + @"/README.md";
+            txtOut_LogFilePath.Text = txt_FilePath.Text + @"/problems/README.md";
         }
 
         private int GetDirectoryNo(string str)
@@ -105,7 +105,7 @@ namespace leetcode_md_helper
             strText += "\n";
 
 
-            string strFile = txtOut_Answer.Text;
+            string strFile = txtOut_AnswerFilePath.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
             lblOut_Answer.Visible = true;
@@ -115,7 +115,7 @@ namespace leetcode_md_helper
 
         private void UpdateDirectoryMDFile(string strId, string strTitleE, string strTitleC)
         {
-            string strFile = txtOut_Directory.Text;
+            string strFile = txtOut_DirectoryFilePath.Text;
 
             if (!File.Exists(strFile))
             {
@@ -177,7 +177,7 @@ namespace leetcode_md_helper
 
         private void UpdateLogMDFile(string strId, string strTitleE, string strTitleC)
         {
-            string strFile = txtOut_Log.Text;
+            string strFile = txtOut_LogFilePath.Text;
 
             if (!File.Exists(strFile))
             {
@@ -255,7 +255,9 @@ namespace leetcode_md_helper
             txtIn_IdTitleC.Text = "";
             txtIn_Link.Text = "";
             txtIn_Description.Text = "";
-            txtOut_Answer.Text = "";
+            txtIn_Answer.Text = "";
+            txtOut_AnswerFilePath.Text = "";
+            lblOut_IdTitleE.Visible = false;
             lblOut_Directory.Visible = false;
             lblOut_Log.Visible = false;
             lblOut_Answer.Visible = false;
@@ -275,17 +277,19 @@ namespace leetcode_md_helper
 
                 string strIdTitleE = strId + "." + strTitleE;
 
-                string str = txtPath.Text;
+                string str = txt_FilePath.Text;
                 str += @"/problems/" + strIdTitleE + @"/README.md";
 
                 txtIn_IdTitleE.Text = strIdTitleE;
                 Clipboard.SetText(strIdTitleE);
-                txtOut_Answer.Text = str;
+                txtOut_AnswerFilePath.Text = str;
 
+                lblOut_IdTitleE.Visible = true;
                 btnGenerate.Enabled = true;
             }
             else
             {
+                lblOut_IdTitleE.Visible = false;
                 btnGenerate.Enabled = false;
             }
         }

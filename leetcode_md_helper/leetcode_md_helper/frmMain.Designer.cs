@@ -44,17 +44,18 @@
             this.txtIn_Link = new System.Windows.Forms.TextBox();
             this.txtIn_IdTitleC = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_FilePath = new System.Windows.Forms.TextBox();
             this.lblOut_Answer = new System.Windows.Forms.Label();
             this.lblOut_Log = new System.Windows.Forms.Label();
             this.lblOut_Directory = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtOut_Answer = new System.Windows.Forms.TextBox();
+            this.txtOut_AnswerFilePath = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtOut_Log = new System.Windows.Forms.TextBox();
+            this.txtOut_LogFilePath = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtOut_Directory = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPath = new System.Windows.Forms.TextBox();
+            this.txtOut_DirectoryFilePath = new System.Windows.Forms.TextBox();
+            this.lblOut_IdTitleE = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             this.btnGenerate.Enabled = false;
             this.btnGenerate.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnGenerate.Location = new System.Drawing.Point(8, 493);
+            this.btnGenerate.Location = new System.Drawing.Point(8, 325);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(623, 85);
             this.btnGenerate.TabIndex = 13;
@@ -75,6 +76,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lblOut_IdTitleE);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.txtIn_IdTitleE);
             this.panel1.Controls.Add(this.label9);
@@ -89,15 +91,15 @@
             this.panel1.Controls.Add(this.txtIn_Link);
             this.panel1.Controls.Add(this.txtIn_IdTitleC);
             this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(623, 480);
+            this.panel1.Size = new System.Drawing.Size(623, 302);
             this.panel1.TabIndex = 21;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 80);
+            this.label10.Location = new System.Drawing.Point(7, 86);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 12);
@@ -106,16 +108,16 @@
             // 
             // txtIn_IdTitleE
             // 
-            this.txtIn_IdTitleE.Location = new System.Drawing.Point(82, 78);
+            this.txtIn_IdTitleE.Location = new System.Drawing.Point(82, 84);
             this.txtIn_IdTitleE.Name = "txtIn_IdTitleE";
             this.txtIn_IdTitleE.ReadOnly = true;
-            this.txtIn_IdTitleE.Size = new System.Drawing.Size(339, 21);
+            this.txtIn_IdTitleE.Size = new System.Drawing.Size(511, 21);
             this.txtIn_IdTitleE.TabIndex = 35;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(48, 290);
+            this.label9.Location = new System.Drawing.Point(49, 208);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 12);
@@ -124,16 +126,16 @@
             // 
             // txtIn_Answer
             // 
-            this.txtIn_Answer.Location = new System.Drawing.Point(82, 289);
+            this.txtIn_Answer.Location = new System.Drawing.Point(82, 205);
             this.txtIn_Answer.Multiline = true;
             this.txtIn_Answer.Name = "txtIn_Answer";
-            this.txtIn_Answer.Size = new System.Drawing.Size(511, 181);
+            this.txtIn_Answer.Size = new System.Drawing.Size(511, 88);
             this.txtIn_Answer.TabIndex = 33;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 105);
+            this.label5.Location = new System.Drawing.Point(24, 114);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
@@ -142,10 +144,10 @@
             // 
             // txtIn_Description
             // 
-            this.txtIn_Description.Location = new System.Drawing.Point(82, 102);
+            this.txtIn_Description.Location = new System.Drawing.Point(82, 111);
             this.txtIn_Description.Multiline = true;
             this.txtIn_Description.Name = "txtIn_Description";
-            this.txtIn_Description.Size = new System.Drawing.Size(511, 181);
+            this.txtIn_Description.Size = new System.Drawing.Size(511, 88);
             this.txtIn_Description.TabIndex = 28;
             // 
             // label3
@@ -161,7 +163,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 56);
+            this.label2.Location = new System.Drawing.Point(6, 59);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 12);
@@ -180,9 +182,9 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(425, 54);
+            this.btnClear.Location = new System.Drawing.Point(427, 8);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(166, 43);
+            this.btnClear.Size = new System.Drawing.Size(166, 20);
             this.btnClear.TabIndex = 24;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -211,9 +213,9 @@
             // 
             // txtIn_IdTitleC
             // 
-            this.txtIn_IdTitleC.Location = new System.Drawing.Point(82, 54);
+            this.txtIn_IdTitleC.Location = new System.Drawing.Point(82, 57);
             this.txtIn_IdTitleC.Name = "txtIn_IdTitleC";
-            this.txtIn_IdTitleC.Size = new System.Drawing.Size(339, 21);
+            this.txtIn_IdTitleC.Size = new System.Drawing.Size(511, 21);
             this.txtIn_IdTitleC.TabIndex = 22;
             this.txtIn_IdTitleC.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
@@ -222,21 +224,39 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txtPath);
+            this.panel2.Controls.Add(this.txt_FilePath);
             this.panel2.Controls.Add(this.lblOut_Answer);
             this.panel2.Controls.Add(this.lblOut_Log);
             this.panel2.Controls.Add(this.lblOut_Directory);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.txtOut_Answer);
+            this.panel2.Controls.Add(this.txtOut_AnswerFilePath);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.txtOut_Log);
+            this.panel2.Controls.Add(this.txtOut_LogFilePath);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.txtOut_Directory);
-            this.panel2.Location = new System.Drawing.Point(8, 584);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Controls.Add(this.txtOut_DirectoryFilePath);
+            this.panel2.Location = new System.Drawing.Point(8, 432);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(623, 130);
             this.panel2.TabIndex = 22;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 15);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "当前路径";
+            // 
+            // txt_FilePath
+            // 
+            this.txt_FilePath.Location = new System.Drawing.Point(82, 12);
+            this.txt_FilePath.Name = "txt_FilePath";
+            this.txt_FilePath.ReadOnly = true;
+            this.txt_FilePath.Size = new System.Drawing.Size(511, 21);
+            this.txt_FilePath.TabIndex = 36;
             // 
             // lblOut_Answer
             // 
@@ -281,14 +301,14 @@
             this.label8.TabIndex = 32;
             this.label8.Text = "答题文件";
             // 
-            // txtOut_Answer
+            // txtOut_AnswerFilePath
             // 
-            this.txtOut_Answer.Location = new System.Drawing.Point(82, 87);
-            this.txtOut_Answer.Multiline = true;
-            this.txtOut_Answer.Name = "txtOut_Answer";
-            this.txtOut_Answer.ReadOnly = true;
-            this.txtOut_Answer.Size = new System.Drawing.Size(511, 33);
-            this.txtOut_Answer.TabIndex = 31;
+            this.txtOut_AnswerFilePath.Location = new System.Drawing.Point(82, 87);
+            this.txtOut_AnswerFilePath.Multiline = true;
+            this.txtOut_AnswerFilePath.Name = "txtOut_AnswerFilePath";
+            this.txtOut_AnswerFilePath.ReadOnly = true;
+            this.txtOut_AnswerFilePath.Size = new System.Drawing.Size(511, 33);
+            this.txtOut_AnswerFilePath.TabIndex = 31;
             // 
             // label7
             // 
@@ -300,13 +320,13 @@
             this.label7.TabIndex = 30;
             this.label7.Text = "日志文件";
             // 
-            // txtOut_Log
+            // txtOut_LogFilePath
             // 
-            this.txtOut_Log.Location = new System.Drawing.Point(82, 63);
-            this.txtOut_Log.Name = "txtOut_Log";
-            this.txtOut_Log.ReadOnly = true;
-            this.txtOut_Log.Size = new System.Drawing.Size(511, 21);
-            this.txtOut_Log.TabIndex = 29;
+            this.txtOut_LogFilePath.Location = new System.Drawing.Point(82, 63);
+            this.txtOut_LogFilePath.Name = "txtOut_LogFilePath";
+            this.txtOut_LogFilePath.ReadOnly = true;
+            this.txtOut_LogFilePath.Size = new System.Drawing.Size(511, 21);
+            this.txtOut_LogFilePath.TabIndex = 29;
             // 
             // label4
             // 
@@ -318,41 +338,34 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "目录文件";
             // 
-            // txtOut_Directory
+            // txtOut_DirectoryFilePath
             // 
-            this.txtOut_Directory.Location = new System.Drawing.Point(82, 39);
-            this.txtOut_Directory.Name = "txtOut_Directory";
-            this.txtOut_Directory.ReadOnly = true;
-            this.txtOut_Directory.Size = new System.Drawing.Size(511, 21);
-            this.txtOut_Directory.TabIndex = 17;
+            this.txtOut_DirectoryFilePath.Location = new System.Drawing.Point(82, 39);
+            this.txtOut_DirectoryFilePath.Name = "txtOut_DirectoryFilePath";
+            this.txtOut_DirectoryFilePath.ReadOnly = true;
+            this.txtOut_DirectoryFilePath.Size = new System.Drawing.Size(511, 21);
+            this.txtOut_DirectoryFilePath.TabIndex = 17;
             // 
-            // label6
+            // lblOut_IdTitleE
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 15);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "当前路径";
-            // 
-            // txtPath
-            // 
-            this.txtPath.Location = new System.Drawing.Point(82, 12);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(511, 21);
-            this.txtPath.TabIndex = 36;
+            this.lblOut_IdTitleE.AutoSize = true;
+            this.lblOut_IdTitleE.Location = new System.Drawing.Point(598, 86);
+            this.lblOut_IdTitleE.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOut_IdTitleE.Name = "lblOut_IdTitleE";
+            this.lblOut_IdTitleE.Size = new System.Drawing.Size(23, 12);
+            this.lblOut_IdTitleE.TabIndex = 37;
+            this.lblOut_IdTitleE.Text = "OK!";
+            this.lblOut_IdTitleE.Visible = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 725);
+            this.ClientSize = new System.Drawing.Size(639, 573);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnGenerate);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Leetcode_MD_Helper";
@@ -376,14 +389,14 @@
         private System.Windows.Forms.TextBox txtIn_Link;
         private System.Windows.Forms.TextBox txtIn_IdTitleC;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtOut_Directory;
+        private System.Windows.Forms.TextBox txtOut_DirectoryFilePath;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIn_Description;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtOut_Log;
+        private System.Windows.Forms.TextBox txtOut_LogFilePath;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtOut_Answer;
+        private System.Windows.Forms.TextBox txtOut_AnswerFilePath;
         private System.Windows.Forms.Label lblOut_Answer;
         private System.Windows.Forms.Label lblOut_Log;
         private System.Windows.Forms.Label lblOut_Directory;
@@ -392,7 +405,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtIn_IdTitleE;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPath;
+        private System.Windows.Forms.TextBox txt_FilePath;
+        private System.Windows.Forms.Label lblOut_IdTitleE;
     }
 }
 

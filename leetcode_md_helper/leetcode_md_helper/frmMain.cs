@@ -253,6 +253,7 @@ namespace leetcode_md_helper
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtIn_IdTitleC.Text = "";
+            txtIn_IdTitleE.Text = "";
             txtIn_Link.Text = "";
             txtIn_Description.Text = "";
             txtIn_Answer.Text = "";
@@ -289,6 +290,7 @@ namespace leetcode_md_helper
             }
             else
             {
+                txtIn_IdTitleE.Text = "";
                 lblOut_IdTitleE.Visible = false;
                 btnGenerate.Enabled = false;
             }

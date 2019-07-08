@@ -32,6 +32,7 @@
 #include <iostream>
 
 #include <vector>
+#include <bitset>
 
 using namespace std;
 
@@ -194,16 +195,6 @@ void printPathData(const vector <pair<int, int>>& pathData)
 	cout << endl;
 }
 
-void printBit(const uint8_t c)
-{
-	for (int i = 7; i >= 0; i--)
-	{
-		int temp = (c & 1 << i) != 0;
-		cout << temp;
-	}
-	cout << " ";
-}
-
 void printZipData(const vector<uint8_t> &zipData)
 {
 	if (zipData.size() < 8) return;
@@ -229,7 +220,8 @@ void printZipData(const vector<uint8_t> &zipData)
 
 	for (int i = 8; i < zipData.size(); i++)
 	{
-		printBit(zipData[i]);
+		bitset<8> b(zipData[i]);
+		cout << b << " => ";
 	}
 	cout << endl;
 }
@@ -259,11 +251,13 @@ int main()
 	pathData.push_back(make_pair(9998, 99));
 	// Test End
 
+	cout << endl << "origin data:" << endl;
 	printPathData(pathData);
 
 
 	// Zip
 	zip(pathData, zipData);
+	cout << endl << "zip data:" << endl;
 	printZipData(zipData);
 
 	// Clear
@@ -271,6 +265,7 @@ int main()
 
 	// Unzip
 	unzip(zipData, pathData);
+	cout << endl << "unzip data:" << endl;
 	printPathData(pathData);
 }
 

@@ -2,6 +2,13 @@
 
 
 
+
+---
+## 20190708
+使用bitset替换二进制输出函数。  
+[C++ bitset 用法](https://www.cnblogs.com/magisk/p/8809922.html)
+
+
 ---
 ## 20190531
 

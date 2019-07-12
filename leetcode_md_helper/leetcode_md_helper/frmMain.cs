@@ -62,7 +62,24 @@ namespace leetcode_md_helper
             return strOutput;
         }
 
-        private void CreateDescriptionMDFile(string strId, string strTitleE, string strTitleC)
+        private string GenerateSelectedSolutionString(string strId, string strTitleE, string strTitleC)
+        {
+            // example: 
+            // * `（简单）`  [198.Rob 打家劫舍] (https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-by-ikaruga)
+            string strOutput = "* `（";
+            strOutput += cmbIn_Difficult.Text;
+            strOutput += "）`  [";
+            strOutput += txtIn_IdTitleE.Text;
+            strOutput += " ";
+            strOutput += strTitleC;
+            strOutput += "](";
+            strOutput += txtIn_SolutionLink.Text;
+            strOutput += ")";
+
+            return strOutput;
+        }
+
+        private void Create_DescriptionMDFile(string strId, string strTitleE, string strTitleC)
         {
             // example: 
             //# `（简单）`  [48.Rotate 旋转图像](https://leetcode-cn.com/problems/rotate-image/)
@@ -91,6 +108,14 @@ namespace leetcode_md_helper
             strText += "```\n```\n";
             strText += "\n";
 
+            // 题解链接
+            if (txtIn_SolutionLink.Text != "")
+            {
+                strText += "[题解] (";
+                strText += txtIn_SolutionLink.Text;
+                strText += ")\n\n";
+            }
+
             // ### 答题
             strText += "### 答题\n";
             strText += "``` C++\n";
@@ -113,7 +138,7 @@ namespace leetcode_md_helper
             Process.Start(strFile);
         }
 
-        private void UpdateDirectoryMDFile(string strId, string strTitleE, string strTitleC)
+        private void Modify_DirectoryMDFile(string strId, string strTitleE, string strTitleC)
         {
             string strFile = txtOut_DirectoryFilePath.Text;
 
@@ -125,6 +150,7 @@ namespace leetcode_md_helper
 
             string strInsert = GenerateDirectoryString(strId, strTitleE, strTitleC);
             int iInsertNo = GetDirectoryNo(strInsert);
+            string strInsert_SelectedSolution = GenerateSelectedSolutionString(strId, strTitleE, strTitleC);
             string strText = "";
             int iMark = 0;
 
@@ -140,28 +166,53 @@ namespace leetcode_md_helper
                     }
                     else if (iMark == 1)
                     {
-                        if (str == "## Problems & Solutions") iMark = 2;  // find title
+                        if (str == "## Selected Solutions") iMark = 10;  // find title
                     }
-                    else if (iMark == 2)
+                    else if (iMark == 10)
+                    {
+                        if (str == "") continue;
+                        int iReadNo = GetDirectoryNo(str);
+                        if (iReadNo > iInsertNo)
+                        {
+                            strText += strInsert_SelectedSolution + "\n";    // insert content here
+                            iMark = 19;  // iMakr == 29, insert completed
+                        }
+
+                        if (str == "## Problems & Solutions")
+                        {
+                            strText += strInsert_SelectedSolution + "\n";    // insert content here
+                            iMark = 20;  // find title
+                        }
+                    }
+                    else if (iMark == 19)
+                    {
+                        if (str == "## Problems & Solutions") iMark = 20;  // find title
+                    }
+                    else if (iMark == 20)
                     {
                         if (str == "") continue;
                         int iReadNo = GetDirectoryNo(str);
                         if (iReadNo > iInsertNo)
                         {
                             strText += strInsert + "\n";    // insert content here
-                            iMark = 3;  // iMakr == 3, insert completed
+                            iMark = 29;  // iMakr == 29, insert completed
                         }
+
+                        if (str == "## Update")
+                        {
+                            strText += strInsert + "\n";    // insert content here
+                            iMark = 30;  // find title
+                        }
+                    }
+                    else if (iMark == 29)
+                    {
+                        if (str == "## Update") iMark = 30;  // find title
                     }
 
                     // copy this line
                     strText += str + "\n";
                 }
-                if (iMark == 2)
-                {
-                    strText += strInsert + "\n";    // insert content here
-                    iMark = 3;  // iMakr == 3, insert completed
-                }
-                if (iMark != 3)
+                if (iMark != 30)
                 {
                     MessageBox.Show(@"[README.md] insert failed!");
                 }
@@ -175,7 +226,7 @@ namespace leetcode_md_helper
             Process.Start(strFile);
         }
 
-        private void UpdateLogMDFile(string strId, string strTitleE, string strTitleC)
+        private void Modify_UpdateLogMDFile(string strId, string strTitleE, string strTitleC)
         {
             string strFile = txtOut_LogFilePath.Text;
 
@@ -239,15 +290,16 @@ namespace leetcode_md_helper
         {
             string[] s = txtIn_IdTitleC.Text.Split('.');
             string strId = s[0];
-            s = txtIn_IdTitleC.Text.Split(' ');
             string strTitleC = s[1];
+            if (strTitleC[0] == ' ') strTitleC = strTitleC.Substring(1);
 
             s = txtIn_Link.Text.Split('/');
             string strTitleE = s[4];
 
-            UpdateDirectoryMDFile(strId, strTitleE, strTitleC);
-            UpdateLogMDFile(strId, strTitleE, strTitleC);
-            CreateDescriptionMDFile(strId, strTitleE, strTitleC);
+            txtTitle_TextChanged(sender, e);
+            Modify_DirectoryMDFile(strId, strTitleE, strTitleC);
+            Modify_UpdateLogMDFile(strId, strTitleE, strTitleC);
+            Create_DescriptionMDFile(strId, strTitleE, strTitleC);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -256,6 +308,7 @@ namespace leetcode_md_helper
             txtIn_IdTitleE.Text = "";
             txtIn_Link.Text = "";
             txtIn_Description.Text = "";
+            txtIn_SolutionLink.Text = "";
             txtIn_Answer.Text = "";
             txtOut_AnswerFilePath.Text = "";
             lblOut_IdTitleE.Visible = false;
@@ -271,7 +324,6 @@ namespace leetcode_md_helper
             {
                 string[] s = txtIn_IdTitleC.Text.Split('.');
                 string strId = s[0];
-                string strTitleC = s[1];
 
                 s = txtIn_Link.Text.Split('/');
                 string strTitleE = s[4];

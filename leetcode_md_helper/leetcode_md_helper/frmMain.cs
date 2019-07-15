@@ -22,8 +22,10 @@ namespace leetcode_md_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            //txtPath.Text = @"C:\Ikaruga Files\Work\AhJo53589\leetcode-cn\";
+            //txt_FilePath.Text = @"C:\Ikaruga Files\Work\AhJo53589\leetcode-cn";
+            //txt_FilePath.Text = @"C:\Fenix_Files\Workspace\AhJo53589\leetcode-cn";
             txt_FilePath.Text = System.Windows.Forms.Application.StartupPath;
+
             txtOut_DirectoryFilePath.Text = txt_FilePath.Text + @"/README.md";
             txtOut_LogFilePath.Text = txt_FilePath.Text + @"/problems/README.md";
         }

@@ -11,79 +11,71 @@
 
 #include "pch.h"
 #include <iostream>
+#include <unordered_map>
 
 #include "..\Common\MultiTreeNode.h"
 
-int CalcAllChildValidSum(MultiTreeNode *pNode);
-int CalcValidNum(MultiTreeNode *pNode);
+using namespace std;
 
-int FindLargeNode(MultiTreeNode *pNode)
+void PostOrder(MultiTreeNode *root, vector<MultiTreeNode *>&pNodeList)
 {
-	if (pNode == NULL) return 0;
-
-	int sum = 0;
-	if (pNode->val > CalcAllChildValidSum(pNode))
-	{
-		sum += pNode->val;
-		cout << pNode->val << " ";
-		for (MultiTreeNode *p : pNode->child)
-		{
-			if (p == NULL) continue;
-			for (MultiTreeNode *q : p->child)
-			{
-				sum += FindLargeNode(q);
-			}
-		}
-	}
-	else
-	{
-		for (MultiTreeNode *p : pNode->child)
-		{
-			sum += FindLargeNode(p);
-		}
-	}
-	return sum;
+	if (root == NULL) return;
+	for (auto p : root->child) PostOrder(p, pNodeList);
+	pNodeList.push_back(root);
 }
 
-int CalcAllChildValidSum(MultiTreeNode *pNode)
+unordered_map<MultiTreeNode *, int> robMemo[2];
+int rob(MultiTreeNode *pNode)
 {
 	if (pNode == NULL) return 0;
+	vector<MultiTreeNode *> pNodeList;
+	PostOrder(pNode, pNodeList);
 
-	int sum = 0;
-	for (MultiTreeNode *p : pNode->child)
+	for (auto p : pNodeList)
 	{
-		sum += CalcValidNum(p);
+		int s[2] = { 0,0 };	// 0 == include node val, 1 == not include node val
+
+		s[0] = p->val;
+		for (auto c : p->child) s[0] += robMemo[1][c];
+		for (auto c : p->child) s[1] += robMemo[0][c];
+		s[0] = max(s[0], s[1]);	// copy best val
+
+		robMemo[0][p] = s[0];	// record
+		robMemo[1][p] = s[1];
 	}
-	return sum;
-}
-
-int CalcValidNum(MultiTreeNode *pNode)
-{
-	if (pNode == NULL) return 0;
-
-	return (pNode->val > CalcAllChildValidSum(pNode)) ? pNode->val : 0;
+	return robMemo[0][pNode];
 }
 
 int main()
 {
 	vector<string> strInput;
+	vector<int> iAnswer;
 	strInput.push_back("1,null,2,3,4,null,5,6,7,null,8,9,null,10,null");
-	strInput.push_back("150,null,30,20,40,null,100,10");
-	strInput.push_back("50,null,30,20,40,null,100,10,null,50,10");
-	strInput.push_back("50,null,30,20,40,null,100,10,null,50,10,null,null,null,null,50,10");
-	strInput.push_back("50,null,30,20,40,null,100,10,null,50,10,null,50,null,null,null,50,10");
+	iAnswer.push_back(46);
 
-	for (string s : strInput)
+	strInput.push_back("150,null,30,20,40,null,100,10");
+	iAnswer.push_back(260);
+
+	strInput.push_back("50,null,30,20,40,null,100,10,null,50,10");
+	iAnswer.push_back(220);
+
+	strInput.push_back("50,null,30,20,40,null,100,10,null,50,10,null,null,null,null,50,10");
+	iAnswer.push_back(230);
+
+	strInput.push_back("50,null,30,20,40,null,100,10,null,50,10,null,50,null,null,null,50,10");
+	iAnswer.push_back(280);
+
+
+	for (int i = 0; i < strInput.size(); i++)
 	{
 		cout << "////////////////////////////////////" << endl;
 		cout << "Input: " << endl;
 		MultiTreeNode *root = NULL;
-		initMultiTree(&root, s);
+		initMultiTree(&root, strInput[i]);
 		printMultiTreeNode(root, 0);
 
-		cout << "Find best: ";
-		int sum = FindLargeNode(root);
-		cout << endl << "Sum : " << sum << endl << endl;
+		cout << endl << "Answer = " << iAnswer[i];
+		cout << endl << "Result = " << rob(root) << endl  << endl;
 	}
 }
 

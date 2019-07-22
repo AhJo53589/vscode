@@ -140,7 +140,7 @@ namespace leetcode_md_helper
             // 题解链接
             if (txtIn_SolutionLink.Text != "")
             {
-                strText += "[发布的题解] (";
+                strText += "[发布的题解](";
                 strText += txtIn_SolutionLink.Text;
                 strText += ")\n\n";
             }

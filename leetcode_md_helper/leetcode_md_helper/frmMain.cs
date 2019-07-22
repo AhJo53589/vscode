@@ -84,10 +84,10 @@ namespace leetcode_md_helper
         private string GenerateDirectoryString()
         {
             // example: 
-            //* `（简单）` [198.Rob 打家劫舍] (./problems/198.Rob/README.md)
+            //* `（简单）`  [198.Rob 打家劫舍] (./problems/198.Rob/README.md)
             string strOutput = "* `（";
             strOutput += cmbIn_Difficult.Text;
-            strOutput += "）` [";
+            strOutput += "）`  [";   // 2个空格
             strOutput += txtIn_IdTitleE.Text;
             strOutput += " ";
             strOutput += m_strTitleC;
@@ -100,7 +100,7 @@ namespace leetcode_md_helper
         private string GenerateDirectoryString_WithSelectedSolution()
         {
             // example: 
-            //* `（简单）` [198.Rob 打家劫舍] (./problems/198.Rob/README.md) | [发布的题解] (https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-by-ikaruga) | 
+            //* `（简单）`  [198.Rob 打家劫舍] (./problems/198.Rob/README.md) | [发布的题解] (https://leetcode-cn.com/problems/house-robber/solution/da-jia-jie-she-by-ikaruga) | 
             string strOutput = GenerateDirectoryString();
             strOutput += " | [发布的题解](";
             strOutput += txtIn_SolutionLink.Text;
@@ -140,7 +140,7 @@ namespace leetcode_md_helper
             // 题解链接
             if (txtIn_SolutionLink.Text != "")
             {
-                strText += "[题解] (";
+                strText += "[发布的题解] (";
                 strText += txtIn_SolutionLink.Text;
                 strText += ")\n\n";
             }
@@ -315,7 +315,7 @@ namespace leetcode_md_helper
             lblOut_Problems.Visible = true;
 
             Process.Start(strFile);
-            return iProblemsCount;
+            return iProblemsCount + 1;
         }
 
         private void Modify_UpdateFile()

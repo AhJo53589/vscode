@@ -22,19 +22,69 @@
 #include <stdio.h>
 
 #include <memory>
+
+
 using namespace std;
 
-template<class T>
-void swap2(T& a, T& b)
-{
-	T tmp(std::move(a));
-	a = std::move(b);
-	b = std::move(tmp);
-}
+//template<class T>
+//void swap2(T& a, T& b)
+//{
+//	T tmp(std::move(a));
+//	a = std::move(b);
+//	b = std::move(tmp);
+//}
+//
+//void LR(int &a)
+//{
+//	cout << "L" << endl;
+//}
+//
+//void LR(int &&a)
+//{
+//	cout << "R" << endl;
+//}
+//
+//int main()
+//{
+//	int a = 5;
+//	int b = 6;
+//	//swap2(a, b);
+//	LR(a);
+//	LR(std::move(a));
+//	LR(std::move(std::move(6)));
+//	//LR(static_cast<int&&>(b));
+//}
+
+
+
+//int main() {
+//	std::vector<std::string> foo(3);
+//	std::vector<std::string> bar{ "one","two","three" };
+//
+//	std::copy(make_move_iterator(bar.begin()),
+//		make_move_iterator(bar.end()),
+//		foo.begin());
+//
+//	// bar now contains unspecified values; clear it:
+//	bar.clear();
+//
+//	std::cout << "foo:";
+//	for (std::string& x : foo) std::cout << ' ' << x;
+//	std::cout << '\n';
+//
+//	return 0;
+//}
+
+//////////////////////////////////////////////////////////////////////////
+// 一段代码，说一下运行结果
+class A {
+public: void f1() { }
+		virtual void f2() {}
+};
 
 int main()
 {
-	int a = 5;
-	int b = 6;
-	swap2(a, b);
+	A* a = nullptr;
+	a->f1();
+	a->f2();
 }

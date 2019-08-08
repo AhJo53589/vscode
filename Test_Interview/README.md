@@ -1,6 +1,17 @@
 # Test_Interview
 
 
+---
+## 20190808
+24点游戏算法  
+学到了新的方法，全排列
+```C++
+next_permutation
+```
+强行应用了一下。  
+
+[查看代码](./Calc24/Calc24.cpp)  
+[查看详细](https://blog.csdn.net/qq_40938169/article/details/82453743)  
 
 
 ---

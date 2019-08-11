@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -22,53 +23,100 @@ using namespace std;
 
 // 数据格式：图书价格,预借天数,实际天数
 
-int getCostDay(int price, int day)
+int getCostWithoutOverdue(int price, int day)
 {
-	if (price >= 100) return (day <= 15) ? 5 : 3;
-	else if (price >= 50) return (day <= 15) ? 3 : 2;
-	return 1;
-}
+	auto getDailyPrice = [](int price, int day)
+	{
+		if (price >= 100) return (day <= 15) ? 5 : 3;
+		else if (price >= 50) return (day <= 15) ? 3 : 2;
+		return 1;
+	};
 
-int getCost(int price, int day)
-{
-	if (day > 15) return (day - 15) * getCostDay(price, day) + 15 * getCostDay(price, 15);
-	return day * getCostDay(price, day);
+	if (day > 15)
+	{
+		return (day - 15) * getDailyPrice(price, day)
+			+ 15 * getDailyPrice(price, 15);
+	}
+	return day * getDailyPrice(price, day);
 }
 
 bool Valid(int account, int price, int preDay, int factDay)
 {
-	bool flag1 = (account >= price);
-	bool flag2 = (price >= getCost(price, preDay));
-	bool flag3 = true;//(price >= getCost(price, factDay));
-	return (flag1 && flag2 && flag3);
+	if (price < 0) return false;
+	if (preDay < 0) return false;
+	if (factDay < 0) return false;
+	if (account < price) return false;
+	if (price < getCostWithoutOverdue(price, preDay)) return false;
+	//if (price < getCostWithoutOverdue(price, factDay)) return false;
+	return true;
 }
 
-int BorrowBook(int price, int preDay, int factDay)
+int ReturnBook(int price, int preDay, int factDay)
 {
 	int costOver = (factDay > preDay) ? (factDay - preDay) * 1 : 0;
-	return costOver + getCost(price, factDay);
+	return costOver + getCostWithoutOverdue(price, factDay);
 }
 
+void BorrowBook(int &account, int price, int preDay, int factDay)
+{
+	if (!Valid(account, price, preDay, factDay)) return;
+	account -= ReturnBook(price, preDay, factDay);
+
+	// for test
+	//cout << endl << "////////////////////////////////////" << endl;
+	//cout << "true" << endl;
+	//int cost = ReturnBook(price, preDay, factDay);
+	//cout << "cost = " << cost << endl;
+	//cout << "account = " << account << endl;
+}
+
+//int main()
+//{
+//	char ch;
+//	int price, preDay, factDay;
+//	int account = 300;
+//
+//	while (cin >> price >> ch >> preDay >> ch >> factDay)
+//	{
+//		BorrowBook(account, price, preDay, factDay);
+//	}
+//
+//	cout << account << endl;
+//}
+
+// for test
 int main()
 {
-	char ch;
-	int bookPrice, preBorrowDay, factBorrowDay;
-	int account = 300;
+	vector<vector<vector<int>>> input;
+	vector<vector<int>> answer;
 
-	while (cin >> bookPrice >> ch >> preBorrowDay >> ch >> factBorrowDay)
+	// case
+	input.push_back({ { 180, 10, 10 }, { 80, 10, 3 }, {30, 10, 12} });
+	answer.push_back({ 250, 241, 227 });
+
+	// case
+	input.push_back({ { 180, 10, 15 } });
+	answer.push_back({ 220 });
+
+	// case
+	input.push_back({ { 110, 30, 10 } });
+	answer.push_back({ 300 });
+
+	// case
+	input.push_back({ { -110, 10, 10 } });
+	answer.push_back({ 200 });
+
+	for (int i = 0; i < input.size(); i++)
 	{
 		cout << endl << "////////////////////////////////////" << endl;
-		if (Valid(account, bookPrice, preBorrowDay, factBorrowDay))
+		int account = 300;
+		for (int j = 0; j < input[i].size(); j++)
 		{
-			cout << "true" << endl;
-			//account -= BorrowBook(bookPrice, preBorrowDay, factBorrowDay);
-			int cost = BorrowBook(bookPrice, preBorrowDay, factBorrowDay);
-			cout << "cost = " << cost << endl;
-			account -= BorrowBook(bookPrice, preBorrowDay, factBorrowDay);
-			cout << "account = " << account << endl;
+			cout << endl << "---------" << endl;
+			cout << input[i][j][0] << ", " << input[i][j][1] << ", " << input[i][j][2] << endl;
+			BorrowBook(account, input[i][j][0], input[i][j][1], input[i][j][2]);
+			string check = (account == answer[i][j]) ? "" : "                   WRONG!";
+			cout << account << " == " << answer[i][j] << check.c_str() << endl;
 		}
 	}
-
-	cout << account << endl;
 }
-

@@ -29,6 +29,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calc24", "Calc24\Calc24.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testBook", "testBook\testBook.vcxproj", "{6AF5A296-1CDE-4EFD-B40D-EF9FACFE0D5B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShoppingList", "ShoppingList\ShoppingList.vcxproj", "{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EatPeach", "EatPeach\EatPeach.vcxproj", "{3A606D26-9F22-49E9-9B97-2F1172C9210A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +173,26 @@ Global
 		{6AF5A296-1CDE-4EFD-B40D-EF9FACFE0D5B}.Release|x64.Build.0 = Release|x64
 		{6AF5A296-1CDE-4EFD-B40D-EF9FACFE0D5B}.Release|x86.ActiveCfg = Release|Win32
 		{6AF5A296-1CDE-4EFD-B40D-EF9FACFE0D5B}.Release|x86.Build.0 = Release|Win32
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Debug|x64.ActiveCfg = Debug|x64
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Debug|x64.Build.0 = Debug|x64
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Debug|x86.ActiveCfg = Debug|Win32
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Debug|x86.Build.0 = Debug|Win32
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Release|Any CPU.ActiveCfg = Release|Win32
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Release|x64.ActiveCfg = Release|x64
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Release|x64.Build.0 = Release|x64
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Release|x86.ActiveCfg = Release|Win32
+		{9C6F9676-90B8-4569-89BF-1329DCD7EAD4}.Release|x86.Build.0 = Release|Win32
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Debug|x64.ActiveCfg = Debug|x64
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Debug|x64.Build.0 = Debug|x64
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Debug|x86.ActiveCfg = Debug|Win32
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Debug|x86.Build.0 = Debug|Win32
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Release|Any CPU.ActiveCfg = Release|Win32
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Release|x64.ActiveCfg = Release|x64
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Release|x64.Build.0 = Release|x64
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Release|x86.ActiveCfg = Release|Win32
+		{3A606D26-9F22-49E9-9B97-2F1172C9210A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

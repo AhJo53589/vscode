@@ -1,6 +1,23 @@
 # Test_Interview
 
 
+
+---
+## 20190813
+今天华为要求再做一遍上机题，争取上80%。  
+然而最终还是75%。
+这次覆盖了数据的正确校验，依然还是上不去，  
+中间调整算法从60%提升到70%，感觉问题在算法效率上。  
+
+查到了代码执行时间的方法，  
+完成了一些测试   
+[test_QueryPerformanceCounter.cpp](./test_QueryPerformanceCounter/test_QueryPerformanceCounter.cpp)  
+[test_BigData_Insert_Sort.cpp](./test_BigData_Insert_Sort/test_BigData_Insert_Sort.cpp)
+
+
+完成了  
+[EatPeach.cpp](./EatPeach/EatPeach.cpp)
+
 ---
 ## 20190811
 图书管理借阅处理借阅数据  
@@ -10,7 +27,7 @@
 晚上补充了一下代码，把调试代码写了下，手动输入太脑残了。  
 又思考了下，感觉可能是没有做数据正确性校验，没有判断price < 0 吧。
 
-[查看代码](./testBook/testBook.cpp)  
+[testBook](./testBook/testBook.cpp)  
 
 ---
 ## 20190808
@@ -21,7 +38,7 @@ next_permutation
 ```
 强行应用了一下。  
 
-[查看代码](./Calc24/Calc24.cpp)  
+[Calc24](./Calc24/Calc24.cpp)  
 [查看详细](https://blog.csdn.net/qq_40938169/article/details/82453743)  
 
 
@@ -32,7 +49,7 @@ next_permutation
 花了一天时间，终于做对了。  
 这里也顺便改一下。  
 
-[查看详细](./MaxSum_NoBothParentAndChild/rob3.md)
+[MaxSum_NoBothParentAndChild](./MaxSum_NoBothParentAndChild/rob3.md)
 
 
 ---

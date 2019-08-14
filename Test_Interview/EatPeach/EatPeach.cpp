@@ -40,8 +40,8 @@ K 吃蟠桃的速度，每个小时K个
 
 H - N						=> 可以额外分次吃完的数量
 N - (H - N) = 2N - H		=> 必须一次就吃完的数量
-T = (N[i] - 1) / K + 1		=> 第i颗树，需要几次吃完
-sum(T) <= H					=> 与H的关系公式
+res = (N[i] - 1) / K + 1		=> 第i颗树，需要几次吃完
+sum(res) <= H					=> 与H的关系公式
 
 
 
@@ -59,16 +59,16 @@ sum(T) <= H					=> 与H的关系公式
 
 
 
-int getEatTime(vector<int> &nums, int K)
+int getEatTime_slow(vector<int> &nums, int K)
 {
-	int t = 0;
+	int res = 0;
 	for (int i = nums.size() - 1; i >= 0; i--)
 	{
-		int temp = nums[i] - 1 / K;
+		int temp = (nums[i] - 1) / K;
 		if (temp == 0) break;
-		t += (nums[i] - 1) / K;
+		res += temp;
 	}
-	return t + nums.size();
+	return res + nums.size();
 }
 
 int eat_slow(vector<int> &nums, int H)
@@ -78,11 +78,48 @@ int eat_slow(vector<int> &nums, int H)
 
 	for (int i = 1; i <= nums[N - 1]; i++)
 	{
-		int t = getEatTime(nums, i);
-		if (t <= H) return i;
+		int T = getEatTime_slow(nums, i);
+		if (T <= H) return i;
 	}
 	return 1;
 }
+
+int getEatTime(vector<int> &nums, int K)
+{
+	int N = nums.size();
+	int res = 0;
+
+	auto f_lower_bound = [nums, N](int target)
+	{
+		int low = 0;
+		int high = N;
+		while (low <high)
+		{
+			int mid = low + (high - low) / 2;
+			if (nums[mid] < target) low = mid + 1;
+			else high = mid;
+		}
+		return low;
+	};
+
+	for (int i = 1; i <= nums[N - 1] / K; i++)
+	{
+		// 依次寻找 K的i倍+1 的数字的索引。这个索引后面的数字，每颗都需要多吃一次
+		// 时间复杂度在 N 很大时，会降低。
+
+		// 例：1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6 [2]
+		// K = 2，i = 1，找到3，3后面每个都多吃一次
+		// K = 2，i = 2，找到5，5后面每个又多吃一次
+		// 结果  ==> 1,2 = 各0次，3,4 = 各1次，5,6 = 各2次
+
+		// 最后再在返回值那里加上 N ，即为总共吃了多少次
+		int target = K * i + 1;
+		res += N - f_lower_bound(target);
+	}
+
+	return res + N;
+}
+
 
 int eat(vector<int> &nums, int H)
 {
@@ -91,29 +128,24 @@ int eat(vector<int> &nums, int H)
 
 	int min_low_index = N * 2 - H - 1;
 	min_low_index = max(0, min_low_index);
+	// 因为 H < N，所以不用下面的判断，也可以保证范围
+	//min_low_index = min(min_low_index, N - 1);
 	int low = nums[min_low_index];
 
-	int high = nums[N - 1];
-	int K = low;
+	int high = nums[N - 1] + 1;
+
 	while (low < high)
 	{
 		int mid = low + (high - low) / 2;
+		//int t = getEatTime_slow(nums, mid);
 		int t = getEatTime(nums, mid);
-		cout << "getEatTime" << endl;
 
-		// t == H 是错的
-		// if (t == H) return mid;
-		if (t > H)
-		{
-			low = mid + 1;
-		}
-		else
-		{
-			K = mid;
-			high = K;
-		}
+		// res == H 是错的
+		// if (res == H) return mid;
+		if (t > H) low = mid + 1;
+		else high = mid;
 	}
-	return K;
+	return low;
 }
 
 //int main()
@@ -143,7 +175,7 @@ int main()
 
 	auto f_time_cout = [&]()
 	{
-		time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//计算程序执行时间单位为t  
+		time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//计算程序执行时间单位为res  
 		cout << "////////////////////////////////////////////////////////// time: " << time * 1000 << "ms" << endl;
 	};
 	//////////////////////////////////////////////////////////////////////////
@@ -186,7 +218,7 @@ int main()
 	int test_H_Max = 10000;
 	int test_step = 100;
 
-#define TEST_NUM_1000
+//#define TEST_NUM_1000
 #ifdef TEST_NUM_1000
 	//////////////////////////////////////////////////////////////////////////
 	// num = 1000
@@ -207,7 +239,7 @@ int main()
 	}
 #endif // TEST_NUM_1000
 
-//#define TEST_NUM_10000
+#define TEST_NUM_10000
 #ifdef TEST_NUM_10000
 	//////////////////////////////////////////////////////////////////////////
 	// num = 10000
@@ -224,7 +256,8 @@ int main()
 	{
 		TESTS.push_back(test_nums);
 		TESTS.back().push_back(test_H);
-		ANSWER.push_back(eat_slow(test_num_sorted, test_H));
+		//ANSWER.push_back(eat_slow(test_num_sorted, test_H));
+		ANSWER.push_back(eat(test_num_sorted, test_H));
 	}
 #endif
 
@@ -236,9 +269,10 @@ int main()
 		H = TESTS[i].back();
 		TESTS[i].pop_back();
 		
+		cout << "nums" << "[" << TESTS[i].size() << "] = ";
 		for (int j = 0; j < TESTS[i].size(); j++)
 		{
-			if (j > 20)
+			if (j > 15)
 			{
 				cout << "...";
 				break;
@@ -256,8 +290,9 @@ int main()
 		if (TESTS[i][0] <= 0) res = -1;
 		else res = eat(TESTS[i], H);
 		//else res = eat_slow(TESTS[i], H);
+
 		string check = (res == ANSWER[i]) ? "" : "\t\t\t WRONG!";
-		cout << res << "\t <== " << ANSWER[i] << check.c_str() << endl;
+		cout << "Result = " << res << "\t <== " << ANSWER[i] << check.c_str() << endl;
 
 		QueryPerformanceCounter(&nEndTime);							//停止计时  
 		//////////////////////////////////////////////////////////////////////////

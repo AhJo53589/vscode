@@ -1,6 +1,75 @@
 # Test_Interview
 
 
+---
+## 20190814
+昨晚失眠，就用想算法的方式逼自己睡觉，没想到，想出来一个真的能提高效率的方法。  
+一直考虑哪里还有优化的空间，发现求吃桃子次数的函数还是遍历。  
+剪枝剪掉0还不够，突然意识到可以继续剪1 2 3.  
+所以就从遍历变成了找区间做减法，从O(n) ==> O(1)。  
+
+```C++
+int getEatTime_slow(vector<int> &nums, int K)
+{
+	int res = 0;
+	for (int i = nums.size() - 1; i >= 0; i--)
+	{
+		int temp = (nums[i] - 1) / K;
+		if (temp == 0) break;
+		res += (nums[i] - 1) / K;
+	}
+	return res + nums.size();
+}
+```
+```C++
+int getEatTime(vector<int> &nums, int K)
+{
+	int N = nums.size();
+	int res = 0;
+
+	auto f_lower_bound = [nums, N](int target)
+	{
+		int low = 0;
+		int high = N;
+		while (low <high)
+		{
+			int mid = low + (high - low) / 2;
+			if (nums[mid] < target) low = mid + 1;
+			else high = mid;
+		}
+		return low;
+	};
+
+	for (int i = 1; i <= nums[N - 1] / K; i++)
+	{
+		// 依次寻找 K的i倍+1 的数字的索引。这个索引后面的数字，每颗都需要多吃一次
+		// 时间复杂度在 N 很大时，会降低。
+
+		// 例：1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6 [2]
+		// K = 2，i = 1，找到3，3后面每个都多吃一次
+		// K = 2，i = 2，找到5，5后面每个又多吃一次
+		// 结果  ==> 1,2 = 各0次，3,4 = 各1次，5,6 = 各2次
+
+		// 最后再在返回值那里加上 N ，即为总共吃了多少次
+		int target = K * i + 1;
+		res += N - f_lower_bound(target);
+	}
+
+	return res + N;
+}
+```
+还顺便做了时间对比（不含排序）。  
+![](./EatPeach/time01.jpg)  
+↑ 全暴力算法  |   时间：3000ms - 20000ms
+
+![](./EatPeach/time02.jpg)  
+↑ 优化：二分查找 + 剪枝  |  时间：平均 60ms
+
+![](./EatPeach/time03.jpg)  
+↑ 优化：二分查找 + （二分查找 + 数学公式）  |   时间：平均 1ms
+
+
+[EatPeach.cpp](./EatPeach/EatPeach.cpp)
 
 ---
 ## 20190813

@@ -77,14 +77,41 @@ using namespace std;
 
 //////////////////////////////////////////////////////////////////////////
 // 一段代码，说一下运行结果
-class A {
-public: void f1() { }
-		virtual void f2() {}
-};
+//class A {
+//public: 
+//	void f1() { }
+//	virtual void f2() {}
+//};
+//
+//int main()
+//{
+//	A* a = nullptr;
+//	a->f1();
+//	a->f2();
+//}
+
+
+
+//////////////////////////////////////////////////////////////////////////
+void binary_out(int x)
+{
+	stack<int> s;
+	while (x != 0)
+	{
+		s.push(x % 2);
+		x /= 2;
+	}
+	while (!s.empty())
+	{
+		cout << s.top();
+		s.pop();
+	}
+}
 
 int main()
 {
-	A* a = nullptr;
-	a->f1();
-	a->f2();
+	int a = 9999;
+	cout << bitset<sizeof(a) * 4>(a) << endl;	//int占4字节，一个字节8位，最终输出的是32个0或1
+	binary_out(a);
+	cout << endl;
 }

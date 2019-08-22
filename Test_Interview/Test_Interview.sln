@@ -39,6 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_QueryPerformanceCounte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_BigData_Insert_Sort", "test_BigData_Insert_Sort\test_BigData_Insert_Sort.vcxproj", "{EEE26FD4-CB7D-41EC-9F24-21AFCC6FDB26}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_Functor", "test_Functor\test_Functor.vcxproj", "{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -229,6 +231,16 @@ Global
 		{EEE26FD4-CB7D-41EC-9F24-21AFCC6FDB26}.Release|x64.Build.0 = Release|x64
 		{EEE26FD4-CB7D-41EC-9F24-21AFCC6FDB26}.Release|x86.ActiveCfg = Release|Win32
 		{EEE26FD4-CB7D-41EC-9F24-21AFCC6FDB26}.Release|x86.Build.0 = Release|Win32
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Debug|x64.ActiveCfg = Debug|x64
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Debug|x64.Build.0 = Debug|x64
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Debug|x86.ActiveCfg = Debug|Win32
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Debug|x86.Build.0 = Debug|Win32
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|Any CPU.ActiveCfg = Release|Win32
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x64.ActiveCfg = Release|x64
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x64.Build.0 = Release|x64
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x86.ActiveCfg = Release|Win32
+		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

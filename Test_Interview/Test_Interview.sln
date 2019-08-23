@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_BigData_Insert_Sort", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_Functor", "test_Functor\test_Functor.vcxproj", "{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_memcpy", "test_memcpy\test_memcpy.vcxproj", "{F91680BF-2ADA-4759-AEF0-73D814EC90CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -241,6 +243,16 @@ Global
 		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x64.Build.0 = Release|x64
 		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x86.ActiveCfg = Release|Win32
 		{81F7D68B-57D2-46D2-98A3-E1A16ADBD946}.Release|x86.Build.0 = Release|Win32
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Debug|x64.ActiveCfg = Debug|x64
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Debug|x64.Build.0 = Debug|x64
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Debug|x86.ActiveCfg = Debug|Win32
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Debug|x86.Build.0 = Debug|Win32
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Release|x64.ActiveCfg = Release|x64
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Release|x64.Build.0 = Release|x64
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Release|x86.ActiveCfg = Release|Win32
+		{F91680BF-2ADA-4759-AEF0-73D814EC90CA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

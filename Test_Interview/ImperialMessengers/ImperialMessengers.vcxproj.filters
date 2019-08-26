@@ -23,7 +23,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ImperiaMessengers.cpp">
+    <ClCompile Include="ImperialMessengers.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

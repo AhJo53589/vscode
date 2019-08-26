@@ -1,5 +1,6 @@
-﻿// ImperiaMessengers.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+﻿// ImperialMessengers.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
+
 
 #include "pch.h"
 #include <iostream>
@@ -19,8 +20,9 @@ void updateTimes(vector<unsigned int> &times, int i, vector<vector<int>> &matrix
 			times[i] = min(times[i], (unsigned int)matrix[i][j]);
 			continue;
 		}
-		if (times[i] == UINT_MAX && times[j] != UINT_MAX)
+		if (times[i] == UINT_MAX)
 		{
+			if (times[j] == UINT_MAX) continue;
 			times[i] = times[j] + (unsigned int)matrix[i][j];
 		}
 		if (times[j] > times[i] + (unsigned int)matrix[i][j])
@@ -60,7 +62,7 @@ vector<vector<int>> handleInput(vector<vector<int>> &input)
 		for (int j = 0; j < input[i].size(); j++)
 		{
 			matrix[i][j] = input[i][j];
-			matrix[j][i] = matrix[i][j];
+			//matrix[j][i] = matrix[i][j];
 		}
 	}
 
@@ -75,24 +77,33 @@ vector<vector<int>> handleInput(vector<vector<int>> &input)
 
 int main()
 {
-	vector<vector<int>> input = { {5}, {50}, {30,5}, {100,20,50}, {10,-1,-1,10} };
-	vector<int> answer = { 35,30,20,10 };
+	vector<vector<vector<int>>> input;
+	vector<vector<unsigned int>> answer;
+
+	input.push_back({ {5}, {50}, {30,5}, {100,20,50}, {10,-1,-1,10} });
+	answer.push_back({ 35,30,20,10 });
 
 	// 需要递归的用例
-	//vector<vector<int>> input = { {5}, {40}, {30,5}, {20,10,5}, {10,20,10,5} };
-	//vector<int> answer = { 25,20,15,10 };
+	input.push_back({ {5}, {40}, {30,5}, {20,10,5}, {10,20,10,5} });
+	answer.push_back({ 25,20,15,10 });
 
 	// 不能直接到达的用例
-	//vector<vector<int>> input = { {5}, {10}, {-1,10}, {-1,-1,10}, {-1,-1,-1,10} };
-	//vector<int> answer = { 10,20,30,40 };
+	input.push_back({ {5}, {10}, {-1,10}, {-1,-1,10}, {-1,-1,-1,10} });
+	answer.push_back({ 10,20,30,40 });
+	input.push_back({ {5}, {-1}, {-1,10}, {-1,-1,10}, {10,-1,-1,10} });
+	answer.push_back({ 40,30,20,10 });
 
 	// 超过INT_MAX的用例
-	//vector<vector<int>> input = { {5}, {2147483647}, {-1,10}, {-1,-1,10}, {-1,-1,-1,10} };
-	//vector<unsigned int> answer = { 2147483647,2147483657,2147483667,2147483677 };
+	input.push_back({ {5}, {2147483647}, {-1,10}, {-1,-1,10}, {-1,-1,-1,10} });
+	answer.push_back({ 2147483647,2147483657,2147483667,2147483677 });
 
-	vector<vector<int>> matrix = handleInput(input);
-	unsigned int res = Messenger(matrix);
-	for (auto a : answer) cout << a << ",";
-	cout << endl << res;
+	for (int i = 0; i < input.size(); i++)
+	{
+		cout << endl << "//////////////////////////////////////////" << endl;
+		vector<vector<int>> matrix = handleInput(input[i]);
+		unsigned int res = Messenger(matrix);
+		for (auto a : answer[i]) cout << a << ",";
+		cout << endl << res;
+	}
 }
 

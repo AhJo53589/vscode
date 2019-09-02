@@ -23,13 +23,11 @@ int main()
 		cout << "////////////////////////////////////////////////////////// time: " << time * 1000 << "ms" << endl;
 	};
 
-	QueryPerformanceCounter(&nBeginTime);//开始计时  
 	//////////////////////////////////////////////////////////////////////////
-	//                                                                      //
+	QueryPerformanceCounter(&nBeginTime);//开始计时  
 
 	std::cout << "Hello World!\n";
 
-	//                                                                      //
 	//////////////////////////////////////////////////////////////////////////
 	QueryPerformanceCounter(&nEndTime);//停止计时  
 

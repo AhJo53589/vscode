@@ -54,7 +54,7 @@ v[j 1 ]*w[j 1 ]+v[j 2 ]*w[j 2 ]+ … +v[j k ]*w[j k ] 。（其中 * 为乘号�
 
 
 
-
+#include "pch.h"
 #include <iostream>
 #include <algorithm>
 #include <string>

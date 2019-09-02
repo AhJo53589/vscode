@@ -45,6 +45,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImperialMessengers", "Imper
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BorrowBook", "BorrowBook\BorrowBook.vcxproj", "{AFC49EAE-4298-427C-AF78-55330525A42B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_template_fun", "test_template_fun\test_template_fun.vcxproj", "{7A893950-533A-4784-BAC0-10C429576665}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_class_memory", "test_class_memory\test_class_memory.vcxproj", "{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +269,26 @@ Global
 		{AFC49EAE-4298-427C-AF78-55330525A42B}.Release|x64.Build.0 = Release|x64
 		{AFC49EAE-4298-427C-AF78-55330525A42B}.Release|x86.ActiveCfg = Release|Win32
 		{AFC49EAE-4298-427C-AF78-55330525A42B}.Release|x86.Build.0 = Release|Win32
+		{7A893950-533A-4784-BAC0-10C429576665}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7A893950-533A-4784-BAC0-10C429576665}.Debug|x64.ActiveCfg = Debug|x64
+		{7A893950-533A-4784-BAC0-10C429576665}.Debug|x64.Build.0 = Debug|x64
+		{7A893950-533A-4784-BAC0-10C429576665}.Debug|x86.ActiveCfg = Debug|Win32
+		{7A893950-533A-4784-BAC0-10C429576665}.Debug|x86.Build.0 = Debug|Win32
+		{7A893950-533A-4784-BAC0-10C429576665}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7A893950-533A-4784-BAC0-10C429576665}.Release|x64.ActiveCfg = Release|x64
+		{7A893950-533A-4784-BAC0-10C429576665}.Release|x64.Build.0 = Release|x64
+		{7A893950-533A-4784-BAC0-10C429576665}.Release|x86.ActiveCfg = Release|Win32
+		{7A893950-533A-4784-BAC0-10C429576665}.Release|x86.Build.0 = Release|Win32
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Debug|x64.ActiveCfg = Debug|x64
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Debug|x64.Build.0 = Debug|x64
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Debug|x86.ActiveCfg = Debug|Win32
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Debug|x86.Build.0 = Debug|Win32
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Release|Any CPU.ActiveCfg = Release|Win32
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Release|x64.ActiveCfg = Release|x64
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Release|x64.Build.0 = Release|x64
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Release|x86.ActiveCfg = Release|Win32
+		{EDBA2F4D-629F-4BE7-B328-8872F9726EA0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

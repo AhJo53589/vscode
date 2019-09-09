@@ -12,20 +12,35 @@
 using namespace std;
 
 
+ListNode *reverseList(ListNode *pHead)
+{
+	ListNode *pNode = pHead;
+	ListNode *pPrev = nullptr;
+
+	while (pNode != nullptr)
+	{
+		ListNode *pNext = pNode->next;
+		pNode->next = pPrev;
+		pPrev = pNode;
+		pNode = pNext;
+	}
+	return pPrev;
+}
+
 int main()
 {
-	vector<ListNode *> N;
-	vector<bool> A;
+	vector<ListNode *> TESTS;
+	vector<bool> ANSWER;
 
-	N.push_back(StringToListNode("3,9,20,null,null,15,7"));
-	A.push_back(true);
+	TESTS.push_back(StringToListNode("[1,2,3,4,5,6,7,8,9]"));
+	ANSWER.push_back(true);
 
 
-	for (int i = 0; i < N.size(); i++)
+	for (int i = 0; i < TESTS.size(); i++)
 	{
 		cout << endl << "///////////////////////////////////////" << endl;
-		cout << N[i] << endl;
+		cout << TESTS[i] << endl;
 
-		preorder(N[i]);
+		reverseList(TESTS[i]);
 	}
 }

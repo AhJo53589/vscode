@@ -4,6 +4,7 @@
 #include "pch.h"
 #include <iostream>
 #include <bitset>
+#include <stack>
 
 using namespace std;
 

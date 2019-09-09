@@ -10,25 +10,41 @@ struct ListNode
 	ListNode *m_pNext;
 };
 
-ListNode* ReverseIteratively(ListNode* pHead)
+ListNode *Reverse(ListNode *pHead)
 {
-	ListNode* pReversedHead = NULL;
-	ListNode* pNode = pHead;
-	ListNode* pPrev = NULL;
-	while (pNode != NULL)
-	{
-		// get the next node, and save it at pNext
-		ListNode* pNext = pNode->m_pNext;
-		// reverse the linkage between nodes
-		pNode->m_pNext = pPrev;
+	ListNode *pNode = pHead;
+	ListNode *pPrev = nullptr;
 
-		// move forward on the the list
+	while (pNode != nullptr)
+	{
+		ListNode *pNext = pNode->m_pNext;
+		pNode->m_pNext = pPrev;
 		pPrev = pNode;
 		pNode = pNext;
 	}
-	pReversedHead = pPrev;
-	return pReversedHead;
+	return pPrev;
 }
+
+
+//ListNode* Reverse(ListNode* pHead)
+//{
+//	ListNode* pReversedHead = NULL;
+//	ListNode* pNode = pHead;
+//	ListNode* pPrev = NULL;
+//	while (pNode != NULL)
+//	{
+//		// get the next node, and save it at pNext
+//		ListNode* pNext = pNode->m_pNext;
+//		// reverse the linkage between nodes
+//		pNode->m_pNext = pPrev;
+//
+//		// move forward on the the list
+//		pPrev = pNode;
+//		pNode = pNext;
+//	}
+//	pReversedHead = pPrev;
+//	return pReversedHead;
+//}
 
 void PrintLinkList(ListNode *pHead)
 {
@@ -58,6 +74,6 @@ int main()
 	ListNode *pHead = pNode;
 	PrintLinkList(pHead);
 
-	ListNode *pReverseHead = ReverseIteratively(pHead);
+	ListNode *pReverseHead = Reverse(pHead);
 	PrintLinkList(pReverseHead);
 }

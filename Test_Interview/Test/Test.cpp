@@ -92,26 +92,24 @@ using namespace std;
 
 
 
-//////////////////////////////////////////////////////////////////////////
-void binary_out(int x)
-{
-	stack<int> s;
-	while (x != 0)
-	{
-		s.push(x % 2);
-		x /= 2;
-	}
-	while (!s.empty())
-	{
-		cout << s.top();
-		s.pop();
-	}
-}
-
 int main()
 {
-	int a = 9999;
-	cout << bitset<sizeof(a) * 4>(a) << endl;	//int占4字节，一个字节8位，最终输出的是32个0或1
-	binary_out(a);
-	cout << endl;
+	map<int, string> myMap;
+	for (int i = 0; i < 10; i++)
+	{
+		myMap.insert({ i, to_string(i) });
+	}
+
+	for (auto it = myMap.begin(); it != myMap.end(); it++)
+	{
+		if (it->first % 2 == 0)
+		{
+			it = myMap.erase(it);
+		}
+	}
+
+	for (auto &m : myMap)
+	{
+		cout << m.first << "\t" << m.second << endl;
+	}
 }

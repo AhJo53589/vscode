@@ -11,7 +11,7 @@ using namespace std;
 
 //////////////////////////////////////////////////////////////////////////
 // code by zichen.yang
-//const TCHAR* cChineseWord = TEXT("零壹贰叁肆伍陆柒捌玖");
+//const TCHAR* cChWord_Num = TEXT("零壹贰叁肆伍陆柒捌玖");
 //const TCHAR* cChineseDigit = TEXT("圆拾佰仟万亿");
 //
 //wstring ConvertNumber(int lNumber)
@@ -49,9 +49,9 @@ using namespace std;
 //			}
 //		}
 //
-//		if (n!= 0 || (n == 0 && strNumber[0] != cChineseWord[0] && flag))
+//		if (n!= 0 || (n == 0 && strNumber[0] != cChWord_Num[0] && flag))
 //		{
-//			strNumber.insert(strNumber.begin(), cChineseWord[n]);
+//			strNumber.insert(strNumber.begin(), cChWord_Num[n]);
 //		}
 //
 //		i += 1;
@@ -93,8 +93,8 @@ using namespace std;
 //    如￥16409.02，应写成人民币壹万陆仟肆佰零玖元零贰分；又如￥325.04，应写成人民币叁佰贰拾伍元零肆分。
 
 
-const TCHAR* cChineseWord = TEXT("零壹贰叁肆伍陆柒捌玖");
-const TCHAR* cChineseDigitWord = TEXT("圆拾佰仟万亿");
+const TCHAR* cChWord_Num = TEXT("零壹贰叁肆伍陆柒捌玖");
+const TCHAR* cChWord_Digit = TEXT("圆拾佰仟万亿");
 
 wstring GetDigitWord(int iDigit)
 {
@@ -102,7 +102,7 @@ wstring GetDigitWord(int iDigit)
 	
 	if (iDigit == 0)
 	{
-		strDititWord.push_back(cChineseDigitWord[0]);	// 圆
+		strDititWord.push_back(cChWord_Digit[0]);	// 圆
 		return strDititWord;
 	}
 
@@ -111,19 +111,19 @@ wstring GetDigitWord(int iDigit)
 		int i = iDigit / 4;
 		if (i % 2 == 1)
 		{
-			strDititWord.push_back(cChineseDigitWord[4]);	// 万
+			strDititWord.push_back(cChWord_Digit[4]);	// 万
 			i -= 1;
 		}
 		while (i > 0)
 		{
-			strDititWord.push_back(cChineseDigitWord[5]);	// 亿
+			strDititWord.push_back(cChWord_Digit[5]);	// 亿
 			i -= 2;
 		}
 	}
 	else
 	{
 		int i = iDigit % 4;
-		strDititWord.push_back(cChineseDigitWord[i]);	// 拾佰仟
+		strDititWord.push_back(cChWord_Digit[i]);	// 拾佰仟
 	}
 
 	return strDititWord;
@@ -141,7 +141,7 @@ wstring FourNumberToRMB(unsigned int iNumber, int iDigit, bool bHighZeroFlag)
 		int n = iNumber % 10;
 		if (n == 0 && bLowZeroFlag)	// 如果这一位是0，低位有不是0数字，循环未结束所以高位肯定还有数字，补零
 		{
-			strNumber.insert(strNumber.begin(), cChineseWord[0]);	// 补零
+			strNumber.insert(strNumber.begin(), cChWord_Num[0]);	// 补零
 			bLowZeroFlag = false;
 		}
 
@@ -153,7 +153,7 @@ wstring FourNumberToRMB(unsigned int iNumber, int iDigit, bool bHighZeroFlag)
 		if (n != 0)
 		{
 			strNumber.insert(0, GetDigitWord(iDigit));	// 数位，圆/万/亿
-			strNumber.insert(strNumber.begin(), cChineseWord[n]);	// 数值
+			strNumber.insert(strNumber.begin(), cChWord_Num[n]);	// 数值
 			bLowZeroFlag = true;
 		}
 
@@ -163,7 +163,7 @@ wstring FourNumberToRMB(unsigned int iNumber, int iDigit, bool bHighZeroFlag)
 
 	if (iDigit % 4 != 0 && bLowZeroFlag && bHighZeroFlag)	// 如果没有到第4位就结束循环，相当于数字是0，低位有不是0数字，高位还有数字，补零
 	{
-		strNumber.insert(strNumber.begin(), cChineseWord[0]);	// 补零
+		strNumber.insert(strNumber.begin(), cChWord_Num[0]);	// 补零
 	}
 
 	return strNumber;

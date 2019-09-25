@@ -147,26 +147,34 @@ using namespace std;
 //}
 
 //////////////////////////////////////////////////////////////////////////
-class Car
-{
-public:
-	Car(const char* name) { m_Name = name; }
-	std::string m_Name;
-};
+//class Car
+//{
+//public:
+//	Car(const char* name) { m_Name = name; }
+//	std::string m_Name;
+//};
+//
+//void main()
+//{
+//	std::map<int, Car*> _map;
+//	_map[0] = new Car("Benz");
+//	_map[1] = new Car("Audi");
+//	_map[2] = new Car("Jeep");
+//
+//	// delete
+//	delete(_map[0]);
+//	_map[0] = nullptr;
+//	delete(_map[1]);
+//	_map[1] = nullptr;
+//	delete(_map[2]);
+//	_map[2] = nullptr;
+//	_map.clear();
+//}
 
-void main()
+//////////////////////////////////////////////////////////////////////////
+int main()
 {
-	std::map<int, Car*> _map;
-	_map[0] = new Car("Benz");
-	_map[1] = new Car("Audi");
-	_map[2] = new Car("Jeep");
-
-	// delete
-	delete(_map[0]);
-	_map[0] = nullptr;
-	delete(_map[1]);
-	_map[1] = nullptr;
-	delete(_map[2]);
-	_map[2] = nullptr;
-	_map.clear();
+	vector<int> a = { 1,2,3,4,5,6,7,8,9 };
+	vector<int> b(a.begin(), a.end());
+	vector<int> c = a;
 }

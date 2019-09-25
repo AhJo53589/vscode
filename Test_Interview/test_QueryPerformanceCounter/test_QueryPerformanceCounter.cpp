@@ -9,6 +9,9 @@
 
 using namespace std;
 
+char a[1024][1024];
+char b[1024][1024];
+
 int main()
 {
 	double time = 0;
@@ -26,7 +29,7 @@ int main()
 	//////////////////////////////////////////////////////////////////////////
 	QueryPerformanceCounter(&nBeginTime);//开始计时  
 
-	std::cout << "Hello World!\n";
+
 
 	//////////////////////////////////////////////////////////////////////////
 	QueryPerformanceCounter(&nEndTime);//停止计时  

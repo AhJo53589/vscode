@@ -23,7 +23,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TestPtr.cpp">
+    <ClCompile Include="test_shared_ptr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

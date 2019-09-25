@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{8AC63FA7-BC53-4DAC-8514-9576968024F2}</ProjectGuid>
+    <ProjectGuid>{BBAFA62B-D8FD-4AEB-88B7-1DAE44050B70}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TestPtr</RootNamespace>
+    <RootNamespace>testarrayptr</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -160,7 +160,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TestPtr.cpp" />
+    <ClCompile Include="test_array_ptr.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

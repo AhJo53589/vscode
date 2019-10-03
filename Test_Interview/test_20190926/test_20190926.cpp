@@ -4,6 +4,8 @@
 #include "pch.h"
 #include <iostream>
 #include <algorithm>
+#include <numeric>
+
 #include <bitset>
 #include <vector>
 
@@ -120,89 +122,108 @@ using namespace std;
 //replacedas$REPLACE_ME$fj32RE3$REPLACE_ME$ad34$REPLACE_ME$2R34$REPLACE_ME$
 //将上述字符串中的 $REPLACE_ME$ 替换为 HELLO
 //
-//string ReplaceStr(string str, string strA, string strB)
-//{
-//	string strRet;
-//	for (size_t i = 0; i < str.size(); i++)
-//	{
-//		if (str[i] == strA[0] && i + strA.size() - 1 < str.size()
-//			&& str.substr(i, strA.size()) == strA)
-//		{
-//			strRet += strB;
-//			i += strA.size() - 1;
-//		}
-//		else
-//		{
-//			strRet += str[i];
-//		}
-//	}
-//	return strRet;
-//}
-//
-//int main()
-//{
-//	string str = "replacedas$REPLACE_ME$fj32RE3$REPLACE_ME$ad34$REPLACE_ME$2R34$REPLACE_ME&";
-//	string strA = "$REPLACE_ME$";
-//	string strB = "HELLO";
-//
-//	cout << str << endl;
-//	string ans = ReplaceStr(str, strA, strB);
-//	cout << ans << endl;
-//}
+string ReplaceStr(string str, string strOld, string strNew)
+{
+	string strRet;
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (str[i] == strOld[0] && i + strOld.size() - 1 < str.size()
+			&& str.substr(i, strOld.size()) == strOld)
+		{
+			strRet += strNew;
+			i += strOld.size() - 1;
+		}
+		else
+		{
+			strRet += str[i];
+		}
+	}
+	return strRet;
+}
+
+string replaceString(string str, string strOld, string strNew)
+{
+	string strRet;
+	//auto it = str.begin();
+	//while (it != str.end())
+	//{
+	//	auto it_next = find(it, str.end(), strOld);
+	//	string temp(it, it_next);
+	//	if (equal(it_next, it_next + strOld.size(), strOld.begin()))
+	//	{
+	//		strRet.append(strNew);
+	//	}
+	//	it = it_next;
+	//}
+	return strRet;
+}
+
+int main()
+{
+	string str = "replacedas$REPLACE_ME$fj32RE3$REPLACE_ME$ad34$REPLACE_ME$2R34$REPLACE_ME&";
+	string strA = "$REPLACE_ME$";
+	string strB = "HELLO";
+
+	cout << str << endl;
+	string ans = ReplaceStr(str, strA, strB);
+	cout << ans << endl;
+	//string ans2 = replaceString(str, strA, strB);
+	//cout << ans2 << endl;
+}
 
 
 //////////////////////////////////////////////////////////////////////////
 //编写程序输出一个数的二进制表示中，能重新组成的最大整数（十进制转换为二进制整数采用“除2取余，逆序排列”法）。
 //如：输入：5（101）输出6（110）；输入1（1）输出1（1）；输入：10（1010）输出：12（1100）
 
-int changeNum(int n)
-{
-	int cnt = 0;
-	int cnt_1 = 0;
-	while (n > 0)
-	{
-		cnt++;
-		cnt_1 += (n % 2);
-		n /= 2;
-		//cnt_1 += (n & 1);
-		//n = n >> 1;
-	}
-
-	int x = 0;
-	while (cnt_1-- > 0)
-	{
-		x += pow(2, --cnt);
-	}
-	return x;
-}
-
-int main()
-{
-	vector<int> TESTS;
-	vector<int> ANSWERS;
-
-	TESTS.push_back(5);
-	ANSWERS.push_back(6);
-
-	TESTS.push_back(1);
-	ANSWERS.push_back(1);
-
-	TESTS.push_back(10);
-	ANSWERS.push_back(12);
-
-	TESTS.push_back(2048);
-	ANSWERS.push_back(2048);
-
-	TESTS.push_back(2047);
-	ANSWERS.push_back(2047);
-
-	TESTS.push_back(9999);
-	ANSWERS.push_back(16320);
-
-	for (size_t i = 0; i < TESTS.size(); i++)
-	{
-		auto ans = changeNum(TESTS[i]);
-		cout << "num = " << TESTS[i] << endl;
-		cout << "ans = " << ans << "\t<--" << ANSWERS[i] << endl << endl;
-	}
-}
+//int changeNum(int n)
+//{
+//	int cnt = 0;
+//	int cnt_1 = 0;
+//	while (n > 0)
+//	{
+//		cnt++;
+//		cnt_1 += (n % 2);
+//		n /= 2;
+//		//cnt_1 += (n & 1);
+//		//n = n >> 1;
+//	}
+//
+//	int x = 0;
+//	while (cnt_1-- > 0)
+//	{
+//		x += pow(2, --cnt);
+//	}
+//	return x;
+//}
+//
+//int main()
+//{
+//	vector<int> TESTS;
+//	vector<int> ANSWERS;
+//
+//	TESTS.push_back(5);
+//	ANSWERS.push_back(6);
+//
+//	TESTS.push_back(1);
+//	ANSWERS.push_back(1);
+//
+//	TESTS.push_back(10);
+//	ANSWERS.push_back(12);
+//
+//	TESTS.push_back(2048);
+//	ANSWERS.push_back(2048);
+//
+//	TESTS.push_back(2047);
+//	ANSWERS.push_back(2047);
+//
+//	TESTS.push_back(9999);
+//	ANSWERS.push_back(16320);
+//
+//	for (size_t i = 0; i < TESTS.size(); i++)
+//	{
+//		auto ans = changeNum(TESTS[i]);
+//		cout << "num = " << TESTS[i] << endl;
+//		cout << "ans = " << ans << "\t<--" << ANSWERS[i] << endl << endl;
+//	}
+//}

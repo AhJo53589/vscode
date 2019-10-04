@@ -178,4 +178,15 @@ int main()
 		for (auto l : lst) cout << l << ","; cout << endl;
 		for (auto l : lst2) cout << l << ","; cout << endl;
 	}
+
+	{
+		vector<int> vec(10, 0);
+		iota(vec.begin(), vec.end(), 1);
+		for (auto i : vec) cout << i << ","; cout << endl;
+		vector<int> psum, adj;
+		partial_sum(vec.cbegin(), vec.cend(), back_inserter(psum));
+		for (auto i : psum) cout << i << ","; cout << endl;
+		adjacent_difference(psum.cbegin(), psum.cend(), back_inserter(adj));
+		for (auto i : adj) cout << i << ","; cout << endl;
+	}
 }

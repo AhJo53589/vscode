@@ -1,12 +1,25 @@
 # Test_Interview
 
 
+---
+## 20191004
+C++Primer第五版 第11章 关联容器  
+[test_stl_map_set](./Test_Interview/test_stl_map_set/test_stl_map_set.cpp)
+
+C++Primer第五版 第12章 动态内存  
+[test_stl_shared_ptr](./Test_Interview/test_stl_shared_ptr/test_stl_shared_ptr.cpp)
+
+
+
+---
+## 20191003
+C++Primer第五版 第10章 泛型算法  
+[test_stl_generic_algorithm](./Test_Interview/test_stl_generic_algorithm/test_stl_generic_algorithm.cpp)
 
 
 ---
 ## 20190910
 调整目录
-
 
 
 ---

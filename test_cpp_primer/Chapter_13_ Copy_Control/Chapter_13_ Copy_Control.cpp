@@ -90,6 +90,60 @@ Employee::Employee(string& s)//接受一个string的构造函数
 
 
 //////////////////////////////////////////////////////////////////////////
+// 13.27
+class Hasptr1
+{
+	friend void swap(Hasptr1&, Hasptr1&);
+
+public:
+	Hasptr1(const string& s = string()) : ps(new string(s)), i(0), use(new size_t(1)) {}
+	Hasptr1(const Hasptr1& p) : ps(p.ps), i(p.i), use(p.use) { ++*use; }
+
+	Hasptr1& operator= (const Hasptr1& rhs)
+	{
+		++*rhs.use;//首先递增右侧运算符对象的引用计数
+		if (--*use == 0)//递减本对象的引用计数，若没有其他用户，则释放本对象的成员
+		{
+			delete ps;
+			delete use;
+		}
+		ps = rhs.ps;//进行拷贝
+		use = rhs.use;
+		i = rhs.i;
+		return *this;
+	}
+
+	//Hasptr1& operator= (Hasptr1 rhs)
+	//{
+	//	swap(*this, rhs);
+	//	return *this;
+	//}
+
+	~Hasptr1()
+	{
+		if (--*use == 0)//引用计数变为0，说明已经没有对象再需要这块内存，进行释放内存操作
+		{
+			delete ps;
+			delete use;
+		}
+	}
+private:
+	//定义为指针，是我们想将该string对象保存在动态内存中
+	string *ps;
+	size_t *use;//将计数器的引用保存
+	int i;
+};
+
+void swap(Hasptr1 &lhs, Hasptr1 &rhs)
+{
+	using std::swap;
+	swap(lhs.ps, rhs.ps);
+	swap(lhs.use, rhs.use);
+	swap(lhs.i, rhs.i);
+}
+
+
+//////////////////////////////////////////////////////////////////////////
 int main()
 {
 	{
@@ -113,3 +167,4 @@ int main()
 		cout << c.number() << endl;
 	}
 }
+

@@ -30,6 +30,15 @@
         {
             this.btnGenerate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCopy_Answer = new System.Windows.Forms.Button();
+            this.btnCopy_Link = new System.Windows.Forms.Button();
+            this.btnCopy_Answer_2 = new System.Windows.Forms.Button();
+            this.btnCopy_SolutionLink = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtIn_Answer_2 = new System.Windows.Forms.TextBox();
+            this.rbIn_Difficult_3 = new System.Windows.Forms.RadioButton();
+            this.rbIn_Difficult_2 = new System.Windows.Forms.RadioButton();
+            this.rbIn_Difficult_1 = new System.Windows.Forms.RadioButton();
             this.btnFixFile = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtIn_SolutionLink = new System.Windows.Forms.TextBox();
@@ -41,14 +50,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.cmbIn_Difficult = new System.Windows.Forms.ComboBox();
             this.txtIn_Link = new System.Windows.Forms.TextBox();
             this.txtIn_IdTitleC = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblOut_Problems = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.btnCopy_ID = new System.Windows.Forms.Button();
             this.txtOut_ProblemsFilePath = new System.Windows.Forms.TextBox();
-            this.lblOut_IdTitleE = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtIn_IdTitleE = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,6 +70,9 @@
             this.txtOut_UpdateFilePath = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtOut_ReadmeFilePath = new System.Windows.Forms.TextBox();
+            this.lblOut_Commit = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtOut_CommitFilePath = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -71,10 +82,10 @@
             this.btnGenerate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnGenerate.Enabled = false;
             this.btnGenerate.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnGenerate.Location = new System.Drawing.Point(12, 453);
+            this.btnGenerate.Location = new System.Drawing.Point(11, 291);
             this.btnGenerate.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(936, 128);
+            this.btnGenerate.Size = new System.Drawing.Size(940, 128);
             this.btnGenerate.TabIndex = 13;
             this.btnGenerate.Text = "↓ GENERATE ↓";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -84,6 +95,15 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnCopy_Answer);
+            this.panel1.Controls.Add(this.btnCopy_Link);
+            this.panel1.Controls.Add(this.btnCopy_Answer_2);
+            this.panel1.Controls.Add(this.btnCopy_SolutionLink);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.txtIn_Answer_2);
+            this.panel1.Controls.Add(this.rbIn_Difficult_3);
+            this.panel1.Controls.Add(this.rbIn_Difficult_2);
+            this.panel1.Controls.Add(this.rbIn_Difficult_1);
             this.panel1.Controls.Add(this.btnFixFile);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txtIn_SolutionLink);
@@ -95,13 +115,110 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnClear);
-            this.panel1.Controls.Add(this.cmbIn_Difficult);
             this.panel1.Controls.Add(this.txtIn_Link);
             this.panel1.Controls.Add(this.txtIn_IdTitleC);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(934, 435);
+            this.panel1.Size = new System.Drawing.Size(940, 270);
             this.panel1.TabIndex = 21;
+            // 
+            // btnCopy_Answer
+            // 
+            this.btnCopy_Answer.Location = new System.Drawing.Point(873, 193);
+            this.btnCopy_Answer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy_Answer.Name = "btnCopy_Answer";
+            this.btnCopy_Answer.Size = new System.Drawing.Size(58, 30);
+            this.btnCopy_Answer.TabIndex = 48;
+            this.btnCopy_Answer.Text = "Copy";
+            this.btnCopy_Answer.UseVisualStyleBackColor = true;
+            this.btnCopy_Answer.Click += new System.EventHandler(this.btnCopy_Answer_Click);
+            // 
+            // btnCopy_Link
+            // 
+            this.btnCopy_Link.Location = new System.Drawing.Point(873, 43);
+            this.btnCopy_Link.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy_Link.Name = "btnCopy_Link";
+            this.btnCopy_Link.Size = new System.Drawing.Size(58, 30);
+            this.btnCopy_Link.TabIndex = 46;
+            this.btnCopy_Link.Text = "Copy";
+            this.btnCopy_Link.UseVisualStyleBackColor = true;
+            this.btnCopy_Link.Click += new System.EventHandler(this.btnCopy_Link_Click);
+            // 
+            // btnCopy_Answer_2
+            // 
+            this.btnCopy_Answer_2.Location = new System.Drawing.Point(873, 231);
+            this.btnCopy_Answer_2.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy_Answer_2.Name = "btnCopy_Answer_2";
+            this.btnCopy_Answer_2.Size = new System.Drawing.Size(58, 30);
+            this.btnCopy_Answer_2.TabIndex = 45;
+            this.btnCopy_Answer_2.Text = "Copy";
+            this.btnCopy_Answer_2.UseVisualStyleBackColor = true;
+            this.btnCopy_Answer_2.Click += new System.EventHandler(this.btnCopy_Answer_2_Click);
+            // 
+            // btnCopy_SolutionLink
+            // 
+            this.btnCopy_SolutionLink.Location = new System.Drawing.Point(873, 156);
+            this.btnCopy_SolutionLink.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy_SolutionLink.Name = "btnCopy_SolutionLink";
+            this.btnCopy_SolutionLink.Size = new System.Drawing.Size(58, 30);
+            this.btnCopy_SolutionLink.TabIndex = 44;
+            this.btnCopy_SolutionLink.Text = "Copy";
+            this.btnCopy_SolutionLink.UseVisualStyleBackColor = true;
+            this.btnCopy_SolutionLink.Click += new System.EventHandler(this.btnCopy_SolutionLink_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(70, 231);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 18);
+            this.label12.TabIndex = 42;
+            this.label12.Text = "其它";
+            // 
+            // txtIn_Answer_2
+            // 
+            this.txtIn_Answer_2.Location = new System.Drawing.Point(121, 231);
+            this.txtIn_Answer_2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIn_Answer_2.Multiline = true;
+            this.txtIn_Answer_2.Name = "txtIn_Answer_2";
+            this.txtIn_Answer_2.Size = new System.Drawing.Size(744, 28);
+            this.txtIn_Answer_2.TabIndex = 41;
+            // 
+            // rbIn_Difficult_3
+            // 
+            this.rbIn_Difficult_3.AutoSize = true;
+            this.rbIn_Difficult_3.Location = new System.Drawing.Point(271, 13);
+            this.rbIn_Difficult_3.Name = "rbIn_Difficult_3";
+            this.rbIn_Difficult_3.Size = new System.Drawing.Size(69, 22);
+            this.rbIn_Difficult_3.TabIndex = 40;
+            this.rbIn_Difficult_3.TabStop = true;
+            this.rbIn_Difficult_3.Text = "困难";
+            this.rbIn_Difficult_3.UseVisualStyleBackColor = true;
+            this.rbIn_Difficult_3.CheckedChanged += new System.EventHandler(this.rbIn_Difficult_CheckedChanged);
+            // 
+            // rbIn_Difficult_2
+            // 
+            this.rbIn_Difficult_2.AutoSize = true;
+            this.rbIn_Difficult_2.Location = new System.Drawing.Point(196, 13);
+            this.rbIn_Difficult_2.Name = "rbIn_Difficult_2";
+            this.rbIn_Difficult_2.Size = new System.Drawing.Size(69, 22);
+            this.rbIn_Difficult_2.TabIndex = 39;
+            this.rbIn_Difficult_2.TabStop = true;
+            this.rbIn_Difficult_2.Text = "中等";
+            this.rbIn_Difficult_2.UseVisualStyleBackColor = true;
+            this.rbIn_Difficult_2.CheckedChanged += new System.EventHandler(this.rbIn_Difficult_CheckedChanged);
+            // 
+            // rbIn_Difficult_1
+            // 
+            this.rbIn_Difficult_1.AutoSize = true;
+            this.rbIn_Difficult_1.Location = new System.Drawing.Point(121, 13);
+            this.rbIn_Difficult_1.Name = "rbIn_Difficult_1";
+            this.rbIn_Difficult_1.Size = new System.Drawing.Size(69, 22);
+            this.rbIn_Difficult_1.TabIndex = 38;
+            this.rbIn_Difficult_1.TabStop = true;
+            this.rbIn_Difficult_1.Text = "简单";
+            this.rbIn_Difficult_1.UseVisualStyleBackColor = true;
+            this.rbIn_Difficult_1.CheckedChanged += new System.EventHandler(this.rbIn_Difficult_CheckedChanged);
             // 
             // btnFixFile
             // 
@@ -118,7 +235,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(34, 258);
+            this.label11.Location = new System.Drawing.Point(34, 159);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 18);
             this.label11.TabIndex = 36;
@@ -126,7 +243,7 @@
             // 
             // txtIn_SolutionLink
             // 
-            this.txtIn_SolutionLink.Location = new System.Drawing.Point(121, 255);
+            this.txtIn_SolutionLink.Location = new System.Drawing.Point(121, 156);
             this.txtIn_SolutionLink.Margin = new System.Windows.Forms.Padding(4);
             this.txtIn_SolutionLink.Name = "txtIn_SolutionLink";
             this.txtIn_SolutionLink.Size = new System.Drawing.Size(744, 28);
@@ -135,7 +252,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(70, 294);
+            this.label9.Location = new System.Drawing.Point(70, 195);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 18);
             this.label9.TabIndex = 34;
@@ -143,11 +260,11 @@
             // 
             // txtIn_Answer
             // 
-            this.txtIn_Answer.Location = new System.Drawing.Point(121, 291);
+            this.txtIn_Answer.Location = new System.Drawing.Point(121, 195);
             this.txtIn_Answer.Margin = new System.Windows.Forms.Padding(4);
             this.txtIn_Answer.Multiline = true;
             this.txtIn_Answer.Name = "txtIn_Answer";
-            this.txtIn_Answer.Size = new System.Drawing.Size(744, 130);
+            this.txtIn_Answer.Size = new System.Drawing.Size(744, 28);
             this.txtIn_Answer.TabIndex = 33;
             // 
             // label5
@@ -161,11 +278,11 @@
             // 
             // txtIn_Description
             // 
-            this.txtIn_Description.Location = new System.Drawing.Point(121, 117);
+            this.txtIn_Description.Location = new System.Drawing.Point(121, 120);
             this.txtIn_Description.Margin = new System.Windows.Forms.Padding(4);
             this.txtIn_Description.Multiline = true;
             this.txtIn_Description.Name = "txtIn_Description";
-            this.txtIn_Description.Size = new System.Drawing.Size(744, 130);
+            this.txtIn_Description.Size = new System.Drawing.Size(744, 28);
             this.txtIn_Description.TabIndex = 28;
             // 
             // label3
@@ -206,20 +323,6 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // cmbIn_Difficult
-            // 
-            this.cmbIn_Difficult.FormattingEnabled = true;
-            this.cmbIn_Difficult.Items.AddRange(new object[] {
-            "简单",
-            "中等",
-            "困难"});
-            this.cmbIn_Difficult.Location = new System.Drawing.Point(121, 12);
-            this.cmbIn_Difficult.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbIn_Difficult.Name = "cmbIn_Difficult";
-            this.cmbIn_Difficult.Size = new System.Drawing.Size(132, 26);
-            this.cmbIn_Difficult.TabIndex = 23;
-            this.cmbIn_Difficult.Text = "简单";
-            // 
             // txtIn_Link
             // 
             this.txtIn_Link.Location = new System.Drawing.Point(121, 45);
@@ -242,10 +345,13 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.lblOut_Commit);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.txtOut_CommitFilePath);
             this.panel2.Controls.Add(this.lblOut_Problems);
             this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.btnCopy_ID);
             this.panel2.Controls.Add(this.txtOut_ProblemsFilePath);
-            this.panel2.Controls.Add(this.lblOut_IdTitleE);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.txtIn_IdTitleE);
             this.panel2.Controls.Add(this.label6);
@@ -259,9 +365,9 @@
             this.panel2.Controls.Add(this.txtOut_UpdateFilePath);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtOut_ReadmeFilePath);
-            this.panel2.Location = new System.Drawing.Point(12, 588);
+            this.panel2.Location = new System.Drawing.Point(12, 426);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(934, 268);
+            this.panel2.Size = new System.Drawing.Size(940, 270);
             this.panel2.TabIndex = 22;
             // 
             // lblOut_Problems
@@ -283,6 +389,17 @@
             this.label13.TabIndex = 42;
             this.label13.Text = "题目文件";
             // 
+            // btnCopy_ID
+            // 
+            this.btnCopy_ID.Location = new System.Drawing.Point(872, 47);
+            this.btnCopy_ID.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopy_ID.Name = "btnCopy_ID";
+            this.btnCopy_ID.Size = new System.Drawing.Size(58, 30);
+            this.btnCopy_ID.TabIndex = 43;
+            this.btnCopy_ID.Text = "Copy";
+            this.btnCopy_ID.UseVisualStyleBackColor = true;
+            this.btnCopy_ID.Click += new System.EventHandler(this.btnCopy_ID_Click);
+            // 
             // txtOut_ProblemsFilePath
             // 
             this.txtOut_ProblemsFilePath.Location = new System.Drawing.Point(121, 158);
@@ -291,16 +408,6 @@
             this.txtOut_ProblemsFilePath.ReadOnly = true;
             this.txtOut_ProblemsFilePath.Size = new System.Drawing.Size(744, 28);
             this.txtOut_ProblemsFilePath.TabIndex = 41;
-            // 
-            // lblOut_IdTitleE
-            // 
-            this.lblOut_IdTitleE.AutoSize = true;
-            this.lblOut_IdTitleE.Location = new System.Drawing.Point(869, 53);
-            this.lblOut_IdTitleE.Name = "lblOut_IdTitleE";
-            this.lblOut_IdTitleE.Size = new System.Drawing.Size(62, 18);
-            this.lblOut_IdTitleE.TabIndex = 40;
-            this.lblOut_IdTitleE.Text = "Copy！";
-            this.lblOut_IdTitleE.Visible = false;
             // 
             // label10
             // 
@@ -384,7 +491,7 @@
             this.txtOut_AnswerFilePath.Multiline = true;
             this.txtOut_AnswerFilePath.Name = "txtOut_AnswerFilePath";
             this.txtOut_AnswerFilePath.ReadOnly = true;
-            this.txtOut_AnswerFilePath.Size = new System.Drawing.Size(744, 48);
+            this.txtOut_AnswerFilePath.Size = new System.Drawing.Size(744, 28);
             this.txtOut_AnswerFilePath.TabIndex = 31;
             // 
             // label7
@@ -423,11 +530,39 @@
             this.txtOut_ReadmeFilePath.Size = new System.Drawing.Size(744, 28);
             this.txtOut_ReadmeFilePath.TabIndex = 17;
             // 
+            // lblOut_Commit
+            // 
+            this.lblOut_Commit.AutoSize = true;
+            this.lblOut_Commit.Location = new System.Drawing.Point(869, 233);
+            this.lblOut_Commit.Name = "lblOut_Commit";
+            this.lblOut_Commit.Size = new System.Drawing.Size(35, 18);
+            this.lblOut_Commit.TabIndex = 46;
+            this.lblOut_Commit.Text = "OK!";
+            this.lblOut_Commit.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(34, 233);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(80, 18);
+            this.label15.TabIndex = 45;
+            this.label15.Text = "提交文件";
+            // 
+            // txtOut_CommitFilePath
+            // 
+            this.txtOut_CommitFilePath.Location = new System.Drawing.Point(121, 230);
+            this.txtOut_CommitFilePath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOut_CommitFilePath.Name = "txtOut_CommitFilePath";
+            this.txtOut_CommitFilePath.ReadOnly = true;
+            this.txtOut_CommitFilePath.Size = new System.Drawing.Size(744, 28);
+            this.txtOut_CommitFilePath.TabIndex = 44;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 872);
+            this.ClientSize = new System.Drawing.Size(964, 712);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnGenerate);
@@ -450,7 +585,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.ComboBox cmbIn_Difficult;
         private System.Windows.Forms.TextBox txtIn_Link;
         private System.Windows.Forms.TextBox txtIn_IdTitleC;
         private System.Windows.Forms.Panel panel2;
@@ -469,7 +603,6 @@
         private System.Windows.Forms.TextBox txtIn_Answer;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_FilePath;
-        private System.Windows.Forms.Label lblOut_IdTitleE;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtIn_IdTitleE;
         private System.Windows.Forms.Label label11;
@@ -478,6 +611,19 @@
         private System.Windows.Forms.Label lblOut_Problems;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtOut_ProblemsFilePath;
+        private System.Windows.Forms.RadioButton rbIn_Difficult_3;
+        private System.Windows.Forms.RadioButton rbIn_Difficult_2;
+        private System.Windows.Forms.RadioButton rbIn_Difficult_1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtIn_Answer_2;
+        private System.Windows.Forms.Button btnCopy_Answer_2;
+        private System.Windows.Forms.Button btnCopy_SolutionLink;
+        private System.Windows.Forms.Button btnCopy_ID;
+        private System.Windows.Forms.Button btnCopy_Answer;
+        private System.Windows.Forms.Button btnCopy_Link;
+        private System.Windows.Forms.Label lblOut_Commit;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtOut_CommitFilePath;
     }
 }
 

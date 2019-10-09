@@ -3,19 +3,113 @@
 
 #include "pch.h"
 #include <iostream>
+#include <algorithm>
+#include <numeric>
+#include <functional>
+#include <iterator>
+#include <sstream>
+#include <fstream>
 
-int main()
+#include <vector>
+#include <string>
+#include <list>
+
+using namespace std;
+
+//////////////////////////////////////////////////////////////////////////
+class HasPtr
 {
-    std::cout << "Hello World!\n"; 
+public:
+	HasPtr(const string &s = string()) : ps(new string(s)), i(0)
+	{}
+
+	// 13.5 
+	HasPtr(const HasPtr &h) : ps(new string(*(h.ps))), i(h.i)
+	{}
+
+	// 13.8
+	HasPtr& operator= (const HasPtr& h)
+	{
+		if (this == &h)
+		{
+			return *this;
+		}
+		delete ps;
+		ps = new string(*(h.ps));
+		i = h.i;
+		return *this;
+	}
+
+	~HasPtr()
+	{
+		delete ps;
+	}
+
+	void show()
+	{
+		cout << *ps << endl;
+	}
+
+private:
+	string *ps;
+	int i;
+};
+
+//////////////////////////////////////////////////////////////////////////
+struct NoDtor
+{
+	NoDtor() = default;
+	~NoDtor() = delete;
+};
+
+//////////////////////////////////////////////////////////////////////////
+class Employee
+{
+public:
+	Employee();//默认构造函数
+	Employee(string& s);//接受一个string的构造函数	
+	Employee(const Employee&) = delete;//不需要拷贝构造函数，怎么可能有人一样。将其声明为 =delete
+	Employee& operator= (const Employee&) = delete;
+	int number() { return _number; }
+private:
+	string employee;
+	int _number;
+	static int O_number;//static静态成员数据在类内声明，但只可以在类外定义，在类外定义时可不加static
+};
+
+int Employee::O_number = 0;
+Employee::Employee()//默认构造函数
+{
+	_number = O_number++;
+}
+Employee::Employee(string& s)//接受一个string的构造函数
+{
+	employee = s;
+	_number = O_number++;
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
 
-// 入门提示: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+//////////////////////////////////////////////////////////////////////////
+int main()
+{
+	{
+		HasPtr h("Hello");
+		HasPtr h2("AhJo");
+		h = h;
+		h.show();
+		h2.show();
+	}
+
+	{
+		//NoDtor nd;	// 错误 
+		//NoDtor *p = new NoDtor();
+		//delete p;		// 错误
+	}
+
+	{
+		Employee a, b, c;
+		cout << a.number() << endl;
+		cout << b.number() << endl;
+		cout << c.number() << endl;
+	}
+}

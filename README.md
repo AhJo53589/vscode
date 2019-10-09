@@ -1,4 +1,13 @@
-# Test_Interview
+# vscode
+
+
+
+---
+
+## 20191009
+
+将C++Primer第五版相关工程放到单独的sln
+
 
 
 ---
@@ -16,11 +25,9 @@ C++Primer第五版 第12章 动态内存
 C++Primer第五版 第10章 泛型算法  
 [test_stl_generic_algorithm](./Test_Interview/test_stl_generic_algorithm/test_stl_generic_algorithm.cpp)
 
-
 ---
 ## 20190910
 调整目录
-
 
 ---
 ## 20190624

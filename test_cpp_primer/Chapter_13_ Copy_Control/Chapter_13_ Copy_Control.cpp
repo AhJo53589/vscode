@@ -14,6 +14,8 @@
 #include <string>
 #include <list>
 
+#include "Message.h"
+
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////////
@@ -165,6 +167,76 @@ int main()
 		cout << a.number() << endl;
 		cout << b.number() << endl;
 		cout << c.number() << endl;
+	}
+
+	{
+		cout << "------------------Message-------------------" << endl;
+
+		Folder F0, F1;
+		Message MA("AAA"), MB("BBB");
+
+		MA.save(F0);
+		MA.save(F1);
+		MB.save(F0);
+		//MB.save(F1);
+
+		F0.show();
+		F1.show();
+		MA.show();
+		MB.show();
+
+		//{
+		//	cout << "-------------swap(F0, F1)--------------" << endl;
+		//	swap(F0, F1);
+		//	F0.show();
+		//	F1.show();
+		//	MA.show();
+		//	MB.show();
+		//}
+
+		{
+			cout << "-------------swap(MA, MB)--------------" << endl;
+			swap(MA, MB);
+			F0.show();
+			F1.show();
+			MA.show();
+			MB.show();
+		}
+
+		{
+			cout << "--------------Folder F2(F0)---------------" << endl;
+			Folder F2(F0);
+			F2.show();
+			MA.show();
+			MB.show();
+		}
+
+		{
+			cout << "-----------------F3 = F0-----------------" << endl;
+			Folder F3;
+			F3 = F0;
+			F3.show();
+			MA.show();
+			MB.show();
+		}
+
+		{
+			cout << "-------------Message MC(MA)--------------" << endl;
+			Message MC(MA);
+			F0.show();
+			F1.show();
+			MC.show();
+		}
+
+		{
+			cout << "----------------MD = MA-----------------" << endl;
+			Message MD("DDD");
+			MD = MA;
+			F0.show();
+			F1.show();
+			MD.show();
+		}
+
 	}
 }
 

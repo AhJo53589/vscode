@@ -9,9 +9,11 @@ class Message
 	friend void swap(Message &lhs, Message &rhs);
 public:
 	explicit Message(const std::string &str = "")
-		: folder_id(str) {}
+		: contents(str) {}
 	Message(const Message&);
 	Message& operator= (const Message&);
+	Message(Message &&);
+	Message& operator= (Message&&);
 	~Message();
 	
 	void save(Folder&);
@@ -20,11 +22,12 @@ public:
 	void show();
 
 private:
-	std::string folder_id;
+	std::string contents;
 	std::set<Folder*> folders;
 
 	void add_to_Folders(const Message&);
 	void remove_from_Folders();
+	void move_Folders(Message *);
 };
 
 

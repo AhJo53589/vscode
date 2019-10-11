@@ -15,6 +15,7 @@
 #include <list>
 
 #include "Message.h"
+#include "String.h"
 
 using namespace std;
 
@@ -236,7 +237,26 @@ int main()
 			F1.show();
 			MD.show();
 		}
+	}
 
+	{
+		int i = 42;
+		int &r = i;
+		//int &&r = i;
+		//int &r2 = i * 42;
+		const int &r3 = i * 42;
+		int &&rr1 = i * 42;
+		//int &&rr2 = rr1;
+		int &&rr2 = std::move(rr1);
+	}
+
+	{
+		// 13.48
+		vector<String> vec;
+		String s1("hello");
+		String s2 = s1;		// 拷贝构造函数 1
+		vec.push_back(s1);	// 2
+		vec.push_back(s2);	// 3,4
 	}
 }
 

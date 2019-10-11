@@ -15,6 +15,23 @@ public:
 	}
 	StrVec(const StrVec&);
 	StrVec &operator= (const StrVec&);
+	StrVec(StrVec&& s) noexcept
+		: elements(s.elements), first_free(s.first_free), cap(s.cap)
+	{
+		s.elements = s.first_free = s.cap = nullptr;
+	}
+	StrVec &operator= (StrVec &&rhs) noexcept
+	{
+		if (this != &rhs)
+		{
+			free();
+			elements = rhs.elements;
+			first_free = rhs.first_free;
+			cap = rhs.cap;
+			rhs.elements = rhs.first_free = rhs.cap = nullptr;
+		}
+		return *this;
+	}
 	~StrVec();
 
 	void push_back(const std::string&);

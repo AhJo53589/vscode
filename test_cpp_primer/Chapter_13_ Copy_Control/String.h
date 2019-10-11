@@ -10,7 +10,7 @@ using namespace std;
 class String
 {
 public:
-	String();//默认构造函数
+	String() = default;
 
 	String(const char*s)//接受c风格字符串参数的构造函数，s为指向字符串的指针(首位置)
 	{

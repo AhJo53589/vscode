@@ -6,7 +6,7 @@
 using namespace std;
 
 Message::Message(const Message &m)
-	: folder_id(m.folder_id), folders(m.folders)
+	: contents(m.contents), folders(m.folders)
 {
 	add_to_Folders(m);
 }
@@ -14,9 +14,25 @@ Message::Message(const Message &m)
 Message & Message::operator=(const Message &rhs)
 {
 	remove_from_Folders();
-	folder_id = rhs.folder_id;
+	contents = rhs.contents;
 	folders = rhs.folders;
 	add_to_Folders(rhs);
+	return *this;
+}
+
+Message::Message(Message &&m) : contents(std::move(m.contents))
+{
+	move_Folders(&m);
+}
+
+Message & Message::operator=(Message &&rhs)
+{
+	if (this != &rhs)
+	{
+		remove_from_Folders();
+		contents = std::move(rhs.contents);
+		move_Folders(&rhs);
+	}
 	return *this;
 }
 
@@ -39,7 +55,7 @@ void Message::remove(Folder &f)
 
 void Message::show()
 {
-	cout << "[Message] content = " << folder_id << endl;
+	cout << "[Message] content = " << contents << endl;
 	size_t i = 0;
 	for (auto f : folders)
 	{
@@ -63,6 +79,17 @@ void Message::remove_from_Folders()
 	}
 }
 
+void Message::move_Folders(Message *m)
+{
+	folders = std::move(m->folders);
+	for (auto f : folders)
+	{
+		f->remMsg(m);
+		f->addMsg(this);
+	}
+	m->folders.clear();
+}
+
 void swap(Message & lhs, Message & rhs)
 {
 	using std::swap;
@@ -75,7 +102,7 @@ void swap(Message & lhs, Message & rhs)
 		f->remMsg(&rhs);
 	}
 	swap(lhs.folders, rhs.folders);
-	swap(lhs.folder_id, rhs.folder_id);
+	swap(lhs.contents, rhs.contents);
 	for (auto f : lhs.folders)
 	{
 		f->addMsg(&lhs);
@@ -123,7 +150,7 @@ void Folder::show()
 	size_t i = 0;
 	for (auto m : messages)
 	{
-		cout << "message[" << i++ << "], contents = " << m->folder_id << endl;
+		cout << "message[" << i++ << "], contents = " << m->contents << endl;
 	}
 }
 

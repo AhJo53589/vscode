@@ -68,17 +68,26 @@ std::pair<std::string*, std::string*> StrVec::alloc_n_copy(const std::string *b,
 
 void StrVec::alloc_n_move(size_t new_cap)
 {
-	auto newdata = alloc.allocate(new_cap);
-	auto dest = newdata;
-	auto elem = elements;
-	for (size_t i = 0; i != size(); ++i)
-	{
-		alloc.construct(dest++, std::move(*elem++));
-	}
+	//auto newdata = alloc.allocate(new_cap);
+	//auto dest = newdata;
+	//auto elem = elements;
+	//for (size_t i = 0; i != size(); ++i)
+	//{
+	//	alloc.construct(dest++, std::move(*elem++));
+	//}
+	//free();
+	//elements = newdata;
+	//first_free = dest;
+	//cap = elements + new_cap;
+
+	auto first = alloc.allocate(new_cap);
+	auto last = uninitialized_copy(
+		make_move_iterator(begin()),
+		make_move_iterator(end()),
+		first);
 	free();
-	elements = newdata;
-	first_free = dest;
-	cap = elements + new_cap;
+	elements = first;
+	first_free = last;
 }
 
 void StrVec::free()

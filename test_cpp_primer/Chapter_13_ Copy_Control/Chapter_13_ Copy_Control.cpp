@@ -43,6 +43,13 @@ public:
 		return *this;
 	}
 
+	HasPtr(HasPtr &&p) noexcept : ps(p.ps), i(p.i) { p.ps = nullptr; }
+	//HasPtr& operator= (HasPtr rhs)
+	//{
+	//	swap(*this, rhs);
+	//	return *this;
+	//}
+
 	~HasPtr()
 	{
 		delete ps;

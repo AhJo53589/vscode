@@ -30,6 +30,12 @@ void StrVec::push_back(const std::string &s)
 	alloc.construct(first_free++, s);
 }
 
+void StrVec::push_back(std::string &&s)
+{
+	chk_n_alloc();
+	alloc.construct(first_free++, std::move(s));
+}
+
 void StrVec::reserve(size_t new_cap)
 {
 	if (new_cap <= capacity()) return;

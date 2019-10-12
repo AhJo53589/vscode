@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Foo.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="String.h" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Chapter_13_ Copy_Control.cpp" />
+    <ClCompile Include="Foo.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

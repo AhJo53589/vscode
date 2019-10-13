@@ -32,6 +32,7 @@ namespace leetcode_md_helper
 
             txtOut_ReadmeFilePath.Text = txt_FilePath.Text + @"/README.md";
             txtOut_ProblemsFilePath.Text = txt_FilePath.Text + @"/Problems.md";
+            txtOut_SolutionsFilePath.Text = txt_FilePath.Text + @"/Solutions.md";
             txtOut_UpdateFilePath.Text = txt_FilePath.Text + @"/Update.md";
             txtOut_CommitFilePath.Text = txt_FilePath.Text + @"/git_commit.bat";
 
@@ -369,6 +370,70 @@ namespace leetcode_md_helper
             return iProblemsCount + 1;
         }
 
+        private void Modify_SolutionsFile()
+        {
+            string strFile = txtOut_SolutionsFilePath.Text;
+
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[Solutions.md] file not exist!");
+                return;
+            }
+
+            string strInsert_SelectedSolution = GenerateDirectoryString_WithSelectedSolution();
+            int iInsertNo = 0;
+            int.TryParse(m_strId, out iInsertNo);
+            string strText = "";
+            int iMark = 0;
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (iMark == 0)
+                    {
+                        if (str == "# Solution") iMark = 1;  // find title
+                    }
+                    else if (iMark == 1)
+                    {
+                        if (str == "## All Solutions") iMark = 10;  // find title
+                    }
+                    else if (iMark == 10)
+                    {
+                        if (str == "") continue;
+                        if (txtIn_SolutionLink.Text == "") iMark = 19;
+                        int iReadNo = GetDirectoryNo_FromDirectoryString(str);
+                        if (iReadNo > iInsertNo)
+                        {
+                            strText += strInsert_SelectedSolution + "\n";    // insert content here
+                            iMark = 20;  // iMakr == 20, insert completed
+                        }
+                    }
+                    if (iMark == 10)
+                    {
+                        strText += strInsert_SelectedSolution + "\n";    // insert content here
+                        iMark = 20;  //  iMakr == 20, insert completed
+                    }
+
+                    // copy this line
+                    strText += str + "\n";
+                }
+                if (iMark != 20)
+                {
+                    MessageBox.Show(@"[Solutions.md] insert failed!");
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(strFile, strText, utf8);
+            }
+            lblOut_Solutions.Visible = true;
+
+            Process.Start(strFile);
+        }
+
         private void Modify_UpdateFile()
         {
             string strFile = txtOut_UpdateFilePath.Text;
@@ -438,6 +503,7 @@ namespace leetcode_md_helper
             Modify_UpdateFile();
             Create_AnswerFile();
             Modify_ReadmeFile(iProblemsCount);
+            Modify_SolutionsFile();
             Create_CommitFile();
         }
 
@@ -452,6 +518,7 @@ namespace leetcode_md_helper
             txtOut_AnswerFilePath.Text = "";
             lblOut_Readme.Visible = false;
             lblOut_Problems.Visible = false;
+            lblOut_Solutions.Visible = false;
             lblOut_Update.Visible = false;
             lblOut_Answer.Visible = false;
             lblOut_Commit.Visible = false;

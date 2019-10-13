@@ -372,6 +372,8 @@ namespace leetcode_md_helper
 
         private void Modify_SolutionsFile()
         {
+            if (txtIn_SolutionLink.Text == "") return;
+
             string strFile = txtOut_SolutionsFilePath.Text;
 
             if (!File.Exists(strFile))
@@ -394,7 +396,7 @@ namespace leetcode_md_helper
                     string str = sr.ReadLine();
                     if (iMark == 0)
                     {
-                        if (str == "# Solution") iMark = 1;  // find title
+                        if (str == "# Solutions") iMark = 1;  // find title
                     }
                     else if (iMark == 1)
                     {
@@ -403,7 +405,6 @@ namespace leetcode_md_helper
                     else if (iMark == 10)
                     {
                         if (str == "") continue;
-                        if (txtIn_SolutionLink.Text == "") iMark = 19;
                         int iReadNo = GetDirectoryNo_FromDirectoryString(str);
                         if (iReadNo > iInsertNo)
                         {
@@ -411,15 +412,15 @@ namespace leetcode_md_helper
                             iMark = 20;  // iMakr == 20, insert completed
                         }
                     }
-                    if (iMark == 10)
-                    {
-                        strText += strInsert_SelectedSolution + "\n";    // insert content here
-                        iMark = 20;  //  iMakr == 20, insert completed
-                    }
-
                     // copy this line
                     strText += str + "\n";
                 }
+                if (iMark == 10)
+                {
+                    strText += strInsert_SelectedSolution + "\n";    // insert content here
+                    iMark = 20;  //  iMakr == 20, insert completed
+                }
+
                 if (iMark != 20)
                 {
                     MessageBox.Show(@"[Solutions.md] insert failed!");

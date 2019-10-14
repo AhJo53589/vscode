@@ -174,7 +174,11 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////////
 int main()
 {
-	vector<int> a = { 1,2,3,4,5,6,7,8,9 };
-	vector<int> b(a.begin(), a.end());
-	vector<int> c = a;
+	cout << "\tpow" << "\t|" << "\tprime" << endl;
+	vector<int> num2 = { 2,17,50,101,170,263,386,527,704,905 };
+	for (int i = 1; i < 11; i++)
+	{
+		int num1 = pow(3 * i - 2, 2) + 1;
+		cout << "[" << i << "]\t" << num1 << "\t\t" << num2[i - 1] << endl;
+	}
 }

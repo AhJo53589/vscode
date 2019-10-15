@@ -18,12 +18,24 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Quote.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Query.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Chapter_15_Object-Oriented_Programming.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Quote.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Query.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

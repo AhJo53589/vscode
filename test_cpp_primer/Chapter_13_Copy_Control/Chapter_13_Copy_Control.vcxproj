@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E01ED5C6-7185-45AD-9B35-68032E4D25EE}</ProjectGuid>
+    <ProjectGuid>{8592F0A1-407E-49AF-9BA0-E4685F6431C6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Chapter13CopyControl</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -158,7 +158,7 @@
     <ClInclude Include="StrVec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Chapter_13_ Copy_Control.cpp" />
+    <ClCompile Include="Chapter_13_Copy_Control.cpp" />
     <ClCompile Include="Foo.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="pch.cpp">

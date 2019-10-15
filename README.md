@@ -3,27 +3,37 @@
 
 
 ---
+## 20191015
+C++Primer第五版 第15章 面向对象程序设计  
+[Chapter_15_Object-Oriented_Programming](./test_cpp_primer/Chapter_15_Object-Oriented_Programming/Chapter_15_Object-Oriented_Programming.cpp)
 
+C++Primer第五版 第13章 拷贝控制  
+[Chapter_13_Copy_Control](./test_cpp_primer/Chapter_13_Copy_Control/Chapter_13_Copy_Control.cpp)
+
+
+---
 ## 20191009
-
 将C++Primer第五版相关工程放到单独的sln
 
+C++Primer第五版 第12章 动态内存  
+[Chapter_12_DynamicMemory](./test_cpp_primer/Chapter_12_DynamicMemory/Chapter_12_DynamicMemory.cpp)  
+
+C++Primer第五版 第11章 关联容器  
+[Chapter_11_Associative_Containers](./test_cpp_primer/Chapter_11_Associative_Containers/Chapter_11_Associative_Containers.cpp)  
+
+C++Primer第五版 第10章 泛型算法  
+[Chapter_10_Generic_Algorithms](./test_cpp_primer/Chapter_10_Generic_Algorithms/Chapter_10_Generic_Algorithms.cpp)
 
 
 ---
 ## 20191004
 C++Primer第五版 第11章 关联容器  
-[test_stl_map_set](./Test_Interview/test_stl_map_set/test_stl_map_set.cpp)
 
 C++Primer第五版 第12章 动态内存  
-[test_stl_shared_ptr](./Test_Interview/test_stl_shared_ptr/test_stl_shared_ptr.cpp)
-
-
 
 ---
 ## 20191003
 C++Primer第五版 第10章 泛型算法  
-[test_stl_generic_algorithm](./Test_Interview/test_stl_generic_algorithm/test_stl_generic_algorithm.cpp)
 
 ---
 ## 20190910

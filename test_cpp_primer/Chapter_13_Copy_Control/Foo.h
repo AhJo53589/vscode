@@ -9,5 +9,5 @@ public:
 	Foo sorted() && ;
 	Foo sorted() const &;
 private:
-	vector<int> data;
+	std::vector<int> data;
 };

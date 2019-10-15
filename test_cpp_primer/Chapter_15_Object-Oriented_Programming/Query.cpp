@@ -23,6 +23,10 @@ TextQuery::TextQuery(ifstream &is) : file(new vector<string>)
 		string word;
 		while (line >> word)
 		{
+			while (!word.empty() && ispunct(word.back()))
+			{
+				word.pop_back();
+			}
 			auto &lines = wm[word];
 			if (!lines)
 			{
@@ -65,34 +69,6 @@ std::ostream & operator<<(std::ostream &os, const QueryResult &qr)
 	return os;
 }
 
-inline
-Query operator~(const Query &operand)
-{
-	return std::shared_ptr<Query_base>(new NotQuery(operand));
-}
-
-inline
-Query operator&(const Query &lhs, const Query &rhs)
-{
-	return std::shared_ptr<Query_base>(new AndQuery(lhs, rhs));
-}
-
-std::ostream & operator<<(std::ostream & os, const Query & query)
-{
-	return os << query.rep();
-}
-
-inline
-Query operator|(const Query &lhs, const Query &rhs)
-{
-	return std::shared_ptr<Query_base>(new OrQuery(lhs, rhs));
-}
-
-inline
-Query::Query(const std::string &s)
-	: q(new WordQuery(s))
-{
-}
 
 QueryResult OrQuery::eval(const TextQuery &text) const
 {

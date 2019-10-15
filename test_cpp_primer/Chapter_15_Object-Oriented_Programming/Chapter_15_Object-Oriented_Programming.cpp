@@ -12,21 +12,6 @@ using namespace std;
 
 
 //////////////////////////////////////////////////////////////////////////
-void runQueries(ifstream &infile)
-{
-	TextQuery tq(infile);
-	while (true)
-	{
-		cout << "enter word to look for, or q to quit: ";
-		string s;
-		getline(cin, s);
-		if (s == "q") break;
-		Query q(s);
-		cout << q.eval(tq) << endl;
-	}
-}
-
-//////////////////////////////////////////////////////////////////////////
 int main()
 {
 	{
@@ -80,8 +65,21 @@ int main()
 	{
 		// 文本查询程序
 		ifstream f("text.txt");
-		runQueries(f);
-		//		Query q = Query("fiery") & Query("bird") | Query("wind");
-
+		TextQuery tq(f);
+		{
+			Query q = Query("she") | Query("he") | Query("her");
+			cout << q << endl;
+			cout << q.eval(tq) << endl;
+		}
+		{
+			Query q = Query("her") & Query("hair");
+			cout << q << endl;
+			cout << q.eval(tq) << endl;
+		}
+		{
+			Query q = ~Query("her");
+			cout << q << endl;
+			cout << q.eval(tq) << endl;
+		}
 	}
 }

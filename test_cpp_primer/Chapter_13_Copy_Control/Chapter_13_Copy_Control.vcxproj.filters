@@ -18,16 +18,16 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Message.h">
+    <ClInclude Include="Foo.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="StrVec.h">
+    <ClInclude Include="Message.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="String.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Foo.h">
+    <ClInclude Include="StrVec.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,19 +35,19 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Chapter_13_ Copy_Control.cpp">
+    <ClCompile Include="Chapter_13_Copy_Control.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Foo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Message.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="StrVec.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="String.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Foo.cpp">
+    <ClCompile Include="StrVec.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

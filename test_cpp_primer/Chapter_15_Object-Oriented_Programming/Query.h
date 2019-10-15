@@ -71,10 +71,6 @@ private:
 };
 
 //////////////////////////////////////////////////////////////////////////
-std::ostream & operator<< (std::ostream &, const Query &);
-
-
-//////////////////////////////////////////////////////////////////////////
 class WordQuery : public Query_base
 {
 	friend class Query;
@@ -98,8 +94,7 @@ class NotQuery : public Query_base
 class BinaryQuery : public Query_base
 {
 protected:
-	BinaryQuery(const Query &l, const Query &r, std::string s)
-		: lhs(l), rhs(r), opSym(s) {}
+	BinaryQuery(const Query &l, const Query &r, std::string s) : lhs(l), rhs(r), opSym(s) {}
 	std::string rep() const { return "(" + lhs.rep() + " " + opSym + " " + rhs.rep() + ")"; }
 	Query lhs, rhs;
 	std::string opSym;
@@ -109,8 +104,7 @@ protected:
 class AndQuery : public BinaryQuery
 {
 	friend Query operator& (const Query&, const Query&);
-	AndQuery(const Query &left, const Query &right)
-		: BinaryQuery(left, right, "&") {}
+	AndQuery(const Query &left, const Query &right) : BinaryQuery(left, right, "&") {}
 	QueryResult eval(const TextQuery&) const;
 };
 
@@ -118,7 +112,39 @@ class AndQuery : public BinaryQuery
 class OrQuery : public BinaryQuery
 {
 	friend Query operator| (const Query&, const Query&);
-	OrQuery(const Query &left, const Query &right)
-		: BinaryQuery(left, right, "|") {}
+	OrQuery(const Query &left, const Query &right) : BinaryQuery(left, right, "|") {}
 	QueryResult eval(const TextQuery&) const;
 };
+
+
+//////////////////////////////////////////////////////////////////////////
+inline
+Query operator~(const Query &operand)
+{
+	return std::shared_ptr<Query_base>(new NotQuery(operand));
+}
+
+inline
+Query operator|(const Query &lhs, const Query &rhs)
+{
+	return std::shared_ptr<Query_base>(new OrQuery(lhs, rhs));
+}
+
+inline
+Query operator&(const Query &lhs, const Query &rhs)
+{
+	return std::shared_ptr<Query_base>(new AndQuery(lhs, rhs));
+}
+
+inline
+Query::Query(const std::string & s) : q(new WordQuery(s))
+{
+}
+
+//////////////////////////////////////////////////////////////////////////
+//std::ostream & operator<< (std::ostream &, const Query &);
+inline
+std::ostream & operator<<(std::ostream & os, const Query & q)
+{
+	return os << q.rep();
+}

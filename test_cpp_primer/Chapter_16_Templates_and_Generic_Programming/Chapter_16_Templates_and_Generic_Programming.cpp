@@ -3,19 +3,84 @@
 
 #include "pch.h"
 #include <iostream>
+#include <vector>
+#include <list>
+
+#include "Blob.h"
+
+using namespace std;
+
+
+template<typename T>
+int compare(const T &v1, const T &v2)
+{
+	//if (v1 < v2) return -1;
+	//if (v2 < v1) return 1;
+	//return 0;
+
+	if (less<T>()(v1, v2)) return -1;
+	if (less<T>()(v2, v1)) return 1;
+	return 0;
+}
+
+template<unsigned N, unsigned M>
+int compare(const char(&p1)[N], const char(&p2)[M])
+{
+	return strcmp(p1, p2);
+}
+
+template<typename T>
+using twin = pair<T, T>;
+
+template<class T = int> class Numbers
+{
+public:
+	Numbers(T v = 0) : val(v) {}
+private:
+	T val;
+};
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	{
+		cout << compare(1, 2) << endl;
+	}
+
+	{
+		cout << compare("hi", "mom") << endl;
+	}
+
+	{
+		twin<int> win_loss;
+	}
+
+	{
+		Numbers<long double> lots_of_precision;
+		Numbers<> average_precision;
+	}
+
+	{
+		int ia[] = { 0,1,2,3,4,5,6,7,8,9 };
+		vector<long> vi = { 0,1,2,3,4,5,6,7,8,9 };
+		list<const char*> w = { "now", "is", "the", "time" };
+
+		Blob<int> a1(begin(ia), end(ia));
+		Blob<int> a2(vi.begin(), vi.end());
+		Blob<string> a3(w.begin(), w.end());
+	}
+
+	{
+		//template<typename T> T fobj(T, T);
+		//template<typename T> T fref(const T&, const T&);
+
+		//string s1("a value");
+		//const string s2("another value");
+		//fobj(s1, s2);	// fobj(string, string)
+		//fref(s1, s2);	// fref(const string&, const string&)
+
+		//int a[10], b[42];
+		//fobj(a, b);	// f(int *, int *)
+		//fref(a, b);	// error
+	}
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门提示: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件

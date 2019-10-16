@@ -151,6 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Blob.h" />
+    <ClInclude Include="DebugDelete.h" />
+    <ClInclude Include="My_shared_ptr.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

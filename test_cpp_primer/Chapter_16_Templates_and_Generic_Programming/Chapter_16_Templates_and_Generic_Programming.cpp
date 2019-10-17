@@ -7,6 +7,8 @@
 #include <list>
 
 #include "Blob.h"
+#include "debug_rep.h"
+#include "16_4_variadic_template.h"
 
 using namespace std;
 
@@ -81,6 +83,25 @@ int main()
 		//int a[10], b[42];
 		//fobj(a, b);	// f(int *, int *)
 		//fref(a, b);	// error
+	}
+
+	{
+		string s("hi");
+		cout << debug_rep(s) << endl;
+		cout << debug_rep(&s) << endl;
+
+		const string *sp = &s;
+		cout << debug_rep(sp) << endl;
+
+		cout << debug_rep("Hello") << endl;
+	}
+
+	{
+		foo(0, 1, 2, 3, 4, 5);
+	}
+
+	{
+		print(cout, 1, "Hello", 2, "AhJo");
 	}
 }
 

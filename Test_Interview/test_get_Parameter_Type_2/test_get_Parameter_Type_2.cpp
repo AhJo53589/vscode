@@ -17,17 +17,6 @@
 using namespace std;
 
 
-struct _cast_impl
-{ 
-	template<class T>
-	T get();
-};
-
-template<>
-int _cast_impl::get<int>() {
-	static int i = 1;
-	return ++i;
-}
 
 template<class R,class ...Params>
 class type_warp;
@@ -65,6 +54,8 @@ struct function_type<std::function<R(Args...)>> : public type_warp<R,Args...>
 };
 
 
+
+
 int test(int a, vector<int> b)
 {
 	if (a < b.size()) return b[a];
@@ -99,14 +90,9 @@ int main()
 	// 读取测试用例
 	ifstream f("tests.txt");
 
-
 	using func_t = function_type<function<decltype(TEST_FUNC)>>;
 	TestCases test_cases(f);
-	{
-		func_t::res_t ans = func_t::call(TEST_FUNC, test_cases);
-		func_t::res_t answer = test_cases.get<func_t::res_t>();
-		cout << "ans = " << ans << " check " << answer << endl;
-	}
+	while (!test_cases.empty())
 	{
 		func_t::res_t ans = func_t::call(TEST_FUNC, test_cases);
 		func_t::res_t answer = test_cases.get<func_t::res_t>();

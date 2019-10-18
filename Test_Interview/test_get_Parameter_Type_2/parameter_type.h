@@ -1,28 +1,6 @@
 #pragma once
 
-#include <functional>
-#include <tuple>
-#include <typeinfo>
 
-
-
-//////////////////////////////////////////////////////////////////////////
-template<typename T>
-struct function_traits;
-template<typename R, typename ...Args>
-struct function_traits<std::function<R(Args...)>>
-{
-	static const size_t nargs = sizeof...(Args);
-	typedef R result_type;
-
-	typedef std::tuple<Args...> tuple_type;
-
-	template <size_t i>
-	struct arg
-	{
-		typedef typename std::tuple_element<i, std::tuple<Args...>>::type type;
-	};
-};
 
 //////////////////////////////////////////////////////////////////////////
 class TestCases
@@ -76,7 +54,8 @@ private:
 		ss.str(input);
 		std::string item;
 		char delim = ',';
-		while (getline(ss, item, delim)) {
+		while (getline(ss, item, delim)) 
+		{
 			output.push_back(stoi(item));
 		}
 		return output;
@@ -89,5 +68,43 @@ private:
 };
 
 //////////////////////////////////////////////////////////////////////////
+// 获取函数的返回值和参数列表
+// 将参数列表展开
+// 将参数填入测试数据
+// 调用函数
+template<class R, class ...Params>
+class type_warp;
+
+template<class R, class Head, class... Tail>
+class type_warp<R, Head, Tail...> : public type_warp<R, Tail...>
+{
+public:
+	using Base = type_warp<R, Tail...>;
+	template<class F, class... Args>
+	static R call(F&& f, TestCases& caster, Args... args)
+	{
+		Head head = caster.get<Head>();
+		return Base::call(f, caster, args..., head);
+	}
+};
+
+template<class R>
+class type_warp<R>
+{
+public:
+	template<class F, class... Args>
+	static R call(F&& f, TestCases& caster, Args... args)
+	{
+		return f(args...);
+	}
+};
+
+template<typename T>
+struct function_type;
+template<typename R, typename ...Args>
+struct function_type<std::function<R(Args...)>> : public type_warp<R, Args...>
+{
+	using return_type = R;
+};
 
 

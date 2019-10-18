@@ -10,18 +10,19 @@
 
 using namespace std;
 
+
+//////////////////////////////////////////////////////////////////////////
+// 使用模板获取函数的返回值和参数列表
+// 用std::function将 返回值R 和 参数列表...Args 切开
+// 将参数列表声明成tuple，实现获取类型
 template<typename T>
 struct function_traits;
-// R为返回类型
-// ...Args 为输入参数类型，个数不限
 template<typename R, typename ...Args>
 struct function_traits<std::function<R(Args...)>>
 {
 	static const size_t nargs = sizeof...(Args);
-	// 返回类型
 	typedef R result_type;
 
-	// 输入参数类型,i为从0开始的参数类型索引
 	template <size_t i>
 	struct arg
 	{
@@ -29,17 +30,38 @@ struct function_traits<std::function<R(Args...)>>
 	};
 };
 
+int test(int a, size_t b, vector<int> c)
+{
+	return 0;
+}
 
 int main()
 {
-	typedef std::function<void(int, unsigned int, vector<vector<int>>)> feacomp_fun;
+	//////////////////////////////////////////////////////////////////////////
+	// 识别和绑定测试函数
+	typedef std::function<decltype(test)> feacomp_fun;
+	feacomp_fun fun = test;
 
-	//if (typeid(function_traits<feacomp_fun>::result_type) != typeid(void))
-	//{
-	//}
-	cout << typeid(function_traits<feacomp_fun>::result_type).name() << endl;
-	cout << typeid(function_traits<feacomp_fun>::arg<0>::type).name() << endl;
-	cout << typeid(function_traits<feacomp_fun>::arg<1>::type).name() << endl;
-	cout << typeid(function_traits<feacomp_fun>::arg<2>::type).name() << endl;
+	// 识别函数各个参数类型
+	typedef function_traits<feacomp_fun> fun_traits;
+	cout << fun_traits::nargs << endl;
+	cout << typeid(fun_traits::result_type).name() << endl;
+	cout << typeid(fun_traits::arg<0>::type).name() << endl;
+	cout << typeid(fun_traits::arg<1>::type).name() << endl;
+	cout << typeid(fun_traits::arg<2>::type).name() << endl;
+
+	// 测试用例转换成参数
+	//fun_traits::tuple_type _tuple;
+
+
+	fun_traits::arg<0>::type arg_0 = 0;
+	fun_traits::arg<1>::type arg_1 = 1;
+	fun_traits::arg<2>::type arg_2 = { 2 };
+	fun_traits::result_type answer = 0;
+
+
+	// 运行测试函数
+	auto ans = fun(arg_0, arg_1, arg_2);
+	cout << "ans = " << ans << " check " << answer << endl;
 }
 

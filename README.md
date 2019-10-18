@@ -1,6 +1,16 @@
 # vscode
 
 
+---
+## 20191018
+使用模板类解析函数返回值和参数列表  
+[test_get_Parameter_Type](./Test_Interview/test_get_Parameter_Type/test_get_Parameter_Type.cpp)
+
+
+---
+## 20191017
+C++Primer第五版 第16章 模板与泛型编程  
+[Chapter_16_Templates_and_Generic_Programming](./test_cpp_primer/Chapter_16_Templates_and_Generic_Programming/Chapter_16_Templates_and_Generic_Programming.cpp)  
 
 ---
 ## 20191015

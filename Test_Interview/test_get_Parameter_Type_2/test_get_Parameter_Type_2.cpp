@@ -17,9 +17,8 @@ using namespace std;
 
 
 #define TEST_FUNC test
-int test(int a, vector<int> b)
+int test(vector<int> b)
 {
-	if (a < b.size()) return b[a];
 	return 0;
 }
 

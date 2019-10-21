@@ -16,6 +16,7 @@ namespace leetcode_md_helper
     {
         private string m_strDifficult;
         private string m_strId;
+        private string m_strPath;
         private string m_strTitleE;
         private string m_strTitleC;
 
@@ -39,14 +40,31 @@ namespace leetcode_md_helper
             m_strDifficult = "简单";
         }
 
-        private void CalcMainString()
+        private void GetPathAndTitleE_FromLink()
         {
             string[] s = txtIn_IdTitleC.Text.Split('.');
             m_strId = s[0];
             m_strTitleC = s[1];
-            if (m_strTitleC[0] == ' ') m_strTitleC = m_strTitleC.Substring(1);
+            while (m_strTitleC[0] == ' ') m_strTitleC = m_strTitleC.Substring(1);
             s = txtIn_Link.Text.Split('/');
-            m_strTitleE = s[4];
+            if (s[3] == "problems")
+            {
+                m_strPath = "";
+                m_strTitleE = s[4];
+            }
+            else if (s[3] == "contest")
+            {
+                if (s[4] == "season")
+                {
+                    m_strPath = "/" + s[4] + "/" + s[5];
+                    m_strTitleE = s[7];
+                }
+                else
+                {
+                    m_strPath = "/" + s[3] + "/" + s[4];
+                    m_strTitleE = s[6];
+                }
+            }
         }
 
         private string GetDifficult_FromDirectoryString(string str)
@@ -95,7 +113,7 @@ namespace leetcode_md_helper
             strOutput += txtIn_IdTitleE.Text;
             strOutput += " ";
             strOutput += m_strTitleC;
-            strOutput += "](./problems/";
+            strOutput += "](." + m_strPath + "/problems/";
             strOutput += txtIn_IdTitleE.Text;
             strOutput += "/README.md)";
             return strOutput;
@@ -324,10 +342,10 @@ namespace leetcode_md_helper
                     string str = sr.ReadLine();
                     if (iMark == 0)
                     {
-                        if (str == "# leetcode-cn") iMark = 1;  // find title
-                    }
-                    else if (iMark == 1)
-                    {
+                    //    if (str == "# leetcode-cn") iMark = 1;  // find title
+                    //}
+                    //else if (iMark == 1)
+                    //{
                         if (str == "## Problems & Solutions") iMark = 20;  // find title
                     }
                     else if (iMark == 20)
@@ -497,13 +515,18 @@ namespace leetcode_md_helper
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            CalcMainString();
-
             txtTitle_TextChanged(sender, e);
-            int iProblemsCount = Modify_ProblemsFile();
+            if (m_strPath == "")
+            {
+                int iProblemsCount = Modify_ProblemsFile();
+                Modify_ReadmeFile(iProblemsCount);
+            }
+            else
+            {
+                Modify_ProblemsFile();
+            }
             Modify_UpdateFile();
             Create_AnswerFile();
-            Modify_ReadmeFile(iProblemsCount);
             Modify_SolutionsFile();
             Create_CommitFile();
         }
@@ -530,11 +553,16 @@ namespace leetcode_md_helper
         {
             if (txtIn_IdTitleC.Text != "" && txtIn_Link.Text != "")
             {
-                CalcMainString();
+                GetPathAndTitleE_FromLink();
                 string strIdTitleE = m_strId + "." + m_strTitleE;
 
-                string str = txt_FilePath.Text;
+                string str = txt_FilePath.Text + m_strPath;
                 str += @"/problems/" + strIdTitleE + @"/README.md";
+
+                if (m_strPath != "")
+                {
+                    txtOut_ProblemsFilePath.Text = txt_FilePath.Text + m_strPath + @"/README.md";
+                }
 
                 txtIn_IdTitleE.Text = strIdTitleE;
                 Clipboard.SetText(strIdTitleE);

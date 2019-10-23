@@ -28,10 +28,12 @@ namespace leetcode_cpp_helper
         {
             txt_in_curr_folder.Text = "";
             txt_in_old_path.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\_problems";
+            txt_in_prev_folder.Text = txt_in_titleE.Text;
             txt_in_new_path.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\problems";
+            txt_in_hold_path.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\_problems_hold";
             txt_in_define_file.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\test\Common\Define_IdName.h";
             txt_in_problemset_file.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\problemset\all\README.md";
-            txt_in_test_cpp.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\test\Test\Test.cpp";
+            txt_in_test_cpp_file.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\test\Test\Test.cpp";
 
             txt_in_difficult.Text = "";
             txt_in_id.Text = "";
@@ -49,8 +51,7 @@ namespace leetcode_cpp_helper
             txt_in_func_testcase.Text = "";
 
             btn_get_folder.Enabled = true;
-            btn_copy_folder.Enabled = true;
-            btn_delete_folder.Enabled = true;
+            btn_copy_folder.Enabled = false;
         }
 
         public static void CopyDirectory(string srcPath, string destPath)
@@ -365,9 +366,9 @@ namespace leetcode_cpp_helper
 
         private void Modify_TestFile()
         {
-            if (txt_in_test_cpp.Text == "") return;
+            if (txt_in_test_cpp_file.Text == "") return;
 
-            string strFile = txt_in_test_cpp.Text;
+            string strFile = txt_in_test_cpp_file.Text;
 
             if (!File.Exists(strFile))
             {
@@ -542,7 +543,6 @@ namespace leetcode_cpp_helper
                 {
                     txt_in_curr_folder.Text = i.Name;
                     string first_path = txt_in_old_path.Text + "\\" + i.Name;
-                    //System.Diagnostics.Process.Start("explorer.exe", first_path);
                     Open_AnswerFile(first_path);
                     break;
                 }
@@ -563,6 +563,7 @@ namespace leetcode_cpp_helper
             btn_open_link_Click(sender, e);
 
             btn_get_folder.Enabled = false;
+            btn_copy_folder.Enabled = true;
         }
 
         private void btn_copy_folder_Click(object sender, EventArgs e)
@@ -597,24 +598,17 @@ namespace leetcode_cpp_helper
             // 拷贝剩下的文件
             CopyDirectory(oldPath, newPath);
 
-            //System.Diagnostics.Process.Start("explorer.exe", newPath);
-            btn_copy_folder.Enabled = false;
-        }
-
-        private void btn_delete_folder_Click(object sender, EventArgs e)
-        {
-            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
-
+            // 删除原来文件夹
             if (Directory.Exists(oldPath))
             {
                 Directory.Delete(oldPath, true);
             }
 
-            btn_delete_folder.Enabled = false;
+            btn_copy_folder.Enabled = false;
             reset();
         }
 
-        private void btn_func_split_Click(object sender, EventArgs e)
+        private void SplitFuncParam()
         {
             if (txt_in_func.Text == "") return;
 
@@ -656,23 +650,76 @@ namespace leetcode_cpp_helper
         private void btn_open_link_Click(object sender, EventArgs e)
         {
             if (txt_in_link.Text == "") return;
-            System.Diagnostics.Process.Start(txt_in_link.Text);
+            Process.Start(txt_in_link.Text);
         }
 
         private void btn_open_solution_link_Click(object sender, EventArgs e)
         {
             if (txt_in_solution_link.Text == "") return;
-            System.Diagnostics.Process.Start(txt_in_solution_link.Text);
+            Process.Start(txt_in_solution_link.Text);
         }
 
         private void txt_in_func_TextChanged(object sender, EventArgs e)
         {
-            btn_func_split_Click(sender, e);
+            SplitFuncParam();
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
             reset();
         }
+
+        private void btn_open_old_path_Click(object sender, EventArgs e)
+        {
+           Process.Start("explorer.exe", txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text);
+        }
+
+        private void btn_open_new_path_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txt_in_new_path.Text + "\\" + txt_in_prev_folder.Text);
+        }
+
+        private void btn_open_define_file_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_in_define_file.Text);
+        }
+
+        private void btn_open_problemset_file_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_in_problemset_file.Text);
+        }
+
+        private void btn_open_test_cpp_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_in_test_cpp_file.Text);
+        }
+
+        private void btn_open_hold_path_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_in_hold_path.Text);
+        }
+
+        private void btn_hold_Click(object sender, EventArgs e)
+        {
+            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
+            string newPath = txt_in_hold_path.Text + "\\" + txt_in_curr_folder.Text;
+
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+
+            // 拷贝剩下的文件
+            CopyDirectory(oldPath, newPath);
+
+            // 删除原来文件夹
+            if (Directory.Exists(oldPath))
+            {
+                Directory.Delete(oldPath, true);
+            }
+
+            reset();
+        }
+
     }
 }

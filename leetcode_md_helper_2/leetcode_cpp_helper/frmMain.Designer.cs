@@ -59,7 +59,7 @@
             this.btn_reset = new System.Windows.Forms.Button();
             this.btn_delete_folder = new System.Windows.Forms.Button();
             this.btn_copy_folder = new System.Windows.Forms.Button();
-            this.btn_get_first_folder = new System.Windows.Forms.Button();
+            this.btn_get_folder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -307,9 +307,9 @@
             // 
             // btn_reset
             // 
-            this.btn_reset.Location = new System.Drawing.Point(21, 865);
+            this.btn_reset.Location = new System.Drawing.Point(20, 951);
             this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(190, 77);
+            this.btn_reset.Size = new System.Drawing.Size(240, 40);
             this.btn_reset.TabIndex = 36;
             this.btn_reset.Text = "Reset";
             this.btn_reset.UseVisualStyleBackColor = true;
@@ -317,9 +317,9 @@
             // 
             // btn_delete_folder
             // 
-            this.btn_delete_folder.Location = new System.Drawing.Point(607, 865);
+            this.btn_delete_folder.Location = new System.Drawing.Point(554, 865);
             this.btn_delete_folder.Name = "btn_delete_folder";
-            this.btn_delete_folder.Size = new System.Drawing.Size(190, 77);
+            this.btn_delete_folder.Size = new System.Drawing.Size(240, 80);
             this.btn_delete_folder.TabIndex = 35;
             this.btn_delete_folder.Text = "Delete Folder";
             this.btn_delete_folder.UseVisualStyleBackColor = true;
@@ -327,33 +327,33 @@
             // 
             // btn_copy_folder
             // 
-            this.btn_copy_folder.Location = new System.Drawing.Point(413, 865);
+            this.btn_copy_folder.Location = new System.Drawing.Point(290, 865);
             this.btn_copy_folder.Name = "btn_copy_folder";
-            this.btn_copy_folder.Size = new System.Drawing.Size(190, 77);
+            this.btn_copy_folder.Size = new System.Drawing.Size(240, 80);
             this.btn_copy_folder.TabIndex = 34;
             this.btn_copy_folder.Text = "Copy Folder";
             this.btn_copy_folder.UseVisualStyleBackColor = true;
             this.btn_copy_folder.Click += new System.EventHandler(this.btn_copy_folder_Click);
             // 
-            // btn_get_first_folder
+            // btn_get_folder
             // 
-            this.btn_get_first_folder.Location = new System.Drawing.Point(217, 865);
-            this.btn_get_first_folder.Name = "btn_get_first_folder";
-            this.btn_get_first_folder.Size = new System.Drawing.Size(190, 77);
-            this.btn_get_first_folder.TabIndex = 33;
-            this.btn_get_first_folder.Text = "Get First Folder";
-            this.btn_get_first_folder.UseVisualStyleBackColor = true;
-            this.btn_get_first_folder.Click += new System.EventHandler(this.btn_get_first_folder_Click);
+            this.btn_get_folder.Location = new System.Drawing.Point(20, 865);
+            this.btn_get_folder.Name = "btn_get_folder";
+            this.btn_get_folder.Size = new System.Drawing.Size(240, 80);
+            this.btn_get_folder.TabIndex = 33;
+            this.btn_get_folder.Text = "Get Folder";
+            this.btn_get_folder.UseVisualStyleBackColor = true;
+            this.btn_get_folder.Click += new System.EventHandler(this.btn_get_folder_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 959);
+            this.ClientSize = new System.Drawing.Size(814, 1001);
             this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.btn_delete_folder);
             this.Controls.Add(this.btn_copy_folder);
-            this.Controls.Add(this.btn_get_first_folder);
+            this.Controls.Add(this.btn_get_folder);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -402,7 +402,7 @@
         private System.Windows.Forms.Button btn_reset;
         private System.Windows.Forms.Button btn_delete_folder;
         private System.Windows.Forms.Button btn_copy_folder;
-        private System.Windows.Forms.Button btn_get_first_folder;
+        private System.Windows.Forms.Button btn_get_folder;
     }
 }
 

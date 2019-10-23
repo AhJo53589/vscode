@@ -48,7 +48,7 @@ namespace leetcode_cpp_helper
             txt_in_func_2.Text = "";
             txt_in_func_testcase.Text = "";
 
-            btn_get_first_folder.Enabled = true;
+            btn_get_folder.Enabled = true;
             btn_copy_folder.Enabled = true;
             btn_delete_folder.Enabled = true;
         }
@@ -190,8 +190,7 @@ namespace leetcode_cpp_helper
             strText += "//////////////////////////////////////////////////////////////////////////" + "\r\n";
             strText += "vector<string> _get_test_cases_string()" + "\r\n";
             strText += "{\r\n";
-            strText += "\treturn {\r\n";
-            strText += "};\r\n";
+            strText += "\treturn {};\r\n";
             strText += "}\r\n\r\n";
 
             string strComment = "";
@@ -202,7 +201,7 @@ namespace leetcode_cpp_helper
             strText += strComment + "#define USE_GET_TEST_CASES_FILESTREAM" + "\r\n";
             strText += strComment + "string _get_test_cases_filestream()" + "\r\n";
             strText += strComment + "{\r\n";
-            strText += strComment + "\treturn " + "\"..\\..\\problems\\" + txt_in_titleE.Text + "\\tests.txt\";" + "\r\n";
+            strText += strComment + "\treturn " + "\"../../problems/" + txt_in_titleE.Text + "/tests.txt\";" + "\r\n";
             strText += strComment + "}\r\n\r\n";
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
@@ -469,13 +468,16 @@ namespace leetcode_cpp_helper
 
         private string GenerateString_InfoForm_Problem()
         {
-            // | √ | 1 | two-sum | [两数之和](../../problems/two-sum/README.md) | [查看](https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-2/) | 简单 |
-            // | √ | 1 | two-sum | [两数之和](../../problems/two-sum/README.md) |  | 简单 |
+            // 有题解
+            // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) | [查看](https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-2/) | 简单 |
+            // 无题解
+            // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) |  | 简单 |
             string strText = "";
             strText += "| √";
             strText += " | " + txt_in_id.Text;
-            strText += " | " + txt_in_titleE.Text;
+            strText += " | " + GenerateString_TitleAndFolderPath();
             strText += " | " + GenerateString_TitleAndFileLink();
+            strText += " | " + GenerateString_CppFilePath();
             if (txt_in_solution_link.Text == "")
             {
                 strText += " | " + " ";
@@ -489,13 +491,33 @@ namespace leetcode_cpp_helper
             return strText;
         }
 
+        private string GenerateString_TitleAndFolderPath()
+        {
+            // example: 
+            // [two-sum](../../problems/two-sum)
+            string strText = "";
+            strText += "[" + txt_in_titleE.Text + "]";
+            strText += "(../../problems/" + txt_in_titleE.Text + ")";
+            return strText;
+        }
+
         private string GenerateString_TitleAndFileLink()
         {
             // example: 
             // [两数之和](../../problems/two-sum/README.md)
             string strText = "";
-            strText += "[" + txt_in_id.Text + "." + txt_in_titleE.Text + " " + txt_in_titleC.Text + "]";
+            strText += "[" + txt_in_titleC.Text + "]";
             strText += "(../../problems/" + txt_in_titleE.Text + "/README.md)";
+            return strText;
+        }
+
+        private string GenerateString_CppFilePath()
+        {
+            // example: 
+            // [cpp](../../problems/two-sum/SOLUTION.cpp)
+            string strText = "";
+            strText += "[cpp]";
+            strText += "(../../problems/" + txt_in_titleE.Text + "/SOLUTION.cpp)";
             return strText;
         }
 
@@ -510,7 +532,7 @@ namespace leetcode_cpp_helper
             return strText;
         }
 
-        private void btn_get_first_folder_Click(object sender, EventArgs e)
+        private void btn_get_folder_Click(object sender, EventArgs e)
         {
             DirectoryInfo folder = new DirectoryInfo(txt_in_old_path.Text);
             FileSystemInfo[] fileinfo = folder.GetFileSystemInfos();
@@ -520,7 +542,7 @@ namespace leetcode_cpp_helper
                 {
                     txt_in_curr_folder.Text = i.Name;
                     string first_path = txt_in_old_path.Text + "\\" + i.Name;
-                    System.Diagnostics.Process.Start("explorer.exe", first_path);
+                    //System.Diagnostics.Process.Start("explorer.exe", first_path);
                     Open_AnswerFile(first_path);
                     break;
                 }
@@ -538,7 +560,9 @@ namespace leetcode_cpp_helper
                 }
             }
 
-            btn_get_first_folder.Enabled = false;
+            btn_open_link_Click(sender, e);
+
+            btn_get_folder.Enabled = false;
         }
 
         private void btn_copy_folder_Click(object sender, EventArgs e)
@@ -557,15 +581,7 @@ namespace leetcode_cpp_helper
             Modify_ProblemsFile();
             Modify_TestFile();
 
-            System.Diagnostics.Process.Start("explorer.exe", newPath);
-            btn_copy_folder.Enabled = false;
-        }
-
-        private void btn_delete_folder_Click(object sender, EventArgs e)
-        {
-            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
-            string newPath = txt_in_new_path.Text + "\\" + txt_in_titleE.Text;
-
+            // 删除已经重新生成的
             System.IO.File.Delete(oldPath + "\\README.md");
 
             DirectoryInfo folder = new DirectoryInfo(oldPath);
@@ -578,7 +594,16 @@ namespace leetcode_cpp_helper
                 }
             }
 
+            // 拷贝剩下的文件
             CopyDirectory(oldPath, newPath);
+
+            //System.Diagnostics.Process.Start("explorer.exe", newPath);
+            btn_copy_folder.Enabled = false;
+        }
+
+        private void btn_delete_folder_Click(object sender, EventArgs e)
+        {
+            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
 
             if (Directory.Exists(oldPath))
             {
@@ -614,13 +639,13 @@ namespace leetcode_cpp_helper
             {
                 if (sValue[i][0] == ' ') sValue[i] = sValue[i].Substring(1);
                 s = sValue[i].Split(' ');
-                if (s[1][0] == '*' || s[1][0] == '&')
+                if (s[s.Length - 1][0] == '*' || s[s.Length - 1][0] == '&')
                 {
-                    temp += s[1].Substring(1);
+                    temp += s[s.Length - 1].Substring(1);
                 }
                 else
                 {
-                    temp += sValue[i] = s[1];
+                    temp += sValue[i] = s[s.Length - 1];
                 }
                 if (i != sValue.Length - 1) temp += ",";
             }

@@ -100,7 +100,7 @@ namespace leetcode_md_helper
                     else if (iMark == 10 || iMark == 11)
                     {
                         if (str == "") continue;
-                        iMark++;
+                        if (str.IndexOf("|") != -1) iMark++;     
                     }
                     else if (iMark == 12)
                     {
@@ -185,7 +185,7 @@ namespace leetcode_md_helper
                     else if (iMark == 20 || iMark == 21)
                     {
                         if (str == "") continue;
-                        iMark++;
+                        if (str.IndexOf("|") != -1) iMark++;
                     }
                     else if (iMark == 22)
                     {
@@ -227,6 +227,108 @@ namespace leetcode_md_helper
             return iProblemsCount + 1;
         }
 
+        private void Create_File_Contest_Problems_Readme_md()
+        {
+            if (txt_path_contest_problemset.Text == "") return;
+
+            string strText = "";
+
+            // https://leetcode-cn.com/contest/weekly-contest-159/problems/check-if-it-is-a-straight-line/
+            // https://leetcode-cn.com/contest/biweekly-contest-11/problems/missing-number-in-arithmetic-progression/
+            // TODO: https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
+            string[] s = txt_path_contest.Text.Split('\\');
+            s = s[2].Split('-');
+            if (s[0] == "weekly")
+            {
+                strText += "# 第 " + s[2] + " 场周赛" + "\r\n\r\n";
+            }
+            else if (s[0] == "biweekly")
+            {
+                strText += "# 第 " + s[2] + " 场双周赛" + "\r\n\r\n";
+            }
+            strText += "[返回](../../README.md)" + "\r\n\r\n";
+
+            strText += "## Problems & Solutions" + "\r\n\r\n";
+
+            strText += "|     | #   | 名称                 | 题目                  | 答题          | 题解 | 难度 |" + "\r\n";
+            strText += "| --- | --- | -------------------- | --------------------- | ------------- | ---- | ---- |" + "\r\n";
+
+            strText += GenerateString_InfoForm_Problem() + "\r\n";
+
+            string strFile = txt_path_contest_problemset.Text;
+            UTF8Encoding utf8 = new UTF8Encoding(false);
+            File.WriteAllText(strFile, strText, utf8);
+
+            lbl_out_contest_problems.Visible = true;
+            Process.Start(strFile);
+        }
+
+        private void Modify_File_Contest_Problems_Readme_md()
+        {
+            if (txt_path_contest_problemset.Text == "") return;
+            string strFile = txt_path_contest_problemset.Text;
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[contest/../README.md] file not exist!");
+                return;
+            }
+
+            string strInsert = GenerateString_InfoForm_Problem();
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strText = "";
+            int iMark = 0;
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (iMark == 0)
+                    {
+                        if (str == "## Problems & Solutions") iMark = 20;  // find title
+                    }
+                    else if (iMark == 20 || iMark == 21)
+                    {
+                        if (str == "") continue;
+                        if (str.IndexOf("|") != -1) iMark++;
+                    }
+                    else if (iMark == 22)
+                    {
+                        if (str == "") continue;
+                        int iReadNo = GetId_From_InfoForm_Problem(str);
+                        if (iReadNo > iInsertNo)
+                        {
+                            strText += strInsert + "\r\n";    // insert content here
+                            iMark = 29;  // iMakr == 29, insert completed
+                        }
+                    }
+                    else if (iMark == 29)
+                    {
+                        if (str == "") continue;
+                    }
+
+                    // copy this line
+                    strText += str + "\r\n";
+                }
+                if (iMark == 22)
+                {
+                    strText += strInsert + "\r\n";    // insert content here
+                    iMark = 29;  // iMakr == 29, insert completed
+                }
+                if (iMark != 29)
+                {
+                    MessageBox.Show(@"[contest/../README.md] insert failed!");
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(strFile, strText, utf8);
+            }
+            lbl_out_contest_problems.Visible = true;
+            Process.Start(strFile);
+        }
+
         private void Modify_File_Solutions_md()
         {
             if (txt_in_solution_link.Text == "") return;
@@ -259,7 +361,7 @@ namespace leetcode_md_helper
                     else if (iMark == 10 || iMark == 11)
                     {
                         if (str == "") continue;
-                        iMark++;
+                        if (str.IndexOf("|") != -1) iMark++;
                     }
                     else if (iMark == 12)
                     {

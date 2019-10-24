@@ -25,8 +25,8 @@ namespace leetcode_md_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2";
-            txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
+            txt_path_main.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2";
+            //txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
 
             Reset();
             m_strDifficult = rb_in_difficult_1.Text;
@@ -83,15 +83,24 @@ namespace leetcode_md_helper
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             // 是否是比赛
-            if (txt_path_contest.Text == "")
+            if (txt_path_contest.Text != "")
             {
-                int iProblemsCount = Modify_File_ProblemsetAll_Readme_md();
-                Modify_File_Readme_md(iProblemsCount);
+                if (!Directory.Exists(txt_path_main.Text + txt_path_contest.Text))
+                {
+                    Directory.CreateDirectory(txt_path_main.Text + txt_path_contest.Text);
+                }
+                if (!File.Exists(txt_path_contest_problemset.Text))
+                {
+                    Create_File_Contest_Problems_Readme_md();
+                }
+                else
+                {
+                    Modify_File_Contest_Problems_Readme_md();
+                }
             }
-            else
-            {
-                Modify_File_ProblemsetAll_Readme_md();
-            }
+
+            int iProblemsCount = Modify_File_ProblemsetAll_Readme_md();
+            Modify_File_Readme_md(iProblemsCount);
             Modify_File_Update_md();
             Modify_File_Solutions_md();
 
@@ -102,7 +111,7 @@ namespace leetcode_md_helper
             }
 
             Create_File_Answer_Readme_md();
-            Copy_File_Solution_cpp();
+            Copy_File_Solution_cpp();       // TODO: Solution.cpp的 return "tests_1.txt"; 需要替换路径
             Copy_File_Tests_txt();
 
             Create_CommitFile();
@@ -125,7 +134,7 @@ namespace leetcode_md_helper
                         txt_path_contest_problemset.Text = "";
                     }
                     txt_path_answer_readme_md.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\README.md";
-                    txt_path_solution_cpp.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\SOLUTION.md";
+                    txt_path_solution_cpp.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\SOLUTION.cpp";
                     txt_path_tests_txt.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\tests.txt";
 
                     btnGenerate.Enabled = true;

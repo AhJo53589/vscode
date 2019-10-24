@@ -26,14 +26,18 @@ namespace leetcode_cpp_helper
 
         private void reset()
         {
-            txt_in_curr_folder.Text = "";
-            txt_in_old_path.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\_problems";
-            txt_in_prev_folder.Text = txt_in_titleE.Text;
-            txt_in_new_path.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\problems";
-            txt_in_hold_path.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\_problems_hold";
-            txt_in_define_file.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\test\Common\Define_IdName.h";
-            txt_in_problemset_file.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\problemset\all\README.md";
-            txt_in_test_cpp_file.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2\test\Test\Test.cpp";
+            txt_path_main.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2";
+            txt_path_old_problems.Text = txt_path_main.Text + @"\_problems";
+            txt_path_curr_folder.Text = "";
+            txt_path_new_problems.Text = txt_path_main.Text + @"\problems";
+            txt_path_prev_folder.Text = txt_in_titleE.Text;
+            txt_path_hold_problems.Text = txt_path_main.Text + @"\_problems_hold";
+
+            txt_path_define_h.Text = txt_path_main.Text + @"\test\Common\Define_IdName.h";
+            txt_path_test_cpp.Text = txt_path_main.Text + @"\test\Test\Test.cpp";
+
+            txt_path_problemset_all.Text = txt_path_main.Text + @"\problemset\all\README.md";
+            txt_path_solutions_md.Text = txt_path_main.Text + @"\Solutions.md";
 
             txt_in_difficult.Text = "";
             txt_in_id.Text = "";
@@ -51,7 +55,7 @@ namespace leetcode_cpp_helper
             txt_in_func_testcase.Text = "";
 
             btn_get_folder.Enabled = true;
-            btn_copy_folder.Enabled = false;
+            btn_transfer_folder.Enabled = false;
         }
 
         public static void CopyDirectory(string srcPath, string destPath)
@@ -121,7 +125,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void Copy_AnswerFile(string oldPath, string newPath)
+        private void Copy_File_AnswerReadme_md(string oldPath, string newPath)
         {
             string strFile = oldPath + @"\README.md";
 
@@ -143,7 +147,7 @@ namespace leetcode_cpp_helper
                     if (bFirstLine)
                     {
                         bFirstLine = false;
-                        str = "# " + GenerateString_DiffTitleLink();
+                        str = "# " + GenerateString_DiffIdTitleECLink();
                     }
 
                     // copy this line
@@ -159,7 +163,7 @@ namespace leetcode_cpp_helper
             //Process.Start(strFile);
         }
 
-        private void Create_SolutionCppFile(string newPath)
+        private void Create_File_Solution_cpp(string newPath)
         {
             if (txt_in_func.Text == ""
                 || txt_out_return_type.Text == "" || txt_out_func_name.Text == "" || txt_out_param.Text == ""
@@ -211,7 +215,7 @@ namespace leetcode_cpp_helper
             Process.Start(strFile);
         }
 
-        private void Create_TestCasesFile(string newPath)
+        private void Create_File_TestCases_txt(string newPath)
         {
             if (txt_in_func_testcase.Text == "") return;
 
@@ -226,11 +230,11 @@ namespace leetcode_cpp_helper
         }
 
 
-        private void Modify_DefineFile()
+        private void Modify_File_Define_IdName_h()
         {
-            if (txt_in_define_file.Text == "") return;
+            if (txt_path_define_h.Text == "") return;
 
-            string strFile = txt_in_define_file.Text;
+            string strFile = txt_path_define_h.Text;
 
             if (!File.Exists(strFile))
             {
@@ -291,12 +295,12 @@ namespace leetcode_cpp_helper
             //Process.Start(strFile);
         }
 
-        private int Modify_ProblemsFile()
+        private int Modify_File_ProblemsetAll_Readme_md()
         {
-            if (txt_in_problemset_file.Text == "") return 0;
+            if (txt_path_problemset_all.Text == "") return 0;
 
             int iProblemsCount = 0;
-            string strFile = txt_in_problemset_file.Text;
+            string strFile = txt_path_problemset_all.Text;
 
             if (!File.Exists(strFile))
             {
@@ -305,8 +309,7 @@ namespace leetcode_cpp_helper
             }
 
             string strInsert = GenerateString_InfoForm_Problem();
-            int iInsertNo = 0;
-            int.TryParse(txt_in_id.Text, out iInsertNo);
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
 
@@ -364,11 +367,75 @@ namespace leetcode_cpp_helper
             return iProblemsCount + 1;
         }
 
-        private void Modify_TestFile()
+        private void Modify_File_Solutions_md()
         {
-            if (txt_in_test_cpp_file.Text == "") return;
+            if (txt_path_solutions_md.Text == "") return;
+            string strFile = txt_path_solutions_md.Text;
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[Solutions.md] file not exist!");
+                return;
+            }
 
-            string strFile = txt_in_test_cpp_file.Text;
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem();
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strText = "";
+            int iMark = 0;
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (iMark == 0)
+                    {
+                        if (str == "# Solutions") iMark = 1;  // find title
+                    }
+                    else if (iMark == 1)
+                    {
+                        if (str == "## All Solutions") iMark = 10;  // find title
+                    }
+                    else if (iMark == 10 || iMark == 11)
+                    {
+                        if (str == "") continue;
+                        iMark++;
+                    }
+                    else if (iMark == 12)
+                    {
+                        if (str == "") continue;
+                        int iReadNo = GetId_From_InfoForm_Problem(str);
+                        if (iReadNo > iInsertNo)
+                        {
+                            strText += strInsert_SelectedSolution + "\n";    // insert content here
+                            iMark = 20;  // iMakr == 20, insert completed
+                        }
+                    }
+                    // copy this line
+                    strText += str + "\n";
+                }
+                if (iMark == 12)
+                {
+                    strText += strInsert_SelectedSolution + "\n";    // insert content here
+                    iMark = 20;  //  iMakr == 20, insert completed
+                }
+
+                if (iMark != 20)
+                {
+                    MessageBox.Show(@"[Solutions.md] insert failed!");
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(strFile, strText, utf8);
+            }
+        }
+
+        private void Modify_File_Test_cpp()
+        {
+            if (txt_path_test_cpp.Text == "") return;
+
+            string strFile = txt_path_test_cpp.Text;
 
             if (!File.Exists(strFile))
             {
@@ -378,8 +445,7 @@ namespace leetcode_cpp_helper
 
             string strOld = "#include SOLUTION_CPP_PATH_NAME(SOLUTION_CPP_FOLDER_NAME_ID_";
             string strInsert = strOld + txt_in_id.Text + ")";
-            int iInsertNo = 0;
-            int.TryParse(txt_in_id.Text, out iInsertNo);
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
 
             FileStream fs = new FileStream(strFile, FileMode.Open);
@@ -462,8 +528,7 @@ namespace leetcode_cpp_helper
         private int GetId_From_InfoForm_Problem(string str)
         {
             string[] s = str.Split('|');
-            int id = 0;
-            int.TryParse(s[2], out id);
+            int.TryParse(s[2], out int id);
             return id;
         }
 
@@ -522,7 +587,7 @@ namespace leetcode_cpp_helper
             return strText;
         }
 
-        private string GenerateString_DiffTitleLink()
+        private string GenerateString_DiffIdTitleECLink()
         {
             // example: 
             // `（简单）` [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
@@ -531,81 +596,6 @@ namespace leetcode_cpp_helper
             strText += "[" + txt_in_id.Text + "." + txt_in_titleE.Text + " " + txt_in_titleC.Text + "]";
             strText += "(" + txt_in_link.Text + ")";
             return strText;
-        }
-
-        private void btn_get_folder_Click(object sender, EventArgs e)
-        {
-            DirectoryInfo folder = new DirectoryInfo(txt_in_old_path.Text);
-            FileSystemInfo[] fileinfo = folder.GetFileSystemInfos();
-            foreach (FileSystemInfo i in fileinfo)
-            {
-                if (i is DirectoryInfo)
-                {
-                    txt_in_curr_folder.Text = i.Name;
-                    string first_path = txt_in_old_path.Text + "\\" + i.Name;
-                    Open_AnswerFile(first_path);
-                    break;
-                }
-            }
-
-            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
-            DirectoryInfo folder2 = new DirectoryInfo(oldPath);
-            FileInfo[] fileList = folder2.GetFiles();
-            foreach (FileInfo file in fileList)
-            {
-                if (file.Extension == ".cpp")
-                {
-                    string temp = file.FullName;
-                    Process.Start(temp);
-                }
-            }
-
-            btn_open_link_Click(sender, e);
-
-            btn_get_folder.Enabled = false;
-            btn_copy_folder.Enabled = true;
-        }
-
-        private void btn_copy_folder_Click(object sender, EventArgs e)
-        {
-            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
-            string newPath = txt_in_new_path.Text + "\\" + txt_in_titleE.Text;
-            if (!Directory.Exists(newPath))
-            {
-                Directory.CreateDirectory(newPath);
-            }
-
-            Copy_AnswerFile(oldPath, newPath);
-            Create_SolutionCppFile(newPath);
-            Create_TestCasesFile(newPath);
-            Modify_DefineFile();
-            Modify_ProblemsFile();
-            Modify_TestFile();
-
-            // 删除已经重新生成的
-            System.IO.File.Delete(oldPath + "\\README.md");
-
-            DirectoryInfo folder = new DirectoryInfo(oldPath);
-            FileInfo[] fileList = folder.GetFiles();
-            foreach (FileInfo file in fileList)
-            {
-                if (file.Extension == ".cpp")
-                {
-                    file.Delete();
-                }
-            }
-
-            // 拷贝剩下的文件
-            CopyDirectory(oldPath, newPath);
-
-            // 删除原来文件夹
-            if (Directory.Exists(oldPath))
-            {
-                Directory.Delete(oldPath, true);
-            }
-
-            btn_copy_folder.Enabled = false;
-            reset();
         }
 
         private void SplitFuncParam()
@@ -647,6 +637,82 @@ namespace leetcode_cpp_helper
             txt_out_param_value.Text = temp;
         }
 
+        private void btn_get_folder_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo folder = new DirectoryInfo(txt_path_old_problems.Text);
+            FileSystemInfo[] fileinfo = folder.GetFileSystemInfos();
+            foreach (FileSystemInfo i in fileinfo)
+            {
+                if (i is DirectoryInfo)
+                {
+                    txt_path_curr_folder.Text = i.Name;
+                    string first_path = txt_path_old_problems.Text + "\\" + i.Name;
+                    Open_AnswerFile(first_path);
+                    break;
+                }
+            }
+
+            string oldPath = txt_path_old_problems.Text + "\\" + txt_path_curr_folder.Text;
+            DirectoryInfo folder2 = new DirectoryInfo(oldPath);
+            FileInfo[] fileList = folder2.GetFiles();
+            foreach (FileInfo file in fileList)
+            {
+                if (file.Extension == ".cpp")
+                {
+                    string temp = file.FullName;
+                    Process.Start(temp);
+                }
+            }
+
+            btn_open_link_Click(sender, e);
+
+            btn_get_folder.Enabled = false;
+            btn_transfer_folder.Enabled = true;
+        }
+
+        private void btn_transfer_folder_Click(object sender, EventArgs e)
+        {
+            string oldPath = txt_path_old_problems.Text + "\\" + txt_path_curr_folder.Text;
+            string newPath = txt_path_new_problems.Text + "\\" + txt_in_titleE.Text;
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+
+            Copy_File_AnswerReadme_md(oldPath, newPath);
+            Create_File_Solution_cpp(newPath);
+            Create_File_TestCases_txt(newPath);
+            Modify_File_Define_IdName_h();
+            Modify_File_Test_cpp();
+            Modify_File_ProblemsetAll_Readme_md();
+            Modify_File_Solutions_md();
+
+            // 删除已经重新生成的
+            System.IO.File.Delete(oldPath + "\\README.md");
+
+            DirectoryInfo folder = new DirectoryInfo(oldPath);
+            FileInfo[] fileList = folder.GetFiles();
+            foreach (FileInfo file in fileList)
+            {
+                if (file.Extension == ".cpp")
+                {
+                    file.Delete();
+                }
+            }
+
+            // 拷贝剩下的文件
+            CopyDirectory(oldPath, newPath);
+
+            // 删除原来文件夹
+            if (Directory.Exists(oldPath))
+            {
+                Directory.Delete(oldPath, true);
+            }
+
+            btn_transfer_folder.Enabled = false;
+            reset();
+        }
+
         private void btn_open_link_Click(object sender, EventArgs e)
         {
             if (txt_in_link.Text == "") return;
@@ -671,38 +737,43 @@ namespace leetcode_cpp_helper
 
         private void btn_open_old_path_Click(object sender, EventArgs e)
         {
-           Process.Start("explorer.exe", txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text);
+           Process.Start("explorer.exe", txt_path_old_problems.Text + "\\" + txt_path_curr_folder.Text);
         }
 
         private void btn_open_new_path_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", txt_in_new_path.Text + "\\" + txt_in_prev_folder.Text);
+            Process.Start("explorer.exe", txt_path_new_problems.Text + "\\" + txt_path_prev_folder.Text);
         }
 
         private void btn_open_define_file_Click(object sender, EventArgs e)
         {
-            Process.Start(txt_in_define_file.Text);
+            Process.Start(txt_path_define_h.Text);
         }
 
         private void btn_open_problemset_file_Click(object sender, EventArgs e)
         {
-            Process.Start(txt_in_problemset_file.Text);
+            Process.Start(txt_path_problemset_all.Text);
+        }
+
+        private void btn_open_solutions_file_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_solutions_md.Text);
         }
 
         private void btn_open_test_cpp_Click(object sender, EventArgs e)
         {
-            Process.Start(txt_in_test_cpp_file.Text);
+            Process.Start(txt_path_test_cpp.Text);
         }
 
         private void btn_open_hold_path_Click(object sender, EventArgs e)
         {
-            Process.Start(txt_in_hold_path.Text);
+            Process.Start(txt_path_hold_problems.Text);
         }
 
         private void btn_hold_Click(object sender, EventArgs e)
         {
-            string oldPath = txt_in_old_path.Text + "\\" + txt_in_curr_folder.Text;
-            string newPath = txt_in_hold_path.Text + "\\" + txt_in_curr_folder.Text;
+            string oldPath = txt_path_old_problems.Text + "\\" + txt_path_curr_folder.Text;
+            string newPath = txt_path_hold_problems.Text + "\\" + txt_path_curr_folder.Text;
 
             if (!Directory.Exists(newPath))
             {
@@ -719,6 +790,20 @@ namespace leetcode_cpp_helper
             }
 
             reset();
+        }
+
+        private void btn_create_Click(object sender, EventArgs e)
+        {
+            string newPath = txt_path_main.Text + @"\test\Test\";
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+
+            Create_File_Solution_cpp(newPath);
+            Create_File_TestCases_txt(newPath);
+            //Modify_File_Define_IdName_h();
+            //Modify_File_Test_cpp();
         }
 
     }

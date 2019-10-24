@@ -31,6 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_open_solution_link = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
+            this.btn_hold = new System.Windows.Forms.Button();
             this.txt_in_solution_link = new System.Windows.Forms.TextBox();
             this.btn_open_link = new System.Windows.Forms.Button();
             this.txt_in_difficult = new System.Windows.Forms.TextBox();
@@ -39,6 +41,8 @@
             this.txt_in_titleE = new System.Windows.Forms.TextBox();
             this.txt_in_id = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_create = new System.Windows.Forms.Button();
             this.txt_in_func_testcase = new System.Windows.Forms.TextBox();
             this.txt_in_func_2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,34 +52,50 @@
             this.txt_out_return_type = new System.Windows.Forms.TextBox();
             this.txt_in_func = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txt_in_prev_folder = new System.Windows.Forms.TextBox();
-            this.btn_open_hold_path = new System.Windows.Forms.Button();
-            this.txt_in_hold_path = new System.Windows.Forms.TextBox();
-            this.btn_hold = new System.Windows.Forms.Button();
-            this.btn_reset = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_path_main = new System.Windows.Forms.TextBox();
+            this.btn_open_solutions_md = new System.Windows.Forms.Button();
+            this.txt_path_solutions_md = new System.Windows.Forms.TextBox();
+            this.txt_path_prev_folder = new System.Windows.Forms.TextBox();
+            this.btn_open_hold_problems = new System.Windows.Forms.Button();
+            this.txt_path_hold_problems = new System.Windows.Forms.TextBox();
             this.btn_open_test_cpp = new System.Windows.Forms.Button();
-            this.btn_open_problemset_file = new System.Windows.Forms.Button();
-            this.btn_open_define_file = new System.Windows.Forms.Button();
-            this.btn_open_new_path = new System.Windows.Forms.Button();
-            this.btn_open_old_path = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_in_test_cpp_file = new System.Windows.Forms.TextBox();
-            this.txt_in_problemset_file = new System.Windows.Forms.TextBox();
-            this.txt_in_define_file = new System.Windows.Forms.TextBox();
-            this.txt_in_curr_folder = new System.Windows.Forms.TextBox();
-            this.txt_in_new_path = new System.Windows.Forms.TextBox();
-            this.txt_in_old_path = new System.Windows.Forms.TextBox();
-            this.btn_copy_folder = new System.Windows.Forms.Button();
+            this.btn_open_problemset_all = new System.Windows.Forms.Button();
+            this.btn_open_define_h = new System.Windows.Forms.Button();
+            this.btn_open_new_problems = new System.Windows.Forms.Button();
+            this.btn_open_old_problems = new System.Windows.Forms.Button();
+            this.txt_path_test_cpp = new System.Windows.Forms.TextBox();
+            this.txt_path_problemset_all = new System.Windows.Forms.TextBox();
+            this.txt_path_define_h = new System.Windows.Forms.TextBox();
+            this.txt_path_curr_folder = new System.Windows.Forms.TextBox();
+            this.txt_path_new_problems = new System.Windows.Forms.TextBox();
+            this.txt_path_old_problems = new System.Windows.Forms.TextBox();
+            this.btn_transfer_folder = new System.Windows.Forms.Button();
             this.btn_get_folder = new System.Windows.Forms.Button();
+            this.tc_main = new System.Windows.Forms.TabControl();
+            this.tp_transfer = new System.Windows.Forms.TabPage();
+            this.tp_path = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tc_main.SuspendLayout();
+            this.tp_transfer.SuspendLayout();
+            this.tp_path.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btn_open_solution_link);
+            this.panel1.Controls.Add(this.btn_reset);
+            this.panel1.Controls.Add(this.btn_hold);
             this.panel1.Controls.Add(this.txt_in_solution_link);
             this.panel1.Controls.Add(this.btn_open_link);
             this.panel1.Controls.Add(this.txt_in_difficult);
@@ -83,47 +103,62 @@
             this.panel1.Controls.Add(this.txt_in_titleC);
             this.panel1.Controls.Add(this.txt_in_titleE);
             this.panel1.Controls.Add(this.txt_in_id);
-            this.panel1.Location = new System.Drawing.Point(11, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 108);
+            this.panel1.Size = new System.Drawing.Size(784, 157);
             this.panel1.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 10);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(3, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 12);
+            this.label1.Size = new System.Drawing.Size(296, 18);
             this.label1.TabIndex = 31;
-            this.label1.Text = "答题文件的标题和连接";
+            this.label1.Text = "转移旧答题文件，以及其标题和链接";
             // 
             // btn_open_solution_link
             // 
-            this.btn_open_solution_link.Location = new System.Drawing.Point(471, 81);
-            this.btn_open_solution_link.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_open_solution_link.Location = new System.Drawing.Point(705, 122);
             this.btn_open_solution_link.Name = "btn_open_solution_link";
-            this.btn_open_solution_link.Size = new System.Drawing.Size(50, 21);
+            this.btn_open_solution_link.Size = new System.Drawing.Size(75, 28);
             this.btn_open_solution_link.TabIndex = 30;
             this.btn_open_solution_link.Text = "Open";
             this.btn_open_solution_link.UseVisualStyleBackColor = true;
             this.btn_open_solution_link.Click += new System.EventHandler(this.btn_open_solution_link_Click);
             // 
+            // btn_reset
+            // 
+            this.btn_reset.Location = new System.Drawing.Point(609, 7);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(75, 33);
+            this.btn_reset.TabIndex = 36;
+            this.btn_reset.Text = "Reset";
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
+            // btn_hold
+            // 
+            this.btn_hold.Location = new System.Drawing.Point(528, 7);
+            this.btn_hold.Name = "btn_hold";
+            this.btn_hold.Size = new System.Drawing.Size(75, 33);
+            this.btn_hold.TabIndex = 40;
+            this.btn_hold.Text = "Hold";
+            this.btn_hold.UseVisualStyleBackColor = true;
+            this.btn_hold.Click += new System.EventHandler(this.btn_hold_Click);
+            // 
             // txt_in_solution_link
             // 
-            this.txt_in_solution_link.Location = new System.Drawing.Point(2, 81);
-            this.txt_in_solution_link.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_solution_link.Location = new System.Drawing.Point(6, 122);
             this.txt_in_solution_link.Name = "txt_in_solution_link";
-            this.txt_in_solution_link.Size = new System.Drawing.Size(465, 21);
+            this.txt_in_solution_link.Size = new System.Drawing.Size(693, 28);
             this.txt_in_solution_link.TabIndex = 29;
             // 
             // btn_open_link
             // 
-            this.btn_open_link.Location = new System.Drawing.Point(471, 56);
-            this.btn_open_link.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_open_link.Location = new System.Drawing.Point(705, 84);
             this.btn_open_link.Name = "btn_open_link";
-            this.btn_open_link.Size = new System.Drawing.Size(50, 21);
+            this.btn_open_link.Size = new System.Drawing.Size(75, 28);
             this.btn_open_link.TabIndex = 28;
             this.btn_open_link.Text = "Open";
             this.btn_open_link.UseVisualStyleBackColor = true;
@@ -131,46 +166,44 @@
             // 
             // txt_in_difficult
             // 
-            this.txt_in_difficult.Location = new System.Drawing.Point(2, 31);
-            this.txt_in_difficult.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_difficult.Location = new System.Drawing.Point(6, 46);
             this.txt_in_difficult.Name = "txt_in_difficult";
-            this.txt_in_difficult.Size = new System.Drawing.Size(46, 21);
+            this.txt_in_difficult.Size = new System.Drawing.Size(64, 28);
             this.txt_in_difficult.TabIndex = 27;
             // 
             // txt_in_link
             // 
-            this.txt_in_link.Location = new System.Drawing.Point(2, 56);
-            this.txt_in_link.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_link.Location = new System.Drawing.Point(6, 84);
             this.txt_in_link.Name = "txt_in_link";
-            this.txt_in_link.Size = new System.Drawing.Size(465, 21);
+            this.txt_in_link.Size = new System.Drawing.Size(693, 28);
             this.txt_in_link.TabIndex = 26;
             // 
             // txt_in_titleC
             // 
-            this.txt_in_titleC.Location = new System.Drawing.Point(352, 31);
-            this.txt_in_titleC.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_titleC.Location = new System.Drawing.Point(528, 46);
             this.txt_in_titleC.Name = "txt_in_titleC";
-            this.txt_in_titleC.Size = new System.Drawing.Size(167, 21);
+            this.txt_in_titleC.Size = new System.Drawing.Size(250, 28);
             this.txt_in_titleC.TabIndex = 25;
             // 
             // txt_in_titleE
             // 
-            this.txt_in_titleE.Location = new System.Drawing.Point(99, 31);
-            this.txt_in_titleE.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_titleE.Location = new System.Drawing.Point(148, 46);
             this.txt_in_titleE.Name = "txt_in_titleE";
-            this.txt_in_titleE.Size = new System.Drawing.Size(250, 21);
+            this.txt_in_titleE.Size = new System.Drawing.Size(373, 28);
             this.txt_in_titleE.TabIndex = 24;
             // 
             // txt_in_id
             // 
-            this.txt_in_id.Location = new System.Drawing.Point(51, 31);
-            this.txt_in_id.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_id.Location = new System.Drawing.Point(76, 46);
             this.txt_in_id.Name = "txt_in_id";
-            this.txt_in_id.Size = new System.Drawing.Size(46, 21);
+            this.txt_in_id.Size = new System.Drawing.Size(67, 28);
             this.txt_in_id.TabIndex = 23;
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.btn_create);
             this.panel2.Controls.Add(this.txt_in_func_testcase);
             this.panel2.Controls.Add(this.txt_in_func_2);
             this.panel2.Controls.Add(this.label2);
@@ -179,302 +212,400 @@
             this.panel2.Controls.Add(this.txt_out_func_name);
             this.panel2.Controls.Add(this.txt_out_return_type);
             this.panel2.Controls.Add(this.txt_in_func);
-            this.panel2.Location = new System.Drawing.Point(11, 120);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(6, 292);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(523, 288);
+            this.panel2.Size = new System.Drawing.Size(784, 424);
             this.panel2.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(557, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 18);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "覆盖到Test_0 →";
+            // 
+            // btn_create
+            // 
+            this.btn_create.Location = new System.Drawing.Point(706, 7);
+            this.btn_create.Name = "btn_create";
+            this.btn_create.Size = new System.Drawing.Size(75, 33);
+            this.btn_create.TabIndex = 41;
+            this.btn_create.Text = "Create";
+            this.btn_create.UseVisualStyleBackColor = true;
+            this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
             // 
             // txt_in_func_testcase
             // 
-            this.txt_in_func_testcase.Location = new System.Drawing.Point(2, 217);
-            this.txt_in_func_testcase.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_func_testcase.Location = new System.Drawing.Point(6, 321);
             this.txt_in_func_testcase.Multiline = true;
             this.txt_in_func_testcase.Name = "txt_in_func_testcase";
-            this.txt_in_func_testcase.Size = new System.Drawing.Size(516, 65);
+            this.txt_in_func_testcase.Size = new System.Drawing.Size(770, 96);
             this.txt_in_func_testcase.TabIndex = 34;
             // 
             // txt_in_func_2
             // 
-            this.txt_in_func_2.Location = new System.Drawing.Point(3, 148);
-            this.txt_in_func_2.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_func_2.Location = new System.Drawing.Point(6, 46);
             this.txt_in_func_2.Multiline = true;
             this.txt_in_func_2.Name = "txt_in_func_2";
-            this.txt_in_func_2.Size = new System.Drawing.Size(515, 65);
+            this.txt_in_func_2.Size = new System.Drawing.Size(770, 96);
             this.txt_in_func_2.TabIndex = 33;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(3, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 12);
+            this.label2.Size = new System.Drawing.Size(314, 18);
             this.label2.TabIndex = 32;
-            this.label2.Text = "cpp文件的函数和测试用例";
+            this.label2.Text = "生成新代码文件所需的函数和测试用例";
             // 
             // txt_out_param_value
             // 
-            this.txt_out_param_value.Location = new System.Drawing.Point(207, 123);
-            this.txt_out_param_value.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_out_param_value.Location = new System.Drawing.Point(312, 287);
             this.txt_out_param_value.Name = "txt_out_param_value";
-            this.txt_out_param_value.Size = new System.Drawing.Size(311, 21);
+            this.txt_out_param_value.Size = new System.Drawing.Size(464, 28);
             this.txt_out_param_value.TabIndex = 22;
             // 
             // txt_out_param
             // 
-            this.txt_out_param.Location = new System.Drawing.Point(207, 98);
-            this.txt_out_param.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_out_param.Location = new System.Drawing.Point(312, 250);
             this.txt_out_param.Name = "txt_out_param";
-            this.txt_out_param.Size = new System.Drawing.Size(311, 21);
+            this.txt_out_param.Size = new System.Drawing.Size(464, 28);
             this.txt_out_param.TabIndex = 21;
             // 
             // txt_out_func_name
             // 
-            this.txt_out_func_name.Location = new System.Drawing.Point(105, 98);
-            this.txt_out_func_name.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_out_func_name.Location = new System.Drawing.Point(160, 250);
             this.txt_out_func_name.Name = "txt_out_func_name";
-            this.txt_out_func_name.Size = new System.Drawing.Size(99, 21);
+            this.txt_out_func_name.Size = new System.Drawing.Size(146, 28);
             this.txt_out_func_name.TabIndex = 20;
             // 
             // txt_out_return_type
             // 
-            this.txt_out_return_type.Location = new System.Drawing.Point(3, 98);
-            this.txt_out_return_type.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_out_return_type.Location = new System.Drawing.Point(6, 250);
             this.txt_out_return_type.Name = "txt_out_return_type";
-            this.txt_out_return_type.Size = new System.Drawing.Size(99, 21);
+            this.txt_out_return_type.Size = new System.Drawing.Size(146, 28);
             this.txt_out_return_type.TabIndex = 19;
             // 
             // txt_in_func
             // 
-            this.txt_in_func.Location = new System.Drawing.Point(2, 30);
-            this.txt_in_func.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_in_func.Location = new System.Drawing.Point(6, 148);
             this.txt_in_func.Multiline = true;
             this.txt_in_func.Name = "txt_in_func";
-            this.txt_in_func.Size = new System.Drawing.Size(517, 65);
+            this.txt_in_func.Size = new System.Drawing.Size(770, 96);
             this.txt_in_func.TabIndex = 18;
             this.txt_in_func.TextChanged += new System.EventHandler(this.txt_in_func_TextChanged);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txt_in_prev_folder);
-            this.panel3.Controls.Add(this.btn_open_hold_path);
-            this.panel3.Controls.Add(this.txt_in_hold_path);
-            this.panel3.Controls.Add(this.btn_hold);
-            this.panel3.Controls.Add(this.btn_reset);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.txt_path_main);
+            this.panel3.Controls.Add(this.btn_open_solutions_md);
+            this.panel3.Controls.Add(this.txt_path_solutions_md);
+            this.panel3.Controls.Add(this.txt_path_prev_folder);
+            this.panel3.Controls.Add(this.btn_open_hold_problems);
+            this.panel3.Controls.Add(this.txt_path_hold_problems);
             this.panel3.Controls.Add(this.btn_open_test_cpp);
-            this.panel3.Controls.Add(this.btn_open_problemset_file);
-            this.panel3.Controls.Add(this.btn_open_define_file);
-            this.panel3.Controls.Add(this.btn_open_new_path);
-            this.panel3.Controls.Add(this.btn_open_old_path);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.txt_in_test_cpp_file);
-            this.panel3.Controls.Add(this.txt_in_problemset_file);
-            this.panel3.Controls.Add(this.txt_in_define_file);
-            this.panel3.Controls.Add(this.txt_in_curr_folder);
-            this.panel3.Controls.Add(this.txt_in_new_path);
-            this.panel3.Controls.Add(this.txt_in_old_path);
-            this.panel3.Location = new System.Drawing.Point(11, 412);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Controls.Add(this.btn_open_problemset_all);
+            this.panel3.Controls.Add(this.btn_open_define_h);
+            this.panel3.Controls.Add(this.btn_open_new_problems);
+            this.panel3.Controls.Add(this.btn_open_old_problems);
+            this.panel3.Controls.Add(this.txt_path_test_cpp);
+            this.panel3.Controls.Add(this.txt_path_problemset_all);
+            this.panel3.Controls.Add(this.txt_path_define_h);
+            this.panel3.Controls.Add(this.txt_path_curr_folder);
+            this.panel3.Controls.Add(this.txt_path_new_problems);
+            this.panel3.Controls.Add(this.txt_path_old_problems);
+            this.panel3.Location = new System.Drawing.Point(6, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(523, 185);
+            this.panel3.Size = new System.Drawing.Size(784, 294);
             this.panel3.TabIndex = 26;
             // 
-            // txt_in_prev_folder
+            // label12
             // 
-            this.txt_in_prev_folder.Location = new System.Drawing.Point(307, 58);
-            this.txt_in_prev_folder.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_prev_folder.Name = "txt_in_prev_folder";
-            this.txt_in_prev_folder.Size = new System.Drawing.Size(160, 21);
-            this.txt_in_prev_folder.TabIndex = 43;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 225);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(80, 18);
+            this.label12.TabIndex = 56;
+            this.label12.Text = "题目文件";
             // 
-            // btn_open_hold_path
+            // label11
             // 
-            this.btn_open_hold_path.Location = new System.Drawing.Point(471, 83);
-            this.btn_open_hold_path.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_open_hold_path.Name = "btn_open_hold_path";
-            this.btn_open_hold_path.Size = new System.Drawing.Size(50, 21);
-            this.btn_open_hold_path.TabIndex = 42;
-            this.btn_open_hold_path.Text = "Open";
-            this.btn_open_hold_path.UseVisualStyleBackColor = true;
-            this.btn_open_hold_path.Click += new System.EventHandler(this.btn_open_hold_path_Click);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 257);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 18);
+            this.label11.TabIndex = 55;
+            this.label11.Text = "题解文件";
             // 
-            // txt_in_hold_path
+            // label9
             // 
-            this.txt_in_hold_path.Location = new System.Drawing.Point(2, 83);
-            this.txt_in_hold_path.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_hold_path.Name = "txt_in_hold_path";
-            this.txt_in_hold_path.Size = new System.Drawing.Size(465, 21);
-            this.txt_in_hold_path.TabIndex = 41;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 191);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 18);
+            this.label9.TabIndex = 54;
+            this.label9.Text = "test文件";
             // 
-            // btn_hold
+            // label10
             // 
-            this.btn_hold.Location = new System.Drawing.Point(307, 9);
-            this.btn_hold.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_hold.Name = "btn_hold";
-            this.btn_hold.Size = new System.Drawing.Size(50, 22);
-            this.btn_hold.TabIndex = 40;
-            this.btn_hold.Text = "Hold";
-            this.btn_hold.UseVisualStyleBackColor = true;
-            this.btn_hold.Click += new System.EventHandler(this.btn_hold_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 157);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 18);
+            this.label10.TabIndex = 53;
+            this.label10.Text = "宏定义";
             // 
-            // btn_reset
+            // label8
             // 
-            this.btn_reset.Location = new System.Drawing.Point(361, 9);
-            this.btn_reset.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(50, 22);
-            this.btn_reset.TabIndex = 36;
-            this.btn_reset.Text = "Reset";
-            this.btn_reset.UseVisualStyleBackColor = true;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 123);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 18);
+            this.label8.TabIndex = 50;
+            this.label8.Text = "保留题目";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 18);
+            this.label7.TabIndex = 49;
+            this.label7.Text = "新题目";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 55);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "旧题目";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 18);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "主路径";
+            // 
+            // txt_path_main
+            // 
+            this.txt_path_main.Location = new System.Drawing.Point(92, 16);
+            this.txt_path_main.Name = "txt_path_main";
+            this.txt_path_main.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_main.TabIndex = 46;
+            // 
+            // btn_open_solutions_md
+            // 
+            this.btn_open_solutions_md.Location = new System.Drawing.Point(700, 254);
+            this.btn_open_solutions_md.Name = "btn_open_solutions_md";
+            this.btn_open_solutions_md.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_solutions_md.TabIndex = 45;
+            this.btn_open_solutions_md.Text = "Open";
+            this.btn_open_solutions_md.UseVisualStyleBackColor = true;
+            this.btn_open_solutions_md.Click += new System.EventHandler(this.btn_open_solutions_file_Click);
+            // 
+            // txt_path_solutions_md
+            // 
+            this.txt_path_solutions_md.Location = new System.Drawing.Point(92, 254);
+            this.txt_path_solutions_md.Name = "txt_path_solutions_md";
+            this.txt_path_solutions_md.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_solutions_md.TabIndex = 44;
+            // 
+            // txt_path_prev_folder
+            // 
+            this.txt_path_prev_folder.Location = new System.Drawing.Point(456, 84);
+            this.txt_path_prev_folder.Name = "txt_path_prev_folder";
+            this.txt_path_prev_folder.Size = new System.Drawing.Size(238, 28);
+            this.txt_path_prev_folder.TabIndex = 43;
+            // 
+            // btn_open_hold_problems
+            // 
+            this.btn_open_hold_problems.Location = new System.Drawing.Point(700, 118);
+            this.btn_open_hold_problems.Name = "btn_open_hold_problems";
+            this.btn_open_hold_problems.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_hold_problems.TabIndex = 42;
+            this.btn_open_hold_problems.Text = "Open";
+            this.btn_open_hold_problems.UseVisualStyleBackColor = true;
+            this.btn_open_hold_problems.Click += new System.EventHandler(this.btn_open_hold_path_Click);
+            // 
+            // txt_path_hold_problems
+            // 
+            this.txt_path_hold_problems.Location = new System.Drawing.Point(92, 118);
+            this.txt_path_hold_problems.Name = "txt_path_hold_problems";
+            this.txt_path_hold_problems.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_hold_problems.TabIndex = 41;
             // 
             // btn_open_test_cpp
             // 
-            this.btn_open_test_cpp.Location = new System.Drawing.Point(471, 158);
-            this.btn_open_test_cpp.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_open_test_cpp.Location = new System.Drawing.Point(700, 186);
             this.btn_open_test_cpp.Name = "btn_open_test_cpp";
-            this.btn_open_test_cpp.Size = new System.Drawing.Size(50, 21);
+            this.btn_open_test_cpp.Size = new System.Drawing.Size(75, 28);
             this.btn_open_test_cpp.TabIndex = 39;
             this.btn_open_test_cpp.Text = "Open";
             this.btn_open_test_cpp.UseVisualStyleBackColor = true;
             this.btn_open_test_cpp.Click += new System.EventHandler(this.btn_open_test_cpp_Click);
             // 
-            // btn_open_problemset_file
+            // btn_open_problemset_all
             // 
-            this.btn_open_problemset_file.Location = new System.Drawing.Point(471, 133);
-            this.btn_open_problemset_file.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_open_problemset_file.Name = "btn_open_problemset_file";
-            this.btn_open_problemset_file.Size = new System.Drawing.Size(50, 21);
-            this.btn_open_problemset_file.TabIndex = 38;
-            this.btn_open_problemset_file.Text = "Open";
-            this.btn_open_problemset_file.UseVisualStyleBackColor = true;
-            this.btn_open_problemset_file.Click += new System.EventHandler(this.btn_open_problemset_file_Click);
+            this.btn_open_problemset_all.Location = new System.Drawing.Point(700, 220);
+            this.btn_open_problemset_all.Name = "btn_open_problemset_all";
+            this.btn_open_problemset_all.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_problemset_all.TabIndex = 38;
+            this.btn_open_problemset_all.Text = "Open";
+            this.btn_open_problemset_all.UseVisualStyleBackColor = true;
+            this.btn_open_problemset_all.Click += new System.EventHandler(this.btn_open_problemset_file_Click);
             // 
-            // btn_open_define_file
+            // btn_open_define_h
             // 
-            this.btn_open_define_file.Location = new System.Drawing.Point(471, 108);
-            this.btn_open_define_file.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_open_define_file.Name = "btn_open_define_file";
-            this.btn_open_define_file.Size = new System.Drawing.Size(50, 21);
-            this.btn_open_define_file.TabIndex = 37;
-            this.btn_open_define_file.Text = "Open";
-            this.btn_open_define_file.UseVisualStyleBackColor = true;
-            this.btn_open_define_file.Click += new System.EventHandler(this.btn_open_define_file_Click);
+            this.btn_open_define_h.Location = new System.Drawing.Point(700, 152);
+            this.btn_open_define_h.Name = "btn_open_define_h";
+            this.btn_open_define_h.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_define_h.TabIndex = 37;
+            this.btn_open_define_h.Text = "Open";
+            this.btn_open_define_h.UseVisualStyleBackColor = true;
+            this.btn_open_define_h.Click += new System.EventHandler(this.btn_open_define_file_Click);
             // 
-            // btn_open_new_path
+            // btn_open_new_problems
             // 
-            this.btn_open_new_path.Location = new System.Drawing.Point(471, 57);
-            this.btn_open_new_path.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_open_new_path.Name = "btn_open_new_path";
-            this.btn_open_new_path.Size = new System.Drawing.Size(50, 21);
-            this.btn_open_new_path.TabIndex = 36;
-            this.btn_open_new_path.Text = "Open";
-            this.btn_open_new_path.UseVisualStyleBackColor = true;
-            this.btn_open_new_path.Click += new System.EventHandler(this.btn_open_new_path_Click);
+            this.btn_open_new_problems.Location = new System.Drawing.Point(700, 84);
+            this.btn_open_new_problems.Name = "btn_open_new_problems";
+            this.btn_open_new_problems.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_new_problems.TabIndex = 36;
+            this.btn_open_new_problems.Text = "Open";
+            this.btn_open_new_problems.UseVisualStyleBackColor = true;
+            this.btn_open_new_problems.Click += new System.EventHandler(this.btn_open_new_path_Click);
             // 
-            // btn_open_old_path
+            // btn_open_old_problems
             // 
-            this.btn_open_old_path.Location = new System.Drawing.Point(471, 32);
-            this.btn_open_old_path.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_open_old_path.Name = "btn_open_old_path";
-            this.btn_open_old_path.Size = new System.Drawing.Size(50, 21);
-            this.btn_open_old_path.TabIndex = 35;
-            this.btn_open_old_path.Text = "Open";
-            this.btn_open_old_path.UseVisualStyleBackColor = true;
-            this.btn_open_old_path.Click += new System.EventHandler(this.btn_open_old_path_Click);
+            this.btn_open_old_problems.Location = new System.Drawing.Point(700, 48);
+            this.btn_open_old_problems.Name = "btn_open_old_problems";
+            this.btn_open_old_problems.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_old_problems.TabIndex = 35;
+            this.btn_open_old_problems.Text = "Open";
+            this.btn_open_old_problems.UseVisualStyleBackColor = true;
+            this.btn_open_old_problems.Click += new System.EventHandler(this.btn_open_old_path_Click);
             // 
-            // label3
+            // txt_path_test_cpp
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 9);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 12);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "处理的问题和文件";
+            this.txt_path_test_cpp.Location = new System.Drawing.Point(92, 186);
+            this.txt_path_test_cpp.Name = "txt_path_test_cpp";
+            this.txt_path_test_cpp.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_test_cpp.TabIndex = 33;
             // 
-            // txt_in_test_cpp_file
+            // txt_path_problemset_all
             // 
-            this.txt_in_test_cpp_file.Location = new System.Drawing.Point(2, 158);
-            this.txt_in_test_cpp_file.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_test_cpp_file.Name = "txt_in_test_cpp_file";
-            this.txt_in_test_cpp_file.Size = new System.Drawing.Size(465, 21);
-            this.txt_in_test_cpp_file.TabIndex = 33;
+            this.txt_path_problemset_all.Location = new System.Drawing.Point(92, 220);
+            this.txt_path_problemset_all.Name = "txt_path_problemset_all";
+            this.txt_path_problemset_all.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_problemset_all.TabIndex = 30;
             // 
-            // txt_in_problemset_file
+            // txt_path_define_h
             // 
-            this.txt_in_problemset_file.Location = new System.Drawing.Point(2, 133);
-            this.txt_in_problemset_file.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_problemset_file.Name = "txt_in_problemset_file";
-            this.txt_in_problemset_file.Size = new System.Drawing.Size(465, 21);
-            this.txt_in_problemset_file.TabIndex = 30;
+            this.txt_path_define_h.Location = new System.Drawing.Point(92, 152);
+            this.txt_path_define_h.Name = "txt_path_define_h";
+            this.txt_path_define_h.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_define_h.TabIndex = 29;
             // 
-            // txt_in_define_file
+            // txt_path_curr_folder
             // 
-            this.txt_in_define_file.Location = new System.Drawing.Point(2, 108);
-            this.txt_in_define_file.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_define_file.Name = "txt_in_define_file";
-            this.txt_in_define_file.Size = new System.Drawing.Size(465, 21);
-            this.txt_in_define_file.TabIndex = 29;
+            this.txt_path_curr_folder.Location = new System.Drawing.Point(456, 50);
+            this.txt_path_curr_folder.Name = "txt_path_curr_folder";
+            this.txt_path_curr_folder.Size = new System.Drawing.Size(238, 28);
+            this.txt_path_curr_folder.TabIndex = 28;
             // 
-            // txt_in_curr_folder
+            // txt_path_new_problems
             // 
-            this.txt_in_curr_folder.Location = new System.Drawing.Point(307, 33);
-            this.txt_in_curr_folder.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_curr_folder.Name = "txt_in_curr_folder";
-            this.txt_in_curr_folder.Size = new System.Drawing.Size(160, 21);
-            this.txt_in_curr_folder.TabIndex = 28;
+            this.txt_path_new_problems.Location = new System.Drawing.Point(92, 84);
+            this.txt_path_new_problems.Name = "txt_path_new_problems";
+            this.txt_path_new_problems.Size = new System.Drawing.Size(357, 28);
+            this.txt_path_new_problems.TabIndex = 27;
             // 
-            // txt_in_new_path
+            // txt_path_old_problems
             // 
-            this.txt_in_new_path.Location = new System.Drawing.Point(2, 58);
-            this.txt_in_new_path.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_new_path.Name = "txt_in_new_path";
-            this.txt_in_new_path.Size = new System.Drawing.Size(301, 21);
-            this.txt_in_new_path.TabIndex = 27;
+            this.txt_path_old_problems.Location = new System.Drawing.Point(92, 50);
+            this.txt_path_old_problems.Name = "txt_path_old_problems";
+            this.txt_path_old_problems.Size = new System.Drawing.Size(357, 28);
+            this.txt_path_old_problems.TabIndex = 24;
             // 
-            // txt_in_old_path
+            // btn_transfer_folder
             // 
-            this.txt_in_old_path.Location = new System.Drawing.Point(2, 33);
-            this.txt_in_old_path.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_old_path.Name = "txt_in_old_path";
-            this.txt_in_old_path.Size = new System.Drawing.Size(301, 21);
-            this.txt_in_old_path.TabIndex = 24;
-            // 
-            // btn_copy_folder
-            // 
-            this.btn_copy_folder.Location = new System.Drawing.Point(274, 601);
-            this.btn_copy_folder.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_copy_folder.Name = "btn_copy_folder";
-            this.btn_copy_folder.Size = new System.Drawing.Size(260, 50);
-            this.btn_copy_folder.TabIndex = 34;
-            this.btn_copy_folder.Text = "Copy Folder";
-            this.btn_copy_folder.UseVisualStyleBackColor = true;
-            this.btn_copy_folder.Click += new System.EventHandler(this.btn_copy_folder_Click);
+            this.btn_transfer_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_transfer_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_transfer_folder.Location = new System.Drawing.Point(12, 722);
+            this.btn_transfer_folder.Name = "btn_transfer_folder";
+            this.btn_transfer_folder.Size = new System.Drawing.Size(772, 75);
+            this.btn_transfer_folder.TabIndex = 34;
+            this.btn_transfer_folder.Text = "Transfer Folder";
+            this.btn_transfer_folder.UseVisualStyleBackColor = true;
+            this.btn_transfer_folder.Click += new System.EventHandler(this.btn_transfer_folder_Click);
             // 
             // btn_get_folder
             // 
-            this.btn_get_folder.Location = new System.Drawing.Point(10, 601);
-            this.btn_get_folder.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_get_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_get_folder.Location = new System.Drawing.Point(12, 166);
             this.btn_get_folder.Name = "btn_get_folder";
-            this.btn_get_folder.Size = new System.Drawing.Size(260, 50);
+            this.btn_get_folder.Size = new System.Drawing.Size(772, 75);
             this.btn_get_folder.TabIndex = 33;
             this.btn_get_folder.Text = "Get Folder";
             this.btn_get_folder.UseVisualStyleBackColor = true;
             this.btn_get_folder.Click += new System.EventHandler(this.btn_get_folder_Click);
             // 
+            // tc_main
+            // 
+            this.tc_main.Controls.Add(this.tp_transfer);
+            this.tc_main.Controls.Add(this.tp_path);
+            this.tc_main.Location = new System.Drawing.Point(12, 12);
+            this.tc_main.Name = "tc_main";
+            this.tc_main.SelectedIndex = 0;
+            this.tc_main.Size = new System.Drawing.Size(804, 838);
+            this.tc_main.TabIndex = 35;
+            // 
+            // tp_transfer
+            // 
+            this.tp_transfer.Controls.Add(this.panel1);
+            this.tp_transfer.Controls.Add(this.btn_transfer_folder);
+            this.tp_transfer.Controls.Add(this.panel2);
+            this.tp_transfer.Controls.Add(this.btn_get_folder);
+            this.tp_transfer.Location = new System.Drawing.Point(4, 28);
+            this.tp_transfer.Name = "tp_transfer";
+            this.tp_transfer.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_transfer.Size = new System.Drawing.Size(796, 806);
+            this.tp_transfer.TabIndex = 1;
+            this.tp_transfer.Text = "转移旧答题文件";
+            this.tp_transfer.UseVisualStyleBackColor = true;
+            // 
+            // tp_path
+            // 
+            this.tp_path.Controls.Add(this.panel3);
+            this.tp_path.Location = new System.Drawing.Point(4, 28);
+            this.tp_path.Name = "tp_path";
+            this.tp_path.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_path.Size = new System.Drawing.Size(796, 806);
+            this.tp_path.TabIndex = 0;
+            this.tp_path.Text = "文件路径";
+            this.tp_path.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 656);
-            this.Controls.Add(this.btn_copy_folder);
-            this.Controls.Add(this.btn_get_folder);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.ClientSize = new System.Drawing.Size(824, 859);
+            this.Controls.Add(this.tc_main);
             this.Name = "frmMain";
             this.Text = "leetcode_cpp_helper";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -484,6 +615,9 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tc_main.ResumeLayout(false);
+            this.tp_transfer.ResumeLayout(false);
+            this.tp_path.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -509,25 +643,40 @@
         private System.Windows.Forms.TextBox txt_out_return_type;
         private System.Windows.Forms.TextBox txt_in_func;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_in_test_cpp_file;
-        private System.Windows.Forms.TextBox txt_in_problemset_file;
-        private System.Windows.Forms.TextBox txt_in_define_file;
-        private System.Windows.Forms.TextBox txt_in_curr_folder;
-        private System.Windows.Forms.TextBox txt_in_new_path;
-        private System.Windows.Forms.TextBox txt_in_old_path;
+        private System.Windows.Forms.TextBox txt_path_test_cpp;
+        private System.Windows.Forms.TextBox txt_path_problemset_all;
+        private System.Windows.Forms.TextBox txt_path_define_h;
+        private System.Windows.Forms.TextBox txt_path_curr_folder;
+        private System.Windows.Forms.TextBox txt_path_new_problems;
+        private System.Windows.Forms.TextBox txt_path_old_problems;
         private System.Windows.Forms.Button btn_reset;
-        private System.Windows.Forms.Button btn_copy_folder;
+        private System.Windows.Forms.Button btn_transfer_folder;
         private System.Windows.Forms.Button btn_get_folder;
-        private System.Windows.Forms.Button btn_open_new_path;
-        private System.Windows.Forms.Button btn_open_old_path;
+        private System.Windows.Forms.Button btn_open_new_problems;
+        private System.Windows.Forms.Button btn_open_old_problems;
         private System.Windows.Forms.Button btn_open_test_cpp;
-        private System.Windows.Forms.Button btn_open_problemset_file;
-        private System.Windows.Forms.Button btn_open_define_file;
+        private System.Windows.Forms.Button btn_open_problemset_all;
+        private System.Windows.Forms.Button btn_open_define_h;
         private System.Windows.Forms.Button btn_hold;
-        private System.Windows.Forms.TextBox txt_in_hold_path;
-        private System.Windows.Forms.Button btn_open_hold_path;
-        private System.Windows.Forms.TextBox txt_in_prev_folder;
+        private System.Windows.Forms.TextBox txt_path_hold_problems;
+        private System.Windows.Forms.Button btn_open_hold_problems;
+        private System.Windows.Forms.TextBox txt_path_prev_folder;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_create;
+        private System.Windows.Forms.Button btn_open_solutions_md;
+        private System.Windows.Forms.TextBox txt_path_solutions_md;
+        private System.Windows.Forms.TextBox txt_path_main;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TabControl tc_main;
+        private System.Windows.Forms.TabPage tp_path;
+        private System.Windows.Forms.TabPage tp_transfer;
     }
 }
 

@@ -15,10 +15,7 @@ namespace leetcode_md_helper
     public partial class frmMain : Form
     {
         private string m_strDifficult;
-        private string m_strId;
-        private string m_strPath;
-        private string m_strTitleE;
-        private string m_strTitleC;
+        private string m_strCodeSelect;
 
         public frmMain()
         {
@@ -28,145 +25,132 @@ namespace leetcode_md_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            //txt_FilePath.Text = @"C:/AhJo53589/leetcode-cn";
-            txt_FilePath.Text = System.Windows.Forms.Application.StartupPath;
+            //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2";
+            txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
 
-            txtOut_ReadmeFilePath.Text = txt_FilePath.Text + @"/README.md";
-            txtOut_ProblemsFilePath.Text = txt_FilePath.Text + @"/Problems.md";
-            txtOut_SolutionsFilePath.Text = txt_FilePath.Text + @"/Solutions.md";
-            txtOut_UpdateFilePath.Text = txt_FilePath.Text + @"/Update.md";
-            txtOut_CommitFilePath.Text = txt_FilePath.Text + @"/git_commit.bat";
+            Reset();
+            m_strDifficult = rb_in_difficult_1.Text;
+            m_strCodeSelect = rb_in_test_0.Text;
+        }
 
-            m_strDifficult = "简单";
+        private void Reset()
+        {
+            txt_path_readme_md.Text = txt_path_main.Text + @"\README.md";
+            txt_path_update_md.Text = txt_path_main.Text + @"\Update.md";
+            txt_path_problemset_all.Text = txt_path_main.Text + @"\problemset\all\README.md";
+            txt_path_solutions_md.Text = txt_path_main.Text + @"\Solutions.md";
+            txt_path_commit_bat.Text = txt_path_main.Text + @"\git_commit.bat";
+        }
+
+        private void Clear()
+        {
+            rb_in_difficult_1.Checked = true;
+            txt_in_link.Text = "";
+            txt_path_contest.Text = "";
+            txt_in_id_titleC.Text = "";
+            txt_in_id.Text = "";
+            txt_in_titleE.Text = "";
+            txt_in_titleC.Text = "";
+            txt_in_solution_link.Text = "";
+            txt_in_description.Text = "";
+            txt_in_answer.Text = "";
+            txt_in_answer_other.Text = "";
+            rb_in_test_1.Checked = true;
+
+            txt_path_contest_problemset.Text = "";
+            txt_path_answer_readme_md.Text = "";
+            txt_path_solution_cpp.Text = "";
+            txt_path_tests_txt.Text = "";
+
+            lbl_out_readme_md.Visible = false;
+            lbl_out_update_md.Visible = false;
+            lbl_out_problemset_all.Visible = false;
+            lbl_out_contest_problems.Visible = false;
+            lbl_out_solutions_md.Visible = false;
+            lbl_out_answer_readme_md.Visible = false;
+            lbl_out_solution_cpp.Visible = false;
+            lbl_out_tests_txt.Visible = false;
+            lbl_out_commit_bat.Visible = false;
+
+            btnGenerate.Enabled = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtIn_IdTitleC.Text = "";
-            txtIn_IdTitleE.Text = "";
-            txtIn_Link.Text = "";
-            txtIn_Description.Text = "";
-            txtIn_SolutionLink.Text = "";
-            txtIn_Answer.Text = "";
-            txtOut_AnswerFilePath.Text = "";
-            lblOut_Readme.Visible = false;
-            lblOut_Problems.Visible = false;
-            lblOut_Solutions.Visible = false;
-            lblOut_Update.Visible = false;
-            lblOut_Answer.Visible = false;
-            lblOut_Commit.Visible = false;
-            btnGenerate.Enabled = false;
+            Clear();
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            txtTitle_TextChanged(sender, e);
-            if (m_strPath == "")
+            // 是否是比赛
+            if (txt_path_contest.Text == "")
             {
-                int iProblemsCount = Modify_ProblemsFile();
-                Modify_ReadmeFile(iProblemsCount);
+                int iProblemsCount = Modify_File_ProblemsetAll_Readme_md();
+                Modify_File_Readme_md(iProblemsCount);
             }
             else
             {
-                Modify_ProblemsFile();
+                Modify_File_ProblemsetAll_Readme_md();
             }
-            Modify_UpdateFile();
-            Create_AnswerFile();
-            Modify_SolutionsFile();
+            Modify_File_Update_md();
+            Modify_File_Solutions_md();
+
+            string newPath = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text;
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+
+            Create_File_Answer_Readme_md();
+            Copy_File_Solution_cpp();
+            Copy_File_Tests_txt();
+
             Create_CommitFile();
         }
 
         private void txtTitle_TextChanged(object sender, EventArgs e)
         {
-            if (txtIn_IdTitleC.Text != "" && txtIn_Link.Text != "")
+            try
             {
-                GetPathAndTitleE_FromLink();
-                string strIdTitleE = m_strId + "." + m_strTitleE;
-
-                string str = txt_FilePath.Text + m_strPath;
-                str += @"/problems/" + strIdTitleE + @"/README.md";
-
-                if (m_strPath != "")
+                if (txt_in_id_titleC.Text != "" && txt_in_link.Text != "")
                 {
-                    txtOut_ProblemsFilePath.Text = txt_FilePath.Text + m_strPath + @"/README.md";
+                    SplitPathAndTitleE_From_Link();
+
+                    if (txt_path_contest.Text != "")
+                    {
+                        txt_path_contest_problemset.Text = txt_path_main.Text + txt_path_contest.Text + @"\README.md";
+                    }
+                    else
+                    {
+                        txt_path_contest_problemset.Text = "";
+                    }
+                    txt_path_answer_readme_md.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\README.md";
+                    txt_path_solution_cpp.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\SOLUTION.md";
+                    txt_path_tests_txt.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\tests.txt";
+
+                    btnGenerate.Enabled = true;
                 }
-
-                txtIn_IdTitleE.Text = strIdTitleE;
-                Clipboard.SetText(strIdTitleE);
-                txtOut_AnswerFilePath.Text = str;
-
-                btnGenerate.Enabled = true;
+                else
+                {
+                    btnGenerate.Enabled = false;
+                }
             }
-            else
+            catch
             {
-                txtIn_IdTitleE.Text = "";
-                btnGenerate.Enabled = false;
+
             }
         }
 
-        private void btnFixFile_Click(object sender, EventArgs e)
-        {
-            //string strFile = txtOut_ProblemsFilePath.Text;
-
-            //if (!File.Exists(strFile))
-            //{
-            //    MessageBox.Show(@"[README.md] file not exist!");
-            //    return;
-            //}
-
-            //string strText = "";
-            //int iMark = 0;
-
-            //FileStream fs = new FileStream(strFile, FileMode.Open);
-            //using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
-            //{
-            //    while (!sr.EndOfStream)
-            //    {
-            //        string str = sr.ReadLine();
-            //        if (iMark == 0)
-            //        {
-            //            if (str == "# leetcode-cn") iMark = 1;  // find title
-            //        }
-            //        else if (iMark == 1)
-            //        {
-            //            if (str == "## Problems & Solutions") iMark = 20;  // find title
-            //        }
-            //        else if (iMark == 20)
-            //        {
-            //            if (str == "") continue;
-            //            string strDifficult = GetDifficult_FromDirectoryString(str);
-            //            string strIdTitle = GetIdTitleEC_FromDirectoryString(str);
-            //            string strAnswer = GetAnswerFilePath_FromDirectoryString(str);
-
-            //            str = "* ";
-            //            str += strDifficult;
-            //            str += " ";
-            //            str += strIdTitle;
-            //            str += " | [详情](";
-            //            str += strAnswer;
-            //            str += ")";
-            //        }
-
-            //        // copy this line
-            //        strText += str + "\n";
-            //    }
-            //    sr.Close();
-
-            //    UTF8Encoding utf8 = new UTF8Encoding(false);
-            //    File.WriteAllText(strFile, strText, utf8);
-            //}
-            //lblOut_Readme.Visible = true;
-        }
-
-        private void rbIn_Difficult_CheckedChanged(object sender, EventArgs e)
+        private void rb_in_difficult_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
             m_strDifficult = rb.Text;
         }
 
-        private void btnCopy_Link_Click(object sender, EventArgs e)
+        private void rb_in_test_CheckedChanged(object sender, EventArgs e)
         {
-            Clipboard.SetText(GenerateDirectoryString_WithSelectedSolution());
+            RadioButton rb = (RadioButton)sender;
+            m_strCodeSelect = rb.Text;
         }
 
         private void btnCopy_SolutionLink_Click(object sender, EventArgs e)
@@ -181,13 +165,12 @@ namespace leetcode_md_helper
 
         private void btnCopy_Answer_2_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(GenerateString_Answer_2());
+            Clipboard.SetText(GenerateString_Answer_Other());
         }
 
-        private void btnCopy_ID_Click(object sender, EventArgs e)
+        private void btn_reset_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(txtIn_IdTitleE.Text);
+            Reset();
         }
-
     }
 }

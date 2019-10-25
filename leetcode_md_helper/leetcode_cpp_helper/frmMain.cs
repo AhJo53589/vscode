@@ -21,12 +21,14 @@ namespace leetcode_cpp_helper
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            reset();
+            // Test path
+            txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
+            //txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
+            Reset();
         }
 
-        private void reset()
+        private void Reset()
         {
-            txt_path_main.Text = @"C:\AhJo53589\leetcode-cn\leetcode-cn_2";
             txt_path_old_problems.Text = txt_path_main.Text + @"\_problems";
             txt_path_curr_folder.Text = "";
             txt_path_new_problems.Text = txt_path_main.Text + @"\problems";
@@ -697,7 +699,7 @@ namespace leetcode_cpp_helper
             }
 
             btn_transfer_folder.Enabled = false;
-            reset();
+            Reset();
         }
 
         private void btn_open_link_Click(object sender, EventArgs e)
@@ -719,7 +721,7 @@ namespace leetcode_cpp_helper
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
-            reset();
+            Reset();
         }
 
         private void btn_open_old_path_Click(object sender, EventArgs e)
@@ -776,7 +778,7 @@ namespace leetcode_cpp_helper
                 Directory.Delete(oldPath, true);
             }
 
-            reset();
+            Reset();
         }
 
         private void btn_create_Click(object sender, EventArgs e)

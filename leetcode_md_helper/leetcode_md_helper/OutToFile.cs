@@ -105,21 +105,26 @@ namespace leetcode_md_helper
                     }
                     else if (iMark == 12)
                     {
-                        if (txt_in_solution_link.Text == "") iMark = 19;
-
-                        if (str.IndexOf("|") != -1)
+                        if (txt_in_solution_link.Text == "")
                         {
-                            int iReadNo = GetId_From_InfoForm_Problem(str);
-                            if (iReadNo > iInsertNo)
-                            {
-                                strText += strInsert_SelectedSolution + "\r\n";    // insert content here
-                                iMark = 19;  // iMakr == 19, insert completed
-                            }
+                            iMark = 19;
                         }
                         else
                         {
-                            strText += strInsert_SelectedSolution + "\r\n";    // insert content here
-                            iMark = 19;  // find title
+                            if (str.IndexOf("|") != -1)
+                            {
+                                int iReadNo = GetId_From_InfoForm_Problem(str);
+                                if (iReadNo > iInsertNo)
+                                {
+                                    strText += strInsert_SelectedSolution + "\r\n";    // insert content here
+                                    iMark = 19;  // iMakr == 19, insert completed
+                                }
+                            }
+                            else
+                            {
+                                strText += strInsert_SelectedSolution + "\r\n";    // insert content here
+                                iMark = 19;  // find title
+                            }
                         }
                     }
                     else if (iMark == 19)

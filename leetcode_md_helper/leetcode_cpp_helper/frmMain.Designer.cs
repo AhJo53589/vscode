@@ -79,15 +79,12 @@
             this.txt_path_old_problems = new System.Windows.Forms.TextBox();
             this.btn_transfer_folder = new System.Windows.Forms.Button();
             this.btn_get_folder = new System.Windows.Forms.Button();
-            this.tc_main = new System.Windows.Forms.TabControl();
-            this.tp_transfer = new System.Windows.Forms.TabPage();
-            this.tp_path = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_open_readme_md = new System.Windows.Forms.Button();
+            this.txt_path_readme_md = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tc_main.SuspendLayout();
-            this.tp_transfer.SuspendLayout();
-            this.tp_path.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,7 +100,7 @@
             this.panel1.Controls.Add(this.txt_in_titleC);
             this.panel1.Controls.Add(this.txt_in_titleE);
             this.panel1.Controls.Add(this.txt_in_id);
-            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 157);
             this.panel1.TabIndex = 24;
@@ -201,7 +198,6 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.btn_create);
             this.panel2.Controls.Add(this.txt_in_func_testcase);
@@ -212,7 +208,7 @@
             this.panel2.Controls.Add(this.txt_out_func_name);
             this.panel2.Controls.Add(this.txt_out_return_type);
             this.panel2.Controls.Add(this.txt_in_func);
-            this.panel2.Location = new System.Drawing.Point(6, 292);
+            this.panel2.Location = new System.Drawing.Point(12, 175);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 424);
             this.panel2.TabIndex = 25;
@@ -300,6 +296,10 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.btn_open_readme_md);
+            this.panel3.Controls.Add(this.txt_path_readme_md);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label9);
@@ -325,9 +325,9 @@
             this.panel3.Controls.Add(this.txt_path_curr_folder);
             this.panel3.Controls.Add(this.txt_path_new_problems);
             this.panel3.Controls.Add(this.txt_path_old_problems);
-            this.panel3.Location = new System.Drawing.Point(6, 6);
+            this.panel3.Location = new System.Drawing.Point(12, 605);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 294);
+            this.panel3.Size = new System.Drawing.Size(784, 335);
             this.panel3.TabIndex = 26;
             // 
             // label12
@@ -546,9 +546,9 @@
             // 
             this.btn_transfer_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_transfer_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_transfer_folder.Location = new System.Drawing.Point(12, 722);
+            this.btn_transfer_folder.Location = new System.Drawing.Point(407, 950);
             this.btn_transfer_folder.Name = "btn_transfer_folder";
-            this.btn_transfer_folder.Size = new System.Drawing.Size(772, 75);
+            this.btn_transfer_folder.Size = new System.Drawing.Size(389, 75);
             this.btn_transfer_folder.TabIndex = 34;
             this.btn_transfer_folder.Text = "Transfer Folder";
             this.btn_transfer_folder.UseVisualStyleBackColor = true;
@@ -556,56 +556,52 @@
             // 
             // btn_get_folder
             // 
+            this.btn_get_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_get_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_get_folder.Location = new System.Drawing.Point(12, 166);
+            this.btn_get_folder.Location = new System.Drawing.Point(12, 950);
             this.btn_get_folder.Name = "btn_get_folder";
-            this.btn_get_folder.Size = new System.Drawing.Size(772, 75);
+            this.btn_get_folder.Size = new System.Drawing.Size(389, 75);
             this.btn_get_folder.TabIndex = 33;
             this.btn_get_folder.Text = "Get Folder";
             this.btn_get_folder.UseVisualStyleBackColor = true;
             this.btn_get_folder.Click += new System.EventHandler(this.btn_get_folder_Click);
             // 
-            // tc_main
+            // label3
             // 
-            this.tc_main.Controls.Add(this.tp_transfer);
-            this.tc_main.Controls.Add(this.tp_path);
-            this.tc_main.Location = new System.Drawing.Point(12, 12);
-            this.tc_main.Name = "tc_main";
-            this.tc_main.SelectedIndex = 0;
-            this.tc_main.Size = new System.Drawing.Size(804, 838);
-            this.tc_main.TabIndex = 35;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 291);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 18);
+            this.label3.TabIndex = 59;
+            this.label3.Text = "主页文件";
             // 
-            // tp_transfer
+            // btn_open_readme_md
             // 
-            this.tp_transfer.Controls.Add(this.panel1);
-            this.tp_transfer.Controls.Add(this.btn_transfer_folder);
-            this.tp_transfer.Controls.Add(this.panel2);
-            this.tp_transfer.Controls.Add(this.btn_get_folder);
-            this.tp_transfer.Location = new System.Drawing.Point(4, 28);
-            this.tp_transfer.Name = "tp_transfer";
-            this.tp_transfer.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_transfer.Size = new System.Drawing.Size(796, 806);
-            this.tp_transfer.TabIndex = 1;
-            this.tp_transfer.Text = "转移旧答题文件";
-            this.tp_transfer.UseVisualStyleBackColor = true;
+            this.btn_open_readme_md.Location = new System.Drawing.Point(700, 288);
+            this.btn_open_readme_md.Name = "btn_open_readme_md";
+            this.btn_open_readme_md.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_readme_md.TabIndex = 58;
+            this.btn_open_readme_md.Text = "Open";
+            this.btn_open_readme_md.UseVisualStyleBackColor = true;
+            this.btn_open_readme_md.Click += new System.EventHandler(this.btn_open_readme_md_Click);
             // 
-            // tp_path
+            // txt_path_readme_md
             // 
-            this.tp_path.Controls.Add(this.panel3);
-            this.tp_path.Location = new System.Drawing.Point(4, 28);
-            this.tp_path.Name = "tp_path";
-            this.tp_path.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_path.Size = new System.Drawing.Size(796, 806);
-            this.tp_path.TabIndex = 0;
-            this.tp_path.Text = "文件路径";
-            this.tp_path.UseVisualStyleBackColor = true;
+            this.txt_path_readme_md.Location = new System.Drawing.Point(92, 288);
+            this.txt_path_readme_md.Name = "txt_path_readme_md";
+            this.txt_path_readme_md.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_readme_md.TabIndex = 57;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 859);
-            this.Controls.Add(this.tc_main);
+            this.ClientSize = new System.Drawing.Size(809, 1037);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btn_transfer_folder);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.btn_get_folder);
             this.Name = "frmMain";
             this.Text = "leetcode_cpp_helper";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -615,9 +611,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tc_main.ResumeLayout(false);
-            this.tp_transfer.ResumeLayout(false);
-            this.tp_path.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -674,9 +667,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TabControl tc_main;
-        private System.Windows.Forms.TabPage tp_path;
-        private System.Windows.Forms.TabPage tp_transfer;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_open_readme_md;
+        private System.Windows.Forms.TextBox txt_path_readme_md;
     }
 }
 

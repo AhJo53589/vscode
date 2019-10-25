@@ -22,8 +22,8 @@ namespace leetcode_cpp_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
-            //txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
+            //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
+            txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
             Reset();
         }
 
@@ -40,6 +40,7 @@ namespace leetcode_cpp_helper
 
             txt_path_problemset_all.Text = txt_path_main.Text + @"\problemset\all\README.md";
             txt_path_solutions_md.Text = txt_path_main.Text + @"\Solutions.md";
+            txt_path_readme_md.Text = txt_path_main.Text + @"\README.md";
 
             txt_in_difficult.Text = "";
             txt_in_id.Text = "";
@@ -360,6 +361,7 @@ namespace leetcode_cpp_helper
 
         private void Modify_File_Solutions_md()
         {
+            if (txt_in_solution_link.Text == "") return;
             if (txt_path_solutions_md.Text == "") return;
             string strFile = txt_path_solutions_md.Text;
             if (!File.Exists(strFile))
@@ -459,6 +461,108 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
+        }
+
+        private void Modify_File_Readme_md(int iProblemsCount)
+        {
+            if (txt_path_readme_md.Text == "") return;
+            string strFile = txt_path_readme_md.Text;
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[README.md] file not exist!");
+                return;
+            }
+
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem();
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strText = "";
+            int iMark = 0;
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (iMark == 0)
+                    {
+                        if (str == "# leetcode-cn") iMark = 1;  // find title
+                    }
+                    else if (iMark == 1)
+                    {
+                        if (str == "## Selected Solutions") iMark = 10;  // find title
+                    }
+                    else if (iMark == 10 || iMark == 11)
+                    {
+                        if (str == "") continue;
+                        if (str.IndexOf("|") != -1) iMark++;
+                    }
+                    else if (iMark == 12)
+                    {
+                        if (txt_in_solution_link.Text == "")
+                        {
+                            iMark = 19;
+                        }
+                        else
+                        {
+                            if (str.IndexOf("|") != -1)
+                            {
+                                int iReadNo = GetId_From_InfoForm_Problem(str);
+                                if (iReadNo > iInsertNo)
+                                {
+                                    strText += strInsert_SelectedSolution + "\r\n";    // insert content here
+                                    iMark = 19;  // iMakr == 19, insert completed
+                                }
+                            }
+                            else
+                            {
+                                strText += strInsert_SelectedSolution + "\r\n";    // insert content here
+                                iMark = 19;  // find title
+                            }
+                        }
+                    }
+                    else if (iMark == 19)
+                    {
+                        if (str == "## Problemset / All") iMark = 20;  // find title
+                    }
+                    else if (iMark == 20)
+                    {
+                        string[] s1 = str.Split('（');
+                        string[] s2 = str.Split('/');
+                        str = s1[0] + "（";
+                        str += iProblemsCount.ToString();
+                        str += " /";
+                        str += s2[1];
+
+                        iMark = 29;
+                    }
+                    else if (iMark == 29)
+                    {
+                        if (str == "## Contest") iMark = 30;  // find title
+                    }
+                    else if (iMark == 30 || iMark == 31)
+                    {
+                        if (str == "") continue;
+                        if (str.IndexOf("|") != -1) iMark++;
+                    }
+                    else if (iMark == 32)
+                    {
+                        iMark = 100;  // iMakr == 19, insert completed
+                    }
+
+                    // copy this line
+                    strText += str + "\r\n";
+                }
+                if (iMark != 100)
+                {
+                    MessageBox.Show(@"[README.md] insert failed!");
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(strFile, strText, utf8);
+            }
+            btn_open_readme_md.Visible = true;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -650,6 +754,7 @@ namespace leetcode_cpp_helper
                 if (file.Extension == ".cpp")
                 {
                     string temp = file.FullName;
+                    Process.Start(temp);
                 }
             }
 
@@ -673,7 +778,8 @@ namespace leetcode_cpp_helper
             Create_File_TestCases_txt(newPath);
             Modify_File_Define_IdName_h();
             Modify_File_Test_cpp();
-            Modify_File_ProblemsetAll_Readme_md();
+            int iProblemsCount = Modify_File_ProblemsetAll_Readme_md();
+            Modify_File_Readme_md(iProblemsCount);
             Modify_File_Solutions_md();
 
             // 删除已经重新生成的
@@ -759,6 +865,11 @@ namespace leetcode_cpp_helper
             Process.Start(txt_path_hold_problems.Text);
         }
 
+        private void btn_open_readme_md_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_readme_md.Text);
+        }
+
         private void btn_hold_Click(object sender, EventArgs e)
         {
             string oldPath = txt_path_old_problems.Text + "\\" + txt_path_curr_folder.Text;
@@ -794,6 +905,5 @@ namespace leetcode_cpp_helper
             //Modify_File_Define_IdName_h();
             //Modify_File_Test_cpp();
         }
-
     }
 }

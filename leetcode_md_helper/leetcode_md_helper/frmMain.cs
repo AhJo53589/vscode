@@ -25,8 +25,8 @@ namespace leetcode_md_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
-            //txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
+            //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
+            txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
 
             Reset();
             m_strDifficult = rb_in_difficult_1.Text;

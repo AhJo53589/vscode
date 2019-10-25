@@ -60,7 +60,15 @@ namespace leetcode_md_helper
             // 无题解
             // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) |  | 简单 |
             string strText = "";
-            strText += "| √";
+            strText += "| ";
+            if (cb_in_finish.Checked == true)
+            {
+                strText += "√";
+            }
+            else
+            {
+                strText += " ";
+            }
             strText += " | " + txt_in_id.Text;
             strText += " | " + GenerateString_TitleAndFolderPath();
             strText += " | " + GenerateString_TitleAndFileLink();
@@ -110,12 +118,46 @@ namespace leetcode_md_helper
 
         private string GenerateString_DiffIdTitleECLink()
         {
+            // https://leetcode-cn.com/contest/weekly-contest-159/problems/check-if-it-is-a-straight-line/
+            // https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
+            string strLink = "";
+            if (txt_path_contest.Text != "")
+            {
+                bool bContest = false;
+                string[] s = txt_in_link.Text.Split('/');
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (s[i] == "contest")
+                    {
+                        bContest = true;
+                    }
+                    if (s[i] == "problems")
+                    {
+                        bContest = false;
+                    }
+                    if (!bContest && i < s.Length - 1)
+                    {
+                        strLink += s[i] + "/";
+                    }
+                }
+            }
+            else
+            {
+                strLink = txt_in_link.Text;
+            }
             // example: 
             // `（简单）` [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
             string strText = "";
             strText += "`（" + m_strDifficult + "）` ";
             strText += "[" + txt_in_id.Text + "." + txt_in_titleE.Text + " " + txt_in_titleC.Text + "]";
-            strText += "(" + txt_in_link.Text + ")";
+            strText += "(" + strLink + ")";
+
+            if (txt_path_contest.Text != "")
+            {
+                strText += "\r\n\r\n";
+                strText += "[contest]";
+                strText += "(" + txt_in_link.Text + ")";
+            }
             return strText;
         }
 

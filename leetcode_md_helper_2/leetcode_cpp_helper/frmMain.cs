@@ -159,8 +159,6 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-
-            //Process.Start(strFile);
         }
 
         private void Create_File_Solution_cpp(string newPath)
@@ -211,8 +209,6 @@ namespace leetcode_cpp_helper
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
-
-            Process.Start(strFile);
         }
 
         private void Create_File_TestCases_txt(string newPath)
@@ -225,10 +221,7 @@ namespace leetcode_cpp_helper
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
-
-            //Process.Start(strFile);
         }
-
 
         private void Modify_File_Define_IdName_h()
         {
@@ -291,8 +284,6 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-
-            //Process.Start(strFile);
         }
 
         private int Modify_File_ProblemsetAll_Readme_md()
@@ -362,8 +353,6 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-
-            //Process.Start(strFile);
             return iProblemsCount + 1;
         }
 
@@ -468,8 +457,6 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-
-            //Process.Start(strFile);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -637,6 +624,7 @@ namespace leetcode_cpp_helper
             txt_out_param_value.Text = temp;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////
         private void btn_get_folder_Click(object sender, EventArgs e)
         {
             DirectoryInfo folder = new DirectoryInfo(txt_path_old_problems.Text);
@@ -660,7 +648,6 @@ namespace leetcode_cpp_helper
                 if (file.Extension == ".cpp")
                 {
                     string temp = file.FullName;
-                    Process.Start(temp);
                 }
             }
 

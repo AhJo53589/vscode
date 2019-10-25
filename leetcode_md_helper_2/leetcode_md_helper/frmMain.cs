@@ -39,12 +39,16 @@ namespace leetcode_md_helper
             txt_path_update_md.Text = txt_path_main.Text + @"\Update.md";
             txt_path_problemset_all.Text = txt_path_main.Text + @"\problemset\all\README.md";
             txt_path_solutions_md.Text = txt_path_main.Text + @"\Solutions.md";
+            txt_path_test_cpp.Text = txt_path_main.Text + @"\test\Test\Test.cpp";
+            txt_path_define_h.Text = txt_path_main.Text + @"\test\Common\Define_IdName.h";
             txt_path_commit_bat.Text = txt_path_main.Text + @"\git_commit.bat";
+            Clear();
         }
 
         private void Clear()
         {
             rb_in_difficult_1.Checked = true;
+            cb_in_finish.Checked = true;
             txt_in_link.Text = "";
             txt_path_contest.Text = "";
             txt_in_id_titleC.Text = "";
@@ -55,22 +59,24 @@ namespace leetcode_md_helper
             txt_in_description.Text = "";
             txt_in_answer.Text = "";
             txt_in_answer_other.Text = "";
-            rb_in_test_1.Checked = true;
+            rb_in_test_0.Checked = true;
 
-            txt_path_contest_problemset.Text = "";
+            txt_path_contest_problems.Text = "";
             txt_path_answer_readme_md.Text = "";
             txt_path_solution_cpp.Text = "";
             txt_path_tests_txt.Text = "";
 
-            lbl_out_readme_md.Visible = false;
-            lbl_out_update_md.Visible = false;
-            lbl_out_problemset_all.Visible = false;
-            lbl_out_contest_problems.Visible = false;
-            lbl_out_solutions_md.Visible = false;
-            lbl_out_answer_readme_md.Visible = false;
-            lbl_out_solution_cpp.Visible = false;
-            lbl_out_tests_txt.Visible = false;
-            lbl_out_commit_bat.Visible = false;
+            btn_open_readme_md.Visible = false;
+            btn_open_update_md.Visible = false;
+            btn_open_problemset_all.Visible = false;
+            btn_open_contest_problems.Visible = false;
+            btn_open_solutions_md.Visible = false;
+            btn_open_answer_readme_md.Visible = false;
+            btn_open_solution_cpp.Visible = false;
+            btn_open_tests_txt.Visible = false;
+            btn_open_test_cpp.Visible = false;
+            btn_open_define_h.Visible = false;
+            btn_open_commit_bat.Visible = false;
 
             btnGenerate.Enabled = false;
         }
@@ -89,7 +95,7 @@ namespace leetcode_md_helper
                 {
                     Directory.CreateDirectory(txt_path_main.Text + txt_path_contest.Text);
                 }
-                if (!File.Exists(txt_path_contest_problemset.Text))
+                if (!File.Exists(txt_path_contest_problems.Text))
                 {
                     Create_File_Contest_Problems_Readme_md();
                 }
@@ -104,15 +110,17 @@ namespace leetcode_md_helper
             Modify_File_Update_md();
             Modify_File_Solutions_md();
 
-            string newPath = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text;
+            string newPath = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text;
             if (!Directory.Exists(newPath))
             {
                 Directory.CreateDirectory(newPath);
             }
 
             Create_File_Answer_Readme_md();
-            Copy_File_Solution_cpp();       // TODO: Solution.cpp的 return "tests_1.txt"; 需要替换路径
+            Copy_File_Solution_cpp();
             Copy_File_Tests_txt();
+            Modify_File_Define_IdName_h();
+            Modify_File_Test_cpp();
 
             Create_CommitFile();
         }
@@ -127,15 +135,15 @@ namespace leetcode_md_helper
 
                     if (txt_path_contest.Text != "")
                     {
-                        txt_path_contest_problemset.Text = txt_path_main.Text + txt_path_contest.Text + @"\README.md";
+                        txt_path_contest_problems.Text = txt_path_main.Text + txt_path_contest.Text + @"\README.md";
                     }
                     else
                     {
-                        txt_path_contest_problemset.Text = "";
+                        txt_path_contest_problems.Text = "";
                     }
-                    txt_path_answer_readme_md.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\README.md";
-                    txt_path_solution_cpp.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\SOLUTION.cpp";
-                    txt_path_tests_txt.Text = txt_path_main.Text + @"/problems/" + txt_in_titleE.Text + @"\tests.txt";
+                    txt_path_answer_readme_md.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\README.md";
+                    txt_path_solution_cpp.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\SOLUTION.cpp";
+                    txt_path_tests_txt.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\tests.txt";
 
                     btnGenerate.Enabled = true;
                 }
@@ -180,6 +188,61 @@ namespace leetcode_md_helper
         private void btn_reset_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        private void btn_open_readme_md_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_readme_md.Text);
+        }
+
+        private void btn_open_update_md_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_update_md.Text);
+        }
+
+        private void btn_open_problemset_all_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_problemset_all.Text);
+        }
+
+        private void btn_open_contest_problems_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_contest_problems.Text);
+        }
+
+        private void btn_open_solutions_md_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_solutions_md.Text);
+        }
+
+        private void btn_open_answer_readme_md_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_answer_readme_md.Text);
+        }
+
+        private void btn_open_solution_cpp_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_solution_cpp.Text);
+        }
+
+        private void btn_open_tests_txt_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_tests_txt.Text);
+        }
+
+        private void btn_open_test_cpp_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_test_cpp.Text);
+        }
+
+        private void btn_open_define_h_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_define_h.Text);
+        }
+
+        private void btn_open_commit_bat_Click(object sender, EventArgs e)
+        {
+            Process.Start(txt_path_readme_md.Text);
         }
     }
 }

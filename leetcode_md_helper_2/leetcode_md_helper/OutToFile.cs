@@ -26,9 +26,7 @@ namespace leetcode_md_helper
             string strFile = txt_path_commit_bat.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
-            lbl_out_commit_bat.Visible = true;
-
-            //Process.Start(strFile);
+            btn_open_commit_bat.Visible = true;
         }
 
         private void Create_File_Answer_Readme_md()
@@ -63,9 +61,7 @@ namespace leetcode_md_helper
             string strFile = txt_path_answer_readme_md.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
-            lbl_out_answer_readme_md.Visible = true;
-
-            Process.Start(strFile);
+            btn_open_answer_readme_md.Visible = true;
         }
 
         private void Modify_File_Readme_md(int iProblemsCount)
@@ -149,9 +145,7 @@ namespace leetcode_md_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            lbl_out_readme_md.Visible = true;
-
-            Process.Start(strFile);
+            btn_open_readme_md.Visible = true;
         }
 
         private int Modify_File_ProblemsetAll_Readme_md()
@@ -221,15 +215,14 @@ namespace leetcode_md_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            lbl_out_problemset_all.Visible = true;
+            btn_open_problemset_all.Visible = true;
 
-            Process.Start(strFile);
             return iProblemsCount + 1;
         }
 
         private void Create_File_Contest_Problems_Readme_md()
         {
-            if (txt_path_contest_problemset.Text == "") return;
+            if (txt_path_contest_problems.Text == "") return;
 
             string strText = "";
 
@@ -255,18 +248,17 @@ namespace leetcode_md_helper
 
             strText += GenerateString_InfoForm_Problem() + "\r\n";
 
-            string strFile = txt_path_contest_problemset.Text;
+            string strFile = txt_path_contest_problems.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
 
-            lbl_out_contest_problems.Visible = true;
-            Process.Start(strFile);
+            btn_open_contest_problems.Visible = true;
         }
 
         private void Modify_File_Contest_Problems_Readme_md()
         {
-            if (txt_path_contest_problemset.Text == "") return;
-            string strFile = txt_path_contest_problemset.Text;
+            if (txt_path_contest_problems.Text == "") return;
+            string strFile = txt_path_contest_problems.Text;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[contest/../README.md] file not exist!");
@@ -325,8 +317,7 @@ namespace leetcode_md_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            lbl_out_contest_problems.Visible = true;
-            Process.Start(strFile);
+            btn_open_contest_problems.Visible = true;
         }
 
         private void Modify_File_Solutions_md()
@@ -391,9 +382,7 @@ namespace leetcode_md_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            lbl_out_solutions_md.Visible = true;
-
-            Process.Start(strFile);
+            btn_open_solutions_md.Visible = true;
         }
 
         private void Modify_File_Update_md()
@@ -450,14 +439,13 @@ namespace leetcode_md_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
 
-                lbl_out_update_md.Visible = true;
+                btn_open_update_md.Visible = true;
             }
-
-            Process.Start(strFile);
         }
 
         private void Copy_File_Solution_cpp()
         {
+            // path
             string sourcePath = txt_path_main.Text + @"\test\Test\";
             if (m_strCodeSelect == "0")
             {
@@ -468,8 +456,54 @@ namespace leetcode_md_helper
                 sourcePath += "Test_" + m_strCodeSelect + ".cpp";
             }
             string targetPath = txt_path_solution_cpp.Text;
-            System.IO.File.Copy(sourcePath, targetPath, true);
-            lbl_out_solution_cpp.Visible = true;
+
+            // read source
+            if (!File.Exists(sourcePath))
+            {
+                MessageBox.Show(@"[Test/SOLUTION.cpp] file not exist!");
+                return;
+            }
+
+            string strText = "";
+            FileStream fs = new FileStream(sourcePath, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                int iMark = 0;
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+
+                    if (iMark == 0)
+                    {
+                        if (str.IndexOf("_get_test_cases_filestream()") != -1)
+                        {
+                            iMark = 1;
+                        }
+                    }
+                    else if (iMark == 1)
+                    {
+                        string strComment = "";
+                        if (str.IndexOf("//") != -1)
+                        {
+                            strComment = "//";
+                        }
+                        if (str.IndexOf("return") != -1)
+                        {
+                            strText += strComment + "\treturn " + "\"../../problems/" + txt_in_titleE.Text + "/tests.txt\";" + "\r\n";
+                            continue;
+                        }
+                    }
+
+                    // copy this line
+                    strText += str + "\r\n";
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(targetPath, strText, utf8);
+            }
+
+            btn_open_solution_cpp.Visible = true;
         }
 
         private void Copy_File_Tests_txt()
@@ -484,8 +518,111 @@ namespace leetcode_md_helper
                 sourcePath += "tests_" + m_strCodeSelect + ".txt";
             }
             string targetPath = txt_path_tests_txt.Text;
+
             System.IO.File.Copy(sourcePath, targetPath, true);
-            lbl_out_tests_txt.Visible = true;
+            btn_open_tests_txt.Visible = true;
         }
+
+        private void Modify_File_Define_IdName_h()
+        {
+            if (txt_path_define_h.Text == "") return;
+            string strFile = txt_path_define_h.Text;
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[Define_IdName.h] file not exist!");
+                return;
+            }
+
+            string strInsert_SelectedSolution = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_in_id.Text + " \t" + txt_in_titleE.Text;
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strText = "";
+            int iMark = 0;
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (iMark == 0)
+                    {
+                        if (str == "#pragma once") iMark = 1;  // find title
+                    }
+                    else if (iMark == 1)
+                    {
+                        if (str == "") continue;
+
+                        string[] s = str.Split(' ');
+                        s = s[1].Split('_');
+                        int.TryParse(s[5], out int iReadNo);
+
+                        if (iReadNo > iInsertNo)
+                        {
+                            strText += strInsert_SelectedSolution + "\r\n";    // insert content here
+                            iMark = 20;  // iMakr == 20, insert completed
+                        }
+                    }
+                    // copy this line
+                    strText += str + "\r\n";
+                }
+                if (iMark == 1)
+                {
+                    strText += strInsert_SelectedSolution + "\r\n";    // insert content here
+                    iMark = 20;  //  iMakr == 20, insert completed
+                }
+
+                if (iMark != 20)
+                {
+                    MessageBox.Show(@"[Define_IdName.h] insert failed!");
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(strFile, strText, utf8);
+            }
+
+            btn_open_define_h.Visible = true;
+        }
+
+        private void Modify_File_Test_cpp()
+        {
+            if (txt_path_test_cpp.Text == "") return;
+
+            string strFile = txt_path_test_cpp.Text;
+
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[Test.cpp] file not exist!");
+                return;
+            }
+
+            string strOld = "#include SOLUTION_CPP_PATH_NAME(SOLUTION_CPP_FOLDER_NAME_ID_";
+            string strInsert = strOld + txt_in_id.Text + ")";
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strText = "";
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (str.IndexOf(strOld) != -1)
+                    {
+                        strText += strInsert + "\r\n";    // insert content here
+                        continue;
+                    }
+
+                    // copy this line
+                    strText += str + "\r\n";
+                }
+                sr.Close();
+
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                File.WriteAllText(strFile, strText, utf8);
+            }
+            btn_open_test_cpp.Visible = true;
+        }
+
     }
 }

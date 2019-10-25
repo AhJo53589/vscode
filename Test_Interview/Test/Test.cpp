@@ -181,4 +181,23 @@ int main()
 		int num1 = pow(3 * i - 2, 2) + 1;
 		cout << "[" << i << "]\t" << num1 << "\t\t" << num2[i - 1] << endl;
 	}
+
+	// 申请二维数组
+	int **matrix;
+	int numVertex = 5;
+	matrix = new int*[numVertex];
+	for (int i = 0; i < numVertex; i++)
+	{
+		matrix[i] = new int[numVertex];
+	}
+	for (int i = 0; i < numVertex; i++)
+	{
+		for (int j = 0; j < numVertex; j++)
+		{
+			matrix[i][j] = 0;
+			cout << i * numVertex + j << ",";
+		}
+		cout << endl;
+	}
+
 }

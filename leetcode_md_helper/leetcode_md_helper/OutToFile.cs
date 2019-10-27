@@ -211,16 +211,25 @@ namespace leetcode_md_helper
                     else if (iMark == 22)
                     {
                         if (str == "") continue;
-                        iProblemsCount += GetFinishStatus_From_InfoForm_Problem(str);
-                        int iReadNo = GetId_From_InfoForm_Problem(str);
-                        if (iReadNo > iInsertNo)
+                        if (str == "## Season/2019-fall")
                         {
                             strText += strInsert + "\r\n";    // insert content here
                             iMark = 29;  // iMakr == 29, insert completed
                         }
+                        else
+                        {
+                            iProblemsCount += GetFinishStatus_From_InfoForm_Problem(str);
+                            int iReadNo = GetId_From_InfoForm_Problem(str);
+                            if (iReadNo > iInsertNo)
+                            {
+                                strText += strInsert + "\r\n";    // insert content here
+                                iMark = 29;  // iMakr == 29, insert completed
+                            }
+                        }
                     }
                     else if (iMark == 29)
                     {
+                        // TODO: iProblemsCount
                         if (str == "") continue;
                         iProblemsCount++;
                     }

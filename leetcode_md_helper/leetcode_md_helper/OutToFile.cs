@@ -78,7 +78,7 @@ namespace leetcode_md_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem();
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
             string strInsert_Contest = GenerateString_InfoForm_Contest();
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
@@ -188,7 +188,7 @@ namespace leetcode_md_helper
                 return iProblemsCount;
             }
 
-            string strInsert = GenerateString_InfoForm_Problem();
+            string strInsert = GenerateString_InfoForm_Problem("../../problems/");
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -270,7 +270,7 @@ namespace leetcode_md_helper
             strText += "|     | #   | 名称                 | 题目                  | 答题          | 题解 | 难度 |" + "\r\n";
             strText += "| --- | --- | -------------------- | --------------------- | ------------- | ---- | ---- |" + "\r\n";
 
-            strText += GenerateString_InfoForm_Problem() + "\r\n";
+            strText += GenerateString_InfoForm_Problem("../../problems/") + "\r\n";
 
             string strFile = txt_path_contest_problems.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
@@ -289,7 +289,7 @@ namespace leetcode_md_helper
                 return;
             }
 
-            string strInsert = GenerateString_InfoForm_Problem();
+            string strInsert = GenerateString_InfoForm_Problem("../../problems/");
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -354,7 +354,7 @@ namespace leetcode_md_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem();
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;

@@ -22,8 +22,8 @@ namespace leetcode_cpp_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Test path
-            //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
             txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
+            //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
             Reset();
         }
 
@@ -302,7 +302,7 @@ namespace leetcode_cpp_helper
                 return iProblemsCount;
             }
 
-            string strInsert = GenerateString_InfoForm_Problem();
+            string strInsert = GenerateString_InfoForm_Problem("../../problems/");
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -370,7 +370,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem();
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -473,7 +473,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem();
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -606,6 +606,7 @@ namespace leetcode_cpp_helper
             string[] s = str.Split('[');
             s = s[1].Split(']');
             s = s[0].Split(' ');
+            if (s.Length == 3) return s[1] + " " + s[2];
             return s[1];
         }
 
@@ -625,7 +626,7 @@ namespace leetcode_cpp_helper
             return id;
         }
 
-        private string GenerateString_InfoForm_Problem()
+        private string GenerateString_InfoForm_Problem(string path)
         {
             // 有题解
             // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) | [查看](https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-2/) | 简单 |
@@ -634,9 +635,9 @@ namespace leetcode_cpp_helper
             string strText = "";
             strText += "| √";
             strText += " | " + txt_in_id.Text;
-            strText += " | " + GenerateString_TitleAndFolderPath();
-            strText += " | " + GenerateString_TitleAndFileLink();
-            strText += " | " + GenerateString_CppFilePath();
+            strText += " | " + GenerateString_TitleAndFolderPath(path);
+            strText += " | " + GenerateString_TitleAndFileLink(path);
+            strText += " | " + GenerateString_CppFilePath(path);
             if (txt_in_solution_link.Text == "")
             {
                 strText += " | " + " ";
@@ -650,33 +651,33 @@ namespace leetcode_cpp_helper
             return strText;
         }
 
-        private string GenerateString_TitleAndFolderPath()
+        private string GenerateString_TitleAndFolderPath(string path)
         {
             // example: 
             // [two-sum](../../problems/two-sum)
             string strText = "";
             strText += "[" + txt_in_titleE.Text + "]";
-            strText += "(../../problems/" + txt_in_titleE.Text + ")";
+            strText += "(" + path + txt_in_titleE.Text + ")";
             return strText;
         }
 
-        private string GenerateString_TitleAndFileLink()
+        private string GenerateString_TitleAndFileLink(string path)
         {
             // example: 
             // [两数之和](../../problems/two-sum/README.md)
             string strText = "";
             strText += "[" + txt_in_titleC.Text + "]";
-            strText += "(../../problems/" + txt_in_titleE.Text + "/README.md)";
+            strText += "(" + path + txt_in_titleE.Text + "/README.md)";
             return strText;
         }
 
-        private string GenerateString_CppFilePath()
+        private string GenerateString_CppFilePath(string path)
         {
             // example: 
             // [cpp](../../problems/two-sum/SOLUTION.cpp)
             string strText = "";
             strText += "[cpp]";
-            strText += "(../../problems/" + txt_in_titleE.Text + "/SOLUTION.cpp)";
+            strText += "(" + path + txt_in_titleE.Text + "/SOLUTION.cpp)";
             return strText;
         }
 

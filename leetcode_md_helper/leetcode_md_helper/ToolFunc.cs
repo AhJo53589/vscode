@@ -59,7 +59,7 @@ namespace leetcode_md_helper
             return 1;
         }
 
-        private string GenerateString_InfoForm_Problem()
+        private string GenerateString_InfoForm_Problem(string path)
         {
             // 有题解
             // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) | [查看](https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-2/) | 简单 |
@@ -76,9 +76,9 @@ namespace leetcode_md_helper
                 strText += " ";
             }
             strText += " | " + txt_in_id.Text;
-            strText += " | " + GenerateString_TitleAndFolderPath();
-            strText += " | " + GenerateString_TitleAndFileLink();
-            strText += " | " + GenerateString_CppFilePath();
+            strText += " | " + GenerateString_TitleAndFolderPath(path);
+            strText += " | " + GenerateString_TitleAndFileLink(path);
+            strText += " | " + GenerateString_CppFilePath(path);
             if (txt_in_solution_link.Text == "")
             {
                 strText += " | " + " ";
@@ -128,33 +128,33 @@ namespace leetcode_md_helper
             return strText;
         }
 
-        private string GenerateString_TitleAndFolderPath()
+        private string GenerateString_TitleAndFolderPath(string path)
         {
             // example: 
             // [two-sum](../../problems/two-sum)
             string strText = "";
             strText += "[" + txt_in_titleE.Text + "]";
-            strText += "(../../problems/" + txt_in_titleE.Text + ")";
+            strText += "(" + path + txt_in_titleE.Text + ")";
             return strText;
         }
 
-        private string GenerateString_TitleAndFileLink()
+        private string GenerateString_TitleAndFileLink(string path)
         {
             // example: 
             // [两数之和](../../problems/two-sum/README.md)
             string strText = "";
             strText += "[" + txt_in_titleC.Text + "]";
-            strText += "(../../problems/" + txt_in_titleE.Text + "/README.md)";
+            strText += "(" + path + txt_in_titleE.Text + "/README.md)";
             return strText;
         }
 
-        private string GenerateString_CppFilePath()
+        private string GenerateString_CppFilePath(string path)
         {
             // example: 
             // [cpp](../../problems/two-sum/SOLUTION.cpp)
             string strText = "";
             strText += "[cpp]";
-            strText += "(../../problems/" + txt_in_titleE.Text + "/SOLUTION.cpp)";
+            strText += "(" + path + txt_in_titleE.Text + "/SOLUTION.cpp)";
             return strText;
         }
 

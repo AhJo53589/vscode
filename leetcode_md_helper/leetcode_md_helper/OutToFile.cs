@@ -79,7 +79,6 @@ namespace leetcode_md_helper
             }
 
             string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
-            string strInsert_Contest = GenerateString_InfoForm_Contest();
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -153,8 +152,10 @@ namespace leetcode_md_helper
                     }
                     else if (iMark == 32)
                     {
-                        if (!Directory.Exists(txt_path_main.Text + txt_path_contest.Text))
+                        if (txt_path_contest.Text != "" &&
+                            !Directory.Exists(txt_path_main.Text + txt_path_contest.Text))
                         {
+                            string strInsert_Contest = GenerateString_InfoForm_Contest();
                             strText += strInsert_Contest + "\r\n";    // insert content here
                         }
                         iMark = 100;  // iMakr == 19, insert completed

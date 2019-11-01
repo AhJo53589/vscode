@@ -52,6 +52,9 @@
             this.txt_out_return_type = new System.Windows.Forms.TextBox();
             this.txt_in_func = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_open_readme_md = new System.Windows.Forms.Button();
+            this.txt_path_readme_md = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,9 +82,6 @@
             this.txt_path_old_problems = new System.Windows.Forms.TextBox();
             this.btn_transfer_folder = new System.Windows.Forms.Button();
             this.btn_get_folder = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_open_readme_md = new System.Windows.Forms.Button();
-            this.txt_path_readme_md = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -216,11 +216,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(557, 14);
+            this.label4.Location = new System.Drawing.Point(548, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(143, 18);
+            this.label4.Size = new System.Drawing.Size(152, 18);
             this.label4.TabIndex = 42;
-            this.label4.Text = "覆盖到Test_0 →";
+            this.label4.Text = "覆盖到_test_0 →";
             // 
             // btn_create
             // 
@@ -329,6 +329,32 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(784, 335);
             this.panel3.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 291);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 18);
+            this.label3.TabIndex = 59;
+            this.label3.Text = "主页文件";
+            // 
+            // btn_open_readme_md
+            // 
+            this.btn_open_readme_md.Location = new System.Drawing.Point(700, 288);
+            this.btn_open_readme_md.Name = "btn_open_readme_md";
+            this.btn_open_readme_md.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_readme_md.TabIndex = 58;
+            this.btn_open_readme_md.Text = "Open";
+            this.btn_open_readme_md.UseVisualStyleBackColor = true;
+            this.btn_open_readme_md.Click += new System.EventHandler(this.btn_open_readme_md_Click);
+            // 
+            // txt_path_readme_md
+            // 
+            this.txt_path_readme_md.Location = new System.Drawing.Point(92, 288);
+            this.txt_path_readme_md.Name = "txt_path_readme_md";
+            this.txt_path_readme_md.Size = new System.Drawing.Size(602, 28);
+            this.txt_path_readme_md.TabIndex = 57;
             // 
             // label12
             // 
@@ -565,32 +591,6 @@
             this.btn_get_folder.Text = "Get Folder";
             this.btn_get_folder.UseVisualStyleBackColor = true;
             this.btn_get_folder.Click += new System.EventHandler(this.btn_get_folder_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 291);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 18);
-            this.label3.TabIndex = 59;
-            this.label3.Text = "主页文件";
-            // 
-            // btn_open_readme_md
-            // 
-            this.btn_open_readme_md.Location = new System.Drawing.Point(700, 288);
-            this.btn_open_readme_md.Name = "btn_open_readme_md";
-            this.btn_open_readme_md.Size = new System.Drawing.Size(75, 28);
-            this.btn_open_readme_md.TabIndex = 58;
-            this.btn_open_readme_md.Text = "Open";
-            this.btn_open_readme_md.UseVisualStyleBackColor = true;
-            this.btn_open_readme_md.Click += new System.EventHandler(this.btn_open_readme_md_Click);
-            // 
-            // txt_path_readme_md
-            // 
-            this.txt_path_readme_md.Location = new System.Drawing.Point(92, 288);
-            this.txt_path_readme_md.Name = "txt_path_readme_md";
-            this.txt_path_readme_md.Size = new System.Drawing.Size(602, 28);
-            this.txt_path_readme_md.TabIndex = 57;
             // 
             // frmMain
             // 

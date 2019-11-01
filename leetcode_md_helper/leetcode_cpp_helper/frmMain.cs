@@ -164,7 +164,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void Create_File_Solution_cpp(string newPath)
+        private void Create_File_Solution_cpp(string newPath, string fileName)
         {
             if (txt_in_func.Text == ""
                 || txt_out_return_type.Text == "" || txt_out_func_name.Text == "" || txt_out_param.Text == ""
@@ -207,7 +207,7 @@ namespace leetcode_cpp_helper
             strText += strComment + "#define USE_GET_TEST_CASES_FILESTREAM" + "\r\n";
             strText += strComment + "string _get_test_cases_filestream()" + "\r\n";
             strText += strComment + "{\r\n";
-            strText += strComment + "\treturn " + "\"../../problems/" + txt_in_titleE.Text + "/tests.txt\";" + "\r\n";
+            strText += strComment + "\treturn " + "\"../../problems/" + fileName + "/tests.txt\";" + "\r\n";
             strText += strComment + "}\r\n\r\n";
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
@@ -424,7 +424,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void Modify_File_Test_cpp()
+        private void Modify_File_Test_cpp(string strId)
         {
             if (txt_path_test_cpp.Text == "") return;
 
@@ -437,7 +437,7 @@ namespace leetcode_cpp_helper
             }
 
             string strOld = "#include SOLUTION_CPP_PATH_NAME(SOLUTION_CPP_FOLDER_NAME_ID_";
-            string strInsert = strOld + txt_in_id.Text + ")";
+            string strInsert = strOld + strId + ")";
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
 
@@ -775,10 +775,10 @@ namespace leetcode_cpp_helper
             }
 
             Copy_File_AnswerReadme_md(oldPath, newPath);
-            Create_File_Solution_cpp(newPath);
+            Create_File_Solution_cpp(newPath, txt_in_titleE.Text);
             Create_File_TestCases_txt(newPath);
             Modify_File_Define_IdName_h();
-            Modify_File_Test_cpp();
+            Modify_File_Test_cpp(txt_in_id.Text);
             int iProblemsCount = Modify_File_ProblemsetAll_Readme_md();
             Modify_File_Readme_md(iProblemsCount);
             Modify_File_Solutions_md();
@@ -895,16 +895,17 @@ namespace leetcode_cpp_helper
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            string newPath = txt_path_main.Text + @"\test\Test\";
+            string fileName = "_test_0";
+            string newPath = txt_path_new_problems.Text + "\\" + fileName;
             if (!Directory.Exists(newPath))
             {
                 Directory.CreateDirectory(newPath);
             }
 
-            Create_File_Solution_cpp(newPath);  // TODO: func name
+            Create_File_Solution_cpp(newPath, fileName);
             Create_File_TestCases_txt(newPath);
             //Modify_File_Define_IdName_h();
-            //Modify_File_Test_cpp();
+            Modify_File_Test_cpp("TEST_0");
         }
     }
 }

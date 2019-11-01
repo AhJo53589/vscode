@@ -30,6 +30,7 @@
         {
             this.btnGenerate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cb_in_finish = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rb_in_test_0 = new System.Windows.Forms.RadioButton();
@@ -65,6 +66,21 @@
             this.txt_in_link = new System.Windows.Forms.TextBox();
             this.txt_in_id_titleC = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_open_define_h = new System.Windows.Forms.Button();
+            this.btn_open_commit_bat = new System.Windows.Forms.Button();
+            this.btn_open_tests_txt = new System.Windows.Forms.Button();
+            this.btn_open_test_cpp = new System.Windows.Forms.Button();
+            this.btn_open_solution_cpp = new System.Windows.Forms.Button();
+            this.btn_open_solutions_md = new System.Windows.Forms.Button();
+            this.btn_open_answer_readme_md = new System.Windows.Forms.Button();
+            this.btn_open_contest_problems = new System.Windows.Forms.Button();
+            this.btn_open_problemset_all = new System.Windows.Forms.Button();
+            this.btn_open_update_md = new System.Windows.Forms.Button();
+            this.btn_open_readme_md = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txt_path_define_h = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txt_path_test_cpp = new System.Windows.Forms.TextBox();
             this.btn_reset = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.txt_path_tests_txt = new System.Windows.Forms.TextBox();
@@ -86,22 +102,6 @@
             this.txt_path_update_md = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_path_readme_md = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txt_path_test_cpp = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txt_path_define_h = new System.Windows.Forms.TextBox();
-            this.btn_open_readme_md = new System.Windows.Forms.Button();
-            this.btn_open_update_md = new System.Windows.Forms.Button();
-            this.btn_open_problemset_all = new System.Windows.Forms.Button();
-            this.btn_open_contest_problems = new System.Windows.Forms.Button();
-            this.btn_open_solutions_md = new System.Windows.Forms.Button();
-            this.btn_open_answer_readme_md = new System.Windows.Forms.Button();
-            this.btn_open_solution_cpp = new System.Windows.Forms.Button();
-            this.btn_open_tests_txt = new System.Windows.Forms.Button();
-            this.btn_open_test_cpp = new System.Windows.Forms.Button();
-            this.btn_open_define_h = new System.Windows.Forms.Button();
-            this.btn_open_commit_bat = new System.Windows.Forms.Button();
-            this.cb_in_finish = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -113,7 +113,7 @@
             this.btnGenerate.Enabled = false;
             this.btnGenerate.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerate.Location = new System.Drawing.Point(12, 576);
-            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(940, 128);
             this.btnGenerate.TabIndex = 13;
@@ -159,6 +159,18 @@
             this.panel1.Size = new System.Drawing.Size(942, 555);
             this.panel1.TabIndex = 21;
             // 
+            // cb_in_finish
+            // 
+            this.cb_in_finish.AutoSize = true;
+            this.cb_in_finish.Checked = true;
+            this.cb_in_finish.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_in_finish.Location = new System.Drawing.Point(464, 15);
+            this.cb_in_finish.Name = "cb_in_finish";
+            this.cb_in_finish.Size = new System.Drawing.Size(106, 22);
+            this.cb_in_finish.TabIndex = 57;
+            this.cb_in_finish.Text = "是否完成";
+            this.cb_in_finish.UseVisualStyleBackColor = true;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -194,6 +206,7 @@
             this.rb_in_test_0.TabStop = true;
             this.rb_in_test_0.Text = "0";
             this.rb_in_test_0.UseVisualStyleBackColor = true;
+            this.rb_in_test_0.CheckedChanged += new System.EventHandler(this.rb_in_test_CheckedChanged);
             // 
             // rb_in_test_5
             // 
@@ -299,7 +312,7 @@
             // btnCopy_Answer
             // 
             this.btnCopy_Answer.Location = new System.Drawing.Point(874, 302);
-            this.btnCopy_Answer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCopy_Answer.Margin = new System.Windows.Forms.Padding(4);
             this.btnCopy_Answer.Name = "btnCopy_Answer";
             this.btnCopy_Answer.Size = new System.Drawing.Size(58, 30);
             this.btnCopy_Answer.TabIndex = 48;
@@ -310,7 +323,7 @@
             // btnCopy_Answer_2
             // 
             this.btnCopy_Answer_2.Location = new System.Drawing.Point(874, 380);
-            this.btnCopy_Answer_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCopy_Answer_2.Margin = new System.Windows.Forms.Padding(4);
             this.btnCopy_Answer_2.Name = "btnCopy_Answer_2";
             this.btnCopy_Answer_2.Size = new System.Drawing.Size(58, 30);
             this.btnCopy_Answer_2.TabIndex = 45;
@@ -321,7 +334,7 @@
             // btnCopy_SolutionLink
             // 
             this.btnCopy_SolutionLink.Location = new System.Drawing.Point(874, 184);
-            this.btnCopy_SolutionLink.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCopy_SolutionLink.Margin = new System.Windows.Forms.Padding(4);
             this.btnCopy_SolutionLink.Name = "btnCopy_SolutionLink";
             this.btnCopy_SolutionLink.Size = new System.Drawing.Size(58, 30);
             this.btnCopy_SolutionLink.TabIndex = 44;
@@ -341,7 +354,7 @@
             // txt_in_answer_other
             // 
             this.txt_in_answer_other.Location = new System.Drawing.Point(122, 380);
-            this.txt_in_answer_other.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_in_answer_other.Margin = new System.Windows.Forms.Padding(4);
             this.txt_in_answer_other.Multiline = true;
             this.txt_in_answer_other.Name = "txt_in_answer_other";
             this.txt_in_answer_other.Size = new System.Drawing.Size(744, 67);
@@ -394,7 +407,7 @@
             // txt_in_solution_link
             // 
             this.txt_in_solution_link.Location = new System.Drawing.Point(122, 184);
-            this.txt_in_solution_link.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_in_solution_link.Margin = new System.Windows.Forms.Padding(4);
             this.txt_in_solution_link.Name = "txt_in_solution_link";
             this.txt_in_solution_link.Size = new System.Drawing.Size(744, 28);
             this.txt_in_solution_link.TabIndex = 35;
@@ -411,7 +424,7 @@
             // txt_in_answer
             // 
             this.txt_in_answer.Location = new System.Drawing.Point(122, 302);
-            this.txt_in_answer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_in_answer.Margin = new System.Windows.Forms.Padding(4);
             this.txt_in_answer.Multiline = true;
             this.txt_in_answer.Name = "txt_in_answer";
             this.txt_in_answer.Size = new System.Drawing.Size(744, 66);
@@ -429,7 +442,7 @@
             // txt_in_description
             // 
             this.txt_in_description.Location = new System.Drawing.Point(122, 225);
-            this.txt_in_description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_in_description.Margin = new System.Windows.Forms.Padding(4);
             this.txt_in_description.Multiline = true;
             this.txt_in_description.Name = "txt_in_description";
             this.txt_in_description.Size = new System.Drawing.Size(744, 66);
@@ -465,7 +478,7 @@
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(773, 8);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(93, 30);
             this.btnClear.TabIndex = 24;
@@ -476,7 +489,7 @@
             // txt_in_link
             // 
             this.txt_in_link.Location = new System.Drawing.Point(122, 45);
-            this.txt_in_link.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_in_link.Margin = new System.Windows.Forms.Padding(4);
             this.txt_in_link.Name = "txt_in_link";
             this.txt_in_link.Size = new System.Drawing.Size(744, 28);
             this.txt_in_link.TabIndex = 21;
@@ -485,7 +498,7 @@
             // txt_in_id_titleC
             // 
             this.txt_in_id_titleC.Location = new System.Drawing.Point(122, 116);
-            this.txt_in_id_titleC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_in_id_titleC.Margin = new System.Windows.Forms.Padding(4);
             this.txt_in_id_titleC.Name = "txt_in_id_titleC";
             this.txt_in_id_titleC.Size = new System.Drawing.Size(744, 28);
             this.txt_in_id_titleC.TabIndex = 22;
@@ -536,321 +549,6 @@
             this.panel2.Size = new System.Drawing.Size(942, 475);
             this.panel2.TabIndex = 22;
             // 
-            // btn_reset
-            // 
-            this.btn_reset.Location = new System.Drawing.Point(773, 9);
-            this.btn_reset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(93, 30);
-            this.btn_reset.TabIndex = 59;
-            this.btn_reset.Text = "Reset";
-            this.btn_reset.UseVisualStyleBackColor = true;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(34, 324);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(80, 18);
-            this.label21.TabIndex = 57;
-            this.label21.Text = "测试用例";
-            // 
-            // txt_path_tests_txt
-            // 
-            this.txt_path_tests_txt.Location = new System.Drawing.Point(122, 321);
-            this.txt_path_tests_txt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_tests_txt.Name = "txt_path_tests_txt";
-            this.txt_path_tests_txt.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_tests_txt.TabIndex = 56;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(136, 170);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(80, 18);
-            this.label20.TabIndex = 54;
-            this.label20.Text = "比赛题目";
-            // 
-            // txt_path_contest_problems
-            // 
-            this.txt_path_contest_problems.Location = new System.Drawing.Point(224, 166);
-            this.txt_path_contest_problems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_contest_problems.Name = "txt_path_contest_problems";
-            this.txt_path_contest_problems.Size = new System.Drawing.Size(642, 28);
-            this.txt_path_contest_problems.TabIndex = 53;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(34, 286);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(80, 18);
-            this.label19.TabIndex = 51;
-            this.label19.Text = "代码文件";
-            // 
-            // txt_path_solution_cpp
-            // 
-            this.txt_path_solution_cpp.Location = new System.Drawing.Point(122, 284);
-            this.txt_path_solution_cpp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_solution_cpp.Name = "txt_path_solution_cpp";
-            this.txt_path_solution_cpp.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_solution_cpp.TabIndex = 50;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(34, 208);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(80, 18);
-            this.label16.TabIndex = 48;
-            this.label16.Text = "题解文件";
-            // 
-            // txt_path_solutions_md
-            // 
-            this.txt_path_solutions_md.Location = new System.Drawing.Point(122, 206);
-            this.txt_path_solutions_md.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_solutions_md.Name = "txt_path_solutions_md";
-            this.txt_path_solutions_md.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_solutions_md.TabIndex = 47;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(33, 436);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 18);
-            this.label15.TabIndex = 45;
-            this.label15.Text = "提交文件";
-            // 
-            // txt_path_commit_bat
-            // 
-            this.txt_path_commit_bat.Location = new System.Drawing.Point(121, 435);
-            this.txt_path_commit_bat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_commit_bat.Name = "txt_path_commit_bat";
-            this.txt_path_commit_bat.Size = new System.Drawing.Size(745, 28);
-            this.txt_path_commit_bat.TabIndex = 44;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(34, 130);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 18);
-            this.label13.TabIndex = 42;
-            this.label13.Text = "题目文件";
-            // 
-            // txt_path_problemset_all
-            // 
-            this.txt_path_problemset_all.Location = new System.Drawing.Point(122, 129);
-            this.txt_path_problemset_all.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_problemset_all.Name = "txt_path_problemset_all";
-            this.txt_path_problemset_all.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_problemset_all.TabIndex = 41;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 18);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "主路径";
-            // 
-            // txt_path_main
-            // 
-            this.txt_path_main.Location = new System.Drawing.Point(122, 9);
-            this.txt_path_main.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_main.Name = "txt_path_main";
-            this.txt_path_main.Size = new System.Drawing.Size(643, 28);
-            this.txt_path_main.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(34, 249);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 18);
-            this.label8.TabIndex = 32;
-            this.label8.Text = "答题文件";
-            // 
-            // txt_path_answer_readme_md
-            // 
-            this.txt_path_answer_readme_md.Location = new System.Drawing.Point(122, 244);
-            this.txt_path_answer_readme_md.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_answer_readme_md.Multiline = true;
-            this.txt_path_answer_readme_md.Name = "txt_path_answer_readme_md";
-            this.txt_path_answer_readme_md.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_answer_readme_md.TabIndex = 31;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(34, 92);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 18);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "日志文件";
-            // 
-            // txt_path_update_md
-            // 
-            this.txt_path_update_md.Location = new System.Drawing.Point(122, 88);
-            this.txt_path_update_md.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_update_md.Name = "txt_path_update_md";
-            this.txt_path_update_md.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_update_md.TabIndex = 29;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 18);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "主页文件";
-            // 
-            // txt_path_readme_md
-            // 
-            this.txt_path_readme_md.Location = new System.Drawing.Point(122, 46);
-            this.txt_path_readme_md.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_path_readme_md.Name = "txt_path_readme_md";
-            this.txt_path_readme_md.Size = new System.Drawing.Size(744, 28);
-            this.txt_path_readme_md.TabIndex = 17;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(33, 362);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(80, 18);
-            this.label22.TabIndex = 61;
-            this.label22.Text = "测试程序";
-            // 
-            // txt_path_test_cpp
-            // 
-            this.txt_path_test_cpp.Location = new System.Drawing.Point(121, 359);
-            this.txt_path_test_cpp.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_path_test_cpp.Name = "txt_path_test_cpp";
-            this.txt_path_test_cpp.Size = new System.Drawing.Size(745, 28);
-            this.txt_path_test_cpp.TabIndex = 60;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(51, 400);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(62, 18);
-            this.label23.TabIndex = 64;
-            this.label23.Text = "宏定义";
-            // 
-            // txt_path_define_h
-            // 
-            this.txt_path_define_h.Location = new System.Drawing.Point(121, 397);
-            this.txt_path_define_h.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_path_define_h.Name = "txt_path_define_h";
-            this.txt_path_define_h.Size = new System.Drawing.Size(745, 28);
-            this.txt_path_define_h.TabIndex = 63;
-            // 
-            // btn_open_readme_md
-            // 
-            this.btn_open_readme_md.Location = new System.Drawing.Point(874, 46);
-            this.btn_open_readme_md.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_readme_md.Name = "btn_open_readme_md";
-            this.btn_open_readme_md.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_readme_md.TabIndex = 66;
-            this.btn_open_readme_md.Text = "Open";
-            this.btn_open_readme_md.UseVisualStyleBackColor = true;
-            this.btn_open_readme_md.Click += new System.EventHandler(this.btn_open_readme_md_Click);
-            // 
-            // btn_open_update_md
-            // 
-            this.btn_open_update_md.Location = new System.Drawing.Point(874, 88);
-            this.btn_open_update_md.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_update_md.Name = "btn_open_update_md";
-            this.btn_open_update_md.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_update_md.TabIndex = 67;
-            this.btn_open_update_md.Text = "Open";
-            this.btn_open_update_md.UseVisualStyleBackColor = true;
-            this.btn_open_update_md.Click += new System.EventHandler(this.btn_open_update_md_Click);
-            // 
-            // btn_open_problemset_all
-            // 
-            this.btn_open_problemset_all.Location = new System.Drawing.Point(874, 130);
-            this.btn_open_problemset_all.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_problemset_all.Name = "btn_open_problemset_all";
-            this.btn_open_problemset_all.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_problemset_all.TabIndex = 68;
-            this.btn_open_problemset_all.Text = "Open";
-            this.btn_open_problemset_all.UseVisualStyleBackColor = true;
-            this.btn_open_problemset_all.Click += new System.EventHandler(this.btn_open_problemset_all_Click);
-            // 
-            // btn_open_contest_problems
-            // 
-            this.btn_open_contest_problems.Location = new System.Drawing.Point(874, 166);
-            this.btn_open_contest_problems.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_contest_problems.Name = "btn_open_contest_problems";
-            this.btn_open_contest_problems.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_contest_problems.TabIndex = 69;
-            this.btn_open_contest_problems.Text = "Open";
-            this.btn_open_contest_problems.UseVisualStyleBackColor = true;
-            this.btn_open_contest_problems.Click += new System.EventHandler(this.btn_open_contest_problems_Click);
-            // 
-            // btn_open_solutions_md
-            // 
-            this.btn_open_solutions_md.Location = new System.Drawing.Point(874, 206);
-            this.btn_open_solutions_md.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_solutions_md.Name = "btn_open_solutions_md";
-            this.btn_open_solutions_md.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_solutions_md.TabIndex = 70;
-            this.btn_open_solutions_md.Text = "Open";
-            this.btn_open_solutions_md.UseVisualStyleBackColor = true;
-            this.btn_open_solutions_md.Click += new System.EventHandler(this.btn_open_solutions_md_Click);
-            // 
-            // btn_open_answer_readme_md
-            // 
-            this.btn_open_answer_readme_md.Location = new System.Drawing.Point(874, 244);
-            this.btn_open_answer_readme_md.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_answer_readme_md.Name = "btn_open_answer_readme_md";
-            this.btn_open_answer_readme_md.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_answer_readme_md.TabIndex = 71;
-            this.btn_open_answer_readme_md.Text = "Open";
-            this.btn_open_answer_readme_md.UseVisualStyleBackColor = true;
-            this.btn_open_answer_readme_md.Click += new System.EventHandler(this.btn_open_answer_readme_md_Click);
-            // 
-            // btn_open_solution_cpp
-            // 
-            this.btn_open_solution_cpp.Location = new System.Drawing.Point(874, 284);
-            this.btn_open_solution_cpp.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_solution_cpp.Name = "btn_open_solution_cpp";
-            this.btn_open_solution_cpp.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_solution_cpp.TabIndex = 72;
-            this.btn_open_solution_cpp.Text = "Open";
-            this.btn_open_solution_cpp.UseVisualStyleBackColor = true;
-            this.btn_open_solution_cpp.Click += new System.EventHandler(this.btn_open_solution_cpp_Click);
-            // 
-            // btn_open_tests_txt
-            // 
-            this.btn_open_tests_txt.Location = new System.Drawing.Point(874, 321);
-            this.btn_open_tests_txt.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_tests_txt.Name = "btn_open_tests_txt";
-            this.btn_open_tests_txt.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_tests_txt.TabIndex = 72;
-            this.btn_open_tests_txt.Text = "Open";
-            this.btn_open_tests_txt.UseVisualStyleBackColor = true;
-            this.btn_open_tests_txt.Click += new System.EventHandler(this.btn_open_tests_txt_Click);
-            // 
-            // btn_open_test_cpp
-            // 
-            this.btn_open_test_cpp.Location = new System.Drawing.Point(874, 359);
-            this.btn_open_test_cpp.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_open_test_cpp.Name = "btn_open_test_cpp";
-            this.btn_open_test_cpp.Size = new System.Drawing.Size(58, 30);
-            this.btn_open_test_cpp.TabIndex = 72;
-            this.btn_open_test_cpp.Text = "Open";
-            this.btn_open_test_cpp.UseVisualStyleBackColor = true;
-            this.btn_open_test_cpp.Click += new System.EventHandler(this.btn_open_test_cpp_Click);
-            // 
             // btn_open_define_h
             // 
             this.btn_open_define_h.Location = new System.Drawing.Point(874, 397);
@@ -874,17 +572,320 @@
             this.btn_open_commit_bat.UseVisualStyleBackColor = true;
             this.btn_open_commit_bat.Click += new System.EventHandler(this.btn_open_commit_bat_Click);
             // 
-            // cb_in_finish
+            // btn_open_tests_txt
             // 
-            this.cb_in_finish.AutoSize = true;
-            this.cb_in_finish.Checked = true;
-            this.cb_in_finish.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_in_finish.Location = new System.Drawing.Point(464, 15);
-            this.cb_in_finish.Name = "cb_in_finish";
-            this.cb_in_finish.Size = new System.Drawing.Size(106, 22);
-            this.cb_in_finish.TabIndex = 57;
-            this.cb_in_finish.Text = "是否完成";
-            this.cb_in_finish.UseVisualStyleBackColor = true;
+            this.btn_open_tests_txt.Location = new System.Drawing.Point(874, 321);
+            this.btn_open_tests_txt.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_tests_txt.Name = "btn_open_tests_txt";
+            this.btn_open_tests_txt.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_tests_txt.TabIndex = 72;
+            this.btn_open_tests_txt.Text = "Open";
+            this.btn_open_tests_txt.UseVisualStyleBackColor = true;
+            this.btn_open_tests_txt.Click += new System.EventHandler(this.btn_open_tests_txt_Click);
+            // 
+            // btn_open_test_cpp
+            // 
+            this.btn_open_test_cpp.Location = new System.Drawing.Point(874, 359);
+            this.btn_open_test_cpp.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_test_cpp.Name = "btn_open_test_cpp";
+            this.btn_open_test_cpp.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_test_cpp.TabIndex = 72;
+            this.btn_open_test_cpp.Text = "Open";
+            this.btn_open_test_cpp.UseVisualStyleBackColor = true;
+            this.btn_open_test_cpp.Click += new System.EventHandler(this.btn_open_test_cpp_Click);
+            // 
+            // btn_open_solution_cpp
+            // 
+            this.btn_open_solution_cpp.Location = new System.Drawing.Point(874, 284);
+            this.btn_open_solution_cpp.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_solution_cpp.Name = "btn_open_solution_cpp";
+            this.btn_open_solution_cpp.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_solution_cpp.TabIndex = 72;
+            this.btn_open_solution_cpp.Text = "Open";
+            this.btn_open_solution_cpp.UseVisualStyleBackColor = true;
+            this.btn_open_solution_cpp.Click += new System.EventHandler(this.btn_open_solution_cpp_Click);
+            // 
+            // btn_open_solutions_md
+            // 
+            this.btn_open_solutions_md.Location = new System.Drawing.Point(874, 206);
+            this.btn_open_solutions_md.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_solutions_md.Name = "btn_open_solutions_md";
+            this.btn_open_solutions_md.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_solutions_md.TabIndex = 70;
+            this.btn_open_solutions_md.Text = "Open";
+            this.btn_open_solutions_md.UseVisualStyleBackColor = true;
+            this.btn_open_solutions_md.Click += new System.EventHandler(this.btn_open_solutions_md_Click);
+            // 
+            // btn_open_answer_readme_md
+            // 
+            this.btn_open_answer_readme_md.Location = new System.Drawing.Point(874, 244);
+            this.btn_open_answer_readme_md.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_answer_readme_md.Name = "btn_open_answer_readme_md";
+            this.btn_open_answer_readme_md.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_answer_readme_md.TabIndex = 71;
+            this.btn_open_answer_readme_md.Text = "Open";
+            this.btn_open_answer_readme_md.UseVisualStyleBackColor = true;
+            this.btn_open_answer_readme_md.Click += new System.EventHandler(this.btn_open_answer_readme_md_Click);
+            // 
+            // btn_open_contest_problems
+            // 
+            this.btn_open_contest_problems.Location = new System.Drawing.Point(874, 166);
+            this.btn_open_contest_problems.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_contest_problems.Name = "btn_open_contest_problems";
+            this.btn_open_contest_problems.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_contest_problems.TabIndex = 69;
+            this.btn_open_contest_problems.Text = "Open";
+            this.btn_open_contest_problems.UseVisualStyleBackColor = true;
+            this.btn_open_contest_problems.Click += new System.EventHandler(this.btn_open_contest_problems_Click);
+            // 
+            // btn_open_problemset_all
+            // 
+            this.btn_open_problemset_all.Location = new System.Drawing.Point(874, 130);
+            this.btn_open_problemset_all.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_problemset_all.Name = "btn_open_problemset_all";
+            this.btn_open_problemset_all.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_problemset_all.TabIndex = 68;
+            this.btn_open_problemset_all.Text = "Open";
+            this.btn_open_problemset_all.UseVisualStyleBackColor = true;
+            this.btn_open_problemset_all.Click += new System.EventHandler(this.btn_open_problemset_all_Click);
+            // 
+            // btn_open_update_md
+            // 
+            this.btn_open_update_md.Location = new System.Drawing.Point(874, 88);
+            this.btn_open_update_md.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_update_md.Name = "btn_open_update_md";
+            this.btn_open_update_md.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_update_md.TabIndex = 67;
+            this.btn_open_update_md.Text = "Open";
+            this.btn_open_update_md.UseVisualStyleBackColor = true;
+            this.btn_open_update_md.Click += new System.EventHandler(this.btn_open_update_md_Click);
+            // 
+            // btn_open_readme_md
+            // 
+            this.btn_open_readme_md.Location = new System.Drawing.Point(874, 46);
+            this.btn_open_readme_md.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_open_readme_md.Name = "btn_open_readme_md";
+            this.btn_open_readme_md.Size = new System.Drawing.Size(58, 30);
+            this.btn_open_readme_md.TabIndex = 66;
+            this.btn_open_readme_md.Text = "Open";
+            this.btn_open_readme_md.UseVisualStyleBackColor = true;
+            this.btn_open_readme_md.Click += new System.EventHandler(this.btn_open_readme_md_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(51, 400);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(62, 18);
+            this.label23.TabIndex = 64;
+            this.label23.Text = "宏定义";
+            // 
+            // txt_path_define_h
+            // 
+            this.txt_path_define_h.Location = new System.Drawing.Point(121, 397);
+            this.txt_path_define_h.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_define_h.Name = "txt_path_define_h";
+            this.txt_path_define_h.Size = new System.Drawing.Size(745, 28);
+            this.txt_path_define_h.TabIndex = 63;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(33, 362);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(80, 18);
+            this.label22.TabIndex = 61;
+            this.label22.Text = "测试程序";
+            // 
+            // txt_path_test_cpp
+            // 
+            this.txt_path_test_cpp.Location = new System.Drawing.Point(121, 359);
+            this.txt_path_test_cpp.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_test_cpp.Name = "txt_path_test_cpp";
+            this.txt_path_test_cpp.Size = new System.Drawing.Size(745, 28);
+            this.txt_path_test_cpp.TabIndex = 60;
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.Location = new System.Drawing.Point(773, 9);
+            this.btn_reset.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(93, 30);
+            this.btn_reset.TabIndex = 59;
+            this.btn_reset.Text = "Reset";
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(34, 324);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 18);
+            this.label21.TabIndex = 57;
+            this.label21.Text = "测试用例";
+            // 
+            // txt_path_tests_txt
+            // 
+            this.txt_path_tests_txt.Location = new System.Drawing.Point(122, 321);
+            this.txt_path_tests_txt.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_tests_txt.Name = "txt_path_tests_txt";
+            this.txt_path_tests_txt.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_tests_txt.TabIndex = 56;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(136, 170);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(80, 18);
+            this.label20.TabIndex = 54;
+            this.label20.Text = "比赛题目";
+            // 
+            // txt_path_contest_problems
+            // 
+            this.txt_path_contest_problems.Location = new System.Drawing.Point(224, 166);
+            this.txt_path_contest_problems.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_contest_problems.Name = "txt_path_contest_problems";
+            this.txt_path_contest_problems.Size = new System.Drawing.Size(642, 28);
+            this.txt_path_contest_problems.TabIndex = 53;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(34, 286);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(80, 18);
+            this.label19.TabIndex = 51;
+            this.label19.Text = "代码文件";
+            // 
+            // txt_path_solution_cpp
+            // 
+            this.txt_path_solution_cpp.Location = new System.Drawing.Point(122, 284);
+            this.txt_path_solution_cpp.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_solution_cpp.Name = "txt_path_solution_cpp";
+            this.txt_path_solution_cpp.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_solution_cpp.TabIndex = 50;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(34, 208);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(80, 18);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "题解文件";
+            // 
+            // txt_path_solutions_md
+            // 
+            this.txt_path_solutions_md.Location = new System.Drawing.Point(122, 206);
+            this.txt_path_solutions_md.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_solutions_md.Name = "txt_path_solutions_md";
+            this.txt_path_solutions_md.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_solutions_md.TabIndex = 47;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(33, 436);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(80, 18);
+            this.label15.TabIndex = 45;
+            this.label15.Text = "提交文件";
+            // 
+            // txt_path_commit_bat
+            // 
+            this.txt_path_commit_bat.Location = new System.Drawing.Point(121, 435);
+            this.txt_path_commit_bat.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_commit_bat.Name = "txt_path_commit_bat";
+            this.txt_path_commit_bat.Size = new System.Drawing.Size(745, 28);
+            this.txt_path_commit_bat.TabIndex = 44;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(34, 130);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 18);
+            this.label13.TabIndex = 42;
+            this.label13.Text = "题目文件";
+            // 
+            // txt_path_problemset_all
+            // 
+            this.txt_path_problemset_all.Location = new System.Drawing.Point(122, 129);
+            this.txt_path_problemset_all.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_problemset_all.Name = "txt_path_problemset_all";
+            this.txt_path_problemset_all.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_problemset_all.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(51, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "主路径";
+            // 
+            // txt_path_main
+            // 
+            this.txt_path_main.Location = new System.Drawing.Point(122, 9);
+            this.txt_path_main.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_main.Name = "txt_path_main";
+            this.txt_path_main.Size = new System.Drawing.Size(643, 28);
+            this.txt_path_main.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(34, 249);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 18);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "答题文件";
+            // 
+            // txt_path_answer_readme_md
+            // 
+            this.txt_path_answer_readme_md.Location = new System.Drawing.Point(122, 244);
+            this.txt_path_answer_readme_md.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_answer_readme_md.Multiline = true;
+            this.txt_path_answer_readme_md.Name = "txt_path_answer_readme_md";
+            this.txt_path_answer_readme_md.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_answer_readme_md.TabIndex = 31;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(34, 92);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 18);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "日志文件";
+            // 
+            // txt_path_update_md
+            // 
+            this.txt_path_update_md.Location = new System.Drawing.Point(122, 88);
+            this.txt_path_update_md.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_update_md.Name = "txt_path_update_md";
+            this.txt_path_update_md.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_update_md.TabIndex = 29;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 18);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "主页文件";
+            // 
+            // txt_path_readme_md
+            // 
+            this.txt_path_readme_md.Location = new System.Drawing.Point(122, 46);
+            this.txt_path_readme_md.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_path_readme_md.Name = "txt_path_readme_md";
+            this.txt_path_readme_md.Size = new System.Drawing.Size(744, 28);
+            this.txt_path_readme_md.TabIndex = 17;
             // 
             // frmMain
             // 

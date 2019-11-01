@@ -471,21 +471,14 @@ namespace leetcode_md_helper
         private void Copy_File_Solution_cpp()
         {
             // path
-            string sourcePath = txt_path_main.Text + @"\test\Test\";
-            if (m_strCodeSelect == "0")
-            {
-                sourcePath += "SOLUTION.cpp";
-            }
-            else
-            {
-                sourcePath += "Test_" + m_strCodeSelect + ".cpp";
-            }
+            string sourcePath = txt_path_main.Text + @"\problems\_test_" + m_strCodeSelect + @"\";
+            sourcePath += "SOLUTION.cpp";
             string targetPath = txt_path_solution_cpp.Text;
 
             // read source
             if (!File.Exists(sourcePath))
             {
-                MessageBox.Show(@"[Test/SOLUTION.cpp] file not exist!");
+                MessageBox.Show(@"[SOLUTION.cpp] file not exist!");
                 return;
             }
 
@@ -533,15 +526,8 @@ namespace leetcode_md_helper
 
         private void Copy_File_Tests_txt()
         {
-            string sourcePath = txt_path_main.Text + @"\test\Test\";
-            if (m_strCodeSelect == "0")
-            {
-                sourcePath += "tests.txt";
-            }
-            else
-            {
-                sourcePath += "tests_" + m_strCodeSelect + ".txt";
-            }
+            string sourcePath = txt_path_main.Text + @"\problems\_test_" + m_strCodeSelect + @"\";
+            sourcePath += "tests.txt";
             string targetPath = txt_path_tests_txt.Text;
 
             System.IO.File.Copy(sourcePath, targetPath, true);

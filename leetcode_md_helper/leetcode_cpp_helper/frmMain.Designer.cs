@@ -82,9 +82,16 @@
             this.txt_path_old_problems = new System.Windows.Forms.TextBox();
             this.btn_transfer_folder = new System.Windows.Forms.Button();
             this.btn_get_folder = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txt_search_titleE = new System.Windows.Forms.TextBox();
+            this.txt_search_id = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btn_open_search = new System.Windows.Forms.Button();
+            this.btn_open_cpp_active = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -100,7 +107,7 @@
             this.panel1.Controls.Add(this.txt_in_titleC);
             this.panel1.Controls.Add(this.txt_in_titleE);
             this.panel1.Controls.Add(this.txt_in_id);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 86);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 157);
             this.panel1.TabIndex = 24;
@@ -208,7 +215,7 @@
             this.panel2.Controls.Add(this.txt_out_func_name);
             this.panel2.Controls.Add(this.txt_out_return_type);
             this.panel2.Controls.Add(this.txt_in_func);
-            this.panel2.Location = new System.Drawing.Point(12, 175);
+            this.panel2.Location = new System.Drawing.Point(12, 249);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 424);
             this.panel2.TabIndex = 25;
@@ -325,7 +332,7 @@
             this.panel3.Controls.Add(this.txt_path_curr_folder);
             this.panel3.Controls.Add(this.txt_path_new_problems);
             this.panel3.Controls.Add(this.txt_path_old_problems);
-            this.panel3.Location = new System.Drawing.Point(12, 605);
+            this.panel3.Location = new System.Drawing.Point(12, 680);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(784, 335);
             this.panel3.TabIndex = 26;
@@ -572,7 +579,7 @@
             // 
             this.btn_transfer_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_transfer_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_transfer_folder.Location = new System.Drawing.Point(407, 950);
+            this.btn_transfer_folder.Location = new System.Drawing.Point(407, 1025);
             this.btn_transfer_folder.Name = "btn_transfer_folder";
             this.btn_transfer_folder.Size = new System.Drawing.Size(389, 75);
             this.btn_transfer_folder.TabIndex = 34;
@@ -584,7 +591,7 @@
             // 
             this.btn_get_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_get_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_get_folder.Location = new System.Drawing.Point(12, 950);
+            this.btn_get_folder.Location = new System.Drawing.Point(12, 1025);
             this.btn_get_folder.Name = "btn_get_folder";
             this.btn_get_folder.Size = new System.Drawing.Size(389, 75);
             this.btn_get_folder.TabIndex = 33;
@@ -592,11 +599,68 @@
             this.btn_get_folder.UseVisualStyleBackColor = true;
             this.btn_get_folder.Click += new System.EventHandler(this.btn_get_folder_Click);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btn_open_cpp_active);
+            this.panel4.Controls.Add(this.btn_open_search);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.txt_search_titleE);
+            this.panel4.Controls.Add(this.txt_search_id);
+            this.panel4.Location = new System.Drawing.Point(12, 12);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(783, 68);
+            this.panel4.TabIndex = 35;
+            // 
+            // txt_search_titleE
+            // 
+            this.txt_search_titleE.Location = new System.Drawing.Point(148, 32);
+            this.txt_search_titleE.Name = "txt_search_titleE";
+            this.txt_search_titleE.Size = new System.Drawing.Size(373, 28);
+            this.txt_search_titleE.TabIndex = 42;
+            // 
+            // txt_search_id
+            // 
+            this.txt_search_id.Location = new System.Drawing.Point(76, 32);
+            this.txt_search_id.Name = "txt_search_id";
+            this.txt_search_id.Size = new System.Drawing.Size(67, 28);
+            this.txt_search_id.TabIndex = 41;
+            this.txt_search_id.TextChanged += new System.EventHandler(this.txt_search_id_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(134, 18);
+            this.label13.TabIndex = 44;
+            this.label13.Text = "输入id查询题目";
+            // 
+            // btn_open_search
+            // 
+            this.btn_open_search.Location = new System.Drawing.Point(705, 30);
+            this.btn_open_search.Name = "btn_open_search";
+            this.btn_open_search.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_search.TabIndex = 45;
+            this.btn_open_search.Text = "Open";
+            this.btn_open_search.UseVisualStyleBackColor = true;
+            this.btn_open_search.Click += new System.EventHandler(this.btn_open_search_Click);
+            // 
+            // btn_open_cpp_active
+            // 
+            this.btn_open_cpp_active.Location = new System.Drawing.Point(528, 30);
+            this.btn_open_cpp_active.Name = "btn_open_cpp_active";
+            this.btn_open_cpp_active.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_cpp_active.TabIndex = 46;
+            this.btn_open_cpp_active.Text = "Active";
+            this.btn_open_cpp_active.UseVisualStyleBackColor = true;
+            this.btn_open_cpp_active.Click += new System.EventHandler(this.btn_open_cpp_active_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 1037);
+            this.ClientSize = new System.Drawing.Size(809, 1112);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btn_transfer_folder);
             this.Controls.Add(this.panel1);
@@ -611,6 +675,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -670,6 +736,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_open_readme_md;
         private System.Windows.Forms.TextBox txt_path_readme_md;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btn_open_search;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txt_search_titleE;
+        private System.Windows.Forms.TextBox txt_search_id;
+        private System.Windows.Forms.Button btn_open_cpp_active;
     }
 }
 

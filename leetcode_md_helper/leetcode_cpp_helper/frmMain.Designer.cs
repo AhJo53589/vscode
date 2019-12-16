@@ -83,11 +83,11 @@
             this.btn_transfer_folder = new System.Windows.Forms.Button();
             this.btn_get_folder = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_open_cpp_active = new System.Windows.Forms.Button();
+            this.btn_open_search = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.txt_search_titleE = new System.Windows.Forms.TextBox();
             this.txt_search_id = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btn_open_search = new System.Windows.Forms.Button();
-            this.btn_open_cpp_active = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -303,7 +303,6 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.btn_open_readme_md);
             this.panel3.Controls.Add(this.txt_path_readme_md);
@@ -577,7 +576,6 @@
             // 
             // btn_transfer_folder
             // 
-            this.btn_transfer_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_transfer_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_transfer_folder.Location = new System.Drawing.Point(407, 1025);
             this.btn_transfer_folder.Name = "btn_transfer_folder";
@@ -589,7 +587,6 @@
             // 
             // btn_get_folder
             // 
-            this.btn_get_folder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_get_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_get_folder.Location = new System.Drawing.Point(12, 1025);
             this.btn_get_folder.Name = "btn_get_folder";
@@ -611,6 +608,35 @@
             this.panel4.Size = new System.Drawing.Size(783, 68);
             this.panel4.TabIndex = 35;
             // 
+            // btn_open_cpp_active
+            // 
+            this.btn_open_cpp_active.Location = new System.Drawing.Point(528, 30);
+            this.btn_open_cpp_active.Name = "btn_open_cpp_active";
+            this.btn_open_cpp_active.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_cpp_active.TabIndex = 46;
+            this.btn_open_cpp_active.Text = "Active";
+            this.btn_open_cpp_active.UseVisualStyleBackColor = true;
+            this.btn_open_cpp_active.Click += new System.EventHandler(this.btn_open_cpp_active_Click);
+            // 
+            // btn_open_search
+            // 
+            this.btn_open_search.Location = new System.Drawing.Point(705, 30);
+            this.btn_open_search.Name = "btn_open_search";
+            this.btn_open_search.Size = new System.Drawing.Size(75, 28);
+            this.btn_open_search.TabIndex = 45;
+            this.btn_open_search.Text = "Open";
+            this.btn_open_search.UseVisualStyleBackColor = true;
+            this.btn_open_search.Click += new System.EventHandler(this.btn_open_search_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(134, 18);
+            this.label13.TabIndex = 44;
+            this.label13.Text = "输入id查询题目";
+            // 
             // txt_search_titleE
             // 
             this.txt_search_titleE.Location = new System.Drawing.Point(148, 32);
@@ -625,35 +651,6 @@
             this.txt_search_id.Size = new System.Drawing.Size(67, 28);
             this.txt_search_id.TabIndex = 41;
             this.txt_search_id.TextChanged += new System.EventHandler(this.txt_search_id_TextChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 11);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(134, 18);
-            this.label13.TabIndex = 44;
-            this.label13.Text = "输入id查询题目";
-            // 
-            // btn_open_search
-            // 
-            this.btn_open_search.Location = new System.Drawing.Point(705, 30);
-            this.btn_open_search.Name = "btn_open_search";
-            this.btn_open_search.Size = new System.Drawing.Size(75, 28);
-            this.btn_open_search.TabIndex = 45;
-            this.btn_open_search.Text = "Open";
-            this.btn_open_search.UseVisualStyleBackColor = true;
-            this.btn_open_search.Click += new System.EventHandler(this.btn_open_search_Click);
-            // 
-            // btn_open_cpp_active
-            // 
-            this.btn_open_cpp_active.Location = new System.Drawing.Point(528, 30);
-            this.btn_open_cpp_active.Name = "btn_open_cpp_active";
-            this.btn_open_cpp_active.Size = new System.Drawing.Size(75, 28);
-            this.btn_open_cpp_active.TabIndex = 46;
-            this.btn_open_cpp_active.Text = "Active";
-            this.btn_open_cpp_active.UseVisualStyleBackColor = true;
-            this.btn_open_cpp_active.Click += new System.EventHandler(this.btn_open_cpp_active_Click);
             // 
             // frmMain
             // 

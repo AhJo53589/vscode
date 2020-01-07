@@ -8,6 +8,7 @@
 
 #include <bitset>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -62,15 +63,15 @@ using namespace std;
 
 
 //////////////////////////////////////////////////////////////////////////
-//template<typename VALUE> 
-//struct GFMapValueType<VALUE, false>
-//{ 
-//	using value_type = VALUE * ; 
+//template<typename VALUE, bool>
+//struct GFMapValueType
+//{
+//	using value_type = VALUE * ;
 //};
 //
 //template<typename VALUE>
 //struct GFMapValueType<VALUE, true>
-//{ 
+//{
 //	using value_type = std::shared_ptr<VALUE>;
 //};
 //
@@ -79,7 +80,7 @@ using namespace std;
 //{
 //public:
 //	using k_type = KEY;
-//	using v_type = typename GFMapValueType<VALUE>::value_type;
+//	using v_type = typename GFMapValueType<VALUE, is_share_ptr>::value_type;
 //	using map_type = std::map<k_type, v_type>;
 //	using value_type = typename map_type::value_type;
 //	using reference = value_type & ;
@@ -88,88 +89,107 @@ using namespace std;
 //	using const_iterator = typename map_type::const_iterator;
 //	using reverse_iterator = typename map_type::reverse_iterator;
 //	using const_reverse_iterator = typename map_type::const_reverse_iterator;
+//
 //	std::size_t size() const { return nodes_->size(); }
-//	std::pair<iterator> insert(const k_type& key, const v_type& value)
+//	std::pair<iterator, bool> insert(const k_type& key, const v_type& value)
 //	{
 //		return nodes_.insert(value_type(key, value));
 //	}
 //	iterator erase(iterator it) { return nodes_.erase(it); }
-//	std::size_t erase(const k_type& key) { _________ };
+//	std::size_t erase(const k_type& key) { return nodes_.erase(key); };
 //	iterator find(const k_type& key) { return nodes_.find(key); }
-//	______ rebgin() { ______ }
-//	______ rend() { ______ }
-//	______ find_value(const k_type& key) {
-//		______
-//			______
+//	reverse_iterator rbegin() { return nodes_.rbegin(); }
+//	reverse_iterator rend() { return nodes_.rend(); }
+//	v_type find_value(const k_type& key) 
+//	{
+//		auto it = find(key);
+//		if (it != nodes_.end())
+//		{
+//			return it->second;
+//		}
+//		return v_type(nullptr);
 //	}
-//	______ first() {
-//		______
-//			______
+//	v_type first() 
+//	{
+//		if (!nodes_.empty())
+//		{
+//			return *nodes_.begin();
+//		}
+//		return v_type(nullptr);
 //	}
-//	______ next() {
-//		______
-//			______
+//	v_type next()
+//	{
+//		if (_curIter != nodes_.end())
+//		{
+//			return _curIter++->second;
+//		}
+//		return v_type(nullptr);
 //	}
-//	void reset() { ______ }
+//	void reset() { _curIter = nodes_.begin(); }
 //private:
 //	map_type nodes_;
 //	iterator _curIter;
 //};
+//
+//// test
+//GFMapBase<int, int, false> a;
 
+
+//////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////
 //字符串替换
 //replacedas$REPLACE_ME$fj32RE3$REPLACE_ME$ad34$REPLACE_ME$2R34$REPLACE_ME$
 //将上述字符串中的 $REPLACE_ME$ 替换为 HELLO
 //
-string ReplaceStr(string str, string strOld, string strNew)
-{
-	string strRet;
-	for (size_t i = 0; i < str.size(); i++)
-	{
-		if (str[i] == strOld[0] && i + strOld.size() - 1 < str.size()
-			&& str.substr(i, strOld.size()) == strOld)
-		{
-			strRet += strNew;
-			i += strOld.size() - 1;
-		}
-		else
-		{
-			strRet += str[i];
-		}
-	}
-	return strRet;
-}
-
-string replaceString(string str, string strOld, string strNew)
-{
-	string strRet;
-	//auto it = str.begin();
-	//while (it != str.end())
-	//{
-	//	auto it_next = find(it, str.end(), strOld);
-	//	string temp(it, it_next);
-	//	if (equal(it_next, it_next + strOld.size(), strOld.begin()))
-	//	{
-	//		strRet.append(strNew);
-	//	}
-	//	it = it_next;
-	//}
-	return strRet;
-}
-
-int main()
-{
-	string str = "replacedas$REPLACE_ME$fj32RE3$REPLACE_ME$ad34$REPLACE_ME$2R34$REPLACE_ME&";
-	string strA = "$REPLACE_ME$";
-	string strB = "HELLO";
-
-	cout << str << endl;
-	string ans = ReplaceStr(str, strA, strB);
-	cout << ans << endl;
-	//string ans2 = replaceString(str, strA, strB);
-	//cout << ans2 << endl;
-}
+//string ReplaceStr(string str, string strOld, string strNew)
+//{
+//	string strRet;
+//	for (size_t i = 0; i < str.size(); i++)
+//	{
+//		if (str[i] == strOld[0] && i + strOld.size() - 1 < str.size()
+//			&& str.substr(i, strOld.size()) == strOld)
+//		{
+//			strRet += strNew;
+//			i += strOld.size() - 1;
+//		}
+//		else
+//		{
+//			strRet += str[i];
+//		}
+//	}
+//	return strRet;
+//}
+//
+//string replaceString(string str, string strOld, string strNew)
+//{
+//	string strRet;
+//	//auto it = str.begin();
+//	//while (it != str.end())
+//	//{
+//	//	auto it_next = find(it, str.end(), strOld);
+//	//	string temp(it, it_next);
+//	//	if (equal(it_next, it_next + strOld.size(), strOld.begin()))
+//	//	{
+//	//		strRet.append(strNew);
+//	//	}
+//	//	it = it_next;
+//	//}
+//	return strRet;
+//}
+//
+//int main()
+//{
+//	string str = "replacedas$REPLACE_ME$fj32RE3$REPLACE_ME$ad34$REPLACE_ME$2R34$REPLACE_ME&";
+//	string strA = "$REPLACE_ME$";
+//	string strB = "HELLO";
+//
+//	cout << str << endl;
+//	string ans = ReplaceStr(str, strA, strB);
+//	cout << ans << endl;
+//	//string ans2 = replaceString(str, strA, strB);
+//	//cout << ans2 << endl;
+//}
 
 
 //////////////////////////////////////////////////////////////////////////

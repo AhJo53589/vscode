@@ -109,7 +109,6 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnGenerate.Enabled = false;
             this.btnGenerate.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerate.Location = new System.Drawing.Point(8, 384);
@@ -522,8 +521,6 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.btn_open_define_h);
             this.panel2.Controls.Add(this.btn_open_commit_bat);
             this.panel2.Controls.Add(this.btn_open_tests_txt);

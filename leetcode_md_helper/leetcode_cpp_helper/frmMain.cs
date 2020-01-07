@@ -42,6 +42,9 @@ namespace leetcode_cpp_helper
             txt_path_solutions_md.Text = txt_path_main.Text + @"\Solutions.md";
             txt_path_readme_md.Text = txt_path_main.Text + @"\README.md";
 
+            txt_search_id.Text = "";
+            txt_search_titleE.Text = "";
+
             txt_in_difficult.Text = "";
             txt_in_id.Text = "";
             txt_in_titleE.Text = "";
@@ -239,8 +242,7 @@ namespace leetcode_cpp_helper
             }
 
             string strInsert_SelectedSolution = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_in_id.Text + " \t" + txt_in_titleE.Text;
-            int iInsertNo = 0;
-            int.TryParse(txt_in_id.Text, out iInsertNo);
+            int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
 
@@ -286,6 +288,37 @@ namespace leetcode_cpp_helper
 
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
+            }
+        }
+
+        private void Find_In_File_Define_IdName_h()
+        {
+            if (txt_path_define_h.Text == "") return;
+
+            string strFile = txt_path_define_h.Text;
+
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[Define_IdName.h] file not exist!");
+                return;
+            }
+
+            string strSearch = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_search_id.Text + " ";
+
+            FileStream fs = new FileStream(strFile, FileMode.Open);
+            using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string str = sr.ReadLine();
+                    if (str.IndexOf(strSearch) != -1)
+                    {
+                        string[] s = str.Split('\t');
+                        txt_search_titleE.Text = s[s.Length - 1];
+                        break;
+                    }
+                }
+                sr.Close();
             }
         }
 
@@ -438,7 +471,6 @@ namespace leetcode_cpp_helper
 
             string strOld = "#include SOLUTION_CPP_PATH_NAME(SOLUTION_CPP_FOLDER_NAME_ID_";
             string strInsert = strOld + strId + ")";
-            int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
 
             FileStream fs = new FileStream(strFile, FileMode.Open);
@@ -912,6 +944,39 @@ namespace leetcode_cpp_helper
             Create_File_TestCases_txt(newPath);
             //Modify_File_Define_IdName_h();
             Modify_File_Test_cpp("TEST_0");
+        }
+
+        private void btn_open_search_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", txt_path_new_problems.Text + "\\" + txt_search_titleE.Text);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btn_open_cpp_active_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Modify_File_Test_cpp(txt_search_id.Text);
+
+                string newPath = txt_path_new_problems.Text + "\\" + txt_search_titleE.Text;
+                newPath += "\\" + "SOLUTION.cpp";
+                Process.Start(newPath);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txt_search_id_TextChanged(object sender, EventArgs e)
+        {
+            Find_In_File_Define_IdName_h();
         }
     }
 }

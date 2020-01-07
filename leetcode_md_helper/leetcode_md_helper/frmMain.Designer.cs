@@ -153,7 +153,7 @@
             this.panel1.Controls.Add(this.txt_in_link);
             this.panel1.Controls.Add(this.txt_in_id_titleC);
             this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(628, 370);
             this.panel1.TabIndex = 21;
@@ -164,7 +164,7 @@
             this.cb_in_finish.Checked = true;
             this.cb_in_finish.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_in_finish.Location = new System.Drawing.Point(309, 10);
-            this.cb_in_finish.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_in_finish.Margin = new System.Windows.Forms.Padding(2);
             this.cb_in_finish.Name = "cb_in_finish";
             this.cb_in_finish.Size = new System.Drawing.Size(72, 16);
             this.cb_in_finish.TabIndex = 57;
@@ -190,9 +190,9 @@
             this.groupBox1.Controls.Add(this.rb_in_test_2);
             this.groupBox1.Controls.Add(this.rb_in_test_1);
             this.groupBox1.Location = new System.Drawing.Point(85, 312);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(492, 47);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
@@ -203,7 +203,7 @@
             this.rb_in_test_0.AutoSize = true;
             this.rb_in_test_0.Checked = true;
             this.rb_in_test_0.Location = new System.Drawing.Point(4, 18);
-            this.rb_in_test_0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_test_0.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_test_0.Name = "rb_in_test_0";
             this.rb_in_test_0.Size = new System.Drawing.Size(29, 16);
             this.rb_in_test_0.TabIndex = 44;
@@ -216,7 +216,7 @@
             // 
             this.rb_in_test_5.AutoSize = true;
             this.rb_in_test_5.Location = new System.Drawing.Point(315, 18);
-            this.rb_in_test_5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_test_5.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_test_5.Name = "rb_in_test_5";
             this.rb_in_test_5.Size = new System.Drawing.Size(29, 16);
             this.rb_in_test_5.TabIndex = 43;
@@ -228,7 +228,7 @@
             // 
             this.rb_in_test_4.AutoSize = true;
             this.rb_in_test_4.Location = new System.Drawing.Point(253, 18);
-            this.rb_in_test_4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_test_4.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_test_4.Name = "rb_in_test_4";
             this.rb_in_test_4.Size = new System.Drawing.Size(29, 16);
             this.rb_in_test_4.TabIndex = 42;
@@ -240,7 +240,7 @@
             // 
             this.rb_in_test_3.AutoSize = true;
             this.rb_in_test_3.Location = new System.Drawing.Point(191, 18);
-            this.rb_in_test_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_test_3.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_test_3.Name = "rb_in_test_3";
             this.rb_in_test_3.Size = new System.Drawing.Size(29, 16);
             this.rb_in_test_3.TabIndex = 41;
@@ -252,7 +252,7 @@
             // 
             this.rb_in_test_2.AutoSize = true;
             this.rb_in_test_2.Location = new System.Drawing.Point(129, 18);
-            this.rb_in_test_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_test_2.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_test_2.Name = "rb_in_test_2";
             this.rb_in_test_2.Size = new System.Drawing.Size(29, 16);
             this.rb_in_test_2.TabIndex = 40;
@@ -264,7 +264,7 @@
             // 
             this.rb_in_test_1.AutoSize = true;
             this.rb_in_test_1.Location = new System.Drawing.Point(64, 18);
-            this.rb_in_test_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_test_1.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_test_1.Name = "rb_in_test_1";
             this.rb_in_test_1.Size = new System.Drawing.Size(29, 16);
             this.rb_in_test_1.TabIndex = 39;
@@ -285,7 +285,7 @@
             // txt_path_contest
             // 
             this.txt_path_contest.Location = new System.Drawing.Point(149, 53);
-            this.txt_path_contest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_contest.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_contest.Name = "txt_path_contest";
             this.txt_path_contest.Size = new System.Drawing.Size(238, 21);
             this.txt_path_contest.TabIndex = 53;
@@ -303,7 +303,7 @@
             // txt_in_titleC
             // 
             this.txt_in_titleC.Location = new System.Drawing.Point(425, 100);
-            this.txt_in_titleC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_titleC.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_titleC.Name = "txt_in_titleC";
             this.txt_in_titleC.Size = new System.Drawing.Size(153, 21);
             this.txt_in_titleC.TabIndex = 51;
@@ -311,7 +311,7 @@
             // txt_in_titleE
             // 
             this.txt_in_titleE.Location = new System.Drawing.Point(197, 100);
-            this.txt_in_titleE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_titleE.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_titleE.Name = "txt_in_titleE";
             this.txt_in_titleE.Size = new System.Drawing.Size(225, 21);
             this.txt_in_titleE.TabIndex = 50;
@@ -319,7 +319,7 @@
             // txt_in_id
             // 
             this.txt_in_id.Location = new System.Drawing.Point(149, 100);
-            this.txt_in_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_id.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_id.Name = "txt_in_id";
             this.txt_in_id.Size = new System.Drawing.Size(46, 21);
             this.txt_in_id.TabIndex = 49;
@@ -376,7 +376,7 @@
             // 
             this.rb_in_difficult_3.AutoSize = true;
             this.rb_in_difficult_3.Location = new System.Drawing.Point(181, 9);
-            this.rb_in_difficult_3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_difficult_3.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_difficult_3.Name = "rb_in_difficult_3";
             this.rb_in_difficult_3.Size = new System.Drawing.Size(47, 16);
             this.rb_in_difficult_3.TabIndex = 40;
@@ -388,7 +388,7 @@
             // 
             this.rb_in_difficult_2.AutoSize = true;
             this.rb_in_difficult_2.Location = new System.Drawing.Point(131, 9);
-            this.rb_in_difficult_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_difficult_2.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_difficult_2.Name = "rb_in_difficult_2";
             this.rb_in_difficult_2.Size = new System.Drawing.Size(47, 16);
             this.rb_in_difficult_2.TabIndex = 39;
@@ -401,7 +401,7 @@
             this.rb_in_difficult_1.AutoSize = true;
             this.rb_in_difficult_1.Checked = true;
             this.rb_in_difficult_1.Location = new System.Drawing.Point(81, 9);
-            this.rb_in_difficult_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_in_difficult_1.Margin = new System.Windows.Forms.Padding(2);
             this.rb_in_difficult_1.Name = "rb_in_difficult_1";
             this.rb_in_difficult_1.Size = new System.Drawing.Size(47, 16);
             this.rb_in_difficult_1.TabIndex = 38;
@@ -558,7 +558,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txt_path_readme_md);
             this.panel2.Location = new System.Drawing.Point(8, 474);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(628, 319);
             this.panel2.TabIndex = 22;
@@ -893,11 +893,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 804);
+            this.ClientSize = new System.Drawing.Size(644, 801);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnGenerate);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "Leetcode_MD_Helper";

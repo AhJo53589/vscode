@@ -698,6 +698,12 @@ namespace leetcode_cpp_helper
 
             // vector<int> twoSum(vector<int> &nums, int target)
             string str = txt_in_func.Text;
+            int k = 0;
+            while (k != str.Length && str[k] == ' ')       k++;
+            {
+                
+            }
+            str = str.Substring(k);
             string[] s = str.Split(' ');
             // vector<int>
             txt_out_return_type.Text = s[0];

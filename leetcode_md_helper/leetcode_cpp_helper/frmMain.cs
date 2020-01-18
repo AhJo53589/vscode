@@ -963,10 +963,10 @@ namespace leetcode_cpp_helper
             try
             {
                 Modify_File_Test_cpp(txt_search_id.Text);
-
-                string newPath = txt_path_new_problems.Text + "\\" + txt_search_titleE.Text;
-                newPath += "\\" + "SOLUTION.cpp";
-                Process.Start(newPath);
+                btn_open_search_Click(sender, e);
+                //string newPath = txt_path_new_problems.Text + "\\" + txt_search_titleE.Text;
+                //newPath += "\\" + "SOLUTION.cpp";
+                //Process.Start(newPath);
             }
             catch
             {

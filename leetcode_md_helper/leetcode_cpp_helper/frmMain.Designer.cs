@@ -108,7 +108,7 @@
             this.panel1.Controls.Add(this.txt_in_titleE);
             this.panel1.Controls.Add(this.txt_in_id);
             this.panel1.Location = new System.Drawing.Point(8, 57);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(523, 105);
             this.panel1.TabIndex = 24;
@@ -126,7 +126,7 @@
             // btn_open_solution_link
             // 
             this.btn_open_solution_link.Location = new System.Drawing.Point(470, 81);
-            this.btn_open_solution_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_solution_link.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_solution_link.Name = "btn_open_solution_link";
             this.btn_open_solution_link.Size = new System.Drawing.Size(50, 19);
             this.btn_open_solution_link.TabIndex = 30;
@@ -137,7 +137,7 @@
             // btn_reset
             // 
             this.btn_reset.Location = new System.Drawing.Point(406, 5);
-            this.btn_reset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_reset.Margin = new System.Windows.Forms.Padding(2);
             this.btn_reset.Name = "btn_reset";
             this.btn_reset.Size = new System.Drawing.Size(50, 22);
             this.btn_reset.TabIndex = 36;
@@ -148,7 +148,7 @@
             // btn_hold
             // 
             this.btn_hold.Location = new System.Drawing.Point(352, 5);
-            this.btn_hold.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_hold.Margin = new System.Windows.Forms.Padding(2);
             this.btn_hold.Name = "btn_hold";
             this.btn_hold.Size = new System.Drawing.Size(50, 22);
             this.btn_hold.TabIndex = 40;
@@ -159,7 +159,7 @@
             // txt_in_solution_link
             // 
             this.txt_in_solution_link.Location = new System.Drawing.Point(4, 81);
-            this.txt_in_solution_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_solution_link.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_solution_link.Name = "txt_in_solution_link";
             this.txt_in_solution_link.Size = new System.Drawing.Size(463, 21);
             this.txt_in_solution_link.TabIndex = 29;
@@ -167,7 +167,7 @@
             // btn_open_link
             // 
             this.btn_open_link.Location = new System.Drawing.Point(470, 56);
-            this.btn_open_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_link.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_link.Name = "btn_open_link";
             this.btn_open_link.Size = new System.Drawing.Size(50, 19);
             this.btn_open_link.TabIndex = 28;
@@ -178,7 +178,7 @@
             // txt_in_difficult
             // 
             this.txt_in_difficult.Location = new System.Drawing.Point(4, 31);
-            this.txt_in_difficult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_difficult.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_difficult.Name = "txt_in_difficult";
             this.txt_in_difficult.Size = new System.Drawing.Size(44, 21);
             this.txt_in_difficult.TabIndex = 27;
@@ -186,7 +186,7 @@
             // txt_in_link
             // 
             this.txt_in_link.Location = new System.Drawing.Point(4, 56);
-            this.txt_in_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_link.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_link.Name = "txt_in_link";
             this.txt_in_link.Size = new System.Drawing.Size(463, 21);
             this.txt_in_link.TabIndex = 26;
@@ -194,7 +194,7 @@
             // txt_in_titleC
             // 
             this.txt_in_titleC.Location = new System.Drawing.Point(352, 31);
-            this.txt_in_titleC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_titleC.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_titleC.Name = "txt_in_titleC";
             this.txt_in_titleC.Size = new System.Drawing.Size(168, 21);
             this.txt_in_titleC.TabIndex = 25;
@@ -202,7 +202,7 @@
             // txt_in_titleE
             // 
             this.txt_in_titleE.Location = new System.Drawing.Point(99, 31);
-            this.txt_in_titleE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_titleE.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_titleE.Name = "txt_in_titleE";
             this.txt_in_titleE.Size = new System.Drawing.Size(250, 21);
             this.txt_in_titleE.TabIndex = 24;
@@ -210,7 +210,7 @@
             // txt_in_id
             // 
             this.txt_in_id.Location = new System.Drawing.Point(51, 31);
-            this.txt_in_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_id.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_id.Name = "txt_in_id";
             this.txt_in_id.Size = new System.Drawing.Size(46, 21);
             this.txt_in_id.TabIndex = 23;
@@ -228,7 +228,7 @@
             this.panel2.Controls.Add(this.txt_out_return_type);
             this.panel2.Controls.Add(this.txt_in_func);
             this.panel2.Location = new System.Drawing.Point(8, 166);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(523, 283);
             this.panel2.TabIndex = 25;
@@ -245,8 +245,8 @@
             // 
             // btn_create
             // 
-            this.btn_create.Location = new System.Drawing.Point(471, 5);
-            this.btn_create.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_create.Location = new System.Drawing.Point(470, 4);
+            this.btn_create.Margin = new System.Windows.Forms.Padding(2);
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(50, 22);
             this.btn_create.TabIndex = 41;
@@ -257,7 +257,7 @@
             // txt_in_func_testcase
             // 
             this.txt_in_func_testcase.Location = new System.Drawing.Point(4, 214);
-            this.txt_in_func_testcase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_func_testcase.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_func_testcase.Multiline = true;
             this.txt_in_func_testcase.Name = "txt_in_func_testcase";
             this.txt_in_func_testcase.Size = new System.Drawing.Size(515, 65);
@@ -266,7 +266,7 @@
             // txt_in_func_2
             // 
             this.txt_in_func_2.Location = new System.Drawing.Point(4, 31);
-            this.txt_in_func_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_func_2.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_func_2.Multiline = true;
             this.txt_in_func_2.Name = "txt_in_func_2";
             this.txt_in_func_2.Size = new System.Drawing.Size(515, 65);
@@ -285,7 +285,7 @@
             // txt_out_param_value
             // 
             this.txt_out_param_value.Location = new System.Drawing.Point(208, 191);
-            this.txt_out_param_value.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_out_param_value.Margin = new System.Windows.Forms.Padding(2);
             this.txt_out_param_value.Name = "txt_out_param_value";
             this.txt_out_param_value.Size = new System.Drawing.Size(311, 21);
             this.txt_out_param_value.TabIndex = 22;
@@ -293,7 +293,7 @@
             // txt_out_param
             // 
             this.txt_out_param.Location = new System.Drawing.Point(208, 167);
-            this.txt_out_param.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_out_param.Margin = new System.Windows.Forms.Padding(2);
             this.txt_out_param.Name = "txt_out_param";
             this.txt_out_param.Size = new System.Drawing.Size(311, 21);
             this.txt_out_param.TabIndex = 21;
@@ -301,7 +301,7 @@
             // txt_out_func_name
             // 
             this.txt_out_func_name.Location = new System.Drawing.Point(107, 167);
-            this.txt_out_func_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_out_func_name.Margin = new System.Windows.Forms.Padding(2);
             this.txt_out_func_name.Name = "txt_out_func_name";
             this.txt_out_func_name.Size = new System.Drawing.Size(99, 21);
             this.txt_out_func_name.TabIndex = 20;
@@ -309,7 +309,7 @@
             // txt_out_return_type
             // 
             this.txt_out_return_type.Location = new System.Drawing.Point(4, 167);
-            this.txt_out_return_type.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_out_return_type.Margin = new System.Windows.Forms.Padding(2);
             this.txt_out_return_type.Name = "txt_out_return_type";
             this.txt_out_return_type.Size = new System.Drawing.Size(99, 21);
             this.txt_out_return_type.TabIndex = 19;
@@ -317,7 +317,7 @@
             // txt_in_func
             // 
             this.txt_in_func.Location = new System.Drawing.Point(4, 99);
-            this.txt_in_func.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_in_func.Margin = new System.Windows.Forms.Padding(2);
             this.txt_in_func.Multiline = true;
             this.txt_in_func.Name = "txt_in_func";
             this.txt_in_func.Size = new System.Drawing.Size(515, 65);
@@ -355,7 +355,7 @@
             this.panel3.Controls.Add(this.txt_path_new_problems);
             this.panel3.Controls.Add(this.txt_path_old_problems);
             this.panel3.Location = new System.Drawing.Point(8, 453);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(523, 223);
             this.panel3.TabIndex = 26;
@@ -373,7 +373,7 @@
             // btn_open_readme_md
             // 
             this.btn_open_readme_md.Location = new System.Drawing.Point(467, 192);
-            this.btn_open_readme_md.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_readme_md.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_readme_md.Name = "btn_open_readme_md";
             this.btn_open_readme_md.Size = new System.Drawing.Size(50, 19);
             this.btn_open_readme_md.TabIndex = 58;
@@ -384,7 +384,7 @@
             // txt_path_readme_md
             // 
             this.txt_path_readme_md.Location = new System.Drawing.Point(61, 192);
-            this.txt_path_readme_md.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_readme_md.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_readme_md.Name = "txt_path_readme_md";
             this.txt_path_readme_md.Size = new System.Drawing.Size(403, 21);
             this.txt_path_readme_md.TabIndex = 57;
@@ -472,7 +472,7 @@
             // txt_path_main
             // 
             this.txt_path_main.Location = new System.Drawing.Point(61, 11);
-            this.txt_path_main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_main.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_main.Name = "txt_path_main";
             this.txt_path_main.Size = new System.Drawing.Size(403, 21);
             this.txt_path_main.TabIndex = 46;
@@ -480,7 +480,7 @@
             // btn_open_solutions_md
             // 
             this.btn_open_solutions_md.Location = new System.Drawing.Point(467, 169);
-            this.btn_open_solutions_md.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_solutions_md.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_solutions_md.Name = "btn_open_solutions_md";
             this.btn_open_solutions_md.Size = new System.Drawing.Size(50, 19);
             this.btn_open_solutions_md.TabIndex = 45;
@@ -491,7 +491,7 @@
             // txt_path_solutions_md
             // 
             this.txt_path_solutions_md.Location = new System.Drawing.Point(61, 169);
-            this.txt_path_solutions_md.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_solutions_md.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_solutions_md.Name = "txt_path_solutions_md";
             this.txt_path_solutions_md.Size = new System.Drawing.Size(403, 21);
             this.txt_path_solutions_md.TabIndex = 44;
@@ -499,7 +499,7 @@
             // txt_path_prev_folder
             // 
             this.txt_path_prev_folder.Location = new System.Drawing.Point(304, 56);
-            this.txt_path_prev_folder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_prev_folder.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_prev_folder.Name = "txt_path_prev_folder";
             this.txt_path_prev_folder.Size = new System.Drawing.Size(160, 21);
             this.txt_path_prev_folder.TabIndex = 43;
@@ -507,7 +507,7 @@
             // btn_open_hold_problems
             // 
             this.btn_open_hold_problems.Location = new System.Drawing.Point(467, 79);
-            this.btn_open_hold_problems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_hold_problems.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_hold_problems.Name = "btn_open_hold_problems";
             this.btn_open_hold_problems.Size = new System.Drawing.Size(50, 19);
             this.btn_open_hold_problems.TabIndex = 42;
@@ -518,7 +518,7 @@
             // txt_path_hold_problems
             // 
             this.txt_path_hold_problems.Location = new System.Drawing.Point(61, 79);
-            this.txt_path_hold_problems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_hold_problems.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_hold_problems.Name = "txt_path_hold_problems";
             this.txt_path_hold_problems.Size = new System.Drawing.Size(403, 21);
             this.txt_path_hold_problems.TabIndex = 41;
@@ -526,7 +526,7 @@
             // btn_open_test_cpp
             // 
             this.btn_open_test_cpp.Location = new System.Drawing.Point(467, 124);
-            this.btn_open_test_cpp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_test_cpp.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_test_cpp.Name = "btn_open_test_cpp";
             this.btn_open_test_cpp.Size = new System.Drawing.Size(50, 19);
             this.btn_open_test_cpp.TabIndex = 39;
@@ -537,7 +537,7 @@
             // btn_open_problemset_all
             // 
             this.btn_open_problemset_all.Location = new System.Drawing.Point(467, 147);
-            this.btn_open_problemset_all.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_problemset_all.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_problemset_all.Name = "btn_open_problemset_all";
             this.btn_open_problemset_all.Size = new System.Drawing.Size(50, 19);
             this.btn_open_problemset_all.TabIndex = 38;
@@ -548,7 +548,7 @@
             // btn_open_define_h
             // 
             this.btn_open_define_h.Location = new System.Drawing.Point(467, 101);
-            this.btn_open_define_h.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_define_h.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_define_h.Name = "btn_open_define_h";
             this.btn_open_define_h.Size = new System.Drawing.Size(50, 19);
             this.btn_open_define_h.TabIndex = 37;
@@ -559,7 +559,7 @@
             // btn_open_new_problems
             // 
             this.btn_open_new_problems.Location = new System.Drawing.Point(467, 56);
-            this.btn_open_new_problems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_new_problems.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_new_problems.Name = "btn_open_new_problems";
             this.btn_open_new_problems.Size = new System.Drawing.Size(50, 19);
             this.btn_open_new_problems.TabIndex = 36;
@@ -570,7 +570,7 @@
             // btn_open_old_problems
             // 
             this.btn_open_old_problems.Location = new System.Drawing.Point(467, 32);
-            this.btn_open_old_problems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_old_problems.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_old_problems.Name = "btn_open_old_problems";
             this.btn_open_old_problems.Size = new System.Drawing.Size(50, 19);
             this.btn_open_old_problems.TabIndex = 35;
@@ -581,7 +581,7 @@
             // txt_path_test_cpp
             // 
             this.txt_path_test_cpp.Location = new System.Drawing.Point(61, 124);
-            this.txt_path_test_cpp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_test_cpp.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_test_cpp.Name = "txt_path_test_cpp";
             this.txt_path_test_cpp.Size = new System.Drawing.Size(403, 21);
             this.txt_path_test_cpp.TabIndex = 33;
@@ -589,7 +589,7 @@
             // txt_path_problemset_all
             // 
             this.txt_path_problemset_all.Location = new System.Drawing.Point(61, 147);
-            this.txt_path_problemset_all.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_problemset_all.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_problemset_all.Name = "txt_path_problemset_all";
             this.txt_path_problemset_all.Size = new System.Drawing.Size(403, 21);
             this.txt_path_problemset_all.TabIndex = 30;
@@ -597,7 +597,7 @@
             // txt_path_define_h
             // 
             this.txt_path_define_h.Location = new System.Drawing.Point(61, 101);
-            this.txt_path_define_h.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_define_h.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_define_h.Name = "txt_path_define_h";
             this.txt_path_define_h.Size = new System.Drawing.Size(403, 21);
             this.txt_path_define_h.TabIndex = 29;
@@ -605,7 +605,7 @@
             // txt_path_curr_folder
             // 
             this.txt_path_curr_folder.Location = new System.Drawing.Point(304, 33);
-            this.txt_path_curr_folder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_curr_folder.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_curr_folder.Name = "txt_path_curr_folder";
             this.txt_path_curr_folder.Size = new System.Drawing.Size(160, 21);
             this.txt_path_curr_folder.TabIndex = 28;
@@ -613,7 +613,7 @@
             // txt_path_new_problems
             // 
             this.txt_path_new_problems.Location = new System.Drawing.Point(61, 56);
-            this.txt_path_new_problems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_new_problems.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_new_problems.Name = "txt_path_new_problems";
             this.txt_path_new_problems.Size = new System.Drawing.Size(239, 21);
             this.txt_path_new_problems.TabIndex = 27;
@@ -621,7 +621,7 @@
             // txt_path_old_problems
             // 
             this.txt_path_old_problems.Location = new System.Drawing.Point(61, 33);
-            this.txt_path_old_problems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_path_old_problems.Margin = new System.Windows.Forms.Padding(2);
             this.txt_path_old_problems.Name = "txt_path_old_problems";
             this.txt_path_old_problems.Size = new System.Drawing.Size(239, 21);
             this.txt_path_old_problems.TabIndex = 24;
@@ -630,7 +630,7 @@
             // 
             this.btn_transfer_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_transfer_folder.Location = new System.Drawing.Point(271, 683);
-            this.btn_transfer_folder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_transfer_folder.Margin = new System.Windows.Forms.Padding(2);
             this.btn_transfer_folder.Name = "btn_transfer_folder";
             this.btn_transfer_folder.Size = new System.Drawing.Size(259, 50);
             this.btn_transfer_folder.TabIndex = 34;
@@ -642,7 +642,7 @@
             // 
             this.btn_get_folder.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_get_folder.Location = new System.Drawing.Point(8, 683);
-            this.btn_get_folder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_get_folder.Margin = new System.Windows.Forms.Padding(2);
             this.btn_get_folder.Name = "btn_get_folder";
             this.btn_get_folder.Size = new System.Drawing.Size(259, 50);
             this.btn_get_folder.TabIndex = 33;
@@ -658,15 +658,15 @@
             this.panel4.Controls.Add(this.txt_search_titleE);
             this.panel4.Controls.Add(this.txt_search_id);
             this.panel4.Location = new System.Drawing.Point(8, 8);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(522, 45);
-            this.panel4.TabIndex = 35;
+            this.panel4.TabIndex = 1;
             // 
             // btn_open_cpp_active
             // 
             this.btn_open_cpp_active.Location = new System.Drawing.Point(352, 20);
-            this.btn_open_cpp_active.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_cpp_active.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_cpp_active.Name = "btn_open_cpp_active";
             this.btn_open_cpp_active.Size = new System.Drawing.Size(50, 19);
             this.btn_open_cpp_active.TabIndex = 46;
@@ -677,7 +677,7 @@
             // btn_open_search
             // 
             this.btn_open_search.Location = new System.Drawing.Point(470, 20);
-            this.btn_open_search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_open_search.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_search.Name = "btn_open_search";
             this.btn_open_search.Size = new System.Drawing.Size(50, 19);
             this.btn_open_search.TabIndex = 45;
@@ -698,7 +698,7 @@
             // txt_search_titleE
             // 
             this.txt_search_titleE.Location = new System.Drawing.Point(99, 21);
-            this.txt_search_titleE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_search_titleE.Margin = new System.Windows.Forms.Padding(2);
             this.txt_search_titleE.Name = "txt_search_titleE";
             this.txt_search_titleE.Size = new System.Drawing.Size(250, 21);
             this.txt_search_titleE.TabIndex = 42;
@@ -706,10 +706,10 @@
             // txt_search_id
             // 
             this.txt_search_id.Location = new System.Drawing.Point(51, 21);
-            this.txt_search_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_search_id.Margin = new System.Windows.Forms.Padding(2);
             this.txt_search_id.Name = "txt_search_id";
             this.txt_search_id.Size = new System.Drawing.Size(46, 21);
-            this.txt_search_id.TabIndex = 41;
+            this.txt_search_id.TabIndex = 1;
             this.txt_search_id.TextChanged += new System.EventHandler(this.txt_search_id_TextChanged);
             // 
             // frmMain
@@ -723,7 +723,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btn_get_folder);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMain";
             this.Text = "leetcode_cpp_helper";
             this.Load += new System.EventHandler(this.frmMain_Load);

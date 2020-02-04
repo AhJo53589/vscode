@@ -21,8 +21,8 @@ namespace leetcode_cpp_helper
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // Test path
             txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
+            // Test path
             //txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
             Reset();
         }
@@ -34,6 +34,7 @@ namespace leetcode_cpp_helper
             txt_path_new_problems.Text = txt_path_main.Text + @"\problems";
             txt_path_prev_folder.Text = txt_in_titleE.Text;
             txt_path_hold_problems.Text = txt_path_main.Text + @"\_problems_hold";
+            txt_path_problems_test.Text = txt_path_main.Text + @"\problems_test";
 
             txt_path_define_h.Text = txt_path_main.Text + @"\test\Common\Define_IdName.h";
             txt_path_test_cpp.Text = txt_path_main.Text + @"\test\Test\Test.cpp";
@@ -42,8 +43,8 @@ namespace leetcode_cpp_helper
             txt_path_solutions_md.Text = txt_path_main.Text + @"\Solutions.md";
             txt_path_readme_md.Text = txt_path_main.Text + @"\README.md";
 
-            txt_search_id.Text = "";
-            txt_search_titleE.Text = "";
+            txt_launcher_id.Text = "";
+            txt_launcher_titleE.Text = "";
 
             txt_in_difficult.Text = "";
             txt_in_id.Text = "";
@@ -174,44 +175,40 @@ namespace leetcode_cpp_helper
                 || txt_out_param_value.Text == "") return;
 
             string strFile = newPath + @"\SOLUTION.cpp";
+            string strComment = "//";
+            string strEnter = "\r\n";
+            string strText = strEnter;
 
             // 测试函数
-            string strText = "\r\n";
+            strText += txt_in_func_2.Text + strEnter + strEnter;
 
-            strText += txt_in_func_2.Text + "\r\n\r\n";
-
-            strText += "//////////////////////////////////////////////////////////////////////////" + "\r\n";
-            strText += txt_in_func.Text + "\r\n\r\n";
+            strText += "//////////////////////////////////////////////////////////////////////////" + strEnter;
+            strText += txt_in_func.Text + strEnter + strEnter;
 
             // 转接函数
-            strText += "//////////////////////////////////////////////////////////////////////////" + "\r\n";
-            strText += txt_out_return_type.Text + " " + "_solution_run" + txt_out_param.Text + "\r\n";
-            strText += "{\r\n";
-            strText += "\treturn " + txt_out_func_name.Text + txt_out_param_value.Text + ";" + "\r\n";
-            strText += "}\r\n\r\n";
+            strText += "//////////////////////////////////////////////////////////////////////////" + strEnter;
+            strText += txt_out_return_type.Text + " " + "_solution_run" + txt_out_param.Text + strEnter;
+            
+            strText += strComment + "\tint caseNo = -1;" + strEnter;        // 筛选测试用例
+            strText += strComment + "\tstatic int caseCnt = 0;" + strEnter;
+            strText += strComment + "\tif (caseNo != -1 && caseCnt++ != caseNo) return {};" + strEnter + strEnter;
 
-            strText += "//" + "#define USE_SOLUTION_CUSTOM" + "\r\n";
-            strText += "//" + txt_out_return_type.Text + " " + "_solution_custom(TestCases &tc)" + "\r\n";
-            strText += "//" + "{\r\n";
-            strText += "//" + "}\r\n\r\n";
+            strText += "\treturn " + txt_out_func_name.Text + txt_out_param_value.Text + ";" + strEnter;
+            strText += "}" + strEnter + strEnter;
+
+            strText += strComment + "#define USE_SOLUTION_CUSTOM" + strEnter;
+            strText += strComment + txt_out_return_type.Text + " " + "_solution_custom(TestCases &tc)" + strEnter;
+            strText += strComment + "{" + strEnter;
+            strText += strComment + "\treturn {};" + strEnter;
+            strText += strComment + "}" + strEnter + strEnter;
 
             // 测试用例
-            strText += "//////////////////////////////////////////////////////////////////////////" + "\r\n";
-            strText += "vector<string> _get_test_cases_string()" + "\r\n";
-            strText += "{\r\n";
-            strText += "\treturn {};\r\n";
-            strText += "}\r\n\r\n";
-
-            string strComment = "";
-            if (txt_in_func_testcase.Text == "")
-            {
-                strComment = "//";
-            }
-            strText += strComment + "#define USE_GET_TEST_CASES_FILESTREAM" + "\r\n";
-            strText += strComment + "string _get_test_cases_filestream()" + "\r\n";
-            strText += strComment + "{\r\n";
-            strText += strComment + "\treturn " + "\"../../problems/" + fileName + "/tests.txt\";" + "\r\n";
-            strText += strComment + "}\r\n\r\n";
+            strText += "//////////////////////////////////////////////////////////////////////////" + strEnter;
+            strText += strComment + "#define USE_GET_TEST_CASES_IN_CPP" + strEnter;
+            strText += strComment + "vector<string> _get_test_cases_string()" + strEnter;
+            strText += strComment + "{" + strEnter;
+            strText += strComment + "\treturn {};" + strEnter;
+            strText += strComment + "}" + strEnter;
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
@@ -303,7 +300,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strSearch = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_search_id.Text + " ";
+            string strSearch = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_launcher_id.Text + " ";
 
             FileStream fs = new FileStream(strFile, FileMode.Open);
             using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
@@ -314,7 +311,7 @@ namespace leetcode_cpp_helper
                     if (str.IndexOf(strSearch) != -1)
                     {
                         string[] s = str.Split('\t');
-                        txt_search_titleE.Text = s[s.Length - 1];
+                        txt_launcher_titleE.Text = s[s.Length - 1];
                         break;
                     }
                 }
@@ -946,39 +943,26 @@ namespace leetcode_cpp_helper
             Reset();
         }
 
-        private void btn_create_Click(object sender, EventArgs e)
+        private void btn_problems_test_create_new_cpp_Click(object sender, EventArgs e)
         {
-            string fileName = "_test_0";
-            string newPath = txt_path_new_problems.Text + "\\" + fileName;
+            string newPath = txt_path_problems_test.Text + "\\" + txt_problems_test_new_id.Text;
             if (!Directory.Exists(newPath))
             {
                 Directory.CreateDirectory(newPath);
             }
 
-            Create_File_Solution_cpp(newPath, fileName);
+            Create_File_Solution_cpp(newPath, txt_problems_test_new_id.Text);
             Create_File_TestCases_txt(newPath);
             //Modify_File_Define_IdName_h();
-            Modify_File_Test_cpp(false, "0");
+            Modify_File_Test_cpp(false, txt_problems_test_new_id.Text);
         }
 
-        private void btn_open_search_Click(object sender, EventArgs e)
+        private void btn_launcher_active_Click(object sender, EventArgs e)
         {
             try
             {
-                Process.Start("explorer.exe", txt_path_new_problems.Text + "\\" + txt_search_titleE.Text);
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void btn_open_cpp_active_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Modify_File_Test_cpp(true, txt_search_id.Text);
-                btn_open_search_Click(sender, e);
+                Modify_File_Test_cpp(true, txt_launcher_id.Text);
+                Process.Start("explorer.exe", txt_path_new_problems.Text + "\\" + txt_launcher_titleE.Text);
                 //string newPath = txt_path_new_problems.Text + "\\" + txt_search_titleE.Text;
                 //newPath += "\\" + "SOLUTION.cpp";
                 //Process.Start(newPath);
@@ -988,8 +972,26 @@ namespace leetcode_cpp_helper
 
             }
         }
+  
+        private void btn_launcher_active_temp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Modify_File_Test_cpp(false, txt_launcher_id_temp.Text);
+                Process.Start("explorer.exe", txt_path_problems_test.Text + "\\" + txt_launcher_id_temp.Text);
+            }
+            catch
+            {
 
-        private void txt_search_id_TextChanged(object sender, EventArgs e)
+            }
+        }
+
+        private void btn_launcher_active_specify_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_launcher_id_TextChanged(object sender, EventArgs e)
         {
             Find_In_File_Define_IdName_h();
         }

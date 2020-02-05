@@ -726,7 +726,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(53, 12);
             this.label21.TabIndex = 57;
-            this.label21.Text = "测试用例";
+            this.label21.Text = "题目用例";
             // 
             // txt_path_tests_txt
             // 
@@ -760,7 +760,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(53, 12);
             this.label19.TabIndex = 51;
-            this.label19.Text = "代码文件";
+            this.label19.Text = "题目代码";
             // 
             // txt_path_solution_cpp
             // 
@@ -845,7 +845,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 32;
-            this.label8.Text = "答题文件";
+            this.label8.Text = "题目答题";
             // 
             // txt_path_answer_readme_md
             // 

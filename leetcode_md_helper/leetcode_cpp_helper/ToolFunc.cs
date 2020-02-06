@@ -102,7 +102,7 @@ namespace leetcode_cpp_helper
             // https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
             s = txt_in_link.Text.Split('/');
             bool bContest = false;
-            txt_path_contest.Text = "";
+            txt_in_contest.Text = "";
             for (int i = 0; i < s.Length; i++)
             {
                 if (s[i] == "problems" && i < s.Length - 1)
@@ -116,7 +116,7 @@ namespace leetcode_cpp_helper
                 }
                 if (bContest)
                 {
-                    txt_path_contest.Text += "\\" + s[i];
+                    txt_in_contest.Text += "\\" + s[i];
                 }
             }
         }
@@ -133,6 +133,67 @@ namespace leetcode_cpp_helper
             if (str.IndexOf("√") == -1) return 0;
             return 1;
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //private string GetLink_From_DiffTitleLink(string str)
+        //{
+        //    // example: 
+        //    // `（简单）`  [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
+        //    string[] s = str.Split('(');
+        //    s = s[1].Split(')');
+        //    return s[0];
+        //}
+
+        //private string GetId_From_DiffTitleLink(string str)
+        //{
+        //    // example: 
+        //    // `（简单）`  [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
+        //    string[] s = str.Split('[');
+        //    s = s[1].Split(']');
+        //    s = s[0].Split('.');
+        //    return s[0];
+        //}
+
+        //private string GetTitleE_From_DiffTitleLink(string str)
+        //{
+        //    // example: 
+        //    // `（简单）`  [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
+        //    string[] s = str.Split('/');
+
+        //    // https://leetcode-cn.com/contest/weekly-contest-159/problems/check-if-it-is-a-straight-line/
+        //    // https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
+        //    if (s[3] == "problems") return s[4];
+        //    if (s[5] == "problems") return s[6];
+        //    if (s[6] == "problems") return s[7];
+        //    return s[4];
+        //}
+
+        //private string GetTitleC_From_DiffTitleLink(string str)
+        //{
+        //    // example: 
+        //    // `（简单）`  [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
+        //    string[] s = str.Split('[');
+        //    s = s[1].Split(']');
+        //    s = s[0].Split(' ');
+        //    if (s.Length == 3) return s[1] + " " + s[2];
+        //    return s[1];
+        //}
+
+        //private string GetDifficult_From_DiffTitleLink(string str)
+        //{
+        //    // example: 
+        //    // `（简单）`  [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
+        //    string[] s = str.Split('（');
+        //    s = s[1].Split('）');
+        //    return s[0];
+        //}
+
+        //private int GetId_From_InfoForm_Problem(string str)
+        //{
+        //    string[] s = str.Split('|');
+        //    int.TryParse(s[2], out int id);
+        //    return id;
+        //}
 
         private string GenerateString_InfoForm_Problem(string path)
         {
@@ -174,7 +235,7 @@ namespace leetcode_cpp_helper
             strText += "| ";
             strText += " | " + "[" + GenerateString_InfoForm_Contest_Title() + "]";
 
-            string[] s = txt_path_contest.Text.Split('\\');
+            string[] s = txt_in_contest.Text.Split('\\');
             strText += "(./" + s[1] + "/" + s[2] + "/README.md)";
 
             strText += " | ";
@@ -190,7 +251,7 @@ namespace leetcode_cpp_helper
             // TODO: https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
 
             string strText = "";
-            string[] s = txt_path_contest.Text.Split('\\');
+            string[] s = txt_in_contest.Text.Split('\\');
             s = s[2].Split('-');
             if (s[0] == "weekly")
             {
@@ -238,7 +299,7 @@ namespace leetcode_cpp_helper
             // https://leetcode-cn.com/contest/weekly-contest-159/problems/check-if-it-is-a-straight-line/
             // https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
             string strLink = "";
-            if (txt_path_contest.Text != "")
+            if (txt_in_contest.Text != "")
             {
                 bool bContest = false;
                 string[] s = txt_in_link.Text.Split('/');
@@ -269,7 +330,7 @@ namespace leetcode_cpp_helper
             strText += "[" + txt_in_id.Text + "." + txt_in_titleE.Text + " " + txt_in_titleC.Text + "]";
             strText += "(" + strLink + ")";
 
-            if (txt_path_contest.Text != "")
+            if (txt_in_contest.Text != "")
             {
                 strText += "\r\n\r\n";
                 strText += "[contest]";

@@ -70,22 +70,23 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
+            btn_open_test_cpp.BackColor = System.Drawing.Color.Aqua;
         }
-
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// Launcher
         private void Find_In_File_Define_IdName_h()
         {
-            if (txt_path_define_h.Text == "") return;
-
             string strFile = txt_path_define_h.Text;
+            if (strFile == "") return;
 
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[Define_IdName.h] file not exist!");
                 return;
             }
+
+            txt_launcher_titleE.Text = "";
 
             string strSearch = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_launcher_id.Text + " ";
 
@@ -131,7 +132,21 @@ namespace leetcode_cpp_helper
                 strText += "\t" + strComment + "static int caseCnt = 0;" + strEnter;
                 strText += "\t" + strComment + "if (caseNo != -1 && caseCnt++ != caseNo) return {};" + strEnter + strEnter;
             }
-            strText += "\treturn " + txt_new_cpp_out_func_name.Text + txt_new_cpp_out_param_value.Text + ";" + strEnter;
+            bool useSolution = true;
+            if (useSolution)
+            {
+                // Sample:
+                // Solution sln;
+                // return sln.twoSum(nums, target);
+                strText += "\tSolution sln;" + strEnter;
+                strText += "\treturn sln." + txt_new_cpp_out_func_name.Text + txt_new_cpp_out_param_value.Text + ";" + strEnter;
+            }
+            else
+            {
+                // Sample:
+                // return twoSum(nums, target);
+                strText += "\treturn " + txt_new_cpp_out_func_name.Text + txt_new_cpp_out_param_value.Text + ";" + strEnter;
+            }
             strText += "}" + strEnter + strEnter;
 
             strText += strComment + "#define USE_SOLUTION_CUSTOM" + strEnter;
@@ -242,15 +257,15 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            btn_open_problemset_all.Visible = true;
+            btn_open_problemset_all.BackColor = System.Drawing.Color.Aqua;
 
             return iProblemsCount + 1;
         }
 
         private void Modify_File_Readme_md(int iProblemsCount)
         {
-            if (txt_path_readme_md.Text == "") return;
             string strFile = txt_path_readme_md.Text;
+            if (strFile == "") return;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[README.md] file not exist!");
@@ -318,26 +333,7 @@ namespace leetcode_cpp_helper
                         str += " /";
                         str += s2[1];
 
-                        iMark = 29;
-                    }
-                    else if (iMark == 29)
-                    {
-                        if (str == "## Contest") iMark = 30;  // find title
-                    }
-                    else if (iMark == 30 || iMark == 31)
-                    {
-                        if (str == "") continue;
-                        if (str.IndexOf("|") != -1) iMark++;
-                    }
-                    else if (iMark == 32)
-                    {
-                        if (txt_path_contest.Text != "" &&
-                            !Directory.Exists(txt_path_main.Text + txt_path_contest.Text))
-                        {
-                            string strInsert_Contest = GenerateString_InfoForm_Contest();
-                            strText += strInsert_Contest + "\r\n";    // insert content here
-                        }
-                        iMark = 100;  // iMakr == 19, insert completed
+                        iMark = 100;
                     }
 
                     // copy this line
@@ -352,13 +348,32 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            btn_open_readme_md.Visible = true;
+            btn_open_readme_md.BackColor = System.Drawing.Color.Aqua;
         }
 
-        private void Modify_File_Update_md()
+        private void Modify_File_Contest_md(string strFile)
         {
-            string strFile = txt_path_update_md.Text;
+            if (strFile == "") return;
+            if (!File.Exists(strFile))
+            {
+                MessageBox.Show(@"[Contest.md] file not exist!");
+                return;
+            }
 
+            if (txt_in_contest.Text != "" &&   
+                !Directory.Exists(txt_path_main.Text + txt_in_contest.Text))
+            {
+                string strInsert_Contest = GenerateString_InfoForm_Contest() + strEnter;
+
+                StreamWriter sw = File.AppendText(strFile);
+                sw.Write(strInsert_Contest);
+            }
+
+            btn_open_contest_md.BackColor = System.Drawing.Color.Aqua;
+        }
+
+        private void Modify_File_Update_md(string strFile)
+        {
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[Update.md] file not exist!");
@@ -409,14 +424,13 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
 
-                btn_open_update_md.Visible = true;
+                btn_open_update_md.BackColor = System.Drawing.Color.Aqua;
             }
         }
 
-        private void Modify_File_Solutions_md()
+        private void Modify_File_Solutions_md(string strFile)
         {
-            if (txt_in_solution_link.Text == "") return;
-            string strFile = txt_path_solutions_md.Text;
+            if (strFile == "") return;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[Solutions.md] file not exist!");
@@ -475,12 +489,13 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            btn_open_solutions_md.Visible = true;
+            btn_open_solutions_md.BackColor = System.Drawing.Color.Aqua;
         }
 
         private void Create_File_Contest_Problems_Readme_md()
         {
-            if (txt_path_contest_problems.Text == "") return;
+            string strFile = txt_path_contest_problems.Text;
+            if (strFile == "") return;
 
             string strText = "";
 
@@ -494,17 +509,16 @@ namespace leetcode_cpp_helper
 
             strText += GenerateString_InfoForm_Problem("../../problems/") + strEnter;
 
-            string strFile = txt_path_contest_problems.Text;
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
 
-            btn_open_contest_problems.Visible = true;
+            btn_open_contest_problems.BackColor = System.Drawing.Color.Aqua;
         }
 
         private void Modify_File_Contest_Problems_Readme_md()
         {
-            if (txt_path_contest_problems.Text == "") return;
             string strFile = txt_path_contest_problems.Text;
+            if (strFile == "") return;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[contest/../README.md] file not exist!");
@@ -563,7 +577,7 @@ namespace leetcode_cpp_helper
                 UTF8Encoding utf8 = new UTF8Encoding(false);
                 File.WriteAllText(strFile, strText, utf8);
             }
-            btn_open_contest_problems.Visible = true;
+            btn_open_contest_problems.BackColor = System.Drawing.Color.Aqua;
         }
 
         private void Create_File_Answer_Readme_md(string strFile)
@@ -599,7 +613,7 @@ namespace leetcode_cpp_helper
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
-            btn_open_answer_readme_md.Visible = true;
+            btn_open_answer_readme_md.BackColor = System.Drawing.Color.Aqua;
         }
 
         private void Modify_File_Define_IdName_h()
@@ -660,7 +674,7 @@ namespace leetcode_cpp_helper
                 File.WriteAllText(strFile, strText, utf8);
             }
 
-            btn_open_define_h.Visible = true;
+            btn_open_define_h.BackColor = System.Drawing.Color.Aqua;
         }
 
         private void Create_CommitFile()
@@ -679,16 +693,6 @@ namespace leetcode_cpp_helper
             File.WriteAllText(strFile, strText, utf8);
             btn_open_commit_bat.Visible = true;
         }
-
-
-
-
-
-
-
-
-
-
 
 
     }

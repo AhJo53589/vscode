@@ -64,10 +64,10 @@ namespace leetcode_cpp_helper
         private void Clear_Launcher()
         {
             // Launcher tabpage
-            txt_launcher_id.Text = "";
-            txt_launcher_titleE.Text = "";
-            txt_launcher_dir_temp.Text = "problems_test";
-            txt_launcher_id_temp.Text = "0";
+            txt_launcher_main_id.Text = "";
+            txt_launcher_main_name.Text = "";
+            txt_launcher_temp_dir.Text = "problems_test";
+            txt_launcher_temp_name.Text = "0";
         }
 
         private void Clear_New_Cpp()
@@ -134,36 +134,62 @@ namespace leetcode_cpp_helper
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// Launcher
-        private void btn_launcher_active_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Modify_File_Test_cpp(true, txt_launcher_id.Text);
-                Process.Start("explorer.exe", txt_path_problems.Text + "\\" + txt_launcher_titleE.Text);
-            }
-            catch
-            {
-
-            }
-        }
-  
-        private void btn_launcher_active_temp_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Modify_File_Test_cpp(false, txt_launcher_id_temp.Text, txt_launcher_dir_temp.Text);
-                Process.Start("explorer.exe", txt_launcher_dir_temp.Text + "\\" + txt_launcher_id_temp.Text);
-            }
-            catch
-            {
-
-            }
-        }
-
         private void txt_launcher_id_TextChanged(object sender, EventArgs e)
         {
             Find_In_File_Define_IdName_h();
         }
+
+        private void txt_launcher_main_name_TextChanged(object sender, EventArgs e)
+        {
+            txt_launcher_main_path.Text = "problems\\" + txt_launcher_main_name.Text;
+        }
+
+        private void btn_launcher_main_open_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", txt_path_problems.Text + "\\" + txt_launcher_main_name.Text);
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_launcher_main_active_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Modify_File_Test_cpp(true, txt_launcher_main_id.Text);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void txt_launcher_temp_dir_TextChanged(object sender, EventArgs e)
+        {
+            txt_launcher_temp_path.Text = txt_launcher_temp_dir.Text + "\\" + txt_launcher_temp_name.Text;
+        }
+
+        private void btn_launcher_temp_open_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txt_path_main.Text + "\\" + txt_launcher_temp_dir.Text + "\\" + txt_launcher_temp_name.Text);
+        }
+
+        private void btn_launcher_temp_active_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Modify_File_Test_cpp(false, txt_launcher_temp_name.Text, txt_launcher_temp_dir.Text);
+            }
+            catch
+            {
+
+            }
+        }
+
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// New Cpp
@@ -205,6 +231,7 @@ namespace leetcode_cpp_helper
         private void btn_generate_md_clear_Click(object sender, EventArgs e)
         {
             Clear_Generate_MD();
+            Clear_Directory();
         }
 
         private void rb_in_difficult_CheckedChanged(object sender, EventArgs e)
@@ -223,11 +250,11 @@ namespace leetcode_cpp_helper
 
                     if (txt_in_contest.Text != "")
                     {
-                        txt_path_contest_md.Text = txt_path_main.Text + txt_in_contest.Text + @"\README.md";
+                        txt_path_contest_problems.Text = txt_path_main.Text + txt_in_contest.Text + @"\README.md";
                     }
                     else
                     {
-                        txt_path_contest_md.Text = "";
+                        txt_path_contest_problems.Text = "";
                     }
                     txt_path_answer_readme_md.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\README.md";
                     txt_path_solution_cpp.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\SOLUTION.cpp";
@@ -490,5 +517,6 @@ namespace leetcode_cpp_helper
             	
             }
         }
+
     }
 }

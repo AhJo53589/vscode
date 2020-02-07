@@ -51,9 +51,7 @@ namespace leetcode_cpp_helper
             string str = txt_new_cpp_in_func.Text;
             int k = 0;
             while (k != str.Length && str[k] == ' ') k++;
-            {
 
-            }
             str = str.Substring(k);
             string[] s = str.Split(' ');
             // vector<int>
@@ -82,7 +80,7 @@ namespace leetcode_cpp_helper
                 {
                     temp += sValue[i] = s[s.Length - 1];
                 }
-                if (i != sValue.Length - 1) temp += ",";
+                if (i != sValue.Length - 1) temp += ", ";
             }
             temp += ")";
             txt_new_cpp_out_param_value.Text = temp;

@@ -86,9 +86,9 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            txt_launcher_titleE.Text = "";
+            txt_launcher_main_name.Text = "";
 
-            string strSearch = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_launcher_id.Text + " ";
+            string strSearch = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_launcher_main_id.Text + " ";
 
             FileStream fs = new FileStream(strFile, FileMode.Open);
             using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
@@ -99,7 +99,7 @@ namespace leetcode_cpp_helper
                     if (str.IndexOf(strSearch) != -1)
                     {
                         string[] s = str.Split('\t');
-                        txt_launcher_titleE.Text = s[s.Length - 1];
+                        txt_launcher_main_name.Text = s[s.Length - 1];
                         break;
                     }
                 }
@@ -430,6 +430,7 @@ namespace leetcode_cpp_helper
 
         private void Modify_File_Solutions_md(string strFile)
         {
+            if (txt_in_solution_link.Text == "") return;
             if (strFile == "") return;
             if (!File.Exists(strFile))
             {

@@ -309,7 +309,7 @@ namespace leetcode_cpp_helper
                 {
                     Directory.CreateDirectory(txt_path_main.Text + txt_in_contest.Text);
                 }
-                if (!File.Exists(txt_path_contest_md.Text))
+                if (!File.Exists(txt_path_contest_problems.Text))
                 {
                     Create_File_Contest_Problems_Readme_md();
                 }

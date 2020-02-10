@@ -422,7 +422,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void btn_open_contest_problems_Click(object sender, EventArgs e)
+        private void btn_open_contest_md_Click(object sender, EventArgs e)
         {
             try
             {
@@ -431,6 +431,18 @@ namespace leetcode_cpp_helper
             catch (System.Exception ex)
             {
             	
+            }
+        }
+
+        private void btn_open_contest_problems_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(txt_path_contest_problems.Text);
+            }
+            catch (System.Exception ex)
+            {
+
             }
         }
 
@@ -517,6 +529,5 @@ namespace leetcode_cpp_helper
             	
             }
         }
-
     }
 }

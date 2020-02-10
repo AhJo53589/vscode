@@ -365,8 +365,7 @@ namespace leetcode_cpp_helper
             {
                 string strInsert_Contest = GenerateString_InfoForm_Contest() + strEnter;
 
-                StreamWriter sw = File.AppendText(strFile);
-                sw.Write(strInsert_Contest);
+                File.AppendAllText(strFile, strEnter + strInsert_Contest);
             }
 
             btn_open_contest_md.BackColor = System.Drawing.Color.Aqua;

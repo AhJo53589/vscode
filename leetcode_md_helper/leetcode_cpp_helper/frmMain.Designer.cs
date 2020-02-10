@@ -68,13 +68,14 @@
             this.txt_launcher_temp_name = new System.Windows.Forms.TextBox();
             this.txt_launcher_main_name = new System.Windows.Forms.TextBox();
             this.btn_launcher_main_active = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btn_launcher_main_open = new System.Windows.Forms.Button();
             this.btn_launcher_temp_open = new System.Windows.Forms.Button();
             this.txt_launcher_main_path = new System.Windows.Forms.TextBox();
             this.txt_launcher_temp_path = new System.Windows.Forms.TextBox();
             this.txt_launcher_main_id = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -145,7 +146,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.panel_control.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -519,7 +519,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_temp_active, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_dir, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_name, 2, 7);
@@ -604,17 +604,6 @@
             this.btn_launcher_main_active.UseVisualStyleBackColor = true;
             this.btn_launcher_main_active.Click += new System.EventHandler(this.btn_launcher_main_active_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(52, 226);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(150, 12);
-            this.label15.TabIndex = 48;
-            this.label15.Text = "临时题库目录";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -678,6 +667,28 @@
             this.txt_launcher_main_id.Size = new System.Drawing.Size(50, 21);
             this.txt_launcher_main_id.TabIndex = 1;
             this.txt_launcher_main_id.TextChanged += new System.EventHandler(this.txt_launcher_id_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Location = new System.Drawing.Point(52, 226);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(150, 12);
+            this.label15.TabIndex = 48;
+            this.label15.Text = "临时题库目录";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label33.Location = new System.Drawing.Point(206, 226);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(200, 12);
+            this.label33.TabIndex = 68;
+            this.label33.Text = "题目名称";
             // 
             // tabControl1
             // 
@@ -1397,6 +1408,7 @@
             this.btn_open_contest_problems.TabIndex = 84;
             this.btn_open_contest_problems.Text = "Open";
             this.btn_open_contest_problems.UseVisualStyleBackColor = true;
+            this.btn_open_contest_problems.Click += new System.EventHandler(this.btn_open_contest_problems_Click);
             // 
             // btn_open_update_md
             // 
@@ -1416,7 +1428,7 @@
             this.btn_open_contest_md.TabIndex = 73;
             this.btn_open_contest_md.Text = "Open";
             this.btn_open_contest_md.UseVisualStyleBackColor = true;
-            this.btn_open_contest_md.Click += new System.EventHandler(this.btn_open_contest_problems_Click);
+            this.btn_open_contest_md.Click += new System.EventHandler(this.btn_open_contest_md_Click);
             // 
             // btn_open_readme_md
             // 
@@ -1578,17 +1590,6 @@
             this.label11.TabIndex = 81;
             this.label11.Text = "题解文件";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label33.Location = new System.Drawing.Point(206, 226);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(200, 12);
-            this.label33.TabIndex = 68;
-            this.label33.Text = "题目名称";
             // 
             // frmMain
             // 

@@ -38,7 +38,7 @@ namespace leetcode_cpp_helper
             }
             catch (Exception e)
             {
-                throw;
+                MessageBox.Show(e.ToString());
             }
         }
 

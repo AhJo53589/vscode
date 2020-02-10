@@ -289,7 +289,9 @@ namespace leetcode_cpp_helper
                     }
                     else if (iMark == 1)
                     {
-                        if (str == "## Selected Solutions") iMark = 10;  // find title
+                        // copy solution to Selected Solutions
+                        //if (str == "## Selected Solutions") iMark = 10;  // find title
+                        if (str == "## Problemset / All") iMark = 20;  // find title
                     }
                     else if (iMark == 10 || iMark == 11)
                     {

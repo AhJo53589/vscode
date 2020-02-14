@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace leetcode_cpp_helper
 {
@@ -42,48 +43,97 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void SplitFuncParam()
+        private void SplitFuncParamArg(in string input, out List<string> output)
         {
-            if (txt_new_cpp_in_func.Text == "") return;
+            output = new List<string>();
 
+            // split param
             // Sample: 
-            // vector<int> twoSum(vector<int> &nums, int target)
-            string str = txt_new_cpp_in_func.Text;
-            int k = 0;
-            while (k != str.Length && str[k] == ' ') k++;
-
-            str = str.Substring(k);
-            string[] s = str.Split(' ');
-            // vector<int>
-            txt_new_cpp_out_return_type.Text = s[0];
-            s = s[1].Split('(');
-            // twoSum
-            txt_new_cpp_out_func_name.Text = s[0];
-
-            // (vector<int> &nums, int target)
-            s = str.Split('(');
+            // (int k, vector<int>& nums)
+            string[] s = input.Split('(');
             s = s[1].Split(')');
-            txt_new_cpp_out_param.Text = "(" + s[0] + ")";
 
-            // (nums, target)
-            string temp = "(";
+            if (s[0].Length == 0) return;
+
+            // get arg
+            // Sample: 
+            // s[0] = int, s[1] = k
+            // s[0] = vector<int>&, s[1] = nums
             string[] sValue = s[0].Split(',');
             for (int i = 0; i < sValue.Length; i++)
             {
-                if (sValue[i][0] == ' ') sValue[i] = sValue[i].Substring(1);
+                sValue[i].Trim();
                 s = sValue[i].Split(' ');
-                if (s[s.Length - 1][0] == '*' || s[s.Length - 1][0] == '&')
-                {
-                    temp += s[s.Length - 1].Substring(1);
-                }
-                else
-                {
-                    temp += sValue[i] = s[s.Length - 1];
-                }
-                if (i != sValue.Length - 1) temp += ", ";
+                output.Add(s[0]);
+                output.Add(s[1]);
             }
-            temp += ")";
-            txt_new_cpp_out_param_value.Text = temp;
+        }
+
+        private void SplitFunc_Normal(in string input, out List<string> output)
+        {
+            output = new List<string>();
+
+            // remove space
+            // Sample: 
+            // vector<int> twoSum(vector<int> &nums, int target)
+            input.Trim();
+
+            // split return type
+            // vector<int>
+            string[] s = input.Split(' ');
+            output.Add(s[0]);
+
+            // split func name
+            // twoSum
+            s = s[1].Split('(');
+            output.Add(s[0]);
+
+            // split param
+            // Sample: 
+            // (int k, vector<int>& nums)
+            // (k, nums)
+            SplitFuncParamArg(input, out List<string> lsParamArg);
+            output.AddRange(lsParamArg);
+        }
+
+        private void GetFunc_Constructor(in string input, out string strClassName, out List<string> output)
+        {
+            strClassName = "";
+            output = new List<string>();
+
+            // get class name
+            // Sample: 
+            // KthLargest
+            string pattern = @"(?<=class\s).*\b";
+            foreach (Match match in Regex.Matches(input, pattern))
+            {
+                strClassName = match.Value;
+                txt_new_cpp_in_func_testcase.Text += match.Value + strEnter;
+            }
+            if (strClassName == "") return;
+
+            // get constructor
+            // Sample: 
+            // KthLargest(int k, vector<int>& nums)
+            string pattern_1 = @"[^~](" + strClassName + @"\((?:[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z0-9<>*&]+(?:,\s*)?){0,}\))";
+            foreach (Match match in Regex.Matches(input, pattern_1))
+            {
+                output.Add(match.Value);
+                txt_new_cpp_in_func_testcase.Text += match.Value + strEnter;
+            }
+        }
+
+        private void GetFunc_Normal(in string input, out List<string> output)
+        {
+            output = new List<string>();
+
+            // get func
+            string pattern = @"[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z][_a-zA-Z0-9]*\((?:[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z0-9<>*&]+(?:,\s*)?){0,}\)";
+            foreach (Match match in Regex.Matches(input, pattern))
+            {
+                output.Add(match.Value);
+                txt_new_cpp_in_func_testcase.Text += match.Value + strEnter;
+            }
         }
 
         private void SplitPathAndTitleE_From_Link()

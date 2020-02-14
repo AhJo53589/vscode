@@ -109,58 +109,248 @@ namespace leetcode_cpp_helper
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// New Cpp
-        private void Create_File_Solution_cpp(string newPath, string fileName)
+        private string GetCode_ParamArg_RemoveRef(string input)
         {
-            if (txt_new_cpp_in_func.Text == ""
-                || txt_new_cpp_out_return_type.Text == "" || txt_new_cpp_out_func_name.Text == "" || txt_new_cpp_out_param.Text == ""
-                || txt_new_cpp_out_param_value.Text == "") return;
+            return (input[0] == '*' || input[0] == '&') ? input.Substring(1) : input;
+        }
+
+        private string GetCode_ParamArg_FillArg(in List<string> input, int bg = 0)
+        {
+            string output = "";
+            for (int i = bg; i < input.Count; i += 2)
+            {
+                output += GetCode_ParamArg_RemoveRef(input[i + 1]);
+                if (i + 2 < input.Count)
+                {
+                    output += ", ";
+                }
+            }
+            return output;
+        }
+
+        private string GetCode_Default_SolutionRunCode(in List<string> input)
+        {
+            string output = "";
+            output += input[0];
+            output += " " + "_solution_run" + "(";
+            for (int i = 2; i < input.Count; i += 2)
+            {
+                output += input[i] + " " + input[i + 1];
+                if (i + 2 < input.Count)
+                {
+                    output += ", ";
+                }
+            }
+            output += ")";
+            return output;
+        }
+
+        private string GetCode_Default_CallFunc(in string strClassName, in List<string> input, bool useSolution = true)
+        {
+            string output = "";
+
+            string strArg = "";
+            for (int i = 2; i < input.Count; i += 2)
+            {
+                output += GetCode_ParamArg_RemoveRef(input[i + 1]);
+                if (i + 2 < input.Count)
+                {
+                    strArg += ", ";
+                }
+            }
+
+            if (useSolution)
+            {
+                // Sample:
+                // Solution sln;
+                // return sln.twoSum(nums, target);
+                output += "\t" + strClassName + " " + "sln;" + strEnter;
+                output += "\treturn sln." + input[1] + "(" + strArg + ");" + strEnter;
+            }
+            else
+            {
+                // Sample:
+                // return twoSum(nums, target);
+                output += "\treturn " + input[1] + "(" + strArg + ");" + strEnter;
+            }
+
+            return output;
+        }
+
+        private string GetCode_Custom_CallConstructor(in string strTab, in string strClassName, in List<string> input)
+        {
+            // Sample:
+            //if (sf[i] == "KthLargest")
+            //{
+            //    TestCases stc(sp[i]);
+            //    int k = stc.get<int>();
+            //    vector<int> nums = stc.get<vector<int>>();
+            //    obj = new KthLargest(k, nums);
+            //    ans.push_back("null");
+            //}
+
+            string output = "";
+            output += strTab + "if (sf[i] == \"" + strClassName + "\")" + strEnter;
+            output += strTab + "{" + strEnter;
+
+            if (input.Count != 0)
+            {
+                output += strTab + "\t" + "TestCases stc(sp[i]);" + strEnter;
+
+                for (int i = 0; i < input.Count; i += 2)
+                {
+                    output += strTab + "\t" + GetCode_ParamArg_RemoveRef(input[i]) + " " + GetCode_ParamArg_RemoveRef(input[i + 1])
+                        + " = stc.get<" + GetCode_ParamArg_RemoveRef(input[i]) + ">()" + strEnter;
+                }
+            }
+            output += strTab + "\t" + "obj = new " + strClassName + "(" + GetCode_ParamArg_FillArg(input, 0) + ");" + strEnter;
+            output += strTab + "\t" + "ans.push_back(\"null\");";
+
+            output += strTab + "}" + strEnter;
+
+            return output;
+        }
+
+        private string GetCode_Custom_CallFunc(in string strTab, in List<string> input)
+        {
+            // Sample:
+            //else if (sf[i] == "add")
+            //{
+            //    TestCases stc(sp[i]);
+            //    int val = stc.get<int>();
+            //    int r = obj->add(val);
+            //    ans.push_back(convert<string>(r));
+            //}
+
+            string output = "";
+            output += strTab + "else if (sf[i] == \"" + input[1] + "\")" + strEnter;
+            output += strTab + "{" + strEnter;
+
+            if (input.Count >= 2)
+            {
+                output += strTab + "\t" + "TestCases stc(sp[i]);" + strEnter;
+
+                for (int i = 2; i < input.Count; i += 2)
+                {
+                    output += strTab + "\t" + GetCode_ParamArg_RemoveRef(input[i]) + " " + GetCode_ParamArg_RemoveRef(input[i + 1])
+                        + " = stc.get<" + GetCode_ParamArg_RemoveRef(input[i]) + ">()" + strEnter;
+                }
+            }
+            if (input[0] == "void")
+            {
+                output += strTab + "\t" + "obj->" + input[1] + "(" + GetCode_ParamArg_FillArg(input, 2) + ");" + strEnter;
+                output += strTab + "\t" + "ans.push_back(\"null\");";
+            }
+            else
+            {
+                output += strTab + "\t" + input[0] + " " + "r = obj->" + input[1] + "(" + GetCode_ParamArg_FillArg(input, 2) + ");" + strEnter;
+                output += strTab + "\t" + "ans.push_back(convert<string>(r));";
+            }
+            output += strTab + "}" + strEnter;
+
+            return output;
+        }
+
+        private void Create_File_Solution_cpp(string newPath, string fileName, string strCode, bool isCustom = false)
+        {
+            if (strCode == null || strCode == "") return;
 
             string strFile = newPath + fileName;
             string strText = strEnter;
 
             // 答题代码
             strText += "//////////////////////////////////////////////////////////////////////////" + strEnter;
-            strText += txt_new_cpp_in_func_2.Text + strEnter + strEnter;
+            strText += strCode + strEnter + strEnter;
 
             // 转接函数
             strText += "//////////////////////////////////////////////////////////////////////////" + strEnter;
-            strText += txt_new_cpp_out_return_type.Text + " " + "_solution_run" + txt_new_cpp_out_param.Text + strEnter;
-
-            strText += "{" + strEnter;
-            {   // 筛选测试用例              
-                strText += "\t" + strComment + "int caseNo = -1;" + strEnter;        
-                strText += "\t" + strComment + "static int caseCnt = 0;" + strEnter;
-                strText += "\t" + strComment + "if (caseNo != -1 && caseCnt++ != caseNo) return {};" + strEnter + strEnter;
-            }
-            bool useSolution = true;
-            if (useSolution)
+            if (!isCustom)
             {
+                // get code
+                GetFunc_Constructor(strCode, out string strClassName, out List<string> lsConstructor);
+                GetFunc_Normal(strCode, out List<string> lsFunc);
+                if (lsFunc.Count == 0) return;
+                SplitFunc_Normal(lsFunc[0], out List<string> lsParamArg);
+
+                // _solution_run
+                // Sample:
+                // vector<int> _solution_run(vector<int>&nums, int target)
+                strText += GetCode_Default_SolutionRunCode(lsParamArg) + strEnter;
+
+                strText += "{" + strEnter;
+                {   // 选择执行单个测试用例的代码              
+                    strText += "\t" + strComment + "int caseNo = -1;" + strEnter;
+                    strText += "\t" + strComment + "static int caseCnt = 0;" + strEnter;
+                    strText += "\t" + strComment + "if (caseNo != -1 && caseCnt++ != caseNo) return {};" + strEnter + strEnter;
+                }
                 // Sample:
                 // Solution sln;
                 // return sln.twoSum(nums, target);
-                strText += "\tSolution sln;" + strEnter;
-                strText += "\treturn sln." + txt_new_cpp_out_func_name.Text + txt_new_cpp_out_param_value.Text + ";" + strEnter;
+                strText += GetCode_Default_CallFunc(strClassName, lsParamArg);
+                strText += "}" + strEnter + strEnter;
+
+                // _solution_custom
+                strText += strComment + "#define USE_SOLUTION_CUSTOM" + strEnter;
+                strText += strComment + "string _solution_custom(TestCases &tc)" + strEnter;
+                strText += strComment + "{" + strEnter;
+                strText += strComment + "\t" + "return {};" + strEnter;
+                strText += strComment + "}" + strEnter + strEnter;
             }
             else
             {
-                // Sample:
-                // return twoSum(nums, target);
-                strText += "\treturn " + txt_new_cpp_out_func_name.Text + txt_new_cpp_out_param_value.Text + ";" + strEnter;
-            }
-            strText += "}" + strEnter + strEnter;
+                // get code
+                GetFunc_Constructor(strCode, out string strClassName, out List<string> lsConstructor);
+                if (lsConstructor.Count == 0) return;
+                SplitFuncParamArg(lsConstructor[0], out List<string> lsParamArg_C);
+                GetFunc_Normal(strCode, out List<string> lsFunc);
 
-            strText += strComment + "#define USE_SOLUTION_CUSTOM" + strEnter;
-            strText += strComment + txt_new_cpp_out_return_type.Text + " " + "_solution_custom(TestCases &tc)" + strEnter;
-            strText += strComment + "{" + strEnter;
-            strText += strComment + "\treturn {};" + strEnter;
-            strText += strComment + "}" + strEnter + strEnter;
+                //string strReturnType = output[0];
+                //string strFuncName = output[1];
+                //string strParam = output[2];
+                //string strArg = output[3];
+
+                strText += strComment + "int _solution_run(int)" + strEnter;
+                strText += strComment + "{" + strEnter;
+                strText += strComment + "}" + strEnter + strEnter;
+
+                strText += "#define USE_SOLUTION_CUSTOM" + strEnter;
+                strText += "string _solution_custom(TestCases &tc)" + strEnter;
+                strText += "{" + strEnter;
+                strText += "\t" + "vector<string> sf = tc.get<vector<string>>();" + strEnter;
+                strText += "\t" + "vector<string> sp = tc.get<vector<string>>();" + strEnter;
+                strText += "\t" + "vector<string> ans;" + strEnter + strEnter;
+
+                strText += "\t" + strClassName + " " + "*obj = nullptr;" + strEnter;
+                strText += "\t" + "for (auto i = 0; i < sf.size(); i++)" + strEnter;
+                strText += "\t" + "{" + strEnter;
+
+                // Call constructor
+                // Sample:
+                // if (sf[i] == "KthLargest") { ... }
+                strText += GetCode_Custom_CallConstructor("\t\t", strClassName, lsParamArg_C);
+
+                // Call func
+                // Sample:
+                // else if (sf[i] == "add") { ... }
+                foreach (string strFunc in lsFunc)
+                {
+                    SplitFunc_Normal(strFunc, out List<string> lsParamArg);
+                    strText += GetCode_Custom_CallFunc("\t\t", lsParamArg);
+                }
+
+                strText += "\t" + "}" + strEnter;
+                strText += "\t" + "delete obj;" + strEnter + strEnter;
+
+                strText += "\t" + "return convert<string>(ans);" + strEnter;
+                strText += "}" + strEnter + strEnter;
+            }
 
             // 测试用例
             strText += "//////////////////////////////////////////////////////////////////////////" + strEnter;
             strText += strComment + "#define USE_GET_TEST_CASES_IN_CPP" + strEnter;
             strText += strComment + "vector<string> _get_test_cases_string()" + strEnter;
             strText += strComment + "{" + strEnter;
-            strText += strComment + "\treturn {};" + strEnter;
+            strText += strComment + "\t" + "return {};" + strEnter;
             strText += strComment + "}" + strEnter;
 
             UTF8Encoding utf8 = new UTF8Encoding(false);

@@ -75,12 +75,8 @@ namespace leetcode_cpp_helper
             // New Cpp tabpage
             txt_new_cpp_dir_temp.Text = "problems_test";
             txt_new_cpp_id_temp.Text = "0";
+            cb_new_cpp_custom.Checked = false;
             txt_new_cpp_in_func_2.Text = "";
-            txt_new_cpp_in_func.Text = "";
-            txt_new_cpp_out_return_type.Text = "";
-            txt_new_cpp_out_func_name.Text = "";
-            txt_new_cpp_out_param.Text = "";
-            txt_new_cpp_out_param_value.Text = "";
             txt_new_cpp_in_func_testcase.Text = "";
         }
 
@@ -190,24 +186,20 @@ namespace leetcode_cpp_helper
             }
         }
 
-
         ///////////////////////////////////////////////////////////////////////////////////////
         /// New Cpp
+        private void cb_new_cpp_custom_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_new_cpp_in_func.Enabled = !cb_new_cpp_custom.Checked;
+            txt_new_cpp_out_return_type.Enabled = !cb_new_cpp_custom.Checked;
+            txt_new_cpp_out_func_name.Enabled = !cb_new_cpp_custom.Checked;
+            txt_new_cpp_out_param.Enabled = !cb_new_cpp_custom.Checked;
+            txt_new_cpp_out_param_value.Enabled = !cb_new_cpp_custom.Checked;
+        }
+
         private void btn_new_cpp_clear_Click(object sender, EventArgs e)
         {
             Clear_New_Cpp();
-        }
-
-        private void txt_new_cpp_in_func_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-	            SplitFuncParam();
-            }
-            catch (System.Exception ex)
-            {
-            	
-            }
         }
 
         private void btn_new_cpp_create_Click(object sender, EventArgs e)
@@ -218,7 +210,8 @@ namespace leetcode_cpp_helper
                 Directory.CreateDirectory(newPath);
             }
 
-            Create_File_Solution_cpp(newPath, @"\SOLUTION.cpp");
+            Create_File_Solution_cpp(newPath, @"\SOLUTION.cpp", txt_new_cpp_in_func_2.Text);
+            return;
             Create_File_TestCases_txt(newPath, @"\tests.txt");
 
             Modify_File_Test_cpp(false, txt_new_cpp_id_temp.Text, txt_new_cpp_dir_temp.Text);
@@ -529,5 +522,6 @@ namespace leetcode_cpp_helper
             	
             }
         }
+
     }
 }

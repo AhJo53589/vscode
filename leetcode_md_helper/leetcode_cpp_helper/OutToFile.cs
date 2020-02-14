@@ -114,11 +114,11 @@ namespace leetcode_cpp_helper
         private string GetCode_ParamArg_RemoveRef(string input)
         {
             if (input.Length == 0) return input;
-            if (input[0] == '*' || input[0] == '&')
+            if (/*input[0] == '*' || */input[0] == '&')
             {
                 return input.Substring(1);
             }
-            if (input[input.Length - 1] == '*' || input[input.Length - 1] == '&')
+            if (/*input[input.Length - 1] == '*' || */input[input.Length - 1] == '&')
             {
                 return input.Substring(0, input.Length - 1);
             }
@@ -279,7 +279,7 @@ namespace leetcode_cpp_helper
             {
                 // get code
                 GetFunc_Constructor(strCode, out string strClassName, out List<string> lsConstructor);
-                GetFunc_Normal(strCode, out List<string> lsFunc);
+                GetFunc_Normal(strCode, strClassName, out List<string> lsFunc);
                 if (lsFunc.Count == 0) return;
                 SplitFunc_Normal(lsFunc[0], out List<string> lsParamArg);
 
@@ -313,7 +313,7 @@ namespace leetcode_cpp_helper
                 GetFunc_Constructor(strCode, out string strClassName, out List<string> lsConstructor);
                 if (lsConstructor.Count == 0) return;
                 SplitFuncParamArg(lsConstructor[0], out List<string> lsParamArg_C);
-                GetFunc_Normal(strCode, out List<string> lsFunc);
+                GetFunc_Normal(strCode, strClassName, out List<string> lsFunc);
 
                 //string strReturnType = output[0];
                 //string strFuncName = output[1];

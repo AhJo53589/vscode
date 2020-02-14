@@ -121,7 +121,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void GetFunc_Normal(in string input, out List<string> output)
+        private void GetFunc_Normal(in string input, in string strClassName, out List<string> output)
         {
             output = new List<string>();
 
@@ -129,6 +129,8 @@ namespace leetcode_cpp_helper
             string pattern = @"[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z][_a-zA-Z0-9]*\((?:[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z0-9<>*&]+(?:,\s*)?){0,}\)";
             foreach (Match match in Regex.Matches(input, pattern))
             {
+                if (new System.Text.RegularExpressions.Regex(strClassName).IsMatch(match.Value)) continue;
+                if (new System.Text.RegularExpressions.Regex("\bnew\b").IsMatch(match.Value)) continue;
                 output.Add(match.Value);
             }
         }

@@ -115,7 +115,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_new_cpp_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_new_cpp_in_func_2 = new System.Windows.Forms.TextBox();
+            this.txt_new_cpp_in_func = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txt_new_cpp_in_func_testcase = new System.Windows.Forms.TextBox();
             this.btn_new_cpp_create = new System.Windows.Forms.Button();
@@ -139,7 +139,10 @@
             this.txt_launcher_main_id = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.txt_launcher_main_lc_path = new System.Windows.Forms.TextBox();
+            this.btn_launcher_main_lc_open = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btn_launcher_test_sln = new System.Windows.Forms.Button();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -1172,7 +1175,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_clear, 4, 0);
             this.tableLayoutPanel7.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func_2, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.label29, 0, 8);
             this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func_testcase, 1, 8);
             this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_create, 1, 13);
@@ -1223,16 +1226,16 @@
             this.label2.Text = "默认代码模板";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txt_new_cpp_in_func_2
+            // txt_new_cpp_in_func
             // 
-            this.tableLayoutPanel7.SetColumnSpan(this.txt_new_cpp_in_func_2, 4);
-            this.txt_new_cpp_in_func_2.Location = new System.Drawing.Point(83, 27);
-            this.txt_new_cpp_in_func_2.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_new_cpp_in_func_2.Multiline = true;
-            this.txt_new_cpp_in_func_2.Name = "txt_new_cpp_in_func_2";
-            this.tableLayoutPanel7.SetRowSpan(this.txt_new_cpp_in_func_2, 2);
-            this.txt_new_cpp_in_func_2.Size = new System.Drawing.Size(438, 185);
-            this.txt_new_cpp_in_func_2.TabIndex = 33;
+            this.tableLayoutPanel7.SetColumnSpan(this.txt_new_cpp_in_func, 4);
+            this.txt_new_cpp_in_func.Location = new System.Drawing.Point(83, 27);
+            this.txt_new_cpp_in_func.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_new_cpp_in_func.Multiline = true;
+            this.txt_new_cpp_in_func.Name = "txt_new_cpp_in_func";
+            this.tableLayoutPanel7.SetRowSpan(this.txt_new_cpp_in_func, 2);
+            this.txt_new_cpp_in_func.Size = new System.Drawing.Size(438, 185);
+            this.txt_new_cpp_in_func.TabIndex = 33;
             // 
             // label29
             // 
@@ -1310,7 +1313,6 @@
             this.cb_new_cpp_custom.TabIndex = 54;
             this.cb_new_cpp_custom.Text = "序列操作模式定制";
             this.cb_new_cpp_custom.UseVisualStyleBackColor = true;
-            this.cb_new_cpp_custom.CheckedChanged += new System.EventHandler(this.cb_new_cpp_custom_CheckedChanged);
             // 
             // tabPage1
             // 
@@ -1340,33 +1342,38 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_temp_active, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_dir, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_name, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_temp_active, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_dir, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_name, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_name, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_main_active, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_main_active, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label13, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_main_open, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_temp_open, 3, 8);
+            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_temp_open, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_path, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_path, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_temp_path, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_id, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.label33, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label33, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_lc_path, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_main_lc_open, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btn_launcher_test_sln, 1, 12);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 11;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel1.RowCount = 13;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 433);
             this.tableLayoutPanel1.TabIndex = 52;
             // 
@@ -1374,7 +1381,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btn_launcher_temp_active, 2);
             this.btn_launcher_temp_active.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_launcher_temp_active.Location = new System.Drawing.Point(52, 290);
+            this.btn_launcher_temp_active.Location = new System.Drawing.Point(52, 270);
             this.btn_launcher_temp_active.Margin = new System.Windows.Forms.Padding(2);
             this.btn_launcher_temp_active.Name = "btn_launcher_temp_active";
             this.btn_launcher_temp_active.Size = new System.Drawing.Size(354, 35);
@@ -1385,7 +1392,7 @@
             // 
             // txt_launcher_temp_dir
             // 
-            this.txt_launcher_temp_dir.Location = new System.Drawing.Point(52, 240);
+            this.txt_launcher_temp_dir.Location = new System.Drawing.Point(52, 220);
             this.txt_launcher_temp_dir.Margin = new System.Windows.Forms.Padding(2);
             this.txt_launcher_temp_dir.Name = "txt_launcher_temp_dir";
             this.txt_launcher_temp_dir.Size = new System.Drawing.Size(150, 21);
@@ -1395,7 +1402,7 @@
             // 
             // txt_launcher_temp_name
             // 
-            this.txt_launcher_temp_name.Location = new System.Drawing.Point(206, 240);
+            this.txt_launcher_temp_name.Location = new System.Drawing.Point(206, 220);
             this.txt_launcher_temp_name.Margin = new System.Windows.Forms.Padding(2);
             this.txt_launcher_temp_name.Name = "txt_launcher_temp_name";
             this.txt_launcher_temp_name.Size = new System.Drawing.Size(200, 21);
@@ -1404,7 +1411,7 @@
             // 
             // txt_launcher_main_name
             // 
-            this.txt_launcher_main_name.Location = new System.Drawing.Point(206, 89);
+            this.txt_launcher_main_name.Location = new System.Drawing.Point(206, 44);
             this.txt_launcher_main_name.Margin = new System.Windows.Forms.Padding(2);
             this.txt_launcher_main_name.Name = "txt_launcher_main_name";
             this.txt_launcher_main_name.Size = new System.Drawing.Size(200, 21);
@@ -1415,7 +1422,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btn_launcher_main_active, 2);
             this.btn_launcher_main_active.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_launcher_main_active.Location = new System.Drawing.Point(52, 139);
+            this.btn_launcher_main_active.Location = new System.Drawing.Point(52, 119);
             this.btn_launcher_main_active.Margin = new System.Windows.Forms.Padding(2);
             this.btn_launcher_main_active.Name = "btn_launcher_main_active";
             this.btn_launcher_main_active.Size = new System.Drawing.Size(354, 35);
@@ -1429,7 +1436,7 @@
             this.label13.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.label13, 2);
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(52, 75);
+            this.label13.Location = new System.Drawing.Point(52, 30);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(354, 12);
@@ -1438,7 +1445,7 @@
             // 
             // btn_launcher_main_open
             // 
-            this.btn_launcher_main_open.Location = new System.Drawing.Point(410, 114);
+            this.btn_launcher_main_open.Location = new System.Drawing.Point(410, 69);
             this.btn_launcher_main_open.Margin = new System.Windows.Forms.Padding(2);
             this.btn_launcher_main_open.Name = "btn_launcher_main_open";
             this.btn_launcher_main_open.Size = new System.Drawing.Size(50, 20);
@@ -1449,7 +1456,7 @@
             // 
             // btn_launcher_temp_open
             // 
-            this.btn_launcher_temp_open.Location = new System.Drawing.Point(410, 265);
+            this.btn_launcher_temp_open.Location = new System.Drawing.Point(410, 245);
             this.btn_launcher_temp_open.Margin = new System.Windows.Forms.Padding(2);
             this.btn_launcher_temp_open.Name = "btn_launcher_temp_open";
             this.btn_launcher_temp_open.Size = new System.Drawing.Size(50, 20);
@@ -1461,7 +1468,7 @@
             // txt_launcher_main_path
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txt_launcher_main_path, 2);
-            this.txt_launcher_main_path.Location = new System.Drawing.Point(52, 114);
+            this.txt_launcher_main_path.Location = new System.Drawing.Point(52, 69);
             this.txt_launcher_main_path.Margin = new System.Windows.Forms.Padding(2);
             this.txt_launcher_main_path.Name = "txt_launcher_main_path";
             this.txt_launcher_main_path.ReadOnly = true;
@@ -1471,7 +1478,7 @@
             // txt_launcher_temp_path
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txt_launcher_temp_path, 2);
-            this.txt_launcher_temp_path.Location = new System.Drawing.Point(52, 265);
+            this.txt_launcher_temp_path.Location = new System.Drawing.Point(52, 245);
             this.txt_launcher_temp_path.Margin = new System.Windows.Forms.Padding(2);
             this.txt_launcher_temp_path.Name = "txt_launcher_temp_path";
             this.txt_launcher_temp_path.ReadOnly = true;
@@ -1481,7 +1488,7 @@
             // txt_launcher_main_id
             // 
             this.txt_launcher_main_id.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txt_launcher_main_id.Location = new System.Drawing.Point(152, 89);
+            this.txt_launcher_main_id.Location = new System.Drawing.Point(152, 44);
             this.txt_launcher_main_id.Margin = new System.Windows.Forms.Padding(2);
             this.txt_launcher_main_id.Name = "txt_launcher_main_id";
             this.txt_launcher_main_id.Size = new System.Drawing.Size(50, 21);
@@ -1492,7 +1499,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Location = new System.Drawing.Point(52, 226);
+            this.label15.Location = new System.Drawing.Point(52, 206);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(150, 12);
@@ -1503,12 +1510,33 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label33.Location = new System.Drawing.Point(206, 226);
+            this.label33.Location = new System.Drawing.Point(206, 206);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(200, 12);
             this.label33.TabIndex = 68;
             this.label33.Text = "题目名称";
+            // 
+            // txt_launcher_main_lc_path
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.txt_launcher_main_lc_path, 2);
+            this.txt_launcher_main_lc_path.Location = new System.Drawing.Point(52, 94);
+            this.txt_launcher_main_lc_path.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_launcher_main_lc_path.Name = "txt_launcher_main_lc_path";
+            this.txt_launcher_main_lc_path.ReadOnly = true;
+            this.txt_launcher_main_lc_path.Size = new System.Drawing.Size(354, 21);
+            this.txt_launcher_main_lc_path.TabIndex = 69;
+            // 
+            // btn_launcher_main_lc_open
+            // 
+            this.btn_launcher_main_lc_open.Location = new System.Drawing.Point(410, 94);
+            this.btn_launcher_main_lc_open.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_launcher_main_lc_open.Name = "btn_launcher_main_lc_open";
+            this.btn_launcher_main_lc_open.Size = new System.Drawing.Size(50, 20);
+            this.btn_launcher_main_lc_open.TabIndex = 70;
+            this.btn_launcher_main_lc_open.Text = "Open";
+            this.btn_launcher_main_lc_open.UseVisualStyleBackColor = true;
+            this.btn_launcher_main_lc_open.Click += new System.EventHandler(this.btn_launcher_main_lc_open_Click);
             // 
             // tabControl1
             // 
@@ -1521,6 +1549,19 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(541, 475);
             this.tabControl1.TabIndex = 1;
+            // 
+            // btn_launcher_test_sln
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.btn_launcher_test_sln, 2);
+            this.btn_launcher_test_sln.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_launcher_test_sln.Location = new System.Drawing.Point(52, 359);
+            this.btn_launcher_test_sln.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_launcher_test_sln.Name = "btn_launcher_test_sln";
+            this.btn_launcher_test_sln.Size = new System.Drawing.Size(354, 35);
+            this.btn_launcher_test_sln.TabIndex = 71;
+            this.btn_launcher_test_sln.Text = "Open sln";
+            this.btn_launcher_test_sln.UseVisualStyleBackColor = true;
+            this.btn_launcher_test_sln.Click += new System.EventHandler(this.btn_launcher_test_sln_Click);
             // 
             // frmMain
             // 
@@ -1641,7 +1682,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Button btn_new_cpp_clear;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_new_cpp_in_func_2;
+        private System.Windows.Forms.TextBox txt_new_cpp_in_func;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txt_new_cpp_in_func_testcase;
         private System.Windows.Forms.Button btn_new_cpp_create;
@@ -1666,6 +1707,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TextBox txt_launcher_main_lc_path;
+        private System.Windows.Forms.Button btn_launcher_main_lc_open;
+        private System.Windows.Forms.Button btn_launcher_test_sln;
     }
 }
 

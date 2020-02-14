@@ -62,8 +62,8 @@ namespace leetcode_cpp_helper
             string[] sValue = s[0].Split(',');
             for (int i = 0; i < sValue.Length; i++)
             {
-                sValue[i].Trim();
-                s = sValue[i].Split(' ');
+                string temp = sValue[i].Trim();
+                s = temp.Split(' ');
                 output.Add(s[0]);
                 output.Add(s[1]);
             }
@@ -108,7 +108,6 @@ namespace leetcode_cpp_helper
             foreach (Match match in Regex.Matches(input, pattern))
             {
                 strClassName = match.Value;
-                txt_new_cpp_in_func_testcase.Text += match.Value + strEnter;
             }
             if (strClassName == "") return;
 
@@ -119,7 +118,6 @@ namespace leetcode_cpp_helper
             foreach (Match match in Regex.Matches(input, pattern_1))
             {
                 output.Add(match.Value);
-                txt_new_cpp_in_func_testcase.Text += match.Value + strEnter;
             }
         }
 
@@ -132,7 +130,6 @@ namespace leetcode_cpp_helper
             foreach (Match match in Regex.Matches(input, pattern))
             {
                 output.Add(match.Value);
-                txt_new_cpp_in_func_testcase.Text += match.Value + strEnter;
             }
         }
 

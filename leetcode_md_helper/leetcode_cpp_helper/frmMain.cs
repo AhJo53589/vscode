@@ -76,7 +76,7 @@ namespace leetcode_cpp_helper
             txt_new_cpp_dir_temp.Text = "problems_test";
             txt_new_cpp_id_temp.Text = "0";
             cb_new_cpp_custom.Checked = false;
-            txt_new_cpp_in_func_2.Text = "";
+            txt_new_cpp_in_func.Text = "";
             txt_new_cpp_in_func_testcase.Text = "";
         }
 
@@ -144,7 +144,19 @@ namespace leetcode_cpp_helper
         {
             try
             {
-                Process.Start("explorer.exe", txt_path_problems.Text + "\\" + txt_launcher_main_name.Text);
+                Process.Start("explorer.exe", txt_launcher_main_path.Text);
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_launcher_main_lc_open_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", txt_launcher_main_lc_path.Text);
             }
             catch (System.Exception ex)
             {
@@ -186,17 +198,21 @@ namespace leetcode_cpp_helper
             }
         }
 
-        ///////////////////////////////////////////////////////////////////////////////////////
-        /// New Cpp
-        private void cb_new_cpp_custom_CheckedChanged(object sender, EventArgs e)
+        private void btn_launcher_test_sln_Click(object sender, EventArgs e)
         {
-            txt_new_cpp_in_func.Enabled = !cb_new_cpp_custom.Checked;
-            txt_new_cpp_out_return_type.Enabled = !cb_new_cpp_custom.Checked;
-            txt_new_cpp_out_func_name.Enabled = !cb_new_cpp_custom.Checked;
-            txt_new_cpp_out_param.Enabled = !cb_new_cpp_custom.Checked;
-            txt_new_cpp_out_param_value.Enabled = !cb_new_cpp_custom.Checked;
+            try
+            {
+                Process.Start("explorer.exe", txt_path_main.Text + @"\test\Leetcode.sln");
+            }
+            catch (System.Exception ex)
+            {
+
+            }
         }
 
+
+        ///////////////////////////////////////////////////////////////////////////////////////
+        /// New Cpp
         private void btn_new_cpp_clear_Click(object sender, EventArgs e)
         {
             Clear_New_Cpp();
@@ -210,9 +226,8 @@ namespace leetcode_cpp_helper
                 Directory.CreateDirectory(newPath);
             }
 
-            Create_File_Solution_cpp(newPath, @"\SOLUTION.cpp", txt_new_cpp_in_func_2.Text);
-            return;
-            Create_File_TestCases_txt(newPath, @"\tests.txt");
+            Create_File_Solution_cpp(newPath, @"\SOLUTION.cpp", txt_new_cpp_in_func.Text, cb_new_cpp_custom.Checked);
+            Create_File_TestCases_txt(newPath, @"\tests.txt", txt_new_cpp_in_func_testcase.Text);
 
             Modify_File_Test_cpp(false, txt_new_cpp_id_temp.Text, txt_new_cpp_dir_temp.Text);
 

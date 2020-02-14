@@ -100,6 +100,8 @@ namespace leetcode_cpp_helper
                     {
                         string[] s = str.Split('\t');
                         txt_launcher_main_name.Text = s[s.Length - 1];
+                        txt_launcher_main_path.Text = txt_path_problems.Text + "\\" + txt_launcher_main_name.Text;
+                        txt_launcher_main_lc_path.Text = "https://leetcode-cn.com/problems/" + txt_launcher_main_name.Text;
                         break;
                     }
                 }
@@ -111,7 +113,16 @@ namespace leetcode_cpp_helper
         /// New Cpp
         private string GetCode_ParamArg_RemoveRef(string input)
         {
-            return (input[0] == '*' || input[0] == '&') ? input.Substring(1) : input;
+            if (input.Length == 0) return input;
+            if (input[0] == '*' || input[0] == '&')
+            {
+                return input.Substring(1);
+            }
+            if (input[input.Length - 1] == '*' || input[input.Length - 1] == '&')
+            {
+                return input.Substring(0, input.Length - 1);
+            }
+            return input;
         }
 
         private string GetCode_ParamArg_FillArg(in List<string> input, int bg = 0)
@@ -145,33 +156,33 @@ namespace leetcode_cpp_helper
             return output;
         }
 
-        private string GetCode_Default_CallFunc(in string strClassName, in List<string> input, bool useSolution = true)
+        private string GetCode_Default_CallFunc(in string strClassName, in List<string> input)
         {
             string output = "";
 
             string strArg = "";
             for (int i = 2; i < input.Count; i += 2)
             {
-                output += GetCode_ParamArg_RemoveRef(input[i + 1]);
+                strArg += GetCode_ParamArg_RemoveRef(input[i + 1]);
                 if (i + 2 < input.Count)
                 {
                     strArg += ", ";
                 }
             }
 
-            if (useSolution)
+            if (strClassName == null || strClassName == "")
+            {
+                // Sample:
+                // return twoSum(nums, target);
+                output += "\treturn " + input[1] + "(" + strArg + ");" + strEnter;
+            }
+            else
             {
                 // Sample:
                 // Solution sln;
                 // return sln.twoSum(nums, target);
                 output += "\t" + strClassName + " " + "sln;" + strEnter;
                 output += "\treturn sln." + input[1] + "(" + strArg + ");" + strEnter;
-            }
-            else
-            {
-                // Sample:
-                // return twoSum(nums, target);
-                output += "\treturn " + input[1] + "(" + strArg + ");" + strEnter;
             }
 
             return output;
@@ -200,11 +211,11 @@ namespace leetcode_cpp_helper
                 for (int i = 0; i < input.Count; i += 2)
                 {
                     output += strTab + "\t" + GetCode_ParamArg_RemoveRef(input[i]) + " " + GetCode_ParamArg_RemoveRef(input[i + 1])
-                        + " = stc.get<" + GetCode_ParamArg_RemoveRef(input[i]) + ">()" + strEnter;
+                        + " = stc.get<" + GetCode_ParamArg_RemoveRef(input[i]) + ">();" + strEnter;
                 }
             }
             output += strTab + "\t" + "obj = new " + strClassName + "(" + GetCode_ParamArg_FillArg(input, 0) + ");" + strEnter;
-            output += strTab + "\t" + "ans.push_back(\"null\");";
+            output += strTab + "\t" + "ans.push_back(\"null\");" + strEnter;
 
             output += strTab + "}" + strEnter;
 
@@ -233,18 +244,18 @@ namespace leetcode_cpp_helper
                 for (int i = 2; i < input.Count; i += 2)
                 {
                     output += strTab + "\t" + GetCode_ParamArg_RemoveRef(input[i]) + " " + GetCode_ParamArg_RemoveRef(input[i + 1])
-                        + " = stc.get<" + GetCode_ParamArg_RemoveRef(input[i]) + ">()" + strEnter;
+                        + " = stc.get<" + GetCode_ParamArg_RemoveRef(input[i]) + ">();" + strEnter;
                 }
             }
             if (input[0] == "void")
             {
                 output += strTab + "\t" + "obj->" + input[1] + "(" + GetCode_ParamArg_FillArg(input, 2) + ");" + strEnter;
-                output += strTab + "\t" + "ans.push_back(\"null\");";
+                output += strTab + "\t" + "ans.push_back(\"null\");" + strEnter;
             }
             else
             {
                 output += strTab + "\t" + input[0] + " " + "r = obj->" + input[1] + "(" + GetCode_ParamArg_FillArg(input, 2) + ");" + strEnter;
-                output += strTab + "\t" + "ans.push_back(convert<string>(r));";
+                output += strTab + "\t" + "ans.push_back(convert<string>(r));" + strEnter;
             }
             output += strTab + "}" + strEnter;
 
@@ -357,13 +368,9 @@ namespace leetcode_cpp_helper
             File.WriteAllText(strFile, strText, utf8);
         }
 
-        private void Create_File_TestCases_txt(string newPath, string fileName)
+        private void Create_File_TestCases_txt(string newPath, string fileName, string strText)
         {
-            if (txt_new_cpp_in_func_testcase.Text == "") return;
-
             string strFile = newPath + fileName;
-
-            string strText = txt_new_cpp_in_func_testcase.Text;
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);

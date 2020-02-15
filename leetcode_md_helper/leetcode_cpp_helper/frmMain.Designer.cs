@@ -123,6 +123,9 @@
             this.txt_new_cpp_id_temp = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cb_new_cpp_custom = new System.Windows.Forms.CheckBox();
+            this.txt_new_cpp_lc_link = new System.Windows.Forms.TextBox();
+            this.btn_new_cpp_lc_link = new System.Windows.Forms.Button();
+            this.lbl_new_cpp_lc_link = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel_control = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -141,8 +144,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.txt_launcher_main_lc_path = new System.Windows.Forms.TextBox();
             this.btn_launcher_main_lc_open = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.btn_launcher_test_sln = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -1174,18 +1177,22 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_clear, 4, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.label29, 0, 8);
-            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func_testcase, 1, 8);
-            this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_create, 1, 13);
+            this.tableLayoutPanel7.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label29, 0, 9);
+            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_in_func_testcase, 1, 9);
+            this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_create, 1, 14);
             this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_dir_temp, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_id_temp, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.cb_new_cpp_custom, 3, 0);
+            this.tableLayoutPanel7.Controls.Add(this.txt_new_cpp_lc_link, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_lc_link, 4, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lbl_new_cpp_lc_link, 0, 1);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 14;
+            this.tableLayoutPanel7.RowCount = 15;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -1218,7 +1225,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(2, 25);
+            this.label2.Location = new System.Drawing.Point(2, 50);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 12);
@@ -1229,7 +1236,7 @@
             // txt_new_cpp_in_func
             // 
             this.tableLayoutPanel7.SetColumnSpan(this.txt_new_cpp_in_func, 4);
-            this.txt_new_cpp_in_func.Location = new System.Drawing.Point(83, 27);
+            this.txt_new_cpp_in_func.Location = new System.Drawing.Point(83, 52);
             this.txt_new_cpp_in_func.Margin = new System.Windows.Forms.Padding(2);
             this.txt_new_cpp_in_func.Multiline = true;
             this.txt_new_cpp_in_func.Name = "txt_new_cpp_in_func";
@@ -1241,7 +1248,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Location = new System.Drawing.Point(2, 214);
+            this.label29.Location = new System.Drawing.Point(2, 239);
             this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(77, 12);
@@ -1252,19 +1259,19 @@
             // txt_new_cpp_in_func_testcase
             // 
             this.tableLayoutPanel7.SetColumnSpan(this.txt_new_cpp_in_func_testcase, 4);
-            this.txt_new_cpp_in_func_testcase.Location = new System.Drawing.Point(83, 216);
+            this.txt_new_cpp_in_func_testcase.Location = new System.Drawing.Point(83, 241);
             this.txt_new_cpp_in_func_testcase.Margin = new System.Windows.Forms.Padding(2);
             this.txt_new_cpp_in_func_testcase.Multiline = true;
             this.txt_new_cpp_in_func_testcase.Name = "txt_new_cpp_in_func_testcase";
             this.tableLayoutPanel7.SetRowSpan(this.txt_new_cpp_in_func_testcase, 2);
-            this.txt_new_cpp_in_func_testcase.Size = new System.Drawing.Size(438, 172);
+            this.txt_new_cpp_in_func_testcase.Size = new System.Drawing.Size(438, 145);
             this.txt_new_cpp_in_func_testcase.TabIndex = 34;
             // 
             // btn_new_cpp_create
             // 
             this.tableLayoutPanel7.SetColumnSpan(this.btn_new_cpp_create, 3);
             this.btn_new_cpp_create.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_new_cpp_create.Location = new System.Drawing.Point(83, 392);
+            this.btn_new_cpp_create.Location = new System.Drawing.Point(83, 390);
             this.btn_new_cpp_create.Margin = new System.Windows.Forms.Padding(2);
             this.btn_new_cpp_create.Name = "btn_new_cpp_create";
             this.btn_new_cpp_create.Size = new System.Drawing.Size(386, 42);
@@ -1313,6 +1320,41 @@
             this.cb_new_cpp_custom.TabIndex = 54;
             this.cb_new_cpp_custom.Text = "序列操作模式定制";
             this.cb_new_cpp_custom.UseVisualStyleBackColor = true;
+            // 
+            // txt_new_cpp_lc_link
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.txt_new_cpp_lc_link, 3);
+            this.txt_new_cpp_lc_link.Location = new System.Drawing.Point(83, 27);
+            this.txt_new_cpp_lc_link.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_new_cpp_lc_link.Name = "txt_new_cpp_lc_link";
+            this.txt_new_cpp_lc_link.Size = new System.Drawing.Size(386, 21);
+            this.txt_new_cpp_lc_link.TabIndex = 70;
+            this.txt_new_cpp_lc_link.Visible = false;
+            // 
+            // btn_new_cpp_lc_link
+            // 
+            this.btn_new_cpp_lc_link.Location = new System.Drawing.Point(473, 27);
+            this.btn_new_cpp_lc_link.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_new_cpp_lc_link.Name = "btn_new_cpp_lc_link";
+            this.btn_new_cpp_lc_link.Size = new System.Drawing.Size(50, 21);
+            this.btn_new_cpp_lc_link.TabIndex = 71;
+            this.btn_new_cpp_lc_link.Text = "Auto";
+            this.btn_new_cpp_lc_link.UseVisualStyleBackColor = true;
+            this.btn_new_cpp_lc_link.Visible = false;
+            this.btn_new_cpp_lc_link.Click += new System.EventHandler(this.btn_new_cpp_lc_link_Click);
+            // 
+            // lbl_new_cpp_lc_link
+            // 
+            this.lbl_new_cpp_lc_link.AutoSize = true;
+            this.lbl_new_cpp_lc_link.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_new_cpp_lc_link.Location = new System.Drawing.Point(2, 25);
+            this.lbl_new_cpp_lc_link.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_new_cpp_lc_link.Name = "lbl_new_cpp_lc_link";
+            this.lbl_new_cpp_lc_link.Size = new System.Drawing.Size(77, 25);
+            this.lbl_new_cpp_lc_link.TabIndex = 72;
+            this.lbl_new_cpp_lc_link.Text = "LC 连接";
+            this.lbl_new_cpp_lc_link.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_new_cpp_lc_link.Visible = false;
             // 
             // tabPage1
             // 
@@ -1538,18 +1580,6 @@
             this.btn_launcher_main_lc_open.UseVisualStyleBackColor = true;
             this.btn_launcher_main_lc_open.Click += new System.EventHandler(this.btn_launcher_main_lc_open_Click);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(541, 475);
-            this.tabControl1.TabIndex = 1;
-            // 
             // btn_launcher_test_sln
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.btn_launcher_test_sln, 2);
@@ -1563,11 +1593,23 @@
             this.btn_launcher_test_sln.UseVisualStyleBackColor = true;
             this.btn_launcher_test_sln.Click += new System.EventHandler(this.btn_launcher_test_sln_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(541, 475);
+            this.tabControl1.TabIndex = 1;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 491);
+            this.ClientSize = new System.Drawing.Size(556, 487);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMain";
@@ -1710,6 +1752,9 @@
         private System.Windows.Forms.TextBox txt_launcher_main_lc_path;
         private System.Windows.Forms.Button btn_launcher_main_lc_open;
         private System.Windows.Forms.Button btn_launcher_test_sln;
+        private System.Windows.Forms.TextBox txt_new_cpp_lc_link;
+        private System.Windows.Forms.Button btn_new_cpp_lc_link;
+        private System.Windows.Forms.Label lbl_new_cpp_lc_link;
     }
 }
 

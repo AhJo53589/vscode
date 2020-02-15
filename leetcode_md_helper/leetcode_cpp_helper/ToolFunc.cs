@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Net;
 
 namespace leetcode_cpp_helper
 {
@@ -41,6 +42,42 @@ namespace leetcode_cpp_helper
             {
                 MessageBox.Show(e.ToString());
             }
+        }
+
+        private string GetPage_From_URL(in string url)
+        {
+            //创建
+            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+            //设置请求方法
+            httpWebRequest.Method = "GET";
+            //请求超时时间
+            httpWebRequest.Timeout = 20000;
+            //发送请求
+            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            //利用Stream流读取返回数据
+            StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream(), Encoding.UTF8);
+            //获得最终数据，一般是json
+            string responseContent = streamReader.ReadToEnd();
+            streamReader.Close();
+            httpWebResponse.Close();
+            return responseContent;
+        }
+
+        private string GetCode_From_Page(in string input)
+        {
+            string output = "";
+            // get code
+            // Sample: 
+            // <input name="code" type="hidden" value="
+            // class Solution ... "
+            // ><input name="question" type="hidden" value="1">
+            string pattern = "<input name=\"code\"[\\s\\S]+?><input name=\"question\"";
+            txt_new_cpp_in_func_testcase.Text = pattern;
+            foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline))
+            {
+                output = match.Value;
+            }
+            return output;
         }
 
         private void SplitFuncParamArg(in string input, out List<string> output)

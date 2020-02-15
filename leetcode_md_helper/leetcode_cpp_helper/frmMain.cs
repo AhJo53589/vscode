@@ -24,16 +24,20 @@ namespace leetcode_cpp_helper
         private void frmMain_Load(object sender, EventArgs e)
         {
             txt_path_main.Text = System.Windows.Forms.Application.StartupPath;
-            debug_path_main();
+            debug_config();
             Reset();
             Clear();
         }
 
         [Conditional("DEBUG")]
-        private void debug_path_main()
+        private void debug_config()
         {
             // Test path
             txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
+
+            lbl_new_cpp_lc_link.Visible = true;
+            txt_new_cpp_lc_link.Visible = true;
+            btn_new_cpp_lc_link.Visible = true;
         }
 
         private void Reset()
@@ -76,6 +80,7 @@ namespace leetcode_cpp_helper
             txt_new_cpp_dir_temp.Text = "problems_test";
             txt_new_cpp_id_temp.Text = "0";
             cb_new_cpp_custom.Checked = false;
+            txt_new_cpp_lc_link.Text = "https://leetcode-cn.com/problems/two-sum";
             txt_new_cpp_in_func.Text = "";
             txt_new_cpp_in_func_testcase.Text = "";
         }
@@ -216,6 +221,14 @@ namespace leetcode_cpp_helper
         private void btn_new_cpp_clear_Click(object sender, EventArgs e)
         {
             Clear_New_Cpp();
+        }
+
+        private void btn_new_cpp_lc_link_Click(object sender, EventArgs e)
+        {
+            string strPage = GetPage_From_URL(txt_new_cpp_lc_link.Text);
+            txt_new_cpp_in_func.Text = strPage;
+            string strCode = GetCode_From_Page(strPage);
+            txt_new_cpp_in_func_testcase.Text += strCode;
         }
 
         private void btn_new_cpp_create_Click(object sender, EventArgs e)

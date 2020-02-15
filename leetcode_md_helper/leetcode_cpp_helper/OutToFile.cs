@@ -423,11 +423,12 @@ namespace leetcode_cpp_helper
                         {
                             iProblemsCount += GetFinishStatus_From_InfoForm_Problem(str);
                             int iReadNo = GetId_From_InfoForm_Problem(str);
-                            if (iReadNo > iInsertNo)
+                            if (iReadNo >= iInsertNo)
                             {
                                 strText += strInsert + strEnter;    // insert content here
                                 iMark = 29;  // iMakr == 29, insert completed
                             }
+                            if (iReadNo == iInsertNo) continue;
                         }
                     }
                     else if (iMark == 29)
@@ -438,7 +439,7 @@ namespace leetcode_cpp_helper
                     }
 
                     // copy this line
-                    strText += str + "\r\n";
+                    strText += str + strEnter;
                 }
                 if (iMark == 22)
                 {
@@ -497,27 +498,30 @@ namespace leetcode_cpp_helper
                     }
                     else if (iMark == 12)
                     {
-                        if (txt_in_solution_link.Text == "")
-                        {
-                            iMark = 19;
-                        }
-                        else
-                        {
-                            if (str.IndexOf("|") != -1)
-                            {
-                                int iReadNo = GetId_From_InfoForm_Problem(str);
-                                if (iReadNo > iInsertNo)
-                                {
-                                    strText += strInsert_SelectedSolution + strEnter;    // insert content here
-                                    iMark = 19;  // iMakr == 19, insert completed
-                                }
-                            }
-                            else
-                            {
-                                strText += strInsert_SelectedSolution + strEnter;    // insert content here
-                                iMark = 19;  // find title
-                            }
-                        }
+                        // disable this function
+                        iMark = 19;
+                        //if (txt_in_solution_link.Text == "")
+                        //{
+                        //    iMark = 19;
+                        //}
+                        //else
+                        //{
+                        //    if (str.IndexOf("|") != -1)
+                        //    {
+                        //        int iReadNo = GetId_From_InfoForm_Problem(str);
+                        //        if (iReadNo >= iInsertNo)
+                        //        {
+                        //            strText += strInsert_SelectedSolution + strEnter;    // insert content here
+                        //            iMark = 19;  // iMakr == 19, insert completed
+                        //        }
+                        //        if (iReadNo == iInsertNo) continue;
+                        //    }
+                        //    else
+                        //    {
+                        //        strText += strInsert_SelectedSolution + strEnter;    // insert content here
+                        //        iMark = 19;  // find title
+                        //    }
+                        //}
                     }
                     else if (iMark == 19)
                     {
@@ -664,11 +668,12 @@ namespace leetcode_cpp_helper
                     {
                         if (str == "") continue;
                         int iReadNo = GetId_From_InfoForm_Problem(str);
-                        if (iReadNo > iInsertNo)
+                        if (iReadNo >= iInsertNo)
                         {
                             strText += strInsert_SelectedSolution + strEnter;    // insert content here
                             iMark = 20;  // iMakr == 20, insert completed
                         }
+                        if (iReadNo == iInsertNo) continue;
                     }
                     // copy this line
                     strText += str + strEnter;
@@ -748,11 +753,12 @@ namespace leetcode_cpp_helper
                     {
                         if (str == "") continue;
                         int iReadNo = GetId_From_InfoForm_Problem(str);
-                        if (iReadNo > iInsertNo)
+                        if (iReadNo >= iInsertNo)
                         {
-                            strText += strInsert + "\r\n";    // insert content here
+                            strText += strInsert + strEnter;    // insert content here
                             iMark = 29;  // iMakr == 29, insert completed
                         }
+                        if (iReadNo == iInsertNo) continue;
                     }
                     else if (iMark == 29)
                     {
@@ -848,11 +854,12 @@ namespace leetcode_cpp_helper
                         s = s[1].Split('_');
                         int.TryParse(s[5], out int iReadNo);
 
-                        if (iReadNo > iInsertNo)
+                        if (iReadNo >= iInsertNo)
                         {
                             strText += strInsert_SelectedSolution + strEnter;    // insert content here
                             iMark = 20;  // iMakr == 20, insert completed
                         }
+                        if (iReadNo == iInsertNo) continue;
                     }
                     // copy this line
                     strText += str + strEnter;

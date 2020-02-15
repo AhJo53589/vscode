@@ -379,7 +379,7 @@ namespace leetcode_cpp_helper
 
             if (txt_in_contest.Text != "")
             {
-                strText += "\r\n\r\n";
+                strText += strEnter + strEnter;
                 strText += "[contest]";
                 strText += "(" + txt_in_link.Text + ")";
             }
@@ -399,10 +399,10 @@ namespace leetcode_cpp_helper
         private string GenerateString_Answer()
         {
             string strText = "";
-            strText += "### 答题\r\n";
-            strText += "``` C++\r\n";
-            strText += txt_in_answer.Text + "\r\n";
-            strText += "```\r\n";
+            strText += "### 答题" + strEnter;
+            strText += "``` C++" + strEnter;
+            strText += txt_in_answer.Text + strEnter;
+            strText += "```" + strEnter;
             return strText;
         }
 
@@ -411,10 +411,10 @@ namespace leetcode_cpp_helper
             string strText = "";
             if (txt_in_answer_other.Text == "") return strText;
 
-            strText += "### 其它\r\n";
-            strText += "``` C++\r\n";
-            strText += txt_in_answer_other.Text + "\r\n";
-            strText += "```\r\n";
+            strText += "### 其它" + strEnter;
+            strText += "``` C++" + strEnter;
+            strText += txt_in_answer_other.Text + strEnter;
+            strText += "```" + strEnter;
             return strText;
         }
     }

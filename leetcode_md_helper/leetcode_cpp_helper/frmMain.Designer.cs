@@ -142,7 +142,7 @@
             this.btn_launcher_temp_load = new System.Windows.Forms.Button();
             this.txt_launcher_lc_path_download = new System.Windows.Forms.TextBox();
             this.btn_launcher_lc_path_download = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_launcher_lc_path_download = new System.Windows.Forms.Label();
             this.btn_launcher_test_sln = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4.SuspendLayout();
@@ -1356,7 +1356,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_temp_load, 5, 5);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_lc_path_download, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_lc_path_download, 3, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_launcher_lc_path_download, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_test_sln, 6, 11);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -1548,6 +1548,7 @@
             this.txt_launcher_lc_path_download.Name = "txt_launcher_lc_path_download";
             this.txt_launcher_lc_path_download.Size = new System.Drawing.Size(181, 21);
             this.txt_launcher_lc_path_download.TabIndex = 72;
+            this.txt_launcher_lc_path_download.Visible = false;
             // 
             // btn_launcher_lc_path_download
             // 
@@ -1558,19 +1559,21 @@
             this.btn_launcher_lc_path_download.TabIndex = 73;
             this.btn_launcher_lc_path_download.Text = "Fill";
             this.btn_launcher_lc_path_download.UseVisualStyleBackColor = true;
+            this.btn_launcher_lc_path_download.Visible = false;
             this.btn_launcher_lc_path_download.Click += new System.EventHandler(this.btn_launcher_lc_path_download_Click);
             // 
-            // label1
+            // lbl_launcher_lc_path_download
             // 
-            this.label1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 3);
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(22, 186);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 12);
-            this.label1.TabIndex = 74;
-            this.label1.Text = "从网站下载题目信息，填充到后续分页中";
+            this.lbl_launcher_lc_path_download.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lbl_launcher_lc_path_download, 3);
+            this.lbl_launcher_lc_path_download.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_launcher_lc_path_download.Location = new System.Drawing.Point(22, 186);
+            this.lbl_launcher_lc_path_download.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_launcher_lc_path_download.Name = "lbl_launcher_lc_path_download";
+            this.lbl_launcher_lc_path_download.Size = new System.Drawing.Size(235, 12);
+            this.lbl_launcher_lc_path_download.TabIndex = 74;
+            this.lbl_launcher_lc_path_download.Text = "从网站下载题目信息，填充到后续分页中";
+            this.lbl_launcher_lc_path_download.Visible = false;
             // 
             // btn_launcher_test_sln
             // 
@@ -1743,7 +1746,7 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txt_launcher_temp_name;
         private System.Windows.Forms.Button btn_launcher_lc_path_download;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_launcher_lc_path_download;
     }
 }
 

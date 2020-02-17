@@ -34,6 +34,10 @@ namespace leetcode_cpp_helper
         {
             // Test path
             txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
+
+            lbl_launcher_lc_path_download.Visible = true;
+            txt_launcher_lc_path_download.Visible = true;
+            btn_launcher_lc_path_download.Visible = true;
         }
 
         private void Reset()

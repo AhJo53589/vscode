@@ -14,8 +14,8 @@ namespace leetcode_cpp_helper
 {
     public partial class frmMain : Form
     {
-        string strComment = "//";
-        string strEnter = "\r\n";
+        readonly string strComment = "//";
+        readonly string strEnter = "\r\n";
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// Common
@@ -100,8 +100,6 @@ namespace leetcode_cpp_helper
                     {
                         string[] s = str.Split('\t');
                         txt_launcher_main_name.Text = s[s.Length - 1];
-                        txt_launcher_main_path.Text = txt_path_problems.Text + "\\" + txt_launcher_main_name.Text;
-                        txt_launcher_main_lc_path.Text = "https://leetcode-cn.com/problems/" + txt_launcher_main_name.Text;
                         break;
                     }
                 }

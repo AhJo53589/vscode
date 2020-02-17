@@ -34,10 +34,6 @@ namespace leetcode_cpp_helper
         {
             // Test path
             txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
-
-            lbl_new_cpp_lc_link.Visible = true;
-            txt_new_cpp_lc_link.Visible = true;
-            btn_new_cpp_lc_link.Visible = true;
         }
 
         private void Reset()
@@ -80,7 +76,6 @@ namespace leetcode_cpp_helper
             txt_new_cpp_dir_temp.Text = "problems_test";
             txt_new_cpp_id_temp.Text = "0";
             cb_new_cpp_custom.Checked = false;
-            txt_new_cpp_lc_link.Text = "https://leetcode-cn.com/problems/two-sum";
             txt_new_cpp_in_func.Text = "";
             txt_new_cpp_in_func_testcase.Text = "";
         }
@@ -135,14 +130,15 @@ namespace leetcode_cpp_helper
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// Launcher
-        private void txt_launcher_id_TextChanged(object sender, EventArgs e)
+        private void txt_launcher_main_id_TextChanged(object sender, EventArgs e)
         {
             Find_In_File_Define_IdName_h();
         }
 
         private void txt_launcher_main_name_TextChanged(object sender, EventArgs e)
         {
-            txt_launcher_main_path.Text = "problems\\" + txt_launcher_main_name.Text;
+            txt_launcher_main_path.Text = txt_path_problems.Text + "\\" + txt_launcher_main_name.Text;
+            txt_launcher_main_lc_path.Text = "https://leetcode-cn.com/problems/" + txt_launcher_main_name.Text;
         }
 
         private void btn_launcher_main_open_Click(object sender, EventArgs e)
@@ -169,7 +165,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void btn_launcher_main_active_Click(object sender, EventArgs e)
+        private void btn_launcher_main_load_Click(object sender, EventArgs e)
         {
             try
             {
@@ -183,15 +179,22 @@ namespace leetcode_cpp_helper
 
         private void txt_launcher_temp_dir_TextChanged(object sender, EventArgs e)
         {
-            txt_launcher_temp_path.Text = txt_launcher_temp_dir.Text + "\\" + txt_launcher_temp_name.Text;
+            txt_launcher_temp_path.Text = txt_path_problems_test.Text + "\\" + txt_launcher_temp_name.Text;
         }
 
         private void btn_launcher_temp_open_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", txt_path_main.Text + "\\" + txt_launcher_temp_dir.Text + "\\" + txt_launcher_temp_name.Text);
+            try
+            {
+	            Process.Start("explorer.exe", txt_path_main.Text + "\\" + txt_launcher_temp_dir.Text + "\\" + txt_launcher_temp_name.Text);
+            }
+            catch (System.Exception ex)
+            {
+            	
+            }
         }
 
-        private void btn_launcher_temp_active_Click(object sender, EventArgs e)
+        private void btn_launcher_temp_load_Click(object sender, EventArgs e)
         {
             try
             {
@@ -201,6 +204,14 @@ namespace leetcode_cpp_helper
             {
 
             }
+        }
+
+        private void btn_launcher_lc_path_download_Click(object sender, EventArgs e)
+        {
+            string strPage = GetPage_From_URL(txt_launcher_lc_path_download.Text);
+            txt_new_cpp_in_func.Text = strPage;
+            string strCode = GetCode_From_Page(strPage);
+            txt_new_cpp_in_func_testcase.Text += strCode;
         }
 
         private void btn_launcher_test_sln_Click(object sender, EventArgs e)
@@ -221,14 +232,6 @@ namespace leetcode_cpp_helper
         private void btn_new_cpp_clear_Click(object sender, EventArgs e)
         {
             Clear_New_Cpp();
-        }
-
-        private void btn_new_cpp_lc_link_Click(object sender, EventArgs e)
-        {
-            string strPage = GetPage_From_URL(txt_new_cpp_lc_link.Text);
-            txt_new_cpp_in_func.Text = strPage;
-            string strCode = GetCode_From_Page(strPage);
-            txt_new_cpp_in_func_testcase.Text += strCode;
         }
 
         private void btn_new_cpp_create_Click(object sender, EventArgs e)

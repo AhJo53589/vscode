@@ -126,7 +126,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_launcher_main_name = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lbl_launcher_main_id = new System.Windows.Forms.Label();
             this.txt_launcher_main_path = new System.Windows.Forms.TextBox();
             this.txt_launcher_main_id = new System.Windows.Forms.TextBox();
             this.btn_launcher_main_open = new System.Windows.Forms.Button();
@@ -145,6 +145,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_launcher_test_sln = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.lbl_launcher_lc_path_download_hint = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -1184,6 +1186,7 @@
             this.tableLayoutPanel7.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.cb_new_cpp_custom, 3, 0);
             this.tableLayoutPanel7.Controls.Add(this.btn_new_cpp_clear, 4, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label13, 0, 9);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 14;
@@ -1340,7 +1343,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_name, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_launcher_main_id, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_path, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txt_launcher_main_id, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_main_open, 3, 3);
@@ -1358,6 +1361,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_lc_path_download, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btn_launcher_test_sln, 6, 11);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_launcher_lc_path_download_hint, 3, 10);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 13;
@@ -1370,8 +1374,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(538, 433);
@@ -1387,17 +1391,17 @@
             this.txt_launcher_main_name.TabIndex = 42;
             this.txt_launcher_main_name.TextChanged += new System.EventHandler(this.txt_launcher_main_name_TextChanged);
             // 
-            // label13
+            // lbl_launcher_main_id
             // 
-            this.label13.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label13, 2);
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(22, 30);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(181, 12);
-            this.label13.TabIndex = 44;
-            this.label13.Text = "输入 id 查询题库中已有的题目";
+            this.lbl_launcher_main_id.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lbl_launcher_main_id, 2);
+            this.lbl_launcher_main_id.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_launcher_main_id.Location = new System.Drawing.Point(22, 30);
+            this.lbl_launcher_main_id.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_launcher_main_id.Name = "lbl_launcher_main_id";
+            this.lbl_launcher_main_id.Size = new System.Drawing.Size(181, 12);
+            this.lbl_launcher_main_id.TabIndex = 44;
+            this.lbl_launcher_main_id.Text = "输入 id 查询题库中已有的题目";
             // 
             // txt_launcher_main_path
             // 
@@ -1575,7 +1579,7 @@
             // btn_launcher_test_sln
             // 
             this.btn_launcher_test_sln.Font = new System.Drawing.Font("Cooper Black", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_launcher_test_sln.Location = new System.Drawing.Point(365, 265);
+            this.btn_launcher_test_sln.Location = new System.Drawing.Point(365, 255);
             this.btn_launcher_test_sln.Margin = new System.Windows.Forms.Padding(2);
             this.btn_launcher_test_sln.Name = "btn_launcher_test_sln";
             this.btn_launcher_test_sln.Size = new System.Drawing.Size(90, 75);
@@ -1595,6 +1599,30 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(560, 475);
             this.tabControl1.TabIndex = 1;
+            // 
+            // lbl_launcher_lc_path_download_hint
+            // 
+            this.lbl_launcher_lc_path_download_hint.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lbl_launcher_lc_path_download_hint, 5);
+            this.lbl_launcher_lc_path_download_hint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_launcher_lc_path_download_hint.Location = new System.Drawing.Point(207, 223);
+            this.lbl_launcher_lc_path_download_hint.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_launcher_lc_path_download_hint.Name = "lbl_launcher_lc_path_download_hint";
+            this.lbl_launcher_lc_path_download_hint.Size = new System.Drawing.Size(309, 30);
+            this.lbl_launcher_lc_path_download_hint.TabIndex = 75;
+            this.lbl_launcher_lc_path_download_hint.Text = "正在获取...";
+            this.lbl_launcher_lc_path_download_hint.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(2, 252);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(77, 137);
+            this.label13.TabIndex = 55;
+            this.label13.Text = "注意格式：  每个用例的输入行后面需要有一行输出行";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmMain
             // 
@@ -1726,7 +1754,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txt_launcher_main_name;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lbl_launcher_main_id;
         private System.Windows.Forms.TextBox txt_launcher_main_path;
         private System.Windows.Forms.TextBox txt_launcher_main_id;
         private System.Windows.Forms.TextBox txt_launcher_main_lc_path;
@@ -1744,6 +1772,8 @@
         private System.Windows.Forms.TextBox txt_launcher_temp_name;
         private System.Windows.Forms.Button btn_launcher_lc_path_download;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_launcher_lc_path_download_hint;
+        private System.Windows.Forms.Label label13;
     }
 }
 

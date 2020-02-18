@@ -28,7 +28,10 @@ namespace leetcode_cpp_helper
         {
             DirectoryInfo pathInfo = new DirectoryInfo(System.Windows.Forms.Application.StartupPath);
             txt_path_main.Text = pathInfo.Parent.FullName;
+            
             debug_config();
+            release_only_test_config();
+
             Reset();
             Clear();
             InitBrowser();
@@ -40,6 +43,22 @@ namespace leetcode_cpp_helper
             // Test path
             txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
             //txt_launcher_lc_path_download.Text = "https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/";
+        }
+
+        [Conditional("RELEASE_ONLY_TEST")]
+        private void release_only_test_config()
+        {
+            lbl_launcher_main_id.Visible = false;
+            txt_launcher_main_id.Visible = false;
+            txt_launcher_main_name.Visible = false;
+            txt_launcher_main_path.Visible = false;
+            btn_launcher_main_open.Visible = false;
+            txt_launcher_main_lc_path.Visible = false;
+            btn_launcher_main_lc_open.Visible = false;
+            btn_launcher_main_load.Visible = false;
+
+            tabControl1.TabPages.Remove(tabPage3);
+            tabControl1.TabPages.Remove(tabPage4);
         }
 
         private void InitBrowser()
@@ -63,8 +82,9 @@ namespace leetcode_cpp_helper
                 txt_in_link.Text = txt_launcher_lc_path_download.Text;
                 txt_launcher_lc_path_download.Text = "";
                 txt_in_id_titleC.Text = GetIdTitleC_From_Page(html);
+                txt_new_cpp_id_temp.Text = txt_in_id.Text;
                 txt_in_description.Text = GetDescription_From_Page(html);
-
+                lbl_launcher_lc_path_download_hint.Visible = false;
             }));
         }
 
@@ -241,6 +261,7 @@ namespace leetcode_cpp_helper
         private void btn_launcher_lc_path_download_Click(object sender, EventArgs e)
         {
             GetPage_From_URL(txt_launcher_lc_path_download.Text);
+            lbl_launcher_lc_path_download_hint.Visible = true;
         }
 
         private void btn_launcher_test_sln_Click(object sender, EventArgs e)

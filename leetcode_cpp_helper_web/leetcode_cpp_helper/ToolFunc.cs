@@ -72,7 +72,6 @@ namespace leetcode_cpp_helper
             // class Solution ... "
             // ><input name="question"
             string pattern = "<input name=\"code\"[\\s\\S]+?><input name=\"question\"";
-            //textBox1.Text = pattern + "\r\n";
             foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline))
             {
                 output = match.Value;
@@ -88,8 +87,15 @@ namespace leetcode_cpp_helper
 
             txt_new_cpp_in_func.Text = output;
 
-            ////////////////////////////////////////////
-            pattern = "<input name=\"testcase\"[\\s\\S]+?><input name=\"lang\"";
+            return output;
+        }
+
+        private string GetTestcase_From_Page(in string input)
+        {
+            string output = "";
+
+            // get testcase
+            string pattern = "<input name=\"testcase\"[\\s\\S]+?><input name=\"lang\"";
             foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline))
             {
                 output = match.Value;
@@ -99,10 +105,61 @@ namespace leetcode_cpp_helper
             DeEscape(ref output);
             ConvertEnter(ref output);
 
-            txt_new_cpp_in_func_testcase.Text = output;
+            return output;
+        }
+
+        private string GetDifficult_From_Page(in string input)
+        {
+            string output = "";
+
+            // get difficult
+            string pattern = "<span data-degree=\"[\\w]+?\"\\s";
+            foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline))
+            {
+                output = match.Value;
+            }
+            output = (output.IndexOf("easy") != -1) ? "easy" : output;
+            output = (output.IndexOf("medium") != -1) ? "medium" : output;
+            output = (output.IndexOf("hard") != -1) ? "hard" : output;
 
             return output;
         }
+
+        private string GetIdTitleC_From_Page(in string input)
+        {
+            string output = "";
+
+            // get id titleC
+            string pattern = "\\d+\\.\\s.+?</a>";
+            foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline))
+            {
+                output = match.Value;
+            }
+            output = output.Replace("</a>", "");
+            DeEscape(ref output);
+            ConvertEnter(ref output);
+
+            return output;
+        }
+
+        private string GetDescription_From_Page(in string input)
+        {
+            string output = "";
+
+            // get description
+            string pattern = "<div class=\\\"notranslate\\\">[\\s\\S]+?</div></div>";
+            foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline))
+            {
+                output = match.Value;
+            }
+            output = output.Replace("</div></div>", "");
+            output = output.Replace("<div class=\"notranslate\">", "");
+            DeEscape(ref output);
+            //ConvertEnter(ref output);
+
+            return output;
+        }
+
 
         private void SplitFuncParamArg(in string input, out List<string> output)
         {

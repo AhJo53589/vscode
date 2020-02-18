@@ -39,7 +39,7 @@ namespace leetcode_cpp_helper
         {
             // Test path
             txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
-            txt_launcher_lc_path_download.Text = "https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/";
+            //txt_launcher_lc_path_download.Text = "https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/";
         }
 
         private void InitBrowser()
@@ -54,7 +54,17 @@ namespace leetcode_cpp_helper
             this.BeginInvoke(new Action(() =>
             {
                 String html = browser.GetSourceAsync().Result;
-                GetCode_From_Page(html);
+                txt_new_cpp_in_func.Text = GetCode_From_Page(html);
+                txt_new_cpp_in_func_testcase.Text = GetTestcase_From_Page(html);
+                string diff = GetDifficult_From_Page(html);
+                rb_in_difficult_1.Checked = (diff == "easy");
+                rb_in_difficult_2.Checked = (diff == "medium");
+                rb_in_difficult_3.Checked = (diff == "hard");
+                txt_in_link.Text = txt_launcher_lc_path_download.Text;
+                txt_launcher_lc_path_download.Text = "";
+                txt_in_id_titleC.Text = GetIdTitleC_From_Page(html);
+                txt_in_description.Text = GetDescription_From_Page(html);
+
             }));
         }
 
@@ -90,7 +100,6 @@ namespace leetcode_cpp_helper
             txt_launcher_main_name.Text = "";
             txt_launcher_temp_dir.Text = "problems_test";
             txt_launcher_temp_name.Text = "0";
-            txt_launcher_lc_path_download.Text = "";
         }
 
         private void Clear_New_Cpp()
@@ -232,7 +241,6 @@ namespace leetcode_cpp_helper
         private void btn_launcher_lc_path_download_Click(object sender, EventArgs e)
         {
             GetPage_From_URL(txt_launcher_lc_path_download.Text);
-            txt_launcher_lc_path_download.Text = "";
         }
 
         private void btn_launcher_test_sln_Click(object sender, EventArgs e)

@@ -19,12 +19,9 @@ namespace leetcode_cpp_helper
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// Common
-        private void Modify_File_Test_cpp(bool useDefault, string strId, string strDir = "")
+        private void Modify_File_Test_cpp(string strFile, string strId, bool useDefault, string strDir = "")
         {
-            if (txt_path_test_cpp.Text == "") return;
-
-            string strFile = txt_path_test_cpp.Text;
-
+            if (strFile == "") return;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[Test.cpp] file not exist!");
@@ -376,21 +373,17 @@ namespace leetcode_cpp_helper
 
         ///////////////////////////////////////////////////////////////////////////////////////
         /// Generate MD
-        private int Modify_File_ProblemsetAll_Readme_md()
+        private int Modify_File_ProblemsetAll_Readme_md(string strFile, string strId, string strPath, string strDifficult, bool bFinish, string strSolutionLink)
         {
-            if (txt_path_problemset_all.Text == "") return 0;
-
-            int iProblemsCount = 0;
-            string strFile = txt_path_problemset_all.Text;
-
+            if (strFile == "") return 0;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[problemset/all/README.md] file not exist!");
-                return iProblemsCount;
+                return 0;
             }
 
-            string strInsert = GenerateString_InfoForm_Problem("../../problems/");
-            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            int iProblemsCount = 0;
+            string strInsert = GenerateString_InfoForm_Problem(strPath, strId, strDifficult, bFinish, strSolutionLink);
             string strText = "";
             int iMark = 0;
 
@@ -402,7 +395,8 @@ namespace leetcode_cpp_helper
                     string str = sr.ReadLine();
                     if (iMark == 0)
                     {
-                        if (str == "## All") iMark = 20;  // find title
+                        // ## All
+                        if (str.IndexOf("## ") != -1) iMark = 20;  // find title
                     }
                     else if (iMark == 20 || iMark == 21)
                     {
@@ -412,7 +406,8 @@ namespace leetcode_cpp_helper
                     else if (iMark == 22)
                     {
                         if (str == "") continue;
-                        if (str == "## Season/2019-fall")
+                        // ## Season/2019-fall
+                        if (str.IndexOf("## ") != -1)
                         {
                             strText += strInsert + strEnter;    // insert content here
                             iMark = 29;  // iMakr == 29, insert completed
@@ -420,13 +415,13 @@ namespace leetcode_cpp_helper
                         else
                         {
                             iProblemsCount += GetFinishStatus_From_InfoForm_Problem(str);
-                            int iReadNo = GetId_From_InfoForm_Problem(str);
-                            if (iReadNo >= iInsertNo)
+                            string strReadNo = GetId_From_InfoForm_Problem(str);
+                            if (strReadNo.CompareTo(strId) != -1)
                             {
                                 strText += strInsert + strEnter;    // insert content here
                                 iMark = 29;  // iMakr == 29, insert completed
                             }
-                            if (iReadNo == iInsertNo) continue;
+                            if (strReadNo.CompareTo(strId) == 0) continue;
                         }
                     }
                     else if (iMark == 29)
@@ -458,9 +453,8 @@ namespace leetcode_cpp_helper
             return iProblemsCount + 1;
         }
 
-        private void Modify_File_Readme_md(int iProblemsCount)
+        private void Modify_File_Readme_md(string strFile, string strId, int iProblemsCount, string strPath, string strDifficult, bool bFinish, string strSolutionLink)
         {
-            string strFile = txt_path_readme_md.Text;
             if (strFile == "") return;
             if (!File.Exists(strFile))
             {
@@ -468,8 +462,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
-            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem(strPath, strId, strDifficult, bFinish, strSolutionLink);
             string strText = "";
             int iMark = 0;
 
@@ -481,7 +474,8 @@ namespace leetcode_cpp_helper
                     string str = sr.ReadLine();
                     if (iMark == 0)
                     {
-                        if (str == "# leetcode-cn") iMark = 1;  // find title
+                        // # leetcode-cn
+                        if (str.IndexOf("# ") != -1) iMark = 1;  // find title
                     }
                     else if (iMark == 1)
                     {
@@ -489,42 +483,41 @@ namespace leetcode_cpp_helper
                         //if (str == "## Selected Solutions") iMark = 10;  // find title
                         if (str == "## Problemset / All") iMark = 20;  // find title
                     }
-                    else if (iMark == 10 || iMark == 11)
-                    {
-                        if (str == "") continue;
-                        if (str.IndexOf("|") != -1) iMark++;
-                    }
-                    else if (iMark == 12)
-                    {
-                        // disable this function
-                        iMark = 19;
-                        //if (txt_in_solution_link.Text == "")
-                        //{
-                        //    iMark = 19;
-                        //}
-                        //else
-                        //{
-                        //    if (str.IndexOf("|") != -1)
-                        //    {
-                        //        int iReadNo = GetId_From_InfoForm_Problem(str);
-                        //        if (iReadNo >= iInsertNo)
-                        //        {
-                        //            strText += strInsert_SelectedSolution + strEnter;    // insert content here
-                        //            iMark = 19;  // iMakr == 19, insert completed
-                        //        }
-                        //        if (iReadNo == iInsertNo) continue;
-                        //    }
-                        //    else
-                        //    {
-                        //        strText += strInsert_SelectedSolution + strEnter;    // insert content here
-                        //        iMark = 19;  // find title
-                        //    }
-                        //}
-                    }
-                    else if (iMark == 19)
-                    {
-                        if (str == "## Problemset / All") iMark = 20;  // find title
-                    }
+                    // disable [Selected Solutions] function
+                    //else if (iMark == 10 || iMark == 11)
+                    //{
+                    //    if (str == "") continue;
+                    //    if (str.IndexOf("|") != -1) iMark++;
+                    //}
+                    //else if (iMark == 12)
+                    //{
+                    //    if (txt_in_solution_link.Text == "")
+                    //    {
+                    //        iMark = 19;
+                    //    }
+                    //    else
+                    //    {
+                    //        if (str.IndexOf("|") != -1)
+                    //        {
+                    //            int iReadNo = GetId_From_InfoForm_Problem(str);
+                    //            if (iReadNo >= iInsertNo)
+                    //            {
+                    //                strText += strInsert_SelectedSolution + strEnter;    // insert content here
+                    //                iMark = 19;  // iMakr == 19, insert completed
+                    //            }
+                    //            if (iReadNo == iInsertNo) continue;
+                    //        }
+                    //        else
+                    //        {
+                    //            strText += strInsert_SelectedSolution + strEnter;    // insert content here
+                    //            iMark = 19;  // find title
+                    //        }
+                    //    }
+                    //}
+                    //else if (iMark == 19)
+                    //{
+                    //    if (str == "## Problemset / All") iMark = 20;  // find title
+                    //}
                     else if (iMark == 20)
                     {
                         string[] s1 = str.Split('（');
@@ -574,6 +567,7 @@ namespace leetcode_cpp_helper
 
         private void Modify_File_Update_md(string strFile)
         {
+            if (strFile == "") return;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[Update.md] file not exist!");
@@ -628,7 +622,7 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private void Modify_File_Solutions_md(string strFile)
+        private void Modify_File_Solutions_md(string strFile, string strId, string strPath, string strDifficult, bool bFinish, string strSolutionLink)
         {
             if (txt_in_solution_link.Text == "") return;
             if (strFile == "") return;
@@ -638,8 +632,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem("./problems/");
-            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            string strInsert_SelectedSolution = GenerateString_InfoForm_Problem(strPath, strId, strDifficult, bFinish, strSolutionLink);
             string strText = "";
             int iMark = 0;
 
@@ -665,13 +658,13 @@ namespace leetcode_cpp_helper
                     else if (iMark == 12)
                     {
                         if (str == "") continue;
-                        int iReadNo = GetId_From_InfoForm_Problem(str);
-                        if (iReadNo >= iInsertNo)
+                        string strReadNo = GetId_From_InfoForm_Problem(str);
+                        if (strReadNo.CompareTo(strId) != -1)
                         {
                             strText += strInsert_SelectedSolution + strEnter;    // insert content here
                             iMark = 20;  // iMakr == 20, insert completed
                         }
-                        if (iReadNo == iInsertNo) continue;
+                        if (strReadNo.CompareTo(strId) == 0) continue;
                     }
                     // copy this line
                     strText += str + strEnter;
@@ -694,7 +687,7 @@ namespace leetcode_cpp_helper
             btn_open_solutions_md.BackColor = System.Drawing.Color.Aqua;
         }
 
-        private void Create_File_Contest_Problems_Readme_md()
+        private void Create_File_Contest_Problems_Readme_md(string strId, string strPath, string strDifficult, bool bFinish, string strSolutionLink)
         {
             string strFile = txt_path_contest_problems.Text;
             if (strFile == "") return;
@@ -709,7 +702,7 @@ namespace leetcode_cpp_helper
             strText += "|     | #   | 名称                 | 题目                  | 答题          | 题解 | 难度 |" + strEnter;
             strText += "| --- | --- | -------------------- | --------------------- | ------------- | ---- | ---- |" + strEnter;
 
-            strText += GenerateString_InfoForm_Problem("../../problems/") + strEnter;
+            strText += GenerateString_InfoForm_Problem(strPath, strId, strDifficult, bFinish, strSolutionLink) + strEnter;
 
             UTF8Encoding utf8 = new UTF8Encoding(false);
             File.WriteAllText(strFile, strText, utf8);
@@ -717,9 +710,8 @@ namespace leetcode_cpp_helper
             btn_open_contest_problems.BackColor = System.Drawing.Color.Aqua;
         }
 
-        private void Modify_File_Contest_Problems_Readme_md()
+        private void Modify_File_Contest_Problems_Readme_md(string strFile, string strId, string strPath, string strDifficult, bool bFinish, string strSolutionLink)
         {
-            string strFile = txt_path_contest_problems.Text;
             if (strFile == "") return;
             if (!File.Exists(strFile))
             {
@@ -727,7 +719,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strInsert = GenerateString_InfoForm_Problem("../../problems/");
+            string strInsert = GenerateString_InfoForm_Problem(strPath, strId, strDifficult, bFinish, strSolutionLink);
             int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
@@ -750,13 +742,13 @@ namespace leetcode_cpp_helper
                     else if (iMark == 22)
                     {
                         if (str == "") continue;
-                        int iReadNo = GetId_From_InfoForm_Problem(str);
-                        if (iReadNo >= iInsertNo)
+                        string strReadNo = GetId_From_InfoForm_Problem(str);
+                        if (strReadNo.CompareTo(strId) != -1)
                         {
                             strText += strInsert + strEnter;    // insert content here
                             iMark = 29;  // iMakr == 29, insert completed
                         }
-                        if (iReadNo == iInsertNo) continue;
+                        if (strReadNo.CompareTo(strId) == 0) continue;
                     }
                     else if (iMark == 29)
                     {
@@ -819,10 +811,9 @@ namespace leetcode_cpp_helper
             btn_open_answer_readme_md.BackColor = System.Drawing.Color.Aqua;
         }
 
-        private void Modify_File_Define_IdName_h()
+        private void Modify_File_Define_IdName_h(string strFile, string strId)
         {
-            if (txt_path_define_h.Text == "") return;
-            string strFile = txt_path_define_h.Text;
+            if (strFile == "") return;
             if (!File.Exists(strFile))
             {
                 MessageBox.Show(@"[Define_IdName.h] file not exist!");
@@ -830,7 +821,6 @@ namespace leetcode_cpp_helper
             }
 
             string strInsert_SelectedSolution = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_in_id.Text + " \t" + txt_in_titleE.Text;
-            int.TryParse(txt_in_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
 
@@ -850,14 +840,13 @@ namespace leetcode_cpp_helper
 
                         string[] s = str.Split(' ');
                         s = s[1].Split('_');
-                        int.TryParse(s[5], out int iReadNo);
-
-                        if (iReadNo >= iInsertNo)
+                        string strReadNo = s[5];
+                        if (strReadNo.CompareTo(strId) != -1)
                         {
                             strText += strInsert_SelectedSolution + strEnter;    // insert content here
                             iMark = 20;  // iMakr == 20, insert completed
                         }
-                        if (iReadNo == iInsertNo) continue;
+                        if (strReadNo.CompareTo(strId) == 0) continue;
                     }
                     // copy this line
                     strText += str + strEnter;
@@ -881,11 +870,9 @@ namespace leetcode_cpp_helper
             btn_open_define_h.BackColor = System.Drawing.Color.Aqua;
         }
 
-        private void Create_CommitFile()
+        private void Create_CommitFile(string strText)
         {
-            if (txt_path_commit_bat.Text == "") return;
-
-            string strText;
+            if (strText == "") return;
             strText = "git pull" + strEnter;
             strText += "git add -A" + strEnter;
             strText += "git commit -m";

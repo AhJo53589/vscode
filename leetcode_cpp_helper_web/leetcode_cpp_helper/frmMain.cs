@@ -42,6 +42,7 @@ namespace leetcode_cpp_helper
         {
             // Test path
             txt_path_main.Text = @"C:\AhJo53589\leetcode-cn";
+            txt_path_main.Text = @"C:\AhJo53589\nowcoder";
             //txt_launcher_lc_path_download.Text = "https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/";
         }
 
@@ -129,7 +130,9 @@ namespace leetcode_cpp_helper
             txt_new_cpp_id_temp.Text = "0";
             cb_new_cpp_custom.Checked = false;
             txt_new_cpp_in_func.Text = "";
+            txt_new_cpp_in_func.Text = "string run(stringstream &ss) {}";
             txt_new_cpp_in_func_testcase.Text = "";
+            txt_new_cpp_in_func_testcase.Text = "-5 -4 0 1 2 3 4 13 14 15 17 20 22 99";
         }
 
         private void Clear_Generate_MD()
@@ -138,8 +141,10 @@ namespace leetcode_cpp_helper
             rb_in_difficult_1.Checked = true;
             cb_in_finish.Checked = true;
             txt_in_link.Text = "";
+            txt_in_link.Text = "https://segmentfault.com/q/1010000002943744/a-1020000002944507";
             txt_in_contest.Text = "";
             txt_in_id_titleC.Text = "";
+            txt_in_id_titleC.Text = "202002251400.判断一组数字是否连续";
             txt_in_id.Text = "";
             txt_in_titleE.Text = "";
             txt_in_titleC.Text = "";
@@ -221,7 +226,7 @@ namespace leetcode_cpp_helper
         {
             try
             {
-                Modify_File_Test_cpp(true, txt_launcher_main_id.Text);
+                Modify_File_Test_cpp(txt_path_test_cpp.Text, txt_launcher_main_id.Text, true);
             }
             catch
             {
@@ -250,7 +255,7 @@ namespace leetcode_cpp_helper
         {
             try
             {
-                Modify_File_Test_cpp(false, txt_launcher_temp_name.Text, txt_launcher_temp_dir.Text);
+                Modify_File_Test_cpp(txt_path_test_cpp.Text, txt_launcher_main_id.Text, false, txt_launcher_temp_name.Text);
             }
             catch
             {
@@ -295,7 +300,7 @@ namespace leetcode_cpp_helper
             Create_File_Solution_cpp(newPath, @"\SOLUTION.cpp", txt_new_cpp_in_func.Text, cb_new_cpp_custom.Checked);
             Create_File_TestCases_txt(newPath, @"\tests.txt", txt_new_cpp_in_func_testcase.Text);
 
-            Modify_File_Test_cpp(false, txt_new_cpp_id_temp.Text, txt_new_cpp_dir_temp.Text);
+            Modify_File_Test_cpp(txt_path_test_cpp.Text, txt_new_cpp_id_temp.Text, false, txt_new_cpp_dir_temp.Text);
 
             Process.Start("explorer.exe", newPath);
         }
@@ -330,21 +335,21 @@ namespace leetcode_cpp_helper
                     {
                         txt_path_contest_problems.Text = "";
                     }
-                    txt_path_answer_readme_md.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\README.md";
-                    txt_path_solution_cpp.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\SOLUTION.cpp";
-                    txt_path_tests_txt.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\tests.txt";
-
-                    btnGenerate.Enabled = true;
-                }
-                else
-                {
-                    btnGenerate.Enabled = false;
                 }
             }
             catch
             {
 
             }
+        }
+
+        private void txt_in_splite_TextChanged(object sender, EventArgs e)
+        {
+            txt_path_answer_readme_md.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\README.md";
+            txt_path_solution_cpp.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\SOLUTION.cpp";
+            txt_path_tests_txt.Text = txt_path_main.Text + @"\problems\" + txt_in_titleE.Text + @"\tests.txt";
+
+            btnGenerate.Enabled = (txt_in_id.Text != "" && txt_in_titleE.Text != "" && txt_in_titleC.Text != "");
         }
 
         private void btn_Copy_SolutionLink_Click(object sender, EventArgs e)
@@ -370,26 +375,26 @@ namespace leetcode_cpp_helper
         private void btn_Generate_Click(object sender, EventArgs e)
         {
             // 集合文件
-            int iProblemsCount = Modify_File_ProblemsetAll_Readme_md();
-            Modify_File_Readme_md(iProblemsCount);
-            Modify_File_Contest_md(txt_path_contest_md.Text);
+            int iProblemsCount = Modify_File_ProblemsetAll_Readme_md(txt_path_problemset_all.Text, txt_in_id.Text, "../../problems/", m_strDifficult, cb_in_finish.Checked, txt_in_solution_link.Text);
+            Modify_File_Readme_md(txt_path_readme_md.Text, txt_in_id.Text, iProblemsCount, "./problems/", m_strDifficult, cb_in_finish.Checked, txt_in_solution_link.Text);
             Modify_File_Update_md(txt_path_update_md.Text);
-            Modify_File_Solutions_md(txt_path_solutions_md.Text);
+            Modify_File_Solutions_md(txt_path_solutions_md.Text, txt_in_id.Text, "./problems/", m_strDifficult, cb_in_finish.Checked, txt_in_solution_link.Text);
 
             // 比赛目录
             if (txt_in_contest.Text != "")
             {
+                Modify_File_Contest_md(txt_path_contest_md.Text);
                 if (!Directory.Exists(txt_path_main.Text + txt_in_contest.Text))
                 {
                     Directory.CreateDirectory(txt_path_main.Text + txt_in_contest.Text);
                 }
                 if (!File.Exists(txt_path_contest_problems.Text))
                 {
-                    Create_File_Contest_Problems_Readme_md();
+                    Create_File_Contest_Problems_Readme_md(txt_in_id.Text, "../../problems/", m_strDifficult, cb_in_finish.Checked, txt_in_solution_link.Text);
                 }
                 else
                 {
-                    Modify_File_Contest_Problems_Readme_md();
+                    Modify_File_Contest_Problems_Readme_md(txt_path_contest_problems.Text, txt_in_id.Text, "../../problems/", m_strDifficult, cb_in_finish.Checked, txt_in_solution_link.Text);
                 }
             }
 
@@ -415,11 +420,11 @@ namespace leetcode_cpp_helper
             btn_open_tests_txt.BackColor = System.Drawing.Color.Aqua;
 
             // 程序目录
-            Modify_File_Test_cpp(true, txt_in_id.Text);
-            Modify_File_Define_IdName_h();
+            Modify_File_Test_cpp(txt_path_test_cpp.Text, txt_in_id.Text, true);
+            Modify_File_Define_IdName_h(txt_path_define_h.Text, txt_in_id.Text);
 
             // 提交文件
-            Create_CommitFile();
+            Create_CommitFile(txt_path_commit_bat.Text);
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////

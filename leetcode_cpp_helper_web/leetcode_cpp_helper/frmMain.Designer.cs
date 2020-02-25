@@ -123,6 +123,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cb_new_cpp_custom = new System.Windows.Forms.CheckBox();
             this.btn_new_cpp_clear = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_launcher_main_name = new System.Windows.Forms.TextBox();
@@ -144,9 +145,8 @@
             this.btn_launcher_lc_path_download = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_launcher_test_sln = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.lbl_launcher_lc_path_download_hint = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -797,6 +797,7 @@
             this.txt_in_titleC.Name = "txt_in_titleC";
             this.txt_in_titleC.Size = new System.Drawing.Size(153, 21);
             this.txt_in_titleC.TabIndex = 52;
+            this.txt_in_titleC.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
             // 
             // txt_in_titleE
             // 
@@ -805,6 +806,7 @@
             this.txt_in_titleE.Name = "txt_in_titleE";
             this.txt_in_titleE.Size = new System.Drawing.Size(150, 21);
             this.txt_in_titleE.TabIndex = 51;
+            this.txt_in_titleE.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
             // 
             // txt_in_id
             // 
@@ -813,6 +815,7 @@
             this.txt_in_id.Name = "txt_in_id";
             this.txt_in_id.Size = new System.Drawing.Size(57, 21);
             this.txt_in_id.TabIndex = 50;
+            this.txt_in_id.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
             // 
             // label23
             // 
@@ -1319,6 +1322,17 @@
             this.btn_new_cpp_clear.UseVisualStyleBackColor = true;
             this.btn_new_cpp_clear.Click += new System.EventHandler(this.btn_new_cpp_clear_Click);
             // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(2, 252);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(77, 137);
+            this.label13.TabIndex = 55;
+            this.label13.Text = "注意格式：  每个用例的输入行后面需要有一行输出行";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
@@ -1588,18 +1602,6 @@
             this.btn_launcher_test_sln.UseVisualStyleBackColor = true;
             this.btn_launcher_test_sln.Click += new System.EventHandler(this.btn_launcher_test_sln_Click);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(560, 475);
-            this.tabControl1.TabIndex = 1;
-            // 
             // lbl_launcher_lc_path_download_hint
             // 
             this.lbl_launcher_lc_path_download_hint.AutoSize = true;
@@ -1613,16 +1615,17 @@
             this.lbl_launcher_lc_path_download_hint.Text = "正在获取...";
             this.lbl_launcher_lc_path_download_hint.Visible = false;
             // 
-            // label13
+            // tabControl1
             // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(2, 252);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 137);
-            this.label13.TabIndex = 55;
-            this.label13.Text = "注意格式：  每个用例的输入行后面需要有一行输出行";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(560, 475);
+            this.tabControl1.TabIndex = 1;
             // 
             // frmMain
             // 

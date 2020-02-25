@@ -247,7 +247,10 @@ namespace leetcode_cpp_helper
             string pattern = @"[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z][_a-zA-Z0-9]*\((?:[_a-zA-Z][_a-zA-Z0-9<>*&]*\s[_a-zA-Z0-9<>*&]+(?:,\s*)?){0,}\)";
             foreach (Match match in Regex.Matches(input, pattern))
             {
-                if (new System.Text.RegularExpressions.Regex(@"\b" + strClassName + @"\b").IsMatch(match.Value)) continue;
+                if (strClassName != "")
+                {
+                    if (new System.Text.RegularExpressions.Regex(@"\b" + strClassName + @"\b").IsMatch(match.Value)) continue;
+                }
                 if (new System.Text.RegularExpressions.Regex(@"\bnew\b").IsMatch(match.Value)) continue;
                 output.Add(match.Value);
             }
@@ -286,11 +289,10 @@ namespace leetcode_cpp_helper
             }
         }
 
-        private int GetId_From_InfoForm_Problem(string str)
+        private string GetId_From_InfoForm_Problem(string str)
         {
             string[] s = str.Split('|');
-            int.TryParse(s[2], out int id);
-            return id;
+            return s[2];
         }
 
         private int GetFinishStatus_From_InfoForm_Problem(string str)
@@ -360,7 +362,7 @@ namespace leetcode_cpp_helper
         //    return id;
         //}
 
-        private string GenerateString_InfoForm_Problem(string path)
+        private string GenerateString_InfoForm_Problem(string path, string strId, string strDifficult, bool bFinish, string strSolutionLink)
         {
             // 有题解
             // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) | [查看](https://leetcode-cn.com/problems/two-sum/solution/liang-shu-zhi-he-by-leetcode-2/) | 简单 |
@@ -368,27 +370,21 @@ namespace leetcode_cpp_helper
             // | √ | 1 | [two-sum](../../problems/two-sum) | [两数之和](../../problems/two-sum/README.md) | [cpp](../../problems/two-sum/SOLUTION.cpp) |  | 简单 |
             string strText = "";
             strText += "| ";
-            if (cb_in_finish.Checked == true)
-            {
-                strText += "√";
-            }
-            else
-            {
-                strText += " ";
-            }
-            strText += " | " + txt_in_id.Text;
+            strText += (bFinish) ? "√" : " ";
+
+            strText += " | " + strId;
             strText += " | " + GenerateString_TitleAndFolderPath(path);
             strText += " | " + GenerateString_TitleAndFileLink(path);
             strText += " | " + GenerateString_CppFilePath(path);
-            if (txt_in_solution_link.Text == "")
+            if (strSolutionLink == "")
             {
                 strText += " | " + " ";
             }
             else
             {
-                strText += " | " + "[查看](" + txt_in_solution_link.Text + ")";
+                strText += " | " + "[查看](" + strSolutionLink + ")";
             }
-            strText += " | " + m_strDifficult;
+            strText += " | " + strDifficult;
             strText += " | ";
             return strText;
         }

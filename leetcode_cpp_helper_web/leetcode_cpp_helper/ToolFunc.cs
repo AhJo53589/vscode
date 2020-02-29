@@ -16,6 +16,19 @@ namespace leetcode_cpp_helper
 {
     public partial class frmMain : Form
     {
+        private int CompareStringAsLong(ref string input1, ref string input2)
+        {
+            bool canConvert1 = long.TryParse(input1, out long num1);
+            bool canConvert2 = long.TryParse(input2, out long num2);
+            if (canConvert1 && canConvert2)
+            {
+                if (num1 < num2) return -1;
+                if (num1 == num2) return 0;
+                if (num1 > num2) return 1;
+            }
+            return 2;
+        }
+
         private void DeEscape(ref string output)
         {
             output = output.Replace("&lt;", "<");
@@ -63,6 +76,7 @@ namespace leetcode_cpp_helper
             browser.Load(url);
         }
 
+        // Web
         private string GetCode_From_Page(in string input)
         {
             string output = "";
@@ -84,8 +98,6 @@ namespace leetcode_cpp_helper
             output = output.Replace("\"><input", "");
             DeEscape(ref output);
             ConvertEnter(ref output);
-
-            txt_new_cpp_in_func.Text = output;
 
             return output;
         }
@@ -258,24 +270,24 @@ namespace leetcode_cpp_helper
 
         private void SplitPathAndTitleE_From_Link()
         {
-            string[] s = txt_in_id_titleC.Text.Split('.');
-            txt_in_id.Text = s[0];
-            txt_generate_md_id.Text = txt_in_id.Text;
+            string[] s = txt_generate_md_id_titleC.Text.Split('.');
+            txt_generate_md_split_id.Text = s[0];
+            txt_generate_md_source_id.Text = txt_generate_md_split_id.Text;
 
-            txt_in_titleC.Text = s[1];
-            while (txt_in_titleC.Text[0] == ' ') txt_in_titleC.Text = txt_in_titleC.Text.Substring(1);
+            txt_generate_md_split_titleC.Text = s[1];
+            while (txt_generate_md_split_titleC.Text[0] == ' ') txt_generate_md_split_titleC.Text = txt_generate_md_split_titleC.Text.Substring(1);
 
             // Sample: 
             // https://leetcode-cn.com/contest/weekly-contest-159/problems/check-if-it-is-a-straight-line/
             // https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
-            s = txt_in_link.Text.Split('/');
+            s = txt_generate_md_link.Text.Split('/');
             bool bContest = false;
-            txt_in_contest.Text = "";
+            txt_generate_md_contest.Text = "";
             for (int i = 0; i < s.Length; i++)
             {
                 if (s[i] == "problems" && i < s.Length - 1)
                 {
-                    txt_in_titleE.Text = s[i + 1];
+                    txt_generate_md_split_titleE.Text = s[i + 1];
                     break;
                 }
                 if (s[i] == "contest")
@@ -284,7 +296,7 @@ namespace leetcode_cpp_helper
                 }
                 if (bContest)
                 {
-                    txt_in_contest.Text += "\\" + s[i];
+                    txt_generate_md_contest.Text += "\\" + s[i];
                 }
             }
         }
@@ -396,7 +408,7 @@ namespace leetcode_cpp_helper
             strText += "| ";
             strText += " | " + "[" + GenerateString_InfoForm_Contest_Title() + "]";
 
-            string[] s = txt_in_contest.Text.Split('\\');
+            string[] s = txt_generate_md_contest.Text.Split('\\');
             strText += "(./" + s[1] + "/" + s[2] + "/README.md)";
 
             strText += " | ";
@@ -412,7 +424,7 @@ namespace leetcode_cpp_helper
             // TODO: https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
 
             string strText = "";
-            string[] s = txt_in_contest.Text.Split('\\');
+            string[] s = txt_generate_md_contest.Text.Split('\\');
             s = s[2].Split('-');
             if (s[0] == "weekly")
             {
@@ -430,8 +442,8 @@ namespace leetcode_cpp_helper
             // example: 
             // [two-sum](../../problems/two-sum)
             string strText = "";
-            strText += "[" + txt_in_titleE.Text + "]";
-            strText += "(" + path + txt_in_titleE.Text + ")";
+            strText += "[" + txt_generate_md_split_titleE.Text + "]";
+            strText += "(" + path + txt_generate_md_split_titleE.Text + ")";
             return strText;
         }
 
@@ -440,8 +452,8 @@ namespace leetcode_cpp_helper
             // example: 
             // [两数之和](../../problems/two-sum/README.md)
             string strText = "";
-            strText += "[" + txt_in_titleC.Text + "]";
-            strText += "(" + path + txt_in_titleE.Text + "/README.md)";
+            strText += "[" + txt_generate_md_split_titleC.Text + "]";
+            strText += "(" + path + txt_generate_md_split_titleE.Text + "/README.md)";
             return strText;
         }
 
@@ -451,7 +463,7 @@ namespace leetcode_cpp_helper
             // [cpp](../../problems/two-sum/SOLUTION.cpp)
             string strText = "";
             strText += "[cpp]";
-            strText += "(" + path + txt_in_titleE.Text + "/SOLUTION.cpp)";
+            strText += "(" + path + txt_generate_md_split_titleE.Text + "/SOLUTION.cpp)";
             return strText;
         }
 
@@ -460,10 +472,10 @@ namespace leetcode_cpp_helper
             // https://leetcode-cn.com/contest/weekly-contest-159/problems/check-if-it-is-a-straight-line/
             // https://leetcode-cn.com/contest/season/2019-fall/problems/guess-numbers/
             string strLink = "";
-            if (txt_in_contest.Text != "")
+            if (txt_generate_md_contest.Text != "")
             {
                 bool bContest = false;
-                string[] s = txt_in_link.Text.Split('/');
+                string[] s = txt_generate_md_link.Text.Split('/');
                 for (int i = 0; i < s.Length; i++)
                 {
                     if (s[i] == "contest")
@@ -482,20 +494,20 @@ namespace leetcode_cpp_helper
             }
             else
             {
-                strLink = txt_in_link.Text;
+                strLink = txt_generate_md_link.Text;
             }
             // example: 
             // `（简单）` [1.two-sum 两数之和](https://leetcode-cn.com/problems/two-sum/)
             string strText = "";
             strText += "`（" + m_strDifficult + "）` ";
-            strText += "[" + txt_in_id.Text + "." + txt_in_titleE.Text + " " + txt_in_titleC.Text + "]";
+            strText += "[" + txt_generate_md_split_id.Text + "." + txt_generate_md_split_titleE.Text + " " + txt_generate_md_split_titleC.Text + "]";
             strText += "(" + strLink + ")";
 
-            if (txt_in_contest.Text != "")
+            if (txt_generate_md_contest.Text != "")
             {
                 strText += strEnter + strEnter;
                 strText += "[contest]";
-                strText += "(" + txt_in_link.Text + ")";
+                strText += "(" + txt_generate_md_link.Text + ")";
             }
             return strText;
         }
@@ -503,10 +515,10 @@ namespace leetcode_cpp_helper
         private string GenerateString_SolutionLink()
         {
             string strText = "";
-            if (txt_in_solution_link.Text == "") return strText;
+            if (txt_generate_md_solution_link.Text == "") return strText;
 
             strText += "[发布的题解]";
-            strText += "(" + txt_in_solution_link.Text + ")";
+            strText += "(" + txt_generate_md_solution_link.Text + ")";
             return strText;
         }
 
@@ -515,7 +527,7 @@ namespace leetcode_cpp_helper
             string strText = "";
             strText += "### 答题" + strEnter;
             strText += "``` C++" + strEnter;
-            strText += txt_in_answer.Text + strEnter;
+            strText += txt_generate_md_answer.Text + strEnter;
             strText += "```" + strEnter;
             return strText;
         }
@@ -523,11 +535,11 @@ namespace leetcode_cpp_helper
         private string GenerateString_Answer_Other()
         {
             string strText = "";
-            if (txt_in_answer_other.Text == "") return strText;
+            if (txt_generate_md_answer_other.Text == "") return strText;
 
             strText += "### 其它" + strEnter;
             strText += "``` C++" + strEnter;
-            strText += txt_in_answer_other.Text + strEnter;
+            strText += txt_generate_md_answer_other.Text + strEnter;
             strText += "```" + strEnter;
             return strText;
         }

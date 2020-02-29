@@ -77,10 +77,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_in_solution_link = new System.Windows.Forms.TextBox();
-            this.txt_in_titleC = new System.Windows.Forms.TextBox();
-            this.txt_in_titleE = new System.Windows.Forms.TextBox();
-            this.txt_in_id = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_solution_link = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_split_titleC = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_split_titleE = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_split_id = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -91,24 +91,24 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.txt_in_contest = new System.Windows.Forms.TextBox();
-            this.txt_in_id_titleC = new System.Windows.Forms.TextBox();
-            this.txt_in_description = new System.Windows.Forms.TextBox();
-            this.txt_in_answer = new System.Windows.Forms.TextBox();
-            this.txt_in_answer_other = new System.Windows.Forms.TextBox();
-            this.txt_in_link = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_contest = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_id_titleC = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_description = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_answer = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_answer_other = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_link = new System.Windows.Forms.TextBox();
             this.btn_generate_md_clear = new System.Windows.Forms.Button();
             this.btnCopy_SolutionLink = new System.Windows.Forms.Button();
             this.btnCopy_Answer = new System.Windows.Forms.Button();
             this.btnCopy_Answer_2 = new System.Windows.Forms.Button();
             this.cb_in_finish = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.rb_in_difficult_3 = new System.Windows.Forms.RadioButton();
-            this.rb_in_difficult_2 = new System.Windows.Forms.RadioButton();
-            this.rb_in_difficult_1 = new System.Windows.Forms.RadioButton();
+            this.rb_generate_md_difficult_3 = new System.Windows.Forms.RadioButton();
+            this.rb_generate_md_difficult_2 = new System.Windows.Forms.RadioButton();
+            this.rb_generate_md__difficult_1 = new System.Windows.Forms.RadioButton();
             this.btnCopy_Description = new System.Windows.Forms.Button();
-            this.txt_generate_md_dir = new System.Windows.Forms.TextBox();
-            this.txt_generate_md_id = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_source_dir = new System.Windows.Forms.TextBox();
+            this.txt_generate_md_source_id = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.cb_in_skip_md = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -731,10 +731,10 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_solution_link, 1, 5);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_titleC, 4, 4);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_titleE, 3, 4);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_id, 2, 4);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_solution_link, 1, 5);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_split_titleC, 4, 4);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_split_titleE, 3, 4);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_split_id, 2, 4);
             this.tableLayoutPanel5.Controls.Add(this.label23, 1, 4);
             this.tableLayoutPanel5.Controls.Add(this.label22, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.label18, 1, 2);
@@ -745,12 +745,12 @@
             this.tableLayoutPanel5.Controls.Add(this.label26, 0, 6);
             this.tableLayoutPanel5.Controls.Add(this.label27, 0, 10);
             this.tableLayoutPanel5.Controls.Add(this.label28, 0, 12);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_contest, 2, 2);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_id_titleC, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_description, 1, 6);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_answer, 1, 8);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_answer_other, 1, 10);
-            this.tableLayoutPanel5.Controls.Add(this.txt_in_link, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_contest, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_id_titleC, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_description, 1, 6);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_answer, 1, 8);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_answer_other, 1, 10);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_link, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.btn_generate_md_clear, 5, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnCopy_SolutionLink, 5, 5);
             this.tableLayoutPanel5.Controls.Add(this.btnCopy_Answer, 5, 8);
@@ -758,8 +758,8 @@
             this.tableLayoutPanel5.Controls.Add(this.cb_in_finish, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnCopy_Description, 5, 6);
-            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_dir, 1, 12);
-            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_id, 3, 12);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_source_dir, 1, 12);
+            this.tableLayoutPanel5.Controls.Add(this.txt_generate_md_source_id, 3, 12);
             this.tableLayoutPanel5.Controls.Add(this.btnGenerate, 1, 13);
             this.tableLayoutPanel5.Controls.Add(this.cb_in_skip_md, 4, 12);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(6, 6);
@@ -782,40 +782,40 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(543, 437);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
-            // txt_in_solution_link
+            // txt_generate_md_solution_link
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_solution_link, 4);
-            this.txt_in_solution_link.Location = new System.Drawing.Point(78, 134);
-            this.txt_in_solution_link.Name = "txt_in_solution_link";
-            this.txt_in_solution_link.Size = new System.Drawing.Size(400, 21);
-            this.txt_in_solution_link.TabIndex = 36;
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_solution_link, 4);
+            this.txt_generate_md_solution_link.Location = new System.Drawing.Point(78, 134);
+            this.txt_generate_md_solution_link.Name = "txt_generate_md_solution_link";
+            this.txt_generate_md_solution_link.Size = new System.Drawing.Size(400, 21);
+            this.txt_generate_md_solution_link.TabIndex = 36;
             // 
-            // txt_in_titleC
+            // txt_generate_md_split_titleC
             // 
-            this.txt_in_titleC.Location = new System.Drawing.Point(325, 108);
-            this.txt_in_titleC.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_titleC.Name = "txt_in_titleC";
-            this.txt_in_titleC.Size = new System.Drawing.Size(153, 21);
-            this.txt_in_titleC.TabIndex = 52;
-            this.txt_in_titleC.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
+            this.txt_generate_md_split_titleC.Location = new System.Drawing.Point(325, 108);
+            this.txt_generate_md_split_titleC.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_generate_md_split_titleC.Name = "txt_generate_md_split_titleC";
+            this.txt_generate_md_split_titleC.Size = new System.Drawing.Size(153, 21);
+            this.txt_generate_md_split_titleC.TabIndex = 52;
+            this.txt_generate_md_split_titleC.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
             // 
-            // txt_in_titleE
+            // txt_generate_md_split_titleE
             // 
-            this.txt_in_titleE.Location = new System.Drawing.Point(171, 108);
-            this.txt_in_titleE.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_titleE.Name = "txt_in_titleE";
-            this.txt_in_titleE.Size = new System.Drawing.Size(150, 21);
-            this.txt_in_titleE.TabIndex = 51;
-            this.txt_in_titleE.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
+            this.txt_generate_md_split_titleE.Location = new System.Drawing.Point(171, 108);
+            this.txt_generate_md_split_titleE.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_generate_md_split_titleE.Name = "txt_generate_md_split_titleE";
+            this.txt_generate_md_split_titleE.Size = new System.Drawing.Size(150, 21);
+            this.txt_generate_md_split_titleE.TabIndex = 51;
+            this.txt_generate_md_split_titleE.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
             // 
-            // txt_in_id
+            // txt_generate_md_split_id
             // 
-            this.txt_in_id.Location = new System.Drawing.Point(110, 108);
-            this.txt_in_id.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_id.Name = "txt_in_id";
-            this.txt_in_id.Size = new System.Drawing.Size(57, 21);
-            this.txt_in_id.TabIndex = 50;
-            this.txt_in_id.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
+            this.txt_generate_md_split_id.Location = new System.Drawing.Point(110, 108);
+            this.txt_generate_md_split_id.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_generate_md_split_id.Name = "txt_generate_md_split_id";
+            this.txt_generate_md_split_id.Size = new System.Drawing.Size(57, 21);
+            this.txt_generate_md_split_id.TabIndex = 50;
+            this.txt_generate_md_split_id.TextChanged += new System.EventHandler(this.txt_in_splite_TextChanged);
             // 
             // label23
             // 
@@ -937,62 +937,62 @@
             this.label28.Text = "题目代码";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txt_in_contest
+            // txt_generate_md_contest
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_contest, 4);
-            this.txt_in_contest.Location = new System.Drawing.Point(110, 56);
-            this.txt_in_contest.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_in_contest.Name = "txt_in_contest";
-            this.txt_in_contest.Size = new System.Drawing.Size(368, 21);
-            this.txt_in_contest.TabIndex = 62;
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_contest, 4);
+            this.txt_generate_md_contest.Location = new System.Drawing.Point(110, 56);
+            this.txt_generate_md_contest.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_generate_md_contest.Name = "txt_generate_md_contest";
+            this.txt_generate_md_contest.Size = new System.Drawing.Size(368, 21);
+            this.txt_generate_md_contest.TabIndex = 62;
             // 
-            // txt_in_id_titleC
+            // txt_generate_md_id_titleC
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_id_titleC, 4);
-            this.txt_in_id_titleC.Location = new System.Drawing.Point(78, 82);
-            this.txt_in_id_titleC.Name = "txt_in_id_titleC";
-            this.txt_in_id_titleC.Size = new System.Drawing.Size(400, 21);
-            this.txt_in_id_titleC.TabIndex = 63;
-            this.txt_in_id_titleC.TextChanged += new System.EventHandler(this.txt_in_Title_TextChanged);
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_id_titleC, 4);
+            this.txt_generate_md_id_titleC.Location = new System.Drawing.Point(78, 82);
+            this.txt_generate_md_id_titleC.Name = "txt_generate_md_id_titleC";
+            this.txt_generate_md_id_titleC.Size = new System.Drawing.Size(400, 21);
+            this.txt_generate_md_id_titleC.TabIndex = 63;
+            this.txt_generate_md_id_titleC.TextChanged += new System.EventHandler(this.txt_in_Title_TextChanged);
             // 
-            // txt_in_description
+            // txt_generate_md_description
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_description, 4);
-            this.txt_in_description.Location = new System.Drawing.Point(78, 161);
-            this.txt_in_description.Multiline = true;
-            this.txt_in_description.Name = "txt_in_description";
-            this.tableLayoutPanel5.SetRowSpan(this.txt_in_description, 2);
-            this.txt_in_description.Size = new System.Drawing.Size(400, 95);
-            this.txt_in_description.TabIndex = 66;
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_description, 4);
+            this.txt_generate_md_description.Location = new System.Drawing.Point(78, 161);
+            this.txt_generate_md_description.Multiline = true;
+            this.txt_generate_md_description.Name = "txt_generate_md_description";
+            this.tableLayoutPanel5.SetRowSpan(this.txt_generate_md_description, 2);
+            this.txt_generate_md_description.Size = new System.Drawing.Size(400, 95);
+            this.txt_generate_md_description.TabIndex = 66;
             // 
-            // txt_in_answer
+            // txt_generate_md_answer
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_answer, 4);
-            this.txt_in_answer.Location = new System.Drawing.Point(78, 262);
-            this.txt_in_answer.Multiline = true;
-            this.txt_in_answer.Name = "txt_in_answer";
-            this.tableLayoutPanel5.SetRowSpan(this.txt_in_answer, 2);
-            this.txt_in_answer.Size = new System.Drawing.Size(400, 45);
-            this.txt_in_answer.TabIndex = 67;
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_answer, 4);
+            this.txt_generate_md_answer.Location = new System.Drawing.Point(78, 262);
+            this.txt_generate_md_answer.Multiline = true;
+            this.txt_generate_md_answer.Name = "txt_generate_md_answer";
+            this.tableLayoutPanel5.SetRowSpan(this.txt_generate_md_answer, 2);
+            this.txt_generate_md_answer.Size = new System.Drawing.Size(400, 45);
+            this.txt_generate_md_answer.TabIndex = 67;
             // 
-            // txt_in_answer_other
+            // txt_generate_md_answer_other
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_answer_other, 4);
-            this.txt_in_answer_other.Location = new System.Drawing.Point(78, 313);
-            this.txt_in_answer_other.Multiline = true;
-            this.txt_in_answer_other.Name = "txt_in_answer_other";
-            this.tableLayoutPanel5.SetRowSpan(this.txt_in_answer_other, 2);
-            this.txt_in_answer_other.Size = new System.Drawing.Size(400, 46);
-            this.txt_in_answer_other.TabIndex = 68;
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_answer_other, 4);
+            this.txt_generate_md_answer_other.Location = new System.Drawing.Point(78, 313);
+            this.txt_generate_md_answer_other.Multiline = true;
+            this.txt_generate_md_answer_other.Name = "txt_generate_md_answer_other";
+            this.tableLayoutPanel5.SetRowSpan(this.txt_generate_md_answer_other, 2);
+            this.txt_generate_md_answer_other.Size = new System.Drawing.Size(400, 46);
+            this.txt_generate_md_answer_other.TabIndex = 68;
             // 
-            // txt_in_link
+            // txt_generate_md_link
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_in_link, 4);
-            this.txt_in_link.Location = new System.Drawing.Point(78, 30);
-            this.txt_in_link.Name = "txt_in_link";
-            this.txt_in_link.Size = new System.Drawing.Size(400, 21);
-            this.txt_in_link.TabIndex = 70;
-            this.txt_in_link.TextChanged += new System.EventHandler(this.txt_in_Title_TextChanged);
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_link, 4);
+            this.txt_generate_md_link.Location = new System.Drawing.Point(78, 30);
+            this.txt_generate_md_link.Name = "txt_generate_md_link";
+            this.txt_generate_md_link.Size = new System.Drawing.Size(400, 21);
+            this.txt_generate_md_link.TabIndex = 70;
+            this.txt_generate_md_link.TextChanged += new System.EventHandler(this.txt_in_Title_TextChanged);
             // 
             // btn_generate_md_clear
             // 
@@ -1056,9 +1056,9 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Controls.Add(this.rb_in_difficult_3, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.rb_in_difficult_2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.rb_in_difficult_1, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.rb_generate_md_difficult_3, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.rb_generate_md_difficult_2, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.rb_generate_md__difficult_1, 0, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(78, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
@@ -1067,43 +1067,43 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(155, 21);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
-            // rb_in_difficult_3
+            // rb_generate_md_difficult_3
             // 
-            this.rb_in_difficult_3.AutoSize = true;
-            this.rb_in_difficult_3.Location = new System.Drawing.Point(104, 2);
-            this.rb_in_difficult_3.Margin = new System.Windows.Forms.Padding(2);
-            this.rb_in_difficult_3.Name = "rb_in_difficult_3";
-            this.rb_in_difficult_3.Size = new System.Drawing.Size(47, 16);
-            this.rb_in_difficult_3.TabIndex = 43;
-            this.rb_in_difficult_3.Text = "困难";
-            this.rb_in_difficult_3.UseVisualStyleBackColor = true;
-            this.rb_in_difficult_3.CheckedChanged += new System.EventHandler(this.rb_in_difficult_CheckedChanged);
+            this.rb_generate_md_difficult_3.AutoSize = true;
+            this.rb_generate_md_difficult_3.Location = new System.Drawing.Point(104, 2);
+            this.rb_generate_md_difficult_3.Margin = new System.Windows.Forms.Padding(2);
+            this.rb_generate_md_difficult_3.Name = "rb_generate_md_difficult_3";
+            this.rb_generate_md_difficult_3.Size = new System.Drawing.Size(47, 16);
+            this.rb_generate_md_difficult_3.TabIndex = 43;
+            this.rb_generate_md_difficult_3.Text = "困难";
+            this.rb_generate_md_difficult_3.UseVisualStyleBackColor = true;
+            this.rb_generate_md_difficult_3.CheckedChanged += new System.EventHandler(this.rb_in_difficult_CheckedChanged);
             // 
-            // rb_in_difficult_2
+            // rb_generate_md_difficult_2
             // 
-            this.rb_in_difficult_2.AutoSize = true;
-            this.rb_in_difficult_2.Location = new System.Drawing.Point(53, 2);
-            this.rb_in_difficult_2.Margin = new System.Windows.Forms.Padding(2);
-            this.rb_in_difficult_2.Name = "rb_in_difficult_2";
-            this.rb_in_difficult_2.Size = new System.Drawing.Size(47, 16);
-            this.rb_in_difficult_2.TabIndex = 42;
-            this.rb_in_difficult_2.Text = "中等";
-            this.rb_in_difficult_2.UseVisualStyleBackColor = true;
-            this.rb_in_difficult_2.CheckedChanged += new System.EventHandler(this.rb_in_difficult_CheckedChanged);
+            this.rb_generate_md_difficult_2.AutoSize = true;
+            this.rb_generate_md_difficult_2.Location = new System.Drawing.Point(53, 2);
+            this.rb_generate_md_difficult_2.Margin = new System.Windows.Forms.Padding(2);
+            this.rb_generate_md_difficult_2.Name = "rb_generate_md_difficult_2";
+            this.rb_generate_md_difficult_2.Size = new System.Drawing.Size(47, 16);
+            this.rb_generate_md_difficult_2.TabIndex = 42;
+            this.rb_generate_md_difficult_2.Text = "中等";
+            this.rb_generate_md_difficult_2.UseVisualStyleBackColor = true;
+            this.rb_generate_md_difficult_2.CheckedChanged += new System.EventHandler(this.rb_in_difficult_CheckedChanged);
             // 
-            // rb_in_difficult_1
+            // rb_generate_md__difficult_1
             // 
-            this.rb_in_difficult_1.AutoSize = true;
-            this.rb_in_difficult_1.Checked = true;
-            this.rb_in_difficult_1.Location = new System.Drawing.Point(2, 2);
-            this.rb_in_difficult_1.Margin = new System.Windows.Forms.Padding(2);
-            this.rb_in_difficult_1.Name = "rb_in_difficult_1";
-            this.rb_in_difficult_1.Size = new System.Drawing.Size(47, 16);
-            this.rb_in_difficult_1.TabIndex = 41;
-            this.rb_in_difficult_1.TabStop = true;
-            this.rb_in_difficult_1.Text = "简单";
-            this.rb_in_difficult_1.UseVisualStyleBackColor = true;
-            this.rb_in_difficult_1.CheckedChanged += new System.EventHandler(this.rb_in_difficult_CheckedChanged);
+            this.rb_generate_md__difficult_1.AutoSize = true;
+            this.rb_generate_md__difficult_1.Checked = true;
+            this.rb_generate_md__difficult_1.Location = new System.Drawing.Point(2, 2);
+            this.rb_generate_md__difficult_1.Margin = new System.Windows.Forms.Padding(2);
+            this.rb_generate_md__difficult_1.Name = "rb_generate_md__difficult_1";
+            this.rb_generate_md__difficult_1.Size = new System.Drawing.Size(47, 16);
+            this.rb_generate_md__difficult_1.TabIndex = 41;
+            this.rb_generate_md__difficult_1.TabStop = true;
+            this.rb_generate_md__difficult_1.Text = "简单";
+            this.rb_generate_md__difficult_1.UseVisualStyleBackColor = true;
+            this.rb_generate_md__difficult_1.CheckedChanged += new System.EventHandler(this.rb_in_difficult_CheckedChanged);
             // 
             // btnCopy_Description
             // 
@@ -1115,24 +1115,24 @@
             this.btnCopy_Description.UseVisualStyleBackColor = true;
             this.btnCopy_Description.Click += new System.EventHandler(this.btn_Copy_Description_Click);
             // 
-            // txt_generate_md_dir
+            // txt_generate_md_source_dir
             // 
-            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_dir, 2);
-            this.txt_generate_md_dir.Location = new System.Drawing.Point(77, 364);
-            this.txt_generate_md_dir.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_generate_md_dir.Name = "txt_generate_md_dir";
-            this.txt_generate_md_dir.Size = new System.Drawing.Size(90, 21);
-            this.txt_generate_md_dir.TabIndex = 53;
-            this.txt_generate_md_dir.Text = "problems_test";
+            this.tableLayoutPanel5.SetColumnSpan(this.txt_generate_md_source_dir, 2);
+            this.txt_generate_md_source_dir.Location = new System.Drawing.Point(77, 364);
+            this.txt_generate_md_source_dir.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_generate_md_source_dir.Name = "txt_generate_md_source_dir";
+            this.txt_generate_md_source_dir.Size = new System.Drawing.Size(90, 21);
+            this.txt_generate_md_source_dir.TabIndex = 53;
+            this.txt_generate_md_source_dir.Text = "problems_test";
             // 
-            // txt_generate_md_id
+            // txt_generate_md_source_id
             // 
-            this.txt_generate_md_id.Location = new System.Drawing.Point(171, 364);
-            this.txt_generate_md_id.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_generate_md_id.Name = "txt_generate_md_id";
-            this.txt_generate_md_id.Size = new System.Drawing.Size(99, 21);
-            this.txt_generate_md_id.TabIndex = 69;
-            this.txt_generate_md_id.Text = "0";
+            this.txt_generate_md_source_id.Location = new System.Drawing.Point(171, 364);
+            this.txt_generate_md_source_id.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_generate_md_source_id.Name = "txt_generate_md_source_id";
+            this.txt_generate_md_source_id.Size = new System.Drawing.Size(99, 21);
+            this.txt_generate_md_source_id.TabIndex = 69;
+            this.txt_generate_md_source_id.Text = "0";
             // 
             // btnGenerate
             // 
@@ -1707,10 +1707,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox txt_in_solution_link;
-        private System.Windows.Forms.TextBox txt_in_titleC;
-        private System.Windows.Forms.TextBox txt_in_titleE;
-        private System.Windows.Forms.TextBox txt_in_id;
+        private System.Windows.Forms.TextBox txt_generate_md_solution_link;
+        private System.Windows.Forms.TextBox txt_generate_md_split_titleC;
+        private System.Windows.Forms.TextBox txt_generate_md_split_titleE;
+        private System.Windows.Forms.TextBox txt_generate_md_split_id;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label18;
@@ -1721,24 +1721,24 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox txt_in_contest;
-        private System.Windows.Forms.TextBox txt_in_id_titleC;
-        private System.Windows.Forms.TextBox txt_in_description;
-        private System.Windows.Forms.TextBox txt_in_answer;
-        private System.Windows.Forms.TextBox txt_in_answer_other;
-        private System.Windows.Forms.TextBox txt_in_link;
+        private System.Windows.Forms.TextBox txt_generate_md_contest;
+        private System.Windows.Forms.TextBox txt_generate_md_id_titleC;
+        private System.Windows.Forms.TextBox txt_generate_md_description;
+        private System.Windows.Forms.TextBox txt_generate_md_answer;
+        private System.Windows.Forms.TextBox txt_generate_md_answer_other;
+        private System.Windows.Forms.TextBox txt_generate_md_link;
         private System.Windows.Forms.Button btn_generate_md_clear;
         private System.Windows.Forms.Button btnCopy_SolutionLink;
         private System.Windows.Forms.Button btnCopy_Answer;
         private System.Windows.Forms.Button btnCopy_Answer_2;
         private System.Windows.Forms.CheckBox cb_in_finish;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.RadioButton rb_in_difficult_3;
-        private System.Windows.Forms.RadioButton rb_in_difficult_2;
-        private System.Windows.Forms.RadioButton rb_in_difficult_1;
+        private System.Windows.Forms.RadioButton rb_generate_md_difficult_3;
+        private System.Windows.Forms.RadioButton rb_generate_md_difficult_2;
+        private System.Windows.Forms.RadioButton rb_generate_md__difficult_1;
         private System.Windows.Forms.Button btnCopy_Description;
-        private System.Windows.Forms.TextBox txt_generate_md_dir;
-        private System.Windows.Forms.TextBox txt_generate_md_id;
+        private System.Windows.Forms.TextBox txt_generate_md_source_dir;
+        private System.Windows.Forms.TextBox txt_generate_md_source_id;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.CheckBox cb_in_skip_md;
         private System.Windows.Forms.TabPage tabPage2;

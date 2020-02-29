@@ -416,12 +416,12 @@ namespace leetcode_cpp_helper
                         {
                             iProblemsCount += GetFinishStatus_From_InfoForm_Problem(str);
                             string strReadNo = GetId_From_InfoForm_Problem(str);
-                            if (strReadNo.CompareTo(strId) != -1)
+                            if (CompareStringAsLong(ref strReadNo, ref strId) != -1)
                             {
                                 strText += strInsert + strEnter;    // insert content here
                                 iMark = 29;  // iMakr == 29, insert completed
                             }
-                            if (strReadNo.CompareTo(strId) == 0) continue;
+                            if (CompareStringAsLong(ref strReadNo, ref strId) == 0) continue;
                         }
                     }
                     else if (iMark == 29)
@@ -554,8 +554,8 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            if (txt_in_contest.Text != "" &&   
-                !Directory.Exists(txt_path_main.Text + txt_in_contest.Text))
+            if (txt_generate_md_contest.Text != "" &&   
+                !Directory.Exists(txt_path_main.Text + txt_generate_md_contest.Text))
             {
                 string strInsert_Contest = GenerateString_InfoForm_Contest() + strEnter;
 
@@ -576,7 +576,7 @@ namespace leetcode_cpp_helper
 
             // example: 
             // * 133.CloneGraph 克隆图
-            string strInsert = "* " + txt_in_id.Text + "." + txt_in_titleE.Text + " " + txt_in_titleC.Text + strEnter;
+            string strInsert = "* " + txt_generate_md_split_id.Text + "." + txt_generate_md_split_titleE.Text + " " + txt_generate_md_split_titleC.Text + strEnter;
             string strText = "";
             string strDate = "## " + DateTime.Now.ToString("yyyyMMdd");
             int iMark = 0;
@@ -624,7 +624,7 @@ namespace leetcode_cpp_helper
 
         private void Modify_File_Solutions_md(string strFile, string strId, string strPath, string strDifficult, bool bFinish, string strSolutionLink)
         {
-            if (txt_in_solution_link.Text == "") return;
+            if (txt_generate_md_solution_link.Text == "") return;
             if (strFile == "") return;
             if (!File.Exists(strFile))
             {
@@ -659,12 +659,12 @@ namespace leetcode_cpp_helper
                     {
                         if (str == "") continue;
                         string strReadNo = GetId_From_InfoForm_Problem(str);
-                        if (strReadNo.CompareTo(strId) != -1)
+                        if (CompareStringAsLong(ref strReadNo, ref strId) != -1)
                         {
                             strText += strInsert_SelectedSolution + strEnter;    // insert content here
                             iMark = 20;  // iMakr == 20, insert completed
                         }
-                        if (strReadNo.CompareTo(strId) == 0) continue;
+                        if (CompareStringAsLong(ref strReadNo, ref strId) == 0) continue;
                     }
                     // copy this line
                     strText += str + strEnter;
@@ -720,7 +720,7 @@ namespace leetcode_cpp_helper
             }
 
             string strInsert = GenerateString_InfoForm_Problem(strPath, strId, strDifficult, bFinish, strSolutionLink);
-            int.TryParse(txt_in_id.Text, out int iInsertNo);
+            int.TryParse(txt_generate_md_split_id.Text, out int iInsertNo);
             string strText = "";
             int iMark = 0;
 
@@ -743,12 +743,12 @@ namespace leetcode_cpp_helper
                     {
                         if (str == "") continue;
                         string strReadNo = GetId_From_InfoForm_Problem(str);
-                        if (strReadNo.CompareTo(strId) != -1)
+                        if (CompareStringAsLong(ref strReadNo, ref strId) != -1)
                         {
                             strText += strInsert + strEnter;    // insert content here
                             iMark = 29;  // iMakr == 29, insert completed
                         }
-                        if (strReadNo.CompareTo(strId) == 0) continue;
+                        if (CompareStringAsLong(ref strReadNo, ref strId) == 0) continue;
                     }
                     else if (iMark == 29)
                     {
@@ -786,7 +786,7 @@ namespace leetcode_cpp_helper
 
             // ### 题目描述
             strText += "### 题目描述" + strEnter;
-            strText += txt_in_description.Text;
+            strText += txt_generate_md_description.Text;
             strText += strEnter + strEnter;
 
             // ---
@@ -820,7 +820,7 @@ namespace leetcode_cpp_helper
                 return;
             }
 
-            string strInsert_SelectedSolution = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_in_id.Text + " \t" + txt_in_titleE.Text;
+            string strInsert_SelectedSolution = "#define SOLUTION_CPP_FOLDER_NAME_ID_" + txt_generate_md_split_id.Text + " \t" + txt_generate_md_split_titleE.Text;
             string strText = "";
             int iMark = 0;
 
@@ -841,12 +841,12 @@ namespace leetcode_cpp_helper
                         string[] s = str.Split(' ');
                         s = s[1].Split('_');
                         string strReadNo = s[5];
-                        if (strReadNo.CompareTo(strId) != -1)
+                        if (CompareStringAsLong(ref strReadNo, ref strId) != -1)
                         {
                             strText += strInsert_SelectedSolution + strEnter;    // insert content here
                             iMark = 20;  // iMakr == 20, insert completed
                         }
-                        if (strReadNo.CompareTo(strId) == 0) continue;
+                        if (CompareStringAsLong(ref strReadNo, ref strId) == 0) continue;
                     }
                     // copy this line
                     strText += str + strEnter;
@@ -876,7 +876,7 @@ namespace leetcode_cpp_helper
             strText = "git pull" + strEnter;
             strText += "git add -A" + strEnter;
             strText += "git commit -m";
-            strText += "\"" + txt_in_id.Text + "." + txt_in_titleE.Text + "\"" + strEnter;
+            strText += "\"" + txt_generate_md_split_id.Text + "." + txt_generate_md_split_titleE.Text + "\"" + strEnter;
             strText += "git push" + strEnter;
 
             string strFile = txt_path_commit_bat.Text;

@@ -261,7 +261,7 @@ namespace leetcode_cpp_helper
         {
             try
             {
-                Modify_File_Test_cpp(txt_path_test_cpp.Text, txt_launcher_main_id.Text, false, txt_launcher_temp_name.Text);
+                Modify_File_Test_cpp(txt_path_test_cpp.Text, txt_launcher_temp_name.Text, false, txt_launcher_temp_dir.Text);
             }
             catch
             {

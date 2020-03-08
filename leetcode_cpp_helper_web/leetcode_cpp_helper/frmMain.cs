@@ -30,7 +30,8 @@ namespace leetcode_cpp_helper
             txt_path_main.Text = pathInfo.Parent.FullName;
             
             debug_config();
-            release_only_test_config();
+            release_cpponly_config();
+            release_leetcodeweb_config();
 
             Reset();
             Clear();
@@ -55,8 +56,8 @@ namespace leetcode_cpp_helper
             txt_new_cpp_in_func_testcase.Text = "-5 -4 0 1 2 3 4 13 14 15 17 20 22 99";
         }
 
-        [Conditional("RELEASE_ONLY_TEST")]
-        private void release_only_test_config()
+        [Conditional("CPPONLY")]
+        private void release_cpponly_config()
         {
             lbl_launcher_main_id.Visible = false;
             txt_launcher_main_id.Visible = false;
@@ -71,6 +72,15 @@ namespace leetcode_cpp_helper
             tabControl1.TabPages.Remove(tabPage4);
         }
 
+        [Conditional("LCWEB")]
+        private void release_leetcodeweb_config()
+        {
+            lbl_launcher_lc_path_download.Visible = true;
+            txt_launcher_lc_path_download.Visible = true;
+            btn_launcher_lc_path_download.Visible = true;
+        }
+
+        [Conditional("LCWEB")]
         private void InitBrowser()
         {
             Cef.Initialize(new CefSettings());

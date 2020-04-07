@@ -6,8 +6,8 @@
 
 
 #include <windows.h>
-
 using namespace std;
+
 
 char a[1024][1024];
 char b[1024][1024];

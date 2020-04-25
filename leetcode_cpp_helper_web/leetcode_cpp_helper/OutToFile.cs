@@ -481,7 +481,7 @@ namespace leetcode_cpp_helper
                     {
                         // copy solution to Selected Solutions
                         //if (str == "## Selected Solutions") iMark = 10;  // find title
-                        if (str == "## Problemset / All") iMark = 20;  // find title
+                        if (str.IndexOf("## Problemset / All") != -1) iMark = 20;  // find title
                     }
                     // disable [Selected Solutions] function
                     //else if (iMark == 10 || iMark == 11)

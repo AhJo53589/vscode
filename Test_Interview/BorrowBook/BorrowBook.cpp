@@ -1,74 +1,82 @@
-﻿// BorrowBook.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// BorrowBook.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
 #include "pch.h"
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 
-// 图书馆，借阅卡初始金额 300
+// 图书馆，提供图书借阅服务
 
-// 借阅规则：
+// 借书需要使用借阅卡，初始金额 300
+// 借书时
+//     根据书的价格，和申请借阅的天数，计算出根据申请的天数需要支付的租金
+//     需要先检查是否可以借书
+// 还书时
+//     根据实际借阅的天数，计算出实际需要支付的租金
+//     扣除租金
 
-// 图书价格 >= 100, 借阅天数 <= 15天 时，5元/天；借阅天数 > 15天 时，超过部分 3元/天
-// 否则，图书价格 >= 50, 借阅天数 <=15天 时，3元/天；借阅天数 > 15天 时，超过部分 2元/天
-// 否则，1元每天
+// 检查是否可以借书的规则：
+//     如果卡内余额 < 图书价格，不能借书
+//     如果图书价格 < 借书时申请天数所计算的租金，不能借书
+//     如果不能借这本书，还可以借其他书（跳过本条数据）
 
-// 如果超期未还，超期部分额外 1元/天
+// 扣费规则：
+//     图书价格 >= 100, 借阅天数 <= 15 天时，5 元/天；借阅天数 > 15 天时，超过部分 3 元/天
+//     图书价格 >= 50 并且 < 100, 借阅天数 <= 15 天时，3 元/天；借阅天数 > 15 天时，超过部分 2 元/天
+//     图书价格 < 50，1 元每天
+//     还书时，如果实际天数超过申请天数，超期部分额外 1 元/天
 
-// 如果余额 < 图书价格，不能借书
-// 如果图书价格 < 借书时扣除的租金，不能借书
-// 但是可以借其他书
 
-// 数据格式：图书价格,预借天数,实际天数
+// 数据格式：
+//     输入：图书价格，预借天数，实际天数
+//     输出：余额
 
-int getCostWithoutOverdue(int price, int day)
+class Solution
 {
-	auto getDailyPrice = [](int price, int day)
+public:
+	void borrowBook(int price, int preDay, int factDay)
 	{
-		if (price >= 100) return (day <= 15) ? 5 : 3;
-		else if (price >= 50) return (day <= 15) ? 3 : 2;
-		return 1;
-	};
-
-	if (day > 15)
-	{
-		return (day - 15) * getDailyPrice(price, day)
-			+ 15 * getDailyPrice(price, 15);
+		if (!valid(account, price, preDay, factDay)) return;
+		account -= returnBook(price, preDay, factDay);
 	}
-	return day * getDailyPrice(price, day);
-}
 
-bool Valid(int account, int price, int preDay, int factDay)
-{
-	if (price < 0) return false;
-	if (preDay < 0) return false;
-	if (factDay < 0) return false;
-	if (account < price) return false;
-	if (price < getCostWithoutOverdue(price, preDay)) return false;
-	//if (price < getCostWithoutOverdue(price, factDay)) return false;
-	return true;
-}
+private:
+	int calcPrice(int price, int day)
+	{
+		int idx = (price >= 100) ? 0 : (price >= 50) ? 1 : 2;
+		int dayReduce = max(day - priceReduceDay, 0);
+		day = min(day, priceReduceDay);
+		return day * priceList[idx] + dayReduce * priceReduceList[idx];
+	}
 
-int ReturnBook(int price, int preDay, int factDay)
-{
-	int costOver = (factDay > preDay) ? (factDay - preDay) * 1 : 0;
-	return costOver + getCostWithoutOverdue(price, factDay);
-}
+	bool valid(int account, int price, int preDay, int factDay)
+	{
+		if (price < 0) return false;
+		if (preDay < 0) return false;
+		if (factDay < 0) return false;
+		if (account < price) return false;
+		if (price < calcPrice(price, preDay)) return false;
+		return true;
+	}
 
-void BorrowBook(int &account, int price, int preDay, int factDay)
-{
-	if (!Valid(account, price, preDay, factDay)) return;
-	account -= ReturnBook(price, preDay, factDay);
+	int returnBook(int price, int preDay, int factDay)
+	{
+		int costOver = max(factDay - preDay, 0) * priceExtra;
+		return costOver + calcPrice(price, factDay);
+	}
 
-	// for test
-	//cout << endl << "////////////////////////////////////" << endl;
-	//cout << "true" << endl;
-	//int cost = ReturnBook(price, preDay, factDay);
-	//cout << "cost = " << cost << endl;
-	//cout << "account = " << account << endl;
-}
+private:
+	int account = 300;
+
+	const int priceReduceDay = 15;
+	const int[] priceList = { 5,3,1 };
+	const int[] priceReduceList = { 3,2,1 };
+	const int priceExtra = 1;
+};
+
 
 //int main()
 //{
@@ -76,9 +84,10 @@ void BorrowBook(int &account, int price, int preDay, int factDay)
 //	int price, preDay, factDay;
 //	int account = 300;
 //
+//	Solution sln;
 //	while (cin >> price >> ch >> preDay >> ch >> factDay)
 //	{
-//		BorrowBook(account, price, preDay, factDay);
+//		sln.BorrowBook(account, price, preDay, factDay);
 //	}
 //
 //	cout << account << endl;
@@ -90,8 +99,11 @@ int main()
 	vector<vector<vector<int>>> input;
 	vector<vector<int>> answer;
 
+	//     输入：图书价格，预借天数，实际天数
+	//     输出：余额
+
 	// case
-	input.push_back({ { 180, 10, 10 }, { 80, 10, 3 }, {30, 10, 12} });
+	input.push_back({ { 180, 10, 10 },{ 80, 10, 3 },{ 30, 10, 12 } });
 	answer.push_back({ 250, 241, 227 });
 
 	// case

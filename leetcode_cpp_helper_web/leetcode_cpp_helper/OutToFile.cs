@@ -395,8 +395,10 @@ namespace leetcode_cpp_helper
                     string str = sr.ReadLine();
                     if (iMark == 0)
                     {
-                        // ## All
-                        if (str.IndexOf("## ") != -1) iMark = 20;  // find title
+                        if (str.IndexOf("## ") != -1)
+                        {
+                            iMark = 20;  // find title [## All]
+                        }
                     }
                     else if (iMark == 20 || iMark == 21)
                     {
@@ -406,11 +408,10 @@ namespace leetcode_cpp_helper
                     else if (iMark == 22)
                     {
                         if (str == "") continue;
-                        // ## Season/2019-fall
                         if (str.IndexOf("## ") != -1)
                         {
                             strText += strInsert + strEnter;    // insert content here
-                            iMark = 29;  // iMakr == 29, insert completed
+                            iMark = 29;                         // find title [## Season/2019-fall]
                         }
                         else
                         {

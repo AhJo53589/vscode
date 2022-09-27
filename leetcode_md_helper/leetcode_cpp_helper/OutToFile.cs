@@ -177,10 +177,10 @@ namespace leetcode_cpp_helper
             else
             {
                 // Sample:
-                // Solution sln;
-                // return sln.twoSum(nums, target);
-                output += "\t" + strClassName + " " + "sln;" + strEnter;
-                output += "\treturn sln." + input[1] + "(" + strArg + ");" + strEnter;
+                // unique_ptr<Solution> sln(new Solution());
+                // return sln->ballGame(num, plate);
+                output += "\tunique_ptr<" + strClassName + "> " + "sln(new " + strClassName + "())" + strEnter;
+                output += "\treturn sln->" + input[1] + "(" + strArg + ");" + strEnter;
             }
 
             return output;
@@ -293,8 +293,8 @@ namespace leetcode_cpp_helper
                     strText += "\t" + strComment + "if (caseNo != -1 && caseCnt++ != caseNo) return {};" + strEnter + strEnter;
                 }
                 // Sample:
-                // Solution sln;
-                // return sln.twoSum(nums, target);
+                // unique_ptr<Solution> sln(new Solution());
+                // return sln->ballGame(num, plate);
                 strText += GetCode_Default_CallFunc(strClassName, lsParamArg);
                 strText += "}" + strEnter + strEnter;
 
